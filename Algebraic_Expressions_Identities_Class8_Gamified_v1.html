@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#7c3aed">
+<title>Aasha - Algebraic Expressions and Identities | Class 8 — Rational Numbers | Class 8</title>
+<style>
+:root{--brand:#7c3aed;--bl:#8b5cf6;--surface:#f5f3ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7;--amb:#fef3c7;--cyan:#06b6d4;--teal:#14b8a6;--ink:#1e1b4b}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,#f5f3ff 0%,#ede9fe 300px);color:var(--text);line-height:1.6;font-size:16px;overscroll-behavior:none;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(124,58,237,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand);line-height:1.2}
+.hdr-hi{font-size:.7rem;color:var(--muted)}
+.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--pi),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:var(--amb)}
+.stat.xp{color:var(--purple);background:#ede9fe}
+.stat.lvl{color:var(--brand);background:#ede9fe}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--pi));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}
+.profile-swap{margin-left:auto;padding:3px 8px;background:#ede9fe;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;margin-bottom:8px;text-align:center;animation:pop .5s ease}
+.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}
+.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.92rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}
+.wd:hover{background:#ede9fe}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}
+.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.game-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.game-card canvas{display:block;margin:0 auto;border-radius:8px;touch-action:none}
+.we-card{background:linear-gradient(180deg,#fff,#faf5ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#ede9fe;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#ede9fe,#f5f3ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;animation:stepReveal .3s ease;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.amber{background:linear-gradient(90deg,#fef3c7,#fffbeb);border-left-color:var(--gold)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.we-step.green .we-num{background:var(--green)}.we-step.amber .we-num{background:var(--gold)}
+@keyframes stepReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(139,92,246,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#ede9fe}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}
+.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(124,58,237,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}
+.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+input[type=range]{width:100%;max-width:300px;accent-color:var(--brand);height:6px;border-radius:3px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 2px 6px rgba(124,58,237,.3)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;margin-bottom:6px;animation:pop .5s ease}
+.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}
+.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;margin-bottom:8px}
+.complete-title{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+.complete-coins{font-size:2.2rem;font-weight:800;color:var(--gold);margin:10px 0}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}
+.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(124,58,237,.3)}
+.btn-primary:hover{box-shadow:0 5px 15px rgba(124,58,237,.4);transform:translateY(-1px)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none;transform:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-green:hover{box-shadow:0 5px 15px rgba(16,185,129,.4);transform:translateY(-1px)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .15s;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}
+.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.btn-restart{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;padding:12px 24px;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;margin-top:12px;box-shadow:0 3px 10px rgba(245,158,11,.3)}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.prop-box{background:linear-gradient(90deg,#f0fdf4,#ecfdf5);border-left:4px solid var(--green);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.76rem;margin:6px 0;line-height:1.5}
+.formula-box{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.05em}
+.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#ede9fe,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}
+.discovery-box .d-text{font-size:.76rem;color:var(--text);line-height:1.5}
+.interactive-hint{font-size:.7rem;color:var(--purple);text-align:center;font-weight:600;margin:4px 0;animation:pulse 1.5s infinite}
+.tf-btn{display:flex;gap:10px;max-width:380px;margin:0 auto 8px}
+.tf-opt{flex:1;padding:14px;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:center;font-weight:700;font-size:1rem;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.fb-input{width:100%;max-width:380px;margin:0 auto 8px;display:block;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:1rem}
+.fb-input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(139,92,246,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}
+.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}
+.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#f5f3ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.ns-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.68rem;font-weight:700;margin:2px;cursor:pointer;transition:all .2s}
+.ns-natural{background:#d1fae5;color:#065f46}.ns-whole{background:#dbeafe;color:#1e40af}.ns-integer{background:#fef3c7;color:#92400e}.ns-rational{background:#ede9fe;color:#6b21a8}
+.ns-badge.active{transform:scale(1.1);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.prop-table{width:100%;max-width:400px;margin:0 auto;border-collapse:collapse;font-size:.72rem;border-radius:8px;overflow:hidden}
+.prop-table th,.prop-table td{border:1px solid var(--border);padding:6px 8px;text-align:center}
+.prop-table th{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;font-weight:700;font-size:.66rem}
+.prop-table td.yes{color:var(--green);font-weight:700}.prop-table td.no{color:var(--red);font-weight:700}
+.prop-table tr:nth-child(even){background:#f8fafc}
+.prop-table tr{cursor:pointer;transition:background .15s}
+.prop-table tr.hl{background:#ede9fe!important}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.real-example{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid var(--bl);border-radius:12px;padding:12px;max-width:400px;margin:8px auto;font-size:.8rem;line-height:1.6;color:#1e3a8a}
+.real-example .re-icon{font-size:1.2rem;margin-right:4px}
+.shop-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px}
+.shop-modal{background:#fff;border-radius:16px;max-width:420px;width:100%;max-height:85vh;overflow-y:auto;padding:16px}
+.shop-title{font-size:1.1rem;font-weight:900;color:var(--brand);text-align:center;margin-bottom:4px}
+.shop-coins{font-size:.85rem;color:var(--gold);font-weight:800;text-align:center;margin-bottom:12px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.shop-item{padding:12px 8px;border:2px solid var(--border);border-radius:10px;text-align:center;background:var(--surface)}
+.shop-item.owned{opacity:.5}
+.shop-item-icon{font-size:1.8rem}.shop-item-name{font-size:.72rem;font-weight:700;margin:4px 0}
+.shop-item-cost{font-size:.85rem;color:var(--gold);font-weight:800}
+.shop-buy-btn{margin-top:6px;padding:5px 10px;font-size:.72rem;border:none;border-radius:6px;color:#fff;background:var(--brand);font-weight:700;cursor:pointer}
+body.theme-ocean{--brand:#0ea5e9;--bl:#06b6d4;--green:#14b8a6;--gold:#f59e0b}
+body.theme-forest{--brand:#16a34a;--bl:#15803d;--green:#22c55e;--gold:#ca8a04}
+body.theme-sunset{--brand:#f97316;--bl:#ec4899;--green:#f59e0b;--gold:#f97316}
+.ex-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.62rem;font-weight:700;margin-bottom:6px}
+.ex-11{background:#dbeafe;color:#1e40af}.ex-12{background:#fce7f3;color:#9d174d}
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN2MzYWVkIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">अनंत आशा फाउंडेशन</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">🪙 <span id="statCoins">0</span></span><span class="stat xp">⭐ <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">🛒 Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar" id="bottomBar"><button class="btn-back" id="backBtn" onclick="App.back()">← Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#7c3aed"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">🎉</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना"
+}
+
+/* CONN: ONLY connecting words — NO math domain terms */
+var CONN={
+"can":"सकता है","could":"सकता था","will":"करेगा","would":"करेगा","shall":"करेगा",
+"should":"करना चाहिए","must":"ज़रूरी है","may":"सकता है","might":"शायद कर सके",
+"need":"ज़रूरत है","need to":"ज़रूरत है करना","have to":"करना पड़ता है","had to":"करना पड़ा",
+"ought to":"करना चाहिए","be able to":"सक्षम है","used to":"पहले करता था","dare":"हिम्मत करना",
+"had better":"बेहतर होगा","be going to":"करने वाला है","be supposed to":"करना अपेक्षित है",
+"and":"और","but":"लेकिन","or":"या","so":"इसलिए","because":"क्योंकि","also":"भी","too":"भी",
+"as well":"भी","either":"या भी","neither":"न ही","not only":"न केवल","but also":"बल्कि",
+"whether":"क्या","that":"कि","even":"यहाँ तक कि",
+"because of":"के कारण","due to":"के कारण","since":"क्योंकि","therefore":"इसलिए",
+"thus":"इस प्रकार","hence":"इसलिए","as a result":"परिणामस्वरूप","so that":"ताकि",
+"in order to":"ताकि","consequently":"परिणामस्वरूप","for this reason":"इस कारण",
+"thereby":"इस प्रकार","accordingly":"उसी अनुसार","resulting in":"परिणामस्वरूप","leading to":"की ओर ले जाता है",
+"if":"अगर","unless":"जब तक नहीं","provided":"बशर्ते","as long as":"जब तक",
+"in case":"अगर ऐसा हो","even if":"भले ही","only if":"केवल तभी","whether or not":"चाहे या नहीं",
+"otherwise":"नहीं तो","supposing":"मान लो","assuming":"मानते हुए","on condition that":"इस शर्त पर",
+"in the event that":"अगर ऐसा हो","if not":"अगर नहीं","then":"तब",
+"although":"हालांकि","though":"हालांकि","even though":"फिर भी","however":"हालांकि",
+"yet":"फिर भी","still":"फिर भी","on the other hand":"दूसरी ओर","in contrast":"इसके विपरीत",
+"whereas":"जबकि","instead":"इसके बजाय",
+"before":"पहले","after":"बाद में","when":"जब","while":"जब","as soon as":"जैसे ही",
+"until":"जब तक","next":"अगला","finally":"अंत में",
+"furthermore":"इसके अलावा","moreover":"इसके अलावा","besides":"इसके अलावा",
+"in addition":"इसके अलावा","especially":"विशेष रूप से","particularly":"खासकर",
+"indeed":"वास्तव में","in fact":"वास्तव में",
+"overall":"कुल मिलाकर","in conclusion":"निष्कर्ष में","to sum up":"संक्षेप में",
+"all in all":"कुल मिलाकर","in short":"संक्षेप में",
+"for example":"उदाहरण के लिए","such as":"जैसे","like":"जैसे",
+"first":"पहले","second":"दूसरा","third":"तीसरा",
+"similarly":"इसी तरह","likewise":"इसी तरह",
+"namely":"यानी","in particular":"विशेष रूप से",
+"above all":"सबसे ऊपर","most importantly":"सबसे ज़रूरी"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=4){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[{"t":"intro","icon":"🔢","title":"Algebraic Expressions and Identities","sub":"Class 8 Math — Chapter 9","intro":"Algebra is like a language where letters stand for numbers. You have already seen expressions like x + 3, 2y - 5, and 4xy + 7. In this chapter, we will go deeper — we will learn about terms, factors, and coefficients, classify expressions as monomials, binomials, and polynomials, multiply algebraic expressions step by step, and discover powerful tools called identities that make complex calculations simple. Let us begin!"},{"t":"tutor","icon":"💡","title":"What are Expressions?","body":"An algebraic expression is formed from variables and constants. For example, 2y - 5 is formed from the variable y and constants 2 and 5. The value of an expression changes with the value of the variable. When y = 2, 2y - 5 = 2(2) - 5 = -1. When y = 0, 2y - 5 = 2(0) - 5 = -5. Variables can take any value, so expressions have countless possible values. On a number line, x + 5 means 5 units to the right of x, and x - 4 means 4 units to the left."},{"t":"ix_expr_eval","instruction":"Enter a value for x and tap Evaluate. Watch how the expression 3x + 7 changes as x changes. Try positive, negative, and zero values!"},{"t":"formula","title":"Key Concepts — Expressions","formulas":[{"label":"Expression","expr":"Variables + Constants combined","note":"Example: 4xy + 7"},{"label":"Variable","expr":"A letter representing unknown","note":"x, y, z, p, etc."},{"label":"Constant","expr":"A fixed number","note":"2, 5, -3, 100, etc."}]},{"t":"quiz","q":"Quick Check: What is the value of 2x - 3 when x = 5?","diff":"easy","opts":[{"t":"7 (since 2(5) - 3 = 10 - 3 = 7)","c":true},{"t":"13","c":false,"m":"2(5) = 10, not 10 + 3. Subtract: 10 - 3 = 7.","correctMethod":"2(5) - 3 = 10 - 3 = 7."},{"t":"10","c":false,"m":"That is 2x, not 2x - 3. Subtract 3: 10 - 3 = 7.","correctMethod":"2(5) - 3 = 7."},{"t":"8","c":false,"m":"Check: 2 x 5 = 10, then 10 - 3 = 7.","correctMethod":"7."}]},{"t":"tutor","icon":"💡","title":"Terms, Factors and Coefficients","body":"An expression is made up of terms. The expression 4x + 5 has two terms: 4x and 5. Terms are added to form expressions. Each term can be a product of factors. The term 4x is the product of factors 4 and x. The numerical factor of a term is called its coefficient. In the term 7xy, the coefficient is 7. In the term -5x, the coefficient is -5. So when you see an expression like 3x squared y minus 10x y plus 5, the coefficients are 3, -10, and 5."},{"t":"formula","title":"Terms, Factors, Coefficients","formulas":[{"label":"Term","expr":"A part of an expression separated by + or -","note":"4x + 5 has terms 4x and 5"},{"label":"Factor","expr":"A number/variable that multiplies to form a term","note":"4x = 4 x x"},{"label":"Coefficient","expr":"The numerical factor of a term","note":"In 7xy, coefficient = 7"}]},{"t":"tutor","icon":"💡","title":"Monomials, Binomials and Polynomials","body":"Expressions are classified by how many terms they have. A monomial has ONE term: examples are 4x squared, 3xy, -7z. A binomial has TWO terms: examples are a + b, 4l + 5m, 5 - 3xy. A trinomial has THREE terms: examples are a + b + c, 2x + 3y - 5. In general, an expression with one or more terms (with non-negative integer exponents) is called a polynomial. A polynomial can have any number of terms."},{"t":"quiz","q":"Quick Check: How many terms does the expression 3x + 2y - 7 have? What type is it?","diff":"easy","opts":[{"t":"3 terms, trinomial","c":true},{"t":"2 terms, binomial","c":false,"m":"Count carefully: 3x, 2y, and -7 are three separate terms.","correctMethod":"3 terms (3x, 2y, -7), so it is a trinomial."},{"t":"1 term, monomial","c":false,"m":"3x, 2y, -7 are three separate terms separated by + and -.","correctMethod":"3 terms, trinomial."},{"t":"3 terms, polynomial only","c":false,"m":"It IS a polynomial, but more specifically, 3 terms = trinomial.","correctMethod":"3 terms, trinomial."}]},{"t":"tutor","icon":"💡","title":"Like and Unlike Terms","body":"Like terms have the same variables with the same powers. For example, 7x, 14x, and -13x are like terms. 5x squared and -9x squared are like terms. 7xy and -5yx are like terms (since xy = yx). But 7x and 7y are NOT like terms (different variables). 7x and 7xy are NOT like (different variables). 7x and 5x squared are NOT like (different powers). Only like terms can be added or subtracted."},{"t":"tutor","icon":"💡","title":"Adding and Subtracting Expressions","body":"To add or subtract algebraic expressions, we combine like terms. Write each expression in a row with like terms below each other. For example, add 7x squared - 4x + 5 and 9x - 10. The x-squared term stays, -4x + 9x = 5x, and 5 + (-10) = -5. Result: 7x squared + 5x - 5. For subtraction, change the signs of the second expression and add. Subtracting -3 is the same as adding +3."},{"t":"we","q":"Example 1: Add 7xy + 5yz - 3zx, 4yz + 9zx - 4y, and -3xz + 5x - 2xy.","steps":[{"text":"Write like terms below each other: xy terms: 7xy - 2xy = 5xy. yz terms: 5yz + 4yz = 9yz."},{"text":"zx terms: -3zx + 9zx - 3xz = 3zx (note: xz = zx)."},{"text":"Remaining terms: -4y and 5x (no like terms)."},{"text":"Sum = 5xy + 9yz + 3zx + 5x - 4y."}],"answer":"5xy + 9yz + 3zx + 5x - 4y"},{"t":"text","title":"Exercise 9.1","body":"Try these assessment questions — each different from the examples!"},{"t":"solve","q":"Ex 9.1 Q3(i): Add ab - bc, bc - ca, and ca - ab.","steps":[{"type":"input","prompt":"ab - ab cancels. bc - bc cancels. ca - ca cancels. Sum = ? ","answer":"0","m":"All terms cancel out! Sum = 0.","correctMethod":"Sum = 0."}]},{"t":"solve","q":"Ex 9.1 Q4(a): Subtract 4a - 7ab + 3b + 12 from 12a - 9ab + 5b - 3.","steps":[{"type":"input","prompt":"12a - 4a = 8a. -9ab - (-7ab) = -2ab. 5b - 3b = ? ","answer":"2","m":"5b - 3b = 2b. -3 - 12 = -15. Result: 8a - 2ab + 2b - 15.","correctMethod":"8a - 2ab + 2b - 15."}]},{"t":"solve","q":"Ex 9.1 Q4(b): Subtract 3xy + 5yz - 7zx from 5xy - 2yz - 2zx + 10xyz.","steps":[{"type":"input","prompt":"5xy - 3xy = 2xy. -2yz - 5yz = -7yz. -2zx - (-7zx) = ? ","answer":"5","m":"-2zx + 7zx = 5zx. Result: 2xy - 7yz + 5zx + 10xyz.","correctMethod":"2xy - 7yz + 5zx + 10xyz."}]},{"t":"tutor","icon":"💡","title":"Multiplying Monomials","body":"To multiply two monomials, multiply the coefficients and add the powers of the same variables. For example, 5x times 3y = (5 x 3)(x x y) = 15xy. 5x times 4x squared = (5 x 4)(x x x squared) = 20x cubed. 5x times (-4xyz) = (5 x -4)(x x xyz) = -20x squared yz. Remember: x times x squared = x cubed (add the powers). The product of monomials is always a monomial."},{"t":"formula","title":"Multiplying Monomials","formulas":[{"label":"Product of coefficients","expr":"Multiply the numbers","note":"5x * 3y: 5*3 = 15"},{"label":"Product of variables","expr":"Add powers of same variable","note":"x * x^2 = x^3"},{"label":"Result","expr":"Always a monomial","note":"5x * 3y = 15xy"}]},{"t":"text","title":"Exercise 9.2","body":"Practice multiplying monomials — all unique questions!"},{"t":"solve","q":"Ex 9.2 Q1(ii): Find the product of -4p and 7p.","steps":[{"type":"input","prompt":"(-4) x 7 = -28. p x p = p^2. Product = -28p^? ","answer":"2","m":"-28p^2.","correctMethod":"-4p * 7p = -28p^2."}]},{"t":"solve","q":"Ex 9.2 Q1(iv): Find the product of 4p^3 and -3p.","steps":[{"type":"input","prompt":"4 x (-3) = -12. p^3 x p = p^4. Product = -12p^? ","answer":"4","m":"-12p^4.","correctMethod":"4p^3 * -3p = -12p^4."}]},{"t":"solve","q":"Ex 9.2 Q5(i): Find the product of xy, yz, and zx.","steps":[{"type":"input","prompt":"xy * yz = xy^2z. xy^2z * zx = x^? y^2 z^2 ","answer":"2","m":"x^2 y^2 z^2.","correctMethod":"xy * yz * zx = x^2 y^2 z^2."}]},{"t":"tutor","icon":"💡","title":"Multiplying a Monomial by a Polynomial","body":"We use the distributive law. Multiply the monomial by each term of the polynomial. Example: 3x times (5y + 2) = (3x times 5y) + (3x times 2) = 15xy + 6x. For a trinomial: 3p times (4p squared + 5p + 7) = 12p cubed + 15p squared + 21p. Each term of the polynomial gets multiplied by the monomial. This is the distributive law in action!"},{"t":"we","q":"Example 5(i): Simplify x(x - 3) + 2 and evaluate for x = 1.","steps":[{"text":"Expand: x(x - 3) + 2 = x squared - 3x + 2."},{"text":"Substitute x = 1: (1) squared - 3(1) + 2 = 1 - 3 + 2."},{"text":"1 - 3 + 2 = 0."}],"answer":"Value = 0"},{"t":"quiz","q":"Quick Check: What is 2x(3x + 5)?","diff":"medium","opts":[{"t":"6x^2 + 10x (distributive law: 2x*3x + 2x*5)","c":true},{"t":"6x + 10","c":false,"m":"2x * 3x = 6x^2, not 6x. Multiply the variables too.","correctMethod":"2x*3x + 2x*5 = 6x^2 + 10x."},{"t":"5x + 6","c":false,"m":"Use distributive law: 2x multiplies each term inside the bracket.","correctMethod":"6x^2 + 10x."},{"t":"30x^2","c":false,"m":"Don't multiply everything at once. Use distributive law term by term.","correctMethod":"6x^2 + 10x."}]},{"t":"text","title":"Exercise 9.3","body":"Multiply monomials by polynomials — unique questions!"},{"t":"solve","q":"Ex 9.3 Q1(i): Multiply 4p and (q + r).","steps":[{"type":"input","prompt":"4p * q + 4p * r = 4pq + ? ","answer":"4pr","m":"4pq + 4pr.","correctMethod":"4p(q + r) = 4pq + 4pr."}]},{"t":"solve","q":"Ex 9.3 Q1(ii): Multiply ab and (a - b).","steps":[{"type":"input","prompt":"ab * a - ab * b = a^2b - ? ","answer":"ab2","m":"a^2b - ab^2.","correctMethod":"ab(a - b) = a^2b - ab^2."}]},{"t":"solve","q":"Ex 9.3 Q5(a): Simplify 3x(4x - 5) + 3 and find value for x = 3.","steps":[{"type":"input","prompt":"3x(4x-5) + 3 = 12x^2 - 15x + 3. For x=3: 12(9) - 15(3) + 3 = 108 - 45 + 3 = ? ","answer":"66","m":"108 - 45 + 3 = 66.","correctMethod":"Value = 66."}]},{"t":"tutor","icon":"💡","title":"Multiplying a Binomial by a Binomial","body":"Every term in the first binomial multiplies every term in the second. For example, (2a + 3b) times (3a + 4b) = 2a times 3a + 2a times 4b + 3b times 3a + 3b times 4b = 6a squared + 8ab + 9ba + 12b squared = 6a squared + 17ab + 12b squared. We combine like terms (ab = ba). In general, multiplying two binomials gives 4 terms, which may reduce when like terms are combined. This is the FOIL method: First, Outer, Inner, Last!"},{"t":"ix_binomial_mult","instruction":"Enter the coefficients for (ax + b)(cx + d). Tap Multiply to see each step of the FOIL method in action!"},{"t":"we","q":"Example 8(i): Multiply (x - 4) and (2x + 3).","steps":[{"text":"x * (2x + 3) = 2x squared + 3x."},{"text":"-4 * (2x + 3) = -8x - 12."},{"text":"Combine: 2x squared + 3x - 8x - 12 = 2x squared - 5x - 12."}],"answer":"2x^2 - 5x - 12"},{"t":"text","title":"Exercise 9.4","body":"Multiply binomials and polynomials — all unique!"},{"t":"solve","q":"Ex 9.4 Q1(i): Multiply (2x + 5) and (4x - 3).","steps":[{"type":"input","prompt":"2x*4x = 8x^2. 2x*(-3) = -6x. 5*4x = 20x. 5*(-3) = -15. Combine: 8x^2 + 14x - ? ","answer":"15","m":"8x^2 + 14x - 15.","correctMethod":"8x^2 + 14x - 15."}]},{"t":"solve","q":"Ex 9.4 Q1(iv): Multiply (2.5l - 0.5m) and (2.5l + 0.5m).","steps":[{"type":"input","prompt":"This is (a-b)(a+b) = a^2 - b^2. a=2.5l, b=0.5m. Result = 6.25l^2 - ?m^2 ","answer":"0.25","m":"6.25l^2 - 0.25m^2.","correctMethod":"6.25l^2 - 0.25m^2."}]},{"t":"solve","q":"Ex 9.4 Q2(i): Find the product (x + 7y)(7x - y).","steps":[{"type":"input","prompt":"x*7x = 7x^2. x*(-y) = -xy. 7y*7x = 49xy. 7y*(-y) = -7y^2. Combine: 7x^2 + 48xy - ?y^2 ","answer":"7","m":"7x^2 + 48xy - 7y^2.","correctMethod":"7x^2 + 48xy - 7y^2."}]},{"t":"tutor","icon":"💡","title":"What is an Identity?","body":"An identity is an equality that is true for EVERY value of the variable. For example, (a + 1)(a + 2) = a squared + 3a + 2 is an identity because it works for any value of a. Check: a = 10 gives 11 x 12 = 132 on LHS, and 100 + 30 + 2 = 132 on RHS. An equation is true only for certain values, but an identity is true for ALL values. Identities are powerful shortcuts for multiplication."},{"t":"formula","title":"The Four Standard Identities","formulas":[{"label":"Identity I","expr":"(a + b)^2 = a^2 + 2ab + b^2","note":"Square of a sum"},{"label":"Identity II","expr":"(a - b)^2 = a^2 - 2ab + b^2","note":"Square of a difference"},{"label":"Identity III","expr":"(a + b)(a - b) = a^2 - b^2","note":"Product of sum and difference"},{"label":"Identity IV","expr":"(x + a)(x + b) = x^2 + (a+b)x + ab","note":"General form — the others are special cases"}]},{"t":"we","q":"Example 11(ii): Use Identity I to find 103 squared.","steps":[{"text":"103 = 100 + 3. So 103 squared = (100 + 3) squared."},{"text":"Apply Identity I: (100 + 3) squared = 100 squared + 2(100)(3) + 3 squared."},{"text":"= 10000 + 600 + 9 = 10609."}],"answer":"103^2 = 10609"},{"t":"we","q":"Example 12(ii): Use Identity II to find 4.9 squared.","steps":[{"text":"4.9 = 5.0 - 0.1. So 4.9 squared = (5.0 - 0.1) squared."},{"text":"Apply Identity II: (5 - 0.1) squared = 5 squared - 2(5)(0.1) + 0.1 squared."},{"text":"= 25 - 1.0 + 0.01 = 24.01."}],"answer":"4.9^2 = 24.01"},{"t":"quiz","q":"Quick Check: Use Identity III to find 52 x 48.","diff":"medium","opts":[{"t":"2496 (since (50+2)(50-2) = 2500 - 4 = 2496)","c":true},{"t":"2498","c":false,"m":"52 = 50+2, 48 = 50-2. (50+2)(50-2) = 50^2 - 2^2 = 2500-4 = 2496.","correctMethod":"2496."},{"t":"2500","c":false,"m":"That is 50^2. But 52 x 48 = (50+2)(50-2) = 2500 - 4 = 2496.","correctMethod":"2496."},{"t":"2096","c":false,"m":"Apply Identity III: (50+2)(50-2) = 2500 - 4 = 2496.","correctMethod":"2496."}]},{"t":"text","title":"Identities Practice","body":"Apply the standard identities — each question is unique!"},{"t":"solve","q":"Use Identity I to find (2x + 3y) squared.","steps":[{"type":"input","prompt":"a=2x, b=3y. (a+b)^2 = a^2 + 2ab + b^2 = 4x^2 + 12xy + ?y^2 ","answer":"9","m":"4x^2 + 12xy + 9y^2.","correctMethod":"4x^2 + 12xy + 9y^2."}]},{"t":"solve","q":"Use Identity II to find (4p - 3q) squared.","steps":[{"type":"input","prompt":"a=4p, b=3q. (a-b)^2 = a^2 - 2ab + b^2 = 16p^2 - 24pq + ?q^2 ","answer":"9","m":"16p^2 - 24pq + 9q^2.","correctMethod":"16p^2 - 24pq + 9q^2."}]},{"t":"solve","q":"Use Identity III to find 194 x 206.","steps":[{"type":"input","prompt":"194 = 200-6, 206 = 200+6. (200-6)(200+6) = 200^2 - 6^2 = 40000 - ? ","answer":"36","m":"40000 - 36 = 39964.","correctMethod":"194 x 206 = 39964."}]},{"t":"solve","q":"Use Identity IV to find (x + 3)(x + 7).","steps":[{"type":"input","prompt":"(x+a)(x+b) = x^2 + (a+b)x + ab. Here a=3, b=7. x^2 + 10x + ? ","answer":"21","m":"x^2 + 10x + 21.","correctMethod":"x^2 + 10x + 21."}]},{"t":"milestone","icon":"🎓","title":"Full Chapter Mastered!","xp":100,"next":"Final assessment — Rapid Fire and Memory Match!"},{"t":"rapid_fire","qs":[{"q":"(a+b)^2 = ?","opts":["a^2+2ab+b^2","a^2+b^2","a^2-2ab+b^2","2a+2b"],"ans":0},{"q":"(a-b)(a+b) = ?","opts":["a^2-b^2","a^2+b^2","a^2-2ab","2ab"],"ans":0},{"q":"Number of terms in 3x+5?","opts":["2","1","3","0"],"ans":0},{"q":"5x * 3y = ?","opts":["15xy","8xy","15x+y","8x"],"ans":0},{"q":"(a-b)^2 = ?","opts":["a^2-2ab+b^2","a^2+2ab+b^2","a^2-b^2","a^2+b^2"],"ans":0},{"q":"Coefficient of x in 7xy?","opts":["7","7y","7x","1"],"ans":0},{"q":"Like terms have same?","opts":["Variables and powers","Coefficients","Signs","Values"],"ans":0},{"q":"103^2 using Identity I?","opts":["10609","10600","10009","10300"],"ans":0}]},{"t":"memory_match","pairs":[{"en":"Monomial","hi":"एकपदी"},{"en":"Binomial","hi":"द्विपद"},{"en":"Polynomial","hi":"बहुपद"},{"en":"Coefficient","hi":"गुणांक"},{"en":"Identity","hi":"सर्वसमिका"},{"en":"Variable","hi":"चर"},{"en":"Like Terms","hi":"समान पद"},{"en":"Distributive Law","hi":"वितरण नियम"}]},{"t":"complete","icon":"🔢","title":"Chapter 9 Complete!","sub":"Algebraic Expressions and Identities — Mastered! Class 8"}];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    /* CRITICAL FIX: Always reset button */
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;this.shuffledOpts=null;
+    if(this._prevSIdx!==this.sIdx){this.solveStepIdx=0;this.solveAnswered=false;this.weStepIdx=0;this._prevSIdx=this.sIdx;}
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"ix_numbersets":this.renderIxNumberSets(step,cb);break;
+      case"ix_numberline":this.renderIxNumberLine(step,cb);break;
+      case"ix_properties":this.renderIxProperties(step,cb);break;
+      case"ix_reciprocal":this.renderIxReciprocal(step,cb);break;
+      case"ix_between":this.renderIxBetween(step,cb);break;
+      case"discovery":this.renderDiscovery(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  /* ===== SIMPLE STEPS (Continue always enabled) ===== */
+  renderIntro:function(step,cb){
+    var introText=step.intro||"Welcome! Let us begin learning.";
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center"><div class="intro-icon">'+step.icon+'</div><div class="intro-title">'+rt(step.title)+'</div><div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(79,70,229,.08)">'+rt(introText)+'</div>'+
+      '<div class="hint">Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderDiscovery:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="discovery-box"><div class="d-title">'+rt(step.discoveryTitle)+'</div><div class="d-text">'+rt(step.body)+'</div></div>'+
+      (step.prop?'<div class="prop-box" style="max-width:400px;margin:0 auto">'+rt(step.prop)+'</div>':'');
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var self=this;if(this.weStepIdx===undefined)this.weStepIdx=0;var idx=this.weStepIdx;
+    if(idx>=step.steps.length){cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";return;}
+    var html='<div class="instruction">Worked Example - Step '+(idx+1)+' of '+step.steps.length+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<=idx&&i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";var isCurrent=(i===idx);
+      html+='<div class="we-step'+cls+'"'+(isCurrent?' style="border-left-color:var(--gold);background:linear-gradient(90deg,#fef3c7,#fde68a);animation:slideIn .3s ease"':'')+'><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(idx>=step.steps.length-1&&step.answer){html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;
+    if(idx<step.steps.length-1){cb.textContent="Next Step ("+(idx+2)+" of "+step.steps.length+")";cb.className="btn btn-primary";cb.disabled=false;cb.style.display="";}
+    else{cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";}
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">🪙 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>⭐</span><span>⭐</span><span>⭐</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  /* ===== INTERACTIVE SIMULATIONS ===== */
+  renderIxNumberSets:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Numbers ka Family</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="nsCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="ns-badge ns-natural" id="nsNatural">🌱 Natural: 1,2,3...</span>'+
+      '<span class="ns-badge ns-whole" id="nsWhole">🌿 Whole: 0,1,2...</span>'+
+      '<span class="ns-badge ns-integer" id="nsInteger">🍂 Integer: ...-2,-1,0...</span>'+
+      '<span class="ns-badge ns-rational" id="nsRational">🔢 Rational: p/q</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="nsDisc"><div class="d-title" id="nsTitle">Badge dabao!</div>'+
+      '<div class="d-text" id="nsInfo">Har badge tap karke dekho kaun se numbers kahan aate hain.</div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nsCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var active="none";
+    function draw(){
+      ctx.clearRect(0,0,300,200);
+      var sets=[
+        {key:"rational",x:150,y:100,rx:130,ry:80,fill:"rgba(168,85,247,0.08)",border:"#a855f7",label:"Rational",lx:10,ly:15,color:"#6b21a8"},
+        {key:"integer",x:150,y:100,rx:95,ry:62,fill:"rgba(245,158,11,0.1)",border:"#f59e0b",label:"Integer",lx:90,ly:50,color:"#92400e"},
+        {key:"whole",x:150,y:100,rx:60,ry:42,fill:"rgba(59,130,246,0.12)",border:"#3b82f6",label:"Whole",lx:120,ly:72,color:"#1e40af"},
+        {key:"natural",x:150,y:100,rx:32,ry:24,fill:"rgba(16,185,129,0.15)",border:"#10b981",label:"Natural",lx:125,ly:103,color:"#065f46"}
+      ];
+      for(var i=0;i<sets.length;i++){
+        var s=sets[i];
+        ctx.fillStyle=active===s.key?s.fill.replace("0.08","0.25").replace("0.1","0.3").replace("0.12","0.35").replace("0.15","0.4"):s.fill;
+        ctx.beginPath();ctx.ellipse(s.x,s.y,s.rx,s.ry,0,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle=s.border;ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle=s.color;ctx.font="bold 10px sans-serif";ctx.fillText(s.label,s.lx,s.ly);
+      }
+    }
+    var info={
+      natural:{title:"Natural Numbers",info:"1, 2, 3, 4, 5... Yeh counting numbers hain. Sabse chhota set. Sab natural numbers bhi whole, integer aur rational hain."},
+      whole:{title:"Whole Numbers",info:"0, 1, 2, 3, 4... Natural numbers + zero. Har whole number integer aur rational bhi hai."},
+      integer:{title:"Integers",info:"...-3, -2, -1, 0, 1, 2, 3... Negative numbers bhi shamil. Har integer rational hai (-3 = -3/1)."},
+      rational:{title:"Rational Numbers",info:"Sab p/q wale numbers. Sabse bada set! Natural, whole, integer sab iske andar. Plus fractions jaise 1/2, -3/4, etc."}
+    };
+    function setBadge(id,key){
+      var badges=["nsNatural","nsWhole","nsInteger","nsRational"];
+      for(var i=0;i<badges.length;i++){var b=document.getElementById(badges[i]);if(b)b.classList.remove("active");}
+      var el=document.getElementById(id);if(el)el.classList.add("active");
+      active=key;draw();
+      document.getElementById("nsTitle").textContent=info[key].title;
+      document.getElementById("nsInfo").textContent=info[key].info;
+    }
+    document.getElementById("nsNatural").addEventListener("click",function(){setBadge("nsNatural","natural");});
+    document.getElementById("nsWhole").addEventListener("click",function(){setBadge("nsWhole","whole");});
+    document.getElementById("nsInteger").addEventListener("click",function(){setBadge("nsInteger","integer");});
+    document.getElementById("nsRational").addEventListener("click",function(){setBadge("nsRational","rational");});
+    draw();
+  },
+  renderIxNumberLine:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Number Line Explorer</div>'+
+      '<canvas id="nlCanvas" width="360" height="200" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:0 auto"></canvas>'+
+      '<div style="margin-top:10px">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Numerator (p): <span id="nlNum" style="color:var(--pi);font-size:1.1rem">1</span></label>'+
+      '<input type="range" id="slNum" min="-12" max="12" step="1" value="1">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Denominator (q): <span id="nlDen" style="color:var(--pi);font-size:1.1rem">2</span></label>'+
+      '<input type="range" id="slDen" min="1" max="12" step="1" value="2"></div>'+
+      '<div class="discovery-box" style="margin-top:8px"><div class="d-title">Tumhara Rational Number</div><div class="d-text" id="nlInfo">p/q = 1/2 = 0.50</div></div>'+
+      '<div class="interactive-hint">👆 Drag sliders!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nlCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      var num=parseInt(document.getElementById("slNum").value);
+      var den=parseInt(document.getElementById("slDen").value);
+      document.getElementById("nlNum").textContent=num;document.getElementById("nlDen").textContent=den;
+      var val=num/den;ctx.clearRect(0,0,360,200);
+      var cy=110;var range=5;var scale=320/(2*range);
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-25);ctx.lineTo(x,cy+25);ctx.stroke();}
+      ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(20,cy);ctx.lineTo(340,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(340,cy);ctx.lineTo(333,cy-5);ctx.lineTo(333,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+      ctx.fillStyle="#475569";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-6);ctx.lineTo(x,cy+6);ctx.stroke();ctx.fillText(i,x,cy+22);}
+      if(den>0&&den<=12){ctx.strokeStyle="#c4b5fd";ctx.lineWidth=1;for(var i=-range;i<=range;i++){for(var j=1;j<den;j++){var xj=180+(i+j/den)*scale;if(xj>=20&&xj<=340){ctx.beginPath();ctx.moveTo(xj,cy-3);ctx.lineTo(xj,cy+3);ctx.stroke();}}}}
+      var px=180+val*scale;
+      if(px>=10&&px<=350){
+        var g=ctx.createRadialGradient(px,cy,2,px,cy,15);g.addColorStop(0,"rgba(124,58,237,0.4)");g.addColorStop(1,"rgba(124,58,237,0)");
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,cy,15,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#7c3aed";ctx.beginPath();ctx.arc(px,cy,8,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText(num+"/"+den,px,cy-18);
+      }
+      var info="p/q = "+num+"/"+den;if(den!==0){var dec=(num/den).toFixed(4);info+=" = "+dec;if(num===0)info+=" — Zero!";else if(Math.abs(num)===Math.abs(den))info+=" — Integer: "+(num/den);}
+      document.getElementById("nlInfo").innerHTML=info;
+    }
+    document.getElementById("slNum").addEventListener("input",draw);
+    document.getElementById("slDen").addEventListener("input",draw);
+    draw();
+  },
+  renderIxProperties:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Properties Table</div>'+
+      '<table class="prop-table"><tr><th>Operation</th><th>Closed?</th><th>Commutative?</th><th>Associative?</th></tr>'+
+      '<tr id="opAdd"><td><b>Addition (+)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opSub"><td><b>Subtraction (−)</b></td><td class="yes">✓ Yes</td><td class="no">✗ No</td><td class="no">✗ No</td></tr>'+
+      '<tr id="opMul"><td><b>Multiplication (×)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opDiv"><td><b>Division (÷)</b></td><td class="no">✗ No*</td><td class="no">✗ No</td><td class="no">✗ No</td></tr></table>'+
+      '<div class="prop-box" style="max-width:400px;margin:8px auto">* Zero se divide nahi hota. Zero exclude karke division closed hai.</div>'+
+      '<div class="discovery-box" id="propDisc" style="margin-top:8px"><div class="d-title" id="propTitle">Row dabao!</div><div class="d-text" id="propInfo">Har operation ka tap karke examples dekho.</div></div>'+
+      '<div class="interactive-hint">👆 Tap each row!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var pi={
+      add:{title:"Addition — Sab teen properties ✓",info:"Closure: 1/2+1/3=5/6 ✓. Commutative: 1/2+1/3 = 1/3+1/2 = 5/6 ✓. Associative: (1/2+1/3)+1/4 = 1/2+(1/3+1/4) = 13/12 ✓."},
+      sub:{title:"Subtraction — Sirf Closure ✓",info:"Closure: 1/2-1/3=1/6 ✓. NOT Commutative: 1/2-1/3=1/6, 1/3-1/2=-1/6. NOT Associative: (1/2-1/3)-1/4=-1/12, 1/2-(1/3-1/4)=5/12."},
+      mul:{title:"Multiplication — Sab teen ✓",info:"Closure: 2/3×4/5=8/15 ✓. Commutative: 2/3×4/5=4/5×2/3=8/15 ✓. Associative: (2/3×4/5)×6/7 = 2/3×(4/5×6/7) = 48/105 ✓."},
+      div:{title:"Division — Kuch bhi nahi poora",info:"NOT Closed: 1/2÷0 = undefined. NOT Commutative: 1/2÷1/3=3/2, 1/3÷1/2=2/3. NOT Associative: (1/2÷1/3)÷1/4=6, 1/2÷(1/3÷1/4)=3/8."}
+    };
+    function hl(id,key){
+      var rows=["opAdd","opSub","opMul","opDiv"];
+      for(var i=0;i<rows.length;i++){var r=document.getElementById(rows[i]);if(r)r.classList.remove("hl");}
+      var el=document.getElementById(id);if(el)el.classList.add("hl");
+      document.getElementById("propTitle").textContent=pi[key].title;
+      document.getElementById("propInfo").textContent=pi[key].info;
+    }
+    document.getElementById("opAdd").addEventListener("click",function(){hl("opAdd","add");});
+    document.getElementById("opSub").addEventListener("click",function(){hl("opSub","sub");});
+    document.getElementById("opMul").addEventListener("click",function(){hl("opMul","mul");});
+    document.getElementById("opDiv").addEventListener("click",function(){hl("opDiv","div");});
+  },
+  renderIxReciprocal:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Reciprocal Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0">'+
+      '<input type="text" id="recNum" class="fb-input" style="max-width:60px;text-align:center" placeholder="p" value="3">'+
+      '<span style="font-size:1.5rem;font-weight:800;color:var(--brand)">/</span>'+
+      '<input type="text" id="recDen" class="fb-input" style="max-width:60px;text-align:center" placeholder="q" value="5"></div>'+
+      '<button class="btn btn-primary" style="max-width:200px;margin:0 auto" onclick="App.calcReciprocal()">Find Reciprocal</button>'+
+      '<canvas id="recCanvas" width="340" height="100" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="recDisc" style="margin-top:8px;display:none"><div class="d-title" id="recTitle"></div><div class="d-text" id="recInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcReciprocal:function(){
+    var p=parseInt(document.getElementById("recNum").value);
+    var q=parseInt(document.getElementById("recDen").value);
+    if(isNaN(p)||isNaN(q)||q===0){
+      document.getElementById("recDisc").style.display="block";
+      document.getElementById("recTitle").textContent="Galat Input!";
+      document.getElementById("recInfo").innerHTML="Sahi integers daalo. q zero nahi ho sakta!";
+      return;
+    }
+    var rp=q,rq=p;var canvas=document.getElementById("recCanvas");if(!canvas)return;
+    var ctx=canvas.getContext("2d");if(!ctx)return;ctx.clearRect(0,0,340,100);
+    ctx.font="bold 18px sans-serif";ctx.textAlign="center";
+    ctx.fillStyle="#8b5cf6";ctx.fillText(p,80,35);ctx.fillText("—",80,45);ctx.fillText(q,80,60);
+    ctx.fillStyle="#475569";ctx.font="bold 20px sans-serif";ctx.fillText("×",130,50);
+    ctx.fillStyle="#ec4899";ctx.fillText(rp,180,35);ctx.fillText("—",180,45);ctx.fillText(rq,180,60);
+    ctx.fillStyle="#475569";ctx.fillText("=",230,50);
+    var prod=p*rp,denom=q*rq;
+    ctx.fillStyle="#10b981";ctx.font="bold 22px sans-serif";ctx.fillText(prod+"/"+denom+" = 1",290,50);
+    document.getElementById("recDisc").style.display="block";
+    if(p===0){document.getElementById("recTitle").textContent="Zero ka reciprocal nahi hai!";document.getElementById("recInfo").innerHTML="0 × koi bhi = 0, kabhi 1 nahi.";}
+    else{document.getElementById("recTitle").textContent="Reciprocal of "+p+"/"+q+" = "+rp+"/"+rq;document.getElementById("recInfo").innerHTML="Check: ("+p+"/"+q+") × ("+rp+"/"+rq+") = "+prod+"/"+denom+" = 1 ✓";}
+  },
+  renderIxBetween:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Between Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;margin:8px 0">'+
+      '<div><label style="font-size:.7rem;font-weight:600">First (a)</label><input type="text" id="ixA" class="fb-input" style="max-width:80px;text-align:center" value="1/4"></div>'+
+      '<div><label style="font-size:.7rem;font-weight:600">Second (b)</label><input type="text" id="ixB" class="fb-input" style="max-width:80px;text-align:center" value="1/2"></div></div>'+
+      '<button class="btn btn-primary" style="max-width:220px;margin:0 auto" onclick="App.calcBetween()">Find Middle</button>'+
+      '<canvas id="betCanvas" width="340" height="120" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="ixBetDisc" style="margin-top:8px;display:none"><div class="d-title" id="ixBetTitle"></div><div class="d-text" id="ixBetInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcBetween:function(){
+    function pf(s){s=s.trim();if(s.indexOf("/")>=0){var p=s.split("/");return parseInt(p[0])/parseInt(p[1]);}return parseFloat(s);}
+    function tf(d){for(var i=1;i<=100;i++){var n=Math.round(d*i);if(Math.abs(n/i-d)<0.001)return n+"/"+i;}return d.toFixed(4);}
+    var a=pf(document.getElementById("ixA").value);var b=pf(document.getElementById("ixB").value);
+    if(isNaN(a)||isNaN(b)){document.getElementById("ixBetDisc").style.display="block";document.getElementById("ixBetTitle").textContent="Galat!";document.getElementById("ixBetInfo").innerHTML="Sahi fraction daalo jaise 1/4";return;}
+    var mid=(a+b)/2;var aF=document.getElementById("ixA").value.trim();var bF=document.getElementById("ixB").value.trim();var mF=tf(mid);
+    var lo=Math.min(a,b),hi=Math.max(a,b);
+    var canvas=document.getElementById("betCanvas");if(!canvas)return;var ctx=canvas.getContext("2d");if(!ctx)return;
+    ctx.clearRect(0,0,340,120);var cy=60;var m=30;var pad=(hi-lo)*0.2;var min=lo-pad,max=hi+pad;var sc=(340-2*m)/(max-min);
+    ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(m,cy);ctx.lineTo(340-m,cy);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(340-m,cy);ctx.lineTo(333-m,cy-5);ctx.lineTo(333-m,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+    var xa=m+(a-min)*sc;ctx.fillStyle="#8b5cf6";ctx.beginPath();ctx.arc(xa,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+    ctx.fillStyle="#8b5cf6";ctx.font="bold 11px sans-serif";ctx.textAlign="center";ctx.fillText(aF,xa,cy-15);
+    var xb=m+(b-min)*sc;ctx.fillStyle="#ec4899";ctx.beginPath();ctx.arc(xb,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#ec4899";ctx.fillText(bF,xb,cy-15);
+    var xm=m+(mid-min)*sc;var gg=ctx.createRadialGradient(xm,cy,2,xm,cy,18);gg.addColorStop(0,"rgba(16,185,129,0.4)");gg.addColorStop(1,"rgba(16,185,129,0)");
+    ctx.fillStyle=gg;ctx.beginPath();ctx.arc(xm,cy,18,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(xm,cy,9,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#065f46";ctx.font="bold 12px sans-serif";ctx.fillText(mF,xm,cy+25);
+    document.getElementById("ixBetDisc").style.display="block";
+    document.getElementById("ixBetTitle").textContent="Mean = ("+aF+" + "+bF+") ÷ 2 = "+mF;
+    document.getElementById("ixBetInfo").innerHTML=lo.toFixed(4)+" < "+mid.toFixed(4)+" < "+hi.toFixed(4)+". Toh "+mF+" beech mein hai! Aur aise hi aur nikal sakte ho!";
+  },
+  /* ===== ASSESSMENT RENDERERS ===== */
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;var shuffled=step.opts.slice();
+    for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;}
+    self.shuffledOpts=shuffled;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<shuffled.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(shuffled[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opts=this.shuffledOpts||step.opts;var opt=opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">Not quite.</div>';if(opt.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True ya False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">✓ True</div><div class="tf-opt" id="tfFalse">✗ False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>⚠ Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve karo!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" class="fb-input" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step →";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';if(misc)mh+='<div class="misconception"><strong>⚠ Why wrong:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct approach:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">🏁</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+  
+  renderIxPolygonBuilder:function(step,cb){
+    var nSides=3;document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Polygon Builder</div><canvas id="pbCanvas" width="300" height="240" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn" id="pbMinus">- Less sides</button><button class="shape-btn" id="pbPlus">More sides +</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="pbName">Triangle</div><div class="d-text" id="pbInfo">3 sides, 0 diagonals, angle sum = 180 degrees</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("pbCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var names={3:"Triangle",4:"Quadrilateral",5:"Pentagon",6:"Hexagon",7:"Heptagon",8:"Octagon",9:"Nonagon",10:"Decagon"};
+    function draw(){ctx.clearRect(0,0,300,240);var cx=150,cy=120,r=70;ctx.strokeStyle="#4f46e5";ctx.lineWidth=2.5;ctx.fillStyle="rgba(79,70,229,0.08)";ctx.beginPath();
+      for(var i=0;i<=nSides;i++){var a=-Math.PI/2+i*2*Math.PI/nSides;var x=cx+r*Math.cos(a);var y=cy+r*Math.sin(a);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+      ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle="#4f46e5";ctx.font="bold 11px sans-serif";ctx.textAlign="center";
+      for(var i=0;i<nSides;i++){var a=-Math.PI/2+i*2*Math.PI/nSides;var x=cx+r*Math.cos(a);var y=cy+r*Math.sin(a);ctx.beginPath();ctx.arc(x,y,4,0,2*Math.PI);ctx.fill();ctx.fillText(String.fromCharCode(65+i),x+10,y-5);}
+      var diags=nSides*(nSides-3)/2;var angleSum=(nSides-2)*180;document.getElementById("pbName").textContent=names[nSides]||nSides+"-gon";document.getElementById("pbInfo").textContent=nSides+" sides, "+diags+" diagonals, angle sum = "+angleSum+" degrees";}
+    document.getElementById("pbMinus").addEventListener("click",function(){if(nSides>3){nSides--;draw();}});document.getElementById("pbPlus").addEventListener("click",function(){if(nSides<10){nSides++;draw();}});draw();
+  },
+  renderIxAngleSum:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Angle Sum Explorer</div><canvas id="asCanvas" width="280" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="margin-top:8px"><label style="font-size:.72rem;font-weight:700;color:var(--brand)">A: <span id="asA">80</span>deg</label><input type="range" id="asSliderA" min="30" max="150" value="80" style="width:100%;max-width:280px"><br><label style="font-size:.72rem;font-weight:700;color:var(--brand)">B: <span id="asB">100</span>deg</label><input type="range" id="asSliderB" min="30" max="150" value="100" style="width:100%;max-width:280px"><br><label style="font-size:.72rem;font-weight:700;color:var(--brand)">C: <span id="asC">90</span>deg</label><input type="range" id="asSliderC" min="30" max="150" value="90" style="width:100%;max-width:280px"><br><label style="font-size:.72rem;font-weight:700;color:var(--brand)">D: <span id="asD">90</span>deg</label><input type="range" id="asSliderD" min="30" max="150" value="90" style="width:100%;max-width:280px"></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="asSum">Sum = 360 degrees</div><div class="d-text" id="asInfo">A+B+C+D = 360 degrees. Always!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;var c=document.getElementById("asCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){var A=parseInt(document.getElementById("asSliderA").value),B=parseInt(document.getElementById("asSliderB").value),C=parseInt(document.getElementById("asSliderC").value),D=parseInt(document.getElementById("asSliderD").value);document.getElementById("asA").textContent=A;document.getElementById("asB").textContent=B;document.getElementById("asC").textContent=C;document.getElementById("asD").textContent=D;var sum=A+B+C+D;ctx.clearRect(0,0,280,200);ctx.fillStyle="rgba(79,70,229,0.06)";ctx.strokeStyle="#4f46e5";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(40,30);ctx.lineTo(240,30);ctx.lineTo(200,170);ctx.lineTo(80,170);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle="#4f46e5";ctx.font="bold 13px sans-serif";ctx.textAlign="center";ctx.fillText(A+"deg",60,25);ctx.fillText(B+"deg",220,25);ctx.fillText(C+"deg",220,185);ctx.fillText(D+"deg",60,185);ctx.fillStyle="#7c3aed";ctx.font="bold 16px sans-serif";ctx.fillText("Sum = "+sum+"deg",140,105);
+      if(sum===360){document.getElementById("asSum").textContent="Sum = "+sum+" degrees - Perfect!";document.getElementById("asInfo").textContent="A+B+C+D = 360 degrees. The angles always sum to 360!";}
+      else{document.getElementById("asSum").textContent="Sum = "+sum+" degrees (should be 360)";document.getElementById("asInfo").textContent="In a real quadrilateral, the sum must be exactly 360 degrees.";}}
+    ["asSliderA","asSliderB","asSliderC","asSliderD"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("input",draw);});draw();
+  },
+  renderIxExteriorAngle:function(step,cb){
+    var wpStep=0,pIdx=0;var polyTypes=[{name:"Triangle",sides:3},{name:"Quadrilateral",sides:4},{name:"Pentagon",sides:5},{name:"Hexagon",sides:6}];
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Exterior Angle Walker</div><canvas id="eaCanvas" width="300" height="240" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn" id="eaPrevPoly">Prev</button><button class="shape-btn" id="eaNextPoly">Next shape</button><button class="shape-btn" id="eaStep">Walk next</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="eaTitle">Tap Walk to start!</div><div class="d-text" id="eaInfo">Walk around the polygon. Total turn = 360 degrees!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;var c=document.getElementById("eaCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){var poly=polyTypes[pIdx],n=poly.sides;wpStep=Math.min(wpStep,n);ctx.clearRect(0,0,300,240);var cx=150,cy=110,r=60,extAngle=360/n,turn=0;ctx.strokeStyle="#4f46e5";ctx.lineWidth=2.5;ctx.fillStyle="rgba(79,70,229,0.06)";ctx.beginPath();for(var i=0;i<=n;i++){var a=-Math.PI/2+i*2*Math.PI/n;var x=cx+r*Math.cos(a);var y=cy+r*Math.sin(a);if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.closePath();ctx.fill();ctx.stroke();
+      for(var i=0;i<wpStep;i++){var a=-Math.PI/2+i*2*Math.PI/n;var x=cx+r*Math.cos(a);var y=cy+r*Math.sin(a);ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(x,y,5,0,2*Math.PI);ctx.fill();turn+=extAngle;ctx.fillStyle="#065f46";ctx.font="9px sans-serif";ctx.textAlign="center";ctx.fillText(extAngle+"deg",x+15,y);}
+      ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText(poly.name+" ("+n+" sides)",cx,cy+5);ctx.fillStyle="#64748b";ctx.font="10px sans-serif";ctx.fillText("Total turn: "+turn+"deg / 360deg",cx,210);
+      if(turn>=360){document.getElementById("eaTitle").textContent="Complete! Total = 360 degrees!";document.getElementById("eaInfo").textContent="The total exterior angle turn is always 360 degrees!";}
+      else{document.getElementById("eaTitle").textContent="Visited "+wpStep+" of "+n+" vertices";document.getElementById("eaInfo").textContent="Turn so far: "+turn+" degrees. Each exterior angle = 360/"+n+" = "+extAngle+" degrees.";}}
+    document.getElementById("eaPrevPoly").addEventListener("click",function(){if(pIdx>0){pIdx--;wpStep=0;draw();}});document.getElementById("eaNextPoly").addEventListener("click",function(){if(pIdx<polyTypes.length-1){pIdx++;wpStep=0;draw();}});document.getElementById("eaStep").addEventListener("click",function(){var poly=polyTypes[pIdx];if(wpStep<poly.sides){wpStep++;}else{wpStep=0;}draw();});draw();
+  },
+  renderIxQuadExplorer:function(step,cb){
+    var shape="parallelogram";var shapes={"trapezium":{name:"Trapezium",desc:"One pair of parallel sides",color:"#f59e0b"},"kite":{name:"Kite",desc:"Two pairs of equal consecutive sides",color:"#ec4899"},"parallelogram":{name:"Parallelogram",desc:"Both pairs of opposite sides parallel",color:"#4f46e5"},"rhombus":{name:"Rhombus",desc:"All sides equal, diagonals perpendicular",color:"#10b981"},"rectangle":{name:"Rectangle",desc:"All angles 90, diagonals equal",color:"#06b6d4"},"square":{name:"Square",desc:"All sides equal, all angles 90",color:"#a855f7"}};
+    var props={"trapezium":"One pair parallel | Non-parallel sides may differ","kite":"Two pairs equal consecutive sides | Diagonals perpendicular","parallelogram":"Opposite sides equal | Opposite angles equal | Diagonals bisect","rhombus":"All sides equal | Diagonals perpendicular bisectors","rectangle":"All angles 90 | Diagonals equal | Opposite sides equal","square":"All sides equal | All angles 90 | Diagonals equal and perpendicular"};
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Quadrilateral Explorer</div><canvas id="qeCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center"><button class="shape-btn" data-shape="trapezium">Trapezium</button><button class="shape-btn" data-shape="kite">Kite</button><button class="shape-btn active" data-shape="parallelogram">Parallelogram</button><button class="shape-btn" data-shape="rhombus">Rhombus</button><button class="shape-btn" data-shape="rectangle">Rectangle</button><button class="shape-btn" data-shape="square">Square</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="qeName">Parallelogram</div><div class="d-text" id="qeDesc">Both pairs of opposite sides parallel</div><div class="d-text" id="qeProps" style="margin-top:4px;font-weight:600">Opposite sides equal | Opposite angles equal | Diagonals bisect</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;var c=document.getElementById("qeCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){var s=shapes[shape];ctx.clearRect(0,0,300,200);ctx.fillStyle=s.color+"20";ctx.strokeStyle=s.color;ctx.lineWidth=2.5;ctx.beginPath();
+      if(shape==="trapezium"){ctx.moveTo(60,50);ctx.lineTo(240,50);ctx.lineTo(200,150);ctx.lineTo(100,150);}
+      else if(shape==="kite"){ctx.moveTo(150,30);ctx.lineTo(240,100);ctx.lineTo(150,170);ctx.lineTo(60,100);}
+      else if(shape==="parallelogram"){ctx.moveTo(70,50);ctx.lineTo(230,50);ctx.lineTo(200,150);ctx.lineTo(40,150);}
+      else if(shape==="rhombus"){ctx.moveTo(150,30);ctx.lineTo(250,100);ctx.lineTo(150,170);ctx.lineTo(50,100);}
+      else if(shape==="rectangle"){ctx.moveTo(60,40);ctx.lineTo(240,40);ctx.lineTo(240,160);ctx.lineTo(60,160);}
+      else if(shape==="square"){ctx.moveTo(70,35);ctx.lineTo(230,35);ctx.lineTo(230,165);ctx.lineTo(70,165);}
+      ctx.closePath();ctx.fill();ctx.stroke();document.getElementById("qeName").textContent=s.name;document.getElementById("qeDesc").textContent=s.desc;document.getElementById("qeProps").textContent=props[shape];}
+    var btns=document.querySelectorAll("[data-shape]");for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");shape=this.getAttribute("data-shape");draw();});}draw();
+  },
+  renderIxBalanceSim:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Balance Scale: 3x + 2 = 11</div><canvas id="blCanvas" width="320" height="240" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="margin-top:10px"><label style="font-size:.78rem;font-weight:700;color:var(--brand)">x = <span id="blX" style="color:var(--pi);font-size:1.2rem">3</span></label><input type="range" id="blSlider" min="-2" max="8" step="1" value="3" style="width:100%;max-width:280px"></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="blTitle">Balanced!</div><div class="d-text" id="blInfo">LHS = 3(3)+2 = 11. RHS = 11.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;var c=document.getElementById("blCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){var x=parseInt(document.getElementById("blSlider").value);document.getElementById("blX").textContent=x;ctx.clearRect(0,0,320,240);var lhs=3*x+2,rhs=11,balanced=(lhs===rhs),cx=160,baseY=200;ctx.fillStyle="#64748b";ctx.beginPath();ctx.moveTo(cx-15,baseY);ctx.lineTo(cx+15,baseY);ctx.lineTo(cx,baseY-35);ctx.closePath();ctx.fill();ctx.strokeStyle="#64748b";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,baseY-35);ctx.lineTo(cx,60);ctx.stroke();var tilt=balanced?0:(lhs>rhs?-0.15:0.15);ctx.save();ctx.translate(cx,60);ctx.rotate(tilt);ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-100,0);ctx.lineTo(100,0);ctx.stroke();ctx.fillStyle=balanced?"#10b981":"#64748b";ctx.beginPath();ctx.arc(-80,0,6,0,2*Math.PI);ctx.fill();ctx.beginPath();ctx.arc(80,0,6,0,2*Math.PI);ctx.fill();ctx.strokeStyle="#64748b";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-80,6);ctx.lineTo(-80,30);ctx.moveTo(80,6);ctx.lineTo(80,30);ctx.stroke();ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.textAlign="center";ctx.fillText("3x+2",-80,45);ctx.fillText("11",80,45);ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText("= "+lhs,-80,20);ctx.fillText("= "+rhs,80,20);if(balanced){ctx.fillStyle="#10b981";ctx.font="bold 14px sans-serif";ctx.fillText("BALANCED!",0,-15);}else{ctx.fillStyle="#ef4444";ctx.font="bold 12px sans-serif";ctx.fillText("Not balanced",0,-15);}ctx.restore();ctx.fillStyle="#64748b";ctx.font="10px sans-serif";ctx.textAlign="center";ctx.fillText("LHS = 3("+x+")+2 = "+lhs+"  |  RHS = "+rhs,cx,230);
+      if(balanced){document.getElementById("blTitle").textContent="Balanced! x = "+x+" is the solution!";document.getElementById("blInfo").textContent="LHS = 3("+x+")+2 = "+lhs+". RHS = "+rhs+". Both sides equal!";}
+      else{document.getElementById("blTitle").textContent="Not balanced (LHS="+lhs+", RHS="+rhs+")";document.getElementById("blInfo").textContent="LHS = 3("+x+")+2 = "+lhs+" but RHS = "+rhs+". Try a different value of x!";}}
+    document.getElementById("blSlider").addEventListener("input",draw);draw();
+  },
+  renderIxWordProblemSim:function(step,cb){
+    var wpStep=0;var wpSteps=[{title:"Step 1: Read the problem",text:"Rahul's father is 3 times as old as Rahul. After 10 years, the sum of their ages will be 70. Find their present ages."},{title:"Step 2: Choose a variable",text:"Let Rahul's present age = x years. Then father's age = 3x years."},{title:"Step 3: Express future ages",text:"After 10 years: Rahul = x + 10, Father = 3x + 10."},{title:"Step 4: Form the equation",text:"Sum of future ages = 70. So (x+10) + (3x+10) = 70. Simplify: 4x + 20 = 70."},{title:"Step 5: Solve!",text:"4x = 50. x = 12.5. Rahul = 12.5 years, Father = 37.5 years."}];
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Word Problem Builder</div><div id="wpProgress" style="text-align:center"></div><div class="sim-step-text active" id="wpStepText" style="min-height:60px"></div><div style="text-align:center;margin-top:8px"><button class="shape-btn" id="wpPrev">Prev</button><button class="shape-btn" id="wpNext">Next</button></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var prog="";for(var i=0;i<wpSteps.length;i++){prog+='<span class="sim-dot" id="wpDot'+i+'" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e2e8f0;margin:0 2px"></span>';}document.getElementById("wpProgress").innerHTML=prog;
+    function draw(){for(var i=0;i<wpSteps.length;i++){var dot=document.getElementById("wpDot"+i);if(dot){dot.style.background=i<wpStep?"#10b981":(i===wpStep?"#4f46e5":"#e2e8f0");}}var s=wpSteps[wpStep];document.getElementById("wpStepText").innerHTML="<b>"+s.title+"</b><br>"+s.text;}
+    document.getElementById("wpPrev").addEventListener("click",function(){if(wpStep>0){wpStep--;draw();}});document.getElementById("wpNext").addEventListener("click",function(){if(wpStep<wpSteps.length-1){wpStep++;draw();}});draw();
+  },
+
+  renderIxExprEval:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Expression Evaluator</div><div style="text-align:center;margin:10px 0;font-size:1.1rem;font-weight:800;color:#4f46e5">3x + 7</div><div style="margin:8px 0"><label style="font-size:.75rem;font-weight:600">Enter value of x:</label><input type="number" id="eeInput" value="2" style="width:100%;padding:8px;border:2px solid #e2e8f0;border-radius:8px;font-size:.9rem;text-align:center"></div><button class="shape-btn" id="eeCalc" style="background:#4f46e5;color:#fff;border:none">Evaluate</button><div class="discovery-box" id="eeResult" style="margin-top:8px"><div class="d-title">Enter x and tap Evaluate</div><div class="d-text">See how 3x + 7 changes with x!</div></div><div style="margin:8px 0;font-size:.7rem;color:#64748b">Try: x = -3, 0, 5, 100</div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    document.getElementById("eeCalc").addEventListener("click",function(){
+      var x=parseFloat(document.getElementById("eeInput").value);
+      if(isNaN(x)){document.getElementById("eeResult").innerHTML='<div class="d-title">Enter a valid number</div>';return;}
+      var val=3*x+7;
+      document.getElementById("eeResult").innerHTML='<div class="d-title">3('+x+') + 7 = '+val+'</div><div class="d-text">When x = '+x+', the expression 3x + 7 equals '+val+'. Try different values to see how it changes!</div>';
+    });
+  },
+  renderIxBinomialMult:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Binomial Multiplier (FOIL)</div><div style="margin:8px 0;display:flex;gap:6px;justify-content:center;align-items:center"><input type="number" id="bmA" value="2" style="width:50px;padding:6px;border:2px solid #e2e8f0;border-radius:6px;text-align:center;font-size:.85rem"><span style="font-weight:700">x +</span><input type="number" id="bmB" value="5" style="width:50px;padding:6px;border:2px solid #e2e8f0;border-radius:6px;text-align:center;font-size:.85rem"><span style="font-weight:700">)(</span><input type="number" id="bmC" value="4" style="width:50px;padding:6px;border:2px solid #e2e8f0;border-radius:6px;text-align:center;font-size:.85rem"><span style="font-weight:700">x +</span><input type="number" id="bmD" value="3" style="width:50px;padding:6px;border:2px solid #e2e8f0;border-radius:6px;text-align:center;font-size:.85rem"><span style="font-weight:700">)</span></div><button class="shape-btn" id="bmCalc" style="background:#4f46e5;color:#fff;border:none">Multiply</button><div id="bmSteps" style="margin:10px 0"></div><div class="discovery-box" id="bmResult"><div class="d-title">Enter values and tap Multiply</div><div class="d-text">See the FOIL method step by step!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    document.getElementById("bmCalc").addEventListener("click",function(){
+      var a=parseFloat(document.getElementById("bmA").value);var b=parseFloat(document.getElementById("bmB").value);var c=parseFloat(document.getElementById("bmC").value);var d=parseFloat(document.getElementById("bmD").value);
+      if(isNaN(a)||isNaN(b)||isNaN(c)||isNaN(d)){document.getElementById("bmResult").innerHTML='<div class="d-title">Enter valid values</div>';return;}
+      var f=a*c,fo=a*d,oi=b*c,l=b*d;
+      var x2=f,x1=fo+oi,con=l;
+      var stepsHtml='<div style="font-size:.76rem;line-height:1.8"><strong>FOIL Method:</strong><br>First: '+a+'x * '+c+'x = '+(a*c)+'x^2<br>Outer: '+a+'x * '+d+' = '+(a*d)+'x<br>Inner: '+b+' * '+c+'x = '+(b*c)+'x<br>Last: '+b+' * '+d+' = '+(b*d)+'</div>';
+      stepsHtml+='<div style="margin-top:6px;font-size:.76rem"><strong>Combine like terms:</strong><br>'+(a*c)+'x^2 + '+(a*d)+'x + '+(b*c)+'x + '+(b*d)+'</div>';
+      var result=(a*c)+'x^2 + '+x1+'x + '+con;
+      stepsHtml+='<div style="margin-top:6px;font-weight:800;color:#4f46e5">Result: '+result+'</div>';
+      document.getElementById("bmSteps").innerHTML=stepsHtml;
+      document.getElementById("bmResult").innerHTML='<div class="d-title">Result: '+result+'</div><div class="d-text">'+x1+'x comes from combining '+(a*d)+'x + '+(b*c)+'x (like terms).</div>';
+    });
+  },
+renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"🟣",cost:0},{id:"ocean",name:"Ocean",icon:"🌊",cost:50},{id:"forest",name:"Forest",icon:"🌲",cost:80},{id:"sunset",name:"Sunset",icon:"🌅",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">🛒 Shop</div><div class="shop-coins">🪙 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">🪙 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">✓ Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>
+
+</script>
+</body>
+</html>

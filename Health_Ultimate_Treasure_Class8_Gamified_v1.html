@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#4f46e5">
+<title>Aasha - Health: The Ultimate Treasure | Class 8 Science</title>
+<style>
+
+:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(99,102,241,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.tf-btn{display:flex;gap:10px;max-width:400px;margin:8px auto}
+.tf-opt{flex:1;padding:16px;border:2px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;font-size:.9rem;font-weight:700;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.real-example{background:linear-gradient(135deg,#fce7f3,#fbcfe8);border:2px solid var(--pi);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#831843}
+.real-example .re-icon{font-size:1.5rem;float:left;margin-right:8px}
+.complete-coins{font-size:1.2rem;font-weight:800;color:var(--gold);margin:8px 0}
+.btn-restart{padding:10px 20px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:.85rem;margin-top:10px}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.shop-modal{background:#fff;border-radius:18px;padding:20px;max-width:340px;width:90%;max-height:80vh;overflow-y:auto}
+.shop-title{font-size:1.2rem;font-weight:800;text-align:center;margin-bottom:10px}
+.shop-coins{text-align:center;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:10px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.shop-item{text-align:center;padding:12px;border:2px solid var(--border);border-radius:12px}
+.shop-item.owned{border-color:var(--green)}
+.shop-item-icon{font-size:2rem}.shop-item-name{font-size:.76rem;font-weight:600;margin:4px 0}
+.shop-item-cost{font-size:.76rem;color:var(--gold);font-weight:700}
+.shop-buy-btn{padding:6px 16px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;margin-top:4px}
+.diagram-label{font-size:.7rem;font-weight:600;fill:var(--text)}
+
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY0NmU1IiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">Learn. Play. Grow.</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">C <span id="statCoins">0</span></span><span class="stat xp">XP <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar"><button class="btn-back" id="backBtn" onclick="App.back()">Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#4f46e5"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">Level Up!</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+var WM={
+abandon:"\u0924\u094d\u092f\u093e\u0917\u0928\u093e",about:"\u0915\u0947 \u092c\u093e\u0930 \u092e\u0947\u0902",above:"\u090a\u092a\u0930",accept:"\u0938\u094d\u0935\u0940\u0915\u093e\u0930",across:"\u0915\u0947 \u092a\u093e\u0930",
+action:"\u0915\u094d\u0930\u093f\u092f\u093e",add:"\u091c\u094b\u0921\u093c\u0928\u093e",addition:"\u091c\u094b\u0921\u093c",after:"\u092c\u093e\u0926 \u092e\u0947\u0902",again:"\u092b\u093f\u0930 \u0938\u0947",
+against:"\u0915\u0947 \u0916\u093f\u0932\u093e\u092b",all:"\u0938\u092d\u0940",allow:"\u0905\u0928\u0941\u092e\u0924\u093f",almost:"\u0932\u0917\u092d\u0917",alone:"\u0905\u0915\u0947\u0932\u093e",
+along:"\u0915\u0947 \u0938\u093e\u0925",already:"\u092a\u0939\u0932\u0947 \u0938\u0947",also:"\u092d\u0940",although:"\u092f\u0926\u094d\u092f\u092a\u093f",always:"\u0939\u092e\u0947\u0936\u093e",
+among:"\u0915\u0947 \u092c\u0940\u091a",amount:"\u0930\u093e\u0936\u093f",ancient:"\u092a\u094d\u0930\u093e\u091a\u0940\u0928",and:"\u0914\u0930",angle:"\u0915\u094b\u0923",
+another:"\u0926\u0942\u0938\u0930\u093e",answer:"\u0909\u0924\u094d\u0924\u0930",any:"\u0915\u094b\u0908",anyone:"\u0915\u094b\u0908 \u092d\u0940",appear:"\u0926\u093f\u0916\u093e\u0908",
+apply:"\u0932\u093e\u0917\u0942",approach:"\u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923",are:"\u0939\u0948\u0902",area:"\u0915\u094d\u0937\u0947\u0924\u094d\u0930\u092b\u0932",argument:"\u0924\u0930\u094d\u0915",
+around:"\u091a\u093e\u0930\u094b\u0902 \u0913\u0930",arrange:"\u0935\u094d\u092f\u0935\u0938\u094d\u0925\u093f\u0924",arrive:"\u092a\u0939\u0941\u0901\u091a\u0928\u093e",ask:"\u092a\u0942\u091b\u0928\u093e",at:"\u092a\u0930",
+available:"\u0909\u092a\u0932\u092c\u094d\u0927",average:"\u0914\u0938\u0924",away:"\u0926\u0942\u0930",back:"\u092a\u0940\u091b\u0947",base:"\u0906\u0927\u093e\u0930",
+basic:"\u092e\u0942\u0932",be:"\u0939\u094b\u0928\u093e",because:"\u0915\u094d\u092f\u094b\u0902\u0915\u093f",become:"\u092c\u0928\u0928\u093e",before:"\u092a\u0939\u0932\u0947",
+begin:"\u0936\u0941\u0930\u0942",below:"\u0928\u0940\u091a\u0947",between:"\u0915\u0947 \u092c\u0940\u091a",book:"\u0915\u093f\u0924\u093e\u092c",both:"\u0926\u094b\u0928\u094b\u0902",
+bottom:"\u0928\u093f\u091a\u0932\u093e",break:"\u091f\u0942\u091f\u0928\u093e",bridge:"\u092a\u0941\u0932",bring:"\u0932\u093e\u0928\u093e",build:"\u092c\u0928\u093e\u0928\u093e",
+calculate:"\u0917\u0923\u0928\u093e",call:"\u0915\u0939\u0928\u093e",can:"\u0938\u0915\u0924\u0947",cannot:"\u0928\u0939\u0940\u0902 \u0938\u0915\u0924\u0947",case:"\u092e\u093e\u092e\u0932\u093e",
+cause:"\u0915\u093e\u0930\u0923",center:"\u0915\u0947\u0928\u094d\u0926\u094d\u0930",certain:"\u0928\u093f\u0936\u094d\u091a\u093f\u0924",change:"\u092c\u0926\u0932\u0928\u093e",check:"\u091c\u093e\u0901\u091a",
+circle:"\u0935\u0943\u0924\u094d\u0924",circumference:"\u092a\u0930\u093f\u0927\u093f",classify:"\u0935\u0930\u094d\u0917\u0940\u0915\u0943\u0924",clear:"\u0938\u094d\u092a\u0937\u094d\u091f",
+close:"\u092c\u0902\u0926",closed:"\u0938\u0902\u0935\u0943\u0924",common:"\u0938\u093e\u092e\u093e\u0928\u094d\u092f",compare:"\u0924\u0941\u0932\u0928\u093e",
+complete:"\u092a\u0942\u0930\u094d\u0923",condition:"\u0936\u0930\u094d\u0924",connect:"\u091c\u094b\u0921\u093c\u0928\u093e",constant:"\u0938\u094d\u0925\u093f\u0930",correct:"\u0938\u0939\u0940",
+cost:"\u0932\u093e\u0917\u0924",could:"\u0938\u0915\u0924\u093e \u0925\u093e",count:"\u0917\u093f\u0928\u0928\u093e",cross:"\u092a\u093e\u0930",curve:"\u0935\u0915\u094d\u0930",
+data:"\u0906\u0901\u0915\u0921\u093c\u093e",describe:"\u0935\u0930\u094d\u0923\u0928",design:"\u0921\u093f\u091c\u093c\u093e\u0907\u0928",determine:"\u0928\u093f\u0930\u094d\u0927\u093e\u0930\u093f\u0924",
+diagram:"\u0906\u0930\u0947\u0916",different:"\u0905\u0932\u0917",digit:"\u0905\u0902\u0915",divide:"\u092d\u093e\u0917",division:"\u0935\u093f\u092d\u093e\u091c\u0928",
+draw:"\u0916\u0940\u0902\u091a\u0928\u093e",each:"\u092a\u094d\u0930\u0924\u094d\u092f\u0947\u0915",edge:"\u0915\u093f\u0928\u093e\u0930\u093e",either:"\u092f\u093e \u0924\u094b",equal:"\u092c\u0930\u093e\u092c\u0930",
+equation:"\u0938\u092e\u0940\u0915\u0930\u0923",example:"\u0909\u0926\u093e\u0939\u0930\u0923",exercise:"\u0905\u092d\u094d\u092f\u093e\u0938",expand:"\u0935\u093f\u0938\u094d\u0924\u093e\u0930",
+explain:"\u0938\u092e\u091d\u093e\u0928\u093e",expression:"\u0935\u094d\u092f\u0902\u091c\u0915",find:"\u0916\u094b\u091c\u0928\u093e",first:"\u092a\u0939\u0932\u093e",follow:"\u0905\u0928\u0941\u0938\u0930\u0923",
+form:"\u0930\u0942\u092a",formula:"\u0938\u0942\u0924\u094d\u0930",fraction:"\u092d\u093f\u0928\u094d\u0928",frequency:"\u0906\u0935\u0943\u0924\u094d\u0924\u093f",from:"\u0938\u0947",
+function:"\u092b\u0932\u0928",general:"\u0938\u093e\u092e\u093e\u0928\u094d\u092f",geometry:"\u091c\u094d\u092f\u093e\u092e\u093f\u0924\u093f",give:"\u0926\u0947\u0928\u093e",given:"\u0926\u093f\u092f\u093e",
+go:"\u091c\u093e\u0928\u093e",good:"\u0905\u091a\u094d\u091b\u093e",graph:"\u0906\u0932\u0947\u0916",greater:"\u092c\u0921\u093c\u093e",have:"\u0939\u0948",height:"\u090a\u0901\u091a\u093e\u0908",
+help:"\u092e\u0926\u0926",here:"\u092f\u0939\u093e\u0901",highest:"\u0909\u091a\u094d\u091a\u0924\u0930",horizontal:"\u0915\u094d\u0937\u0948\u0924\u093f\u091c",how:"\u0915\u0948\u0938\u0947",
+important:"\u092e\u0939\u0924\u094d\u0935\u092a\u0942\u0930\u094d\u0923",in:"\u092e\u0947\u0902",increase:"\u092c\u0922\u093c\u0928\u093e",
+into:"\u092e\u0947\u0902",introduce:"\u092a\u0930\u093f\u091a\u092f",
+is:"\u0939\u0948",it:"\u092f\u0939",join:"\u091c\u094b\u0921\u093c\u0928\u093e",just:"\u092c\u0938",keep:"\u0930\u0916\u0928\u093e",know:"\u091c\u093e\u0928\u0928\u093e",known:"\u091c\u094d\u091e\u093e\u0924",
+large:"\u092c\u0921\u093c\u093e",last:"\u0905\u0928\u094d\u0924\u093f\u092e",lateral:"\u092a\u093e\u0930\u094d\u0936\u0935",learn:"\u0938\u0940\u0916\u0928\u093e",least:"\u0915\u092e \u0938\u0947 \u0915\u092e",
+left:"\u092c\u093e\u092f\u093e\u0901",length:"\u0932\u0902\u092c\u093e\u0908",less:"\u0915\u092e",letter:"\u0905\u0915\u094d\u0937\u0930",line:"\u0930\u0947\u0916\u093e",
+list:"\u0938\u0942\u091a\u0940",look:"\u0926\u0947\u0916\u0928\u093e",lower:"\u0928\u093f\u091a\u0932\u093e",make:"\u092c\u0928\u093e\u0928\u093e",many:"\u0915\u0908",mark:"\u091a\u093f\u0939\u094d\u0928",
+math:"\u0917\u0923\u093f\u0924",matter:"\u092e\u093e\u092e\u0932\u093e",may:"\u0938\u0915\u0924\u093e",mean:"\u092e\u0924\u0932\u092c",meaning:"\u0905\u0930\u094d\u0925",measure:"\u092e\u093e\u092a",
+method:"\u0935\u093f\u0927\u093f",middle:"\u092e\u0927\u094d\u092f",might:"\u0939\u094b \u0938\u0915\u0924\u093e",model:"\u092e\u0949\u0921\u0932",more:"\u0905\u0927\u093f\u0915",
+most:"\u0905\u0927\u093f\u0915\u093e\u0902\u0936",move:"\u091a\u0932\u0928\u093e",multiply:"\u0917\u0941\u0923\u093e",must:"\u0905\u0928\u093f\u0935\u093e\u0930\u094d\u092f",natural:"\u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915",nature:"\u092a\u094d\u0930\u0915\u0943\u0924\u093f",necessary:"\u0906\u0935\u0936\u094d\u092f\u0915",
+need:"\u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e",negative:"\u094b\u0923\u093e\u0924\u094d\u092e\u0915",next:"\u0905\u0917\u0932\u093e",no:"\u0928\u0939\u0940\u0902",none:"\u0915\u094b\u0908 \u0928\u0939\u0940\u0902",
+not:"\u0928\u0939\u0940\u0902",note:"\u0928\u094b\u091f",number:"\u0938\u0902\u0916\u094d\u092f\u093e",obtain:"\u092a\u094d\u0930\u093e\u092a\u094d\u0924",odd:"\u0935\u093f\u0937\u092e",
+one:"\u090f\u0915",only:"\u0915\u0947\u0935\u0932",open:"\u0916\u0941\u0932\u093e",operation:"\u0938\u0902\u0915\u094d\u0930\u093f\u092f\u093e",opposite:"\u0935\u093f\u092a\u0930\u0940\u0924",option:"\u0935\u093f\u0915\u0932\u094d\u092a",order:"\u0915\u094d\u0930\u092e",
+origin:"\u092e\u0942\u0932",other:"\u0926\u0942\u0938\u0930\u093e",out:"\u092c\u093e\u0939\u0930",outside:"\u092c\u093e\u0939\u0930",over:"\u090a\u092a\u0930",
+pair:"\u091c\u094b\u0921\u093c\u093e",parallel:"\u0938\u092e\u093e\u0928\u093e\u0902\u0924\u0930",part:"\u092d\u093e\u0917",pattern:"\u092a\u094d\u0930\u0924\u093f\u0930\u0942\u092a",
+per:"\u092a\u094d\u0930\u0924\u093f",perfect:"\u092a\u0942\u0930\u094d\u0923",perimeter:"\u092a\u0930\u093f\u092e\u093e\u092a",perpendicular:"\u0932\u0902\u092c\u0935\u0924",piece:"\u091f\u0941\u0915\u0921\u093c\u093e",place:"\u0938\u094d\u0925\u093e\u0928",
+plot:"\u0906\u0932\u0947\u0916\u093f\u0924",point:"\u092c\u093f\u0902\u0926\u0941",positive:"\u0927\u0928\u093e\u0924\u094d\u092e\u0915",position:"\u0938\u094d\u0925\u093f\u0924\u093f",
+possible:"\u0938\u0902\u092d\u0935",power:"\u0918\u093e\u0924",practice:"\u0905\u092d\u094d\u092f\u093e\u0938",present:"\u0909\u092a\u0938\u094d\u0925\u093f\u0924",
+prime:"\u0905\u092d\u093e\u091c\u094d\u092f",problem:"\u0938\u092e\u0938\u094d\u092f\u093e",product:"\u0917\u0941\u0923\u0928\u092b\u0932",property:"\u0917\u0941\u0923",prove:"\u0938\u093f\u0926\u094d\u0927",
+quantity:"\u0930\u093e\u0936\u093f",question:"\u092a\u094d\u0930\u0936\u094d\u0928",
+quick:"\u0924\u094d\u0935\u0930\u093f\u0924",range:"\u092a\u0930\u093f\u0938\u0930",ratio:"\u0905\u0928\u0941\u092a\u093e\u0924",real:"\u0935\u093e\u0938\u094d\u0924\u0935\u093f\u0915",reason:"\u0915\u093e\u0930\u0923",
+rectangle:"\u0906\u092f\u0924",related:"\u0938\u0902\u092c\u0927\u093f\u0924",relationship:"\u0938\u0902\u092c\u0927",
+repeat:"\u0926\u094b\u0939\u0930\u093e\u0928\u093e",represent:"\u092a\u094d\u0930\u0924\u093f\u0928\u093f\u0927\u093f\u0924\u094d\u0935",result:"\u092a\u0930\u093f\u0923\u093e\u092e",
+right:"\u0938\u0939\u0940/\u0926\u093e\u092f\u093e\u0901",root:"\u092e\u0942\u0932",round:"\u0917\u094b\u0932",same:"\u0938\u092e\u093e\u0928",say:"\u0915\u0939\u0928\u093e",
+scale:"\u092a\u0948\u092e\u093e\u0928\u093e",section:"\u0905\u0928\u0941\u092d\u093e\u0917",see:"\u0926\u0947\u0916\u0928\u093e",shape:"\u0906\u0915\u093e\u0930",show:"\u0926\u093f\u0916\u093e\u0928\u093e",
+side:"\u092d\u0941\u091c\u093e",sign:"\u091a\u093f\u0939\u094d\u0928",similar:"\u0938\u092e\u0930\u0942\u092a",simple:"\u0938\u0930\u0932",since:"\u0915\u094d\u092f\u094b\u0902\u0915\u093f",
+single:"\u090f\u0915",size:"\u0906\u0915\u093e\u0930",sketch:"\u0930\u0947\u0916\u093e\u091a\u093f\u0924\u094d\u0930",small:"\u091b\u094b\u091f\u093e",solve:"\u0939\u0932",
+solution:"\u0939\u0932",space:"\u0938\u094d\u0925\u093e\u0928",special:"\u0935\u093f\u0936\u0947\u0937",square:"\u0935\u0930\u094d\u0917",statement:"\u0915\u0925\u0928",
+step:"\u091a\u0930\u0923",straight:"\u0938\u0940\u0927\u093e",study:"\u0905\u0927\u094d\u092f\u092f\u0928",substitute:"\u092a\u094d\u0930\u0924\u093f\u0938\u094d\u0925\u093e\u092a\u0928",
+subtract:"\u0918\u091f\u093e\u0928\u093e",sum:"\u092f\u094b\u0917",surface:"\u092a\u0943\u0937\u094d\u0920",symbol:"\u092a\u094d\u0930\u0924\u0940\u0915",system:"\u092a\u094d\u0930\u0923\u093e\u0932\u0940",
+take:"\u0932\u0947\u0928\u093e",term:"\u092a\u0926",test:"\u092a\u0930\u0940\u0915\u094d\u0937\u0923",their:"\u0909\u0928\u0915\u0947",them:"\u0909\u0928\u094d\u0939\u0947\u0902",
+then:"\u0924\u092c",theory:"\u0938\u093f\u0926\u094d\u0927\u093e\u0928\u094d\u0924",there:"\u0935\u0939\u093e\u0901",these:"\u092f\u0947",they:"\u0935\u0947",thing:"\u0935\u0938\u094d\u0924\u0941",
+think:"\u0938\u094b\u091a\u0928\u093e",this:"\u092f\u0939",those:"\u0935\u0947",three:"\u0924\u0940\u0928",through:"\u0915\u0947 \u092e\u093e\u0927\u094d\u092f\u092e \u0938\u0947",
+time:"\u0938\u092e\u092f",to:"\u0915\u094b",together:"\u0938\u093e\u0925",top:"\u0936\u0940\u0930\u094d\u0937",total:"\u0915\u0941\u0932",touch:"\u0938\u094d\u092a\u0930\u094d\u0936",
+towards:"\u0915\u0940 \u0913\u0930",triangle:"\u0924\u094d\u0930\u093f\u092d\u0941\u091c",true:"\u0938\u0924\u094d\u092f",turn:"\u092e\u094b\u0921\u093c",two:"\u0926\u094b",
+type:"\u092a\u094d\u0930\u0915\u093e\u0930",under:"\u0915\u0947 \u0905\u0902\u0924\u0930\u094d\u0917\u0924",understand:"\u0938\u092e\u091d\u0928\u093e",unit:"\u0907\u0915\u093e\u0908",until:"\u0924\u0915",
+up:"\u090a\u092a\u0930",upon:"\u092a\u0930",use:"\u0909\u092a\u092f\u094b\u0917",used:"\u0909\u092a\u092f\u094b\u0917 \u0915\u093f\u092f\u093e",using:"\u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0924\u0947 \u0939\u0941\u090f",
+value:"\u092e\u093e\u0928",variable:"\u091a\u0930",verify:"\u0938\u0924\u094d\u092f\u093e\u092a\u093f\u0924",vertical:"\u093a\u0942\u0930\u094d\u0927\u094d\u0935\u093e\u0927\u0930",very:"\u092c\u0939\u0941\u0924",
+visual:"\u0926\u0943\u0936\u094d\u092f",volume:"\u0906\u092f\u0924\u0928",way:"\u0930\u093e\u0938\u094d\u0924\u093e",we:"\u0939\u092e",well:"\u0905\u091a\u094d\u091b\u0940 \u0924\u0930\u0939",
+what:"\u0915\u094d\u092f\u093e",when:"\u091c\u092c",where:"\u091c\u0939\u093e\u0901",which:"\u091c\u094b",while:"\u091c\u092c\u0915\u093f",why:"\u0915\u094d\u092f\u094b\u0902",
+wide:"\u091a\u094c\u0921\u093c\u093e",will:"\u0939\u094b\u0917\u093e",with:"\u0915\u0947 \u0938\u093e\u0925",without:"\u0915\u0947 \u092c\u093f\u0928\u093e",word:"\u0936\u092c\u094d\u0926",
+work:"\u0915\u093e\u0930\u094d\u092f",write:"\u0932\u093f\u0916\u0928\u093e",wrong:"\u0917\u0932\u0924",
+reward:"\u092a\u0941\u0930\u0938\u094d\u0915\u093e\u0930",badge:"\u092c\u0948\u091c",coin:"\u0938\u093f\u0915\u094d\u0915\u093e",coins:"\u0938\u093f\u0915\u094d\u0915\u0947",
+beginner:"\u0936\u0941\u0930\u0942\u0906\u0924\u0940",scholar:"\u0935\u093f\u0926\u094d\u0935\u093e\u0928",expert:"\u0935\u093f\u0936\u0947\u0937\u091c\u094d\u091e",champion:"\u0935\u093f\u091c\u0947\u0924\u093e",
+explore:"\u0916\u094b\u091c\u0928\u093e",drag:"\u0916\u0940\u0902\u091a\u0947\u0902",watch:"\u0926\u0947\u0916\u0947\u0902",observe:"\u0928\u093f\u0930\u0940\u0915\u094d\u0937\u0923 \u0915\u0930\u0947\u0902",
+zero:"\u0936\u0942\u0928\u094d\u092f",whole:"\u092a\u0942\u0930\u094d\u0923",collection:"\u0938\u0902\u0917\u094d\u0930\u0939",sufficient:"\u092a\u0930\u094d\u092f\u093e\u092a\u094d\u0924",lead:"\u0932\u0947 \u091c\u093e\u0928\u093e",
+/* Science domain terms for Chapter 3: Health */
+health:"\u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f",disease:"\u0930\u094b\u0917",pathogen:"\u0930\u094b\u0917\u091c\u0928\u0915",bacteria:"\u091c\u0940\u0935\u093e\u0923\u0941",
+virus:"\u0935\u093e\u092f\u0930\u0938",fungi:"\u0915\u0935\u0915",protozoa:"\u092a\u094d\u0930\u094b\u091f\u094b\u091c\u093f\u092f\u093e",worms:"\u0915\u0943\u092e\u093f",
+immunity:"\u092a\u094d\u0930\u0924\u093f\u0930\u0915\u094d\u0937\u093e",vaccine:"\u091f\u0940\u0915\u093e",antibiotic:"\u092a\u094d\u0930\u0924\u093f\u091c\u0948\u0935\u093f\u0915",
+infection:"\u0938\u0902\u0915\u094d\u0930\u092e\u0923",symptom:"\u0932\u0915\u094d\u0937\u0923",communicable:"\u0938\u0902\u0915\u094d\u0930\u093e\u092e\u0915",
+chronic:"\u0926\u0940\u0930\u094d\u0918\u0915\u093e\u0932\u093f\u0915",deficiency:"\u0915\u092e\u0940",vector:"\u0935\u093e\u0939\u0915",
+parasite:"\u092a\u0930\u091c\u0940\u0935\u0940",contaminated:"\u0926\u0942\u0937\u093f\u0924",hygiene:"\u0938\u094d\u0935\u091a\u094d\u091b\u0924\u093e",nutrition:"\u092a\u094b\u0937\u0923",
+prevention:"\u0930\u094b\u0917 \u0928\u093f\u0935\u093e\u0930\u0923",treatment:"\u0907\u0932\u093e\u091c",cure:"\u0907\u0932\u093e\u091c",medicine:"\u0926\u0935\u093e\u0908",
+doctor:"\u0921\u0949\u0915\u094d\u091f\u0930",fever:"\u092c\u0941\u0916\u093e\u0930",cough:"\u0916\u093e\u0901\u0938\u0940",cold:"\u0938\u0930\u094d\u0926\u0940",
+body:"\u0936\u0930\u0940\u0930",mind:"\u092e\u0928",mental:"\u092e\u093e\u0928\u0938\u093f\u0915",physical:"\u0936\u093e\u0930\u0940\u0930\u093f\u0915",social:"\u0938\u093e\u092e\u093e\u091c\u093f\u0915",
+well:"\u0938\u0941\u092a\u094d\u0930\u092c\u0902\u0927\u093f\u0924 \u0939\u094b\u0928\u093e",sick:"\u092c\u0940\u092e\u093e\u0930",healthy:"\u0938\u094d\u0935\u0938\u094d\u0925",
+diet:"\u0906\u0939\u093e\u0930",food:"\u092d\u094b\u091c\u0928",water:"\u092a\u093e\u0928\u0940",air:"\u0935\u093e\u092f\u0941",
+exercise:"\u0935\u094d\u092f\u093e\u092f\u093e\u092e",sleep:"\u0928\u0940\u0902\u0926",stress:"\u0924\u0928\u093e\u0935",tiredness:"\u0925\u0915\u093e\u0928",
+pain:"\u0926\u0930\u094d\u0926",rash:"\u0926\u093e\u0928\u0947",swelling:"\u0938\u094b\u091c\u0928",dizziness:"\u091a\u0915\u094d\u0915\u0930",
+organ:"\u0905\u0902\u0917",organism:"\u091c\u0940\u0935",cell:"\u0915\u094b\u0936\u093f\u0915\u093e",organize:"\u0935\u094d\u092f\u0935\u0938\u094d\u0925\u093f\u0924 \u0915\u0930\u0928\u093e",
+transmit:"\u0938\u0902\u091a\u093e\u0930\u093f\u0924 \u0915\u0930\u0928\u093e",spread:"\u092b\u0948\u0932\u093e\u0928\u093e",contact:"\u0938\u0902\u092a\u0930\u094d\u0915",
+insect:"\u0915\u0940\u091f",mosquito:"\u092e\u091a\u094d\u091b\u0930",fly:"\u092e\u0915\u094d\u0916\u0940",bite:"\u0915\u093e\u091f",
+animal:"\u091c\u093e\u0928\u0935\u0930",plant:"\u092a\u094c\u0927\u093e",person:"\u0935\u094d\u092f\u0915\u094d\u0924\u093f",people:"\u0932\u094b\u0917",
+world:"\u0926\u0941\u0928\u093f\u092f\u093e",country:"\u0926\u0947\u0936",city:"\u0936\u0939\u0930",community:"\u0938\u092e\u093e\u091c",
+kill:"\u092e\u093e\u0930\u0928\u093e",survive:"\u091c\u0940\u0935\u093f\u0924 \u0930\u0939\u0928\u093e",multiply:"\u0917\u0941\u0923\u093e \u0915\u0930\u0928\u093e",
+resist:"\u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927 \u0915\u0930\u0928\u093e",resistance:"\u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927",effective:"\u092a\u094d\u0930\u092d\u093e\u0935\u0940",
+prevent:"\u0930\u094b\u0915\u0928\u093e",protect:"\u0938\u0941\u0930\u0915\u094d\u0937\u093e \u0915\u0930\u0928\u093e",attack:"\u092c\u0940\u092e\u093e\u0930 \u0915\u0930\u0928\u093e",
+train:"\u092a\u094d\u0930\u0936\u093f\u0915\u094d\u0937\u093f\u0924 \u0915\u0930\u0928\u093e",recognise:"\u092a\u0939\u091a\u093e\u0928\u0928\u093e",harmful:"\u0939\u093e\u0928\u093f\u0915\u093e\u0930\u0915",
+safe:"\u0938\u0941\u0930\u0915\u094d\u0937\u093f\u0924",danger:"\u0916\u0924\u0930\u093e",risk:"\u091c\u094b\u0916\u093f\u092e",
+smoking:"\u0927\u0942\u092e\u094d\u0930\u092a\u093e\u0928",tobacco:"\u0924\u092e\u093e\u0915\u0942",alcohol:"\u0936\u0930\u093e\u092c",drug:"\u0926\u0935\u093e",
+penicillin:"\u092a\u0947\u0928\u093f\u0938\u093f\u0932\u093f\u0928",mould:"\u092b\u092b\u0947\u0902\u0917\u0938",patient:"\u0930\u094b\u0917\u0940",
+dose:"\u0916\u0941\u0930\u093e\u0915",prescription:"\u0928\u093f\u0930\u094d\u0926\u0947\u0936",doctor:"\u091a\u093f\u0915\u093f\u0924\u094d\u0938\u0915",
+environment:"\u092a\u0930\u093f\u0935\u0947\u0936",surroundings:"\u0906\u0938\u092a\u093e\u0938",clean:"\u0938\u093e\u092b",
+dirty:"\u0917\u0902\u0926\u093e",pollution:"\u092a\u094d\u0930\u0926\u0942\u0937\u0923",sanitation:"\u0938\u094d\u0935\u091a\u094d\u091b\u0924\u093e \u0935\u094d\u092f\u0935\u0938\u094d\u0925\u093e",
+toilet:"\u0936\u094c\u091a\u0915\u093e\u0932\u092f",mask:"\u092e\u093e\u0938\u094d\u0915",soap:"\u0938\u093e\u092c\u0941\u0928",
+hands:"\u0939\u093e\u0925",mouth:"\u092e\u0941\u0901\u0939",nose:"\u0928\u093e\u0915",skin:"\u0924\u094d\u0935\u091a\u093e",
+blood:"\u0930\u0915\u094d\u0924",pressure:"\u0926\u092c\u093e\u0935",temperature:"\u0924\u093e\u092a\u092e\u093e\u0928",thermometer:"\u0925\u0930\u094d\u092e\u093e\u092e\u0940\u091f\u0930",
+smallpox:"\u091a\u0947\u091a\u0915",cowpox:"\u0917\u094b\u0935\u0947\u0930\u0940",polio:"\u092a\u094b\u0932\u093f\u092f\u094b",measles:"\u0916\u0938\u0930\u093e",
+chickenpox:"\u091b\u0941\u0930\u094d\u092a\u094b\u0915",dengue:"\u0921\u0947\u0902\u0917\u0941",malaria:"\u092e\u0932\u0947\u0930\u093f\u092f\u093e",
+cholera:"\u0939\u091c\u093e \u0935\u093e\u092f\u0930\u093e",typhoid:"\u091f\u093e\u0907\u092b\u0947\u0907\u0921",asthma:"\u0926\u092e\u093e",
+diabetes:"\u092e\u0927\u0941\u092e\u0947\u0939",cancer:"\u0915\u0948\u0902\u0938\u0930",obesity:"\u092e\u094b\u091f\u093e\u092a\u093e",
+heart:"\u0939\u0943\u0926\u092f",lung:"\u092b\u0947\u092b\u0921\u093c\u093e",liver:"\u092f\u0915\u0943\u0924",intestine:"\u0906\u0902\u0924\u094d\u0930",
+child:"\u092c\u091a\u094d\u091a\u093e",childhood:"\u092c\u091a\u092a\u0928",adult:"\u0935\u092f\u0938\u094d\u0915",elderly:"\u0935\u0943\u0926\u094d\u0927",
+childhood:"\u092c\u091a\u092a\u0928",disease:"\u0930\u094b\u0917",germ:"\u0930\u094b\u0917\u093e\u0923\u0941",
+awareness:"\u091c\u093e\u0917\u0930\u0942\u0915\u0924\u093e",balanced:"\u0938\u0902\u0924\u0941\u0932\u093f\u0924",balanced:"\u0938\u0902\u0924\u0941\u0932\u093f\u0924",
+yoga:"\u092f\u094b\u0917",meditation:"\u0927\u094d\u092f\u093e\u0928",mindfulness:"\u0938\u092e\u094d\u092e\u093e\u0928",
+balance:"\u0938\u0902\u0924\u0941\u0932\u0928",peace:"\u0936\u093e\u0902\u0924\u093f",happiness:"\u0916\u0941\u0936\u0940",
+relation:"\u0930\u093f\u0936\u094d\u0924\u093e",relationship:"\u0930\u093f\u0936\u094d\u0924\u093e",friend:"\u0926\u094b\u0938\u094d\u0924",family:"\u092a\u0930\u093f\u0935\u093e\u0930",
+mood:"\u092e\u0942\u0921",attitude:"\u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923",positive:"\u0938\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",
+negative:"\u0928\u0915\u093e\u0930\u093e\u0924\u094d\u092e\u0915",feeling:"\u092d\u093e\u0935\u0928\u093e",emotion:"\u092d\u093e\u0935\u0928\u093e",
+lonely:"\u0905\u0915\u0947\u0932\u093e",happy:"\u0916\u0941\u0936",sad:"\u0926\u0941\u0916\u0940",
+defence:"\u0930\u0915\u094d\u0937\u093e",defend:"\u092c\u091a\u093e\u0935",fight:"\u0932\u0921\u093c\u0928\u093e",
+fort:"\u0915\u093f\u0932\u093e",strong:"\u092e\u091c\u092c\u0942\u0924",weak:"\u0915\u092e\u091c\u094b\u0930",
+detect:"\u092a\u0924\u093e \u0932\u0917\u093e\u0928\u093e",measure:"\u092e\u093e\u092a\u0928\u093e",instrument:"\u0909\u092a\u0915\u0930\u0923",
+distinguish:"\u092d\u0947\u0926 \u0915\u0930\u0928\u093e",unique:"\u0905\u0926\u094d\u0935\u093f\u0924\u0940\u092f",specific:"\u0935\u093f\u0936\u093f\u0937\u094d\u091f",
+external:"\u092c\u093e\u0939\u094d\u092f",internal:"\u0906\u0902\u0924\u0930\u093f\u0915",system:"\u0924\u0902\u0924\u094d\u0930",
+}
+
+
+/* CONN: ONLY connecting words — NO science domain terms */
+var CONN={
+"can":"\u0938\u0915\u0924\u093e \u0939\u0948","could":"\u0938\u0915\u0924\u093e \u0925\u093e","will":"\u0915\u0930\u0947\u0917\u093e","would":"\u0915\u0930\u0947\u0917\u093e","shall":"\u0915\u0930\u0947\u0917\u093e",
+"should":"\u0915\u0930\u0928\u093e \u091a\u093e\u0939\u093f\u090f","must":"\u091c\u093c\u0930\u0942\u0930\u0940 \u0939\u0948","may":"\u0938\u0915\u0924\u093e \u0939\u0948","might":"\u0936\u093e\u092f\u0926 \u0915\u0930 \u0938\u0915\u0947",
+"need":"\u091c\u093c\u0930\u0942\u0930\u0924 \u0939\u0948","need to":"\u091c\u093c\u0930\u0942\u0930\u0924 \u0939\u0948 \u0915\u0930\u0928\u093e","have to":"\u0915\u0930\u0928\u093e \u092a\u0921\u093c\u0924\u093e \u0939\u0948","had to":"\u0915\u0930\u0928\u093e \u092a\u0921\u093c\u093e",
+"ought to":"\u0915\u0930\u0928\u093e \u091a\u093e\u0939\u093f\u090f","be able to":"\u0938\u0915\u094d\u0937\u092e \u0939\u0948","used to":"\u092a\u0939\u0932\u0947 \u0915\u0930\u0924\u093e \u0925\u093e","dare":"\u0939\u093f\u092e\u094d\u092e\u0924 \u0915\u0930\u0928\u093e",
+"had better":"\u092c\u0947\u0939\u0924\u0930 \u0939\u094b\u0917\u093e","be going to":"\u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u093e \u0939\u0948","be supposed to":"\u0915\u0930\u0928\u093e \u0905\u092a\u0947\u0915\u094d\u0937\u093f\u0924 \u0939\u0948",
+"and":"\u0914\u0930","but":"\u0932\u0947\u0915\u093f\u0928","or":"\u092f\u093e","so":"\u0938\u093e\u0925 \u0939\u0940","because":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f","also":"\u092d\u0940","too":"\u092d\u0940",
+"as well":"\u092d\u0940","either":"\u092f\u093e \u092d\u0940","neither":"\u0928 \u0939\u0940","not only":"\u0928 \u0915\u0947\u0935\u0932","but also":"\u092c\u0932\u094d\u0915\u093f",
+"whether":"\u0915\u094d\u092f\u093e","that":"\u0915\u093f","even":"\u092f\u0939\u093e\u0901 \u0924\u0915 \u0915\u093f",
+"because of":"\u0915\u0947 \u0915\u093e\u0930\u0923","due to":"\u0915\u0947 \u0915\u093e\u0930\u0923","since":"\u0915\u094d\u092f\u094b\u0902\u0915\u093f","therefore":"\u0938\u093e\u0925 \u0939\u0940",
+"thus":"\u0907\u0938 \u092a\u094d\u0930\u0915\u093e\u0930","hence":"\u0938\u093e\u0925 \u0939\u0940","as a result":"\u092a\u0930\u093f\u0923\u093e\u092e\u0938\u094d\u0935\u0930\u0942\u092a","so that":"\u0924\u093e\u0915\u093f",
+"in order to":"\u0924\u093e\u0915\u093f","consequently":"\u092a\u0930\u093f\u0923\u093e\u092e\u0938\u094d\u0935\u0930\u0942\u092a","for this reason":"\u093f\u0938 \u0915\u093e\u0930\u0923",
+"thereby":"\u0907\u0938 \u092a\u094d\u0930\u0915\u093e\u0930","accordingly":"\u0909\u0938\u0940 \u0905\u0928\u0941\u0938\u093e\u0930","resulting in":"\u092a\u0930\u093f\u0923\u093e\u092e\u0938\u094d\u0935\u0930\u0942\u092a","leading to":"\u0915\u0940 \u0913\u0930 \u0932\u0947 \u091c\u093e\u0924\u093e \u0939\u0948",
+"if":"\u0905\u0917\u0930","unless":"\u091c\u092c \u0924\u0915 \u0928\u0939\u0940\u0902","provided":"\u092c\u0936\u0930\u094d\u0924\u0947","as long as":"\u091c\u092c \u0924\u0915",
+"in case":"\u0905\u0917\u0930 \u0910\u0938\u093e \u0939\u094b","even if":"\u092d\u0932\u0947 \u0939\u0940","only if":"\u0915\u0947\u0935\u0932 \u0924\u092d\u0940","whether or not":"\u091a\u093e\u0939\u0947 \u092f\u093e \u0928\u0939\u0940\u0902",
+"otherwise":"\u0928\u0939\u0940\u0902 \u0924\u094b","supposing":"\u092e\u093e\u0928 \u0932\u094b","assuming":"\u092e\u093e\u0928\u0924\u0947 \u0939\u0941\u090f","on condition that":"\u0907\u0938 \u0936\u0930\u094d\u0924 \u092a\u0930",
+"in the event that":"\u0905\u0917\u0930 \u0910\u0938\u093e \u0939\u094b","if not":"\u0905\u0917\u0930 \u0928\u0939\u0940\u0902","then":"\u0924\u092c",
+"although":"\u0939\u093e\u0932\u093e\u0902\u0915\u093f","though":"\u0939\u093e\u0932\u093e\u0902\u0915\u093f","even though":"\u092b\u093f\u0930 \u092d\u0940","however":"\u0939\u093e\u0932\u093e\u0902\u0915\u093f",
+"yet":"\u092b\u093f\u0930 \u092d\u0940","still":"\u092b\u093f\u0930 \u092d\u0940","on the other hand":"\u0926\u0942\u0938\u0930\u0940 \u0913\u0930","in contrast":"\u0907\u0938\u0915\u0947 \u0935\u093f\u092a\u0930\u0940\u0924",
+"whereas":"\u091c\u092c\u0915\u093f","instead":"\u0907\u0938\u0915\u0947 \u092c\u091c\u093e\u092f",
+"before":"\u092a\u0939\u0932\u0947","after":"\u092c\u093e\u0926 \u092e\u0947\u0902","when":"\u091c\u092c","while":"\u091c\u092c","as soon as":"\u091c\u0948\u0938\u0947 \u0939\u0940",
+"until":"\u0924\u0915","next":"\u0905\u0917\u0932\u093e","finally":"\u0905\u0902\u0924 \u092e\u0947\u0902",
+"furthermore":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e","moreover":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e","besides":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e",
+"in addition":"\u0907\u0938\u0915\u0947 \u0905\u0932\u093e\u0935\u093e","especially":"\u0935\u093f\u0936\u0947\u0937 \u0930\u0942\u092a \u0938\u0947","particularly":"\u0916\u093e\u0938\u0915\u0930",
+"indeed":"\u0935\u093e\u0938\u094d\u0924\u0935 \u092e\u0947\u0902","in fact":"\u0935\u093e\u0938\u094d\u0924\u0935 \u092e\u0947\u0902",
+"overall":"\u0915\u0941\u0932 \u092e\u093f\u0932\u093e\u0915\u0930","in conclusion":"\u0928\u093f\u0937\u094d\u0915\u0930\u094d\u0937 \u092e\u0947\u0902","to sum up":"\u0938\u0902\u0915\u094d\u0937\u0947\u092a \u092e\u0947\u0902",
+"all in all":"\u0915\u0941\u0932 \u092e\u093f\u0932\u093e\u0915\u0930","in short":"\u0938\u0902\u0915\u094d\u0937\u0947\u092a \u092e\u0947\u0902",
+"for example":"\u0909\u0926\u093e\u0939\u0930\u0923 \u0915\u0947 \u0932\u093f\u090f","such as":"\u091c\u0948\u0938\u0947","like":"\u091c\u0948\u0938\u0947",
+"first":"\u092a\u0939\u0932\u0947","second":"\u0926\u0942\u0938\u0930\u093e","third":"\u0924\u0940\u0938\u0930\u093e",
+"similarly":"\u0907\u0938\u0940 \u0924\u0930\u0939","likewise":"\u0907\u0938\u0940 \u0924\u0930\u0939",
+"namely":"\u092f\u093e\u0928\u0940","in particular":"\u0935\u093f\u0936\u0947\u0937 \u0930\u0942\u092a \u0938\u0947",
+"above all":"\u0938\u092c\u0938\u0947 \u090a\u092a\u0930","most importantly":"\u0938\u092c\u0938\u0947 \u091c\u0930\u0942\u0930\u0940",
+"equals":"\u092c\u0930\u093e\u092c\u0930 \u0939\u0948","means":"\u092e\u0924\u0932\u092c","gives":"\u0926\u0947\u0924\u093e \u0939\u0948","shows":"\u0926\u093f\u0916\u093e\u0924\u093e \u0939\u0948",
+"consider":"\u0938\u094b\u091a\u094b","observe":"\u0926\u0947\u0916\u094b","notice":"\u0927\u094d\u092f\u093e\u0928 \u0926\u094b","remember":"\u092f\u093e\u0926 \u0930\u0916\u094b",
+"always":"\u0939\u092e\u0947\u0936\u093e","never":"\u0915\u092d\u0940 \u0928\u0939\u0940\u0902","exactly":"\u0920\u0940\u0915","directly":"\u0938\u0940\u0927\u0947",
+"important":"\u091c\u0930\u0942\u0930\u0940","equal":"\u092c\u0930\u093e\u092c\u0930","opposite":"\u0935\u093f\u092a\u0930\u0940\u0924","parallel":"\u0938\u092e\u093e\u0928\u094d\u0924\u0930",
+"perpendicular":"\u0932\u0902\u092c\u0935\u0924","consecutive":"\u0915\u094d\u0930\u092e\u093e\u0917\u0924"
+}
+
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=4){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"\u2014";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"\u2014",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[{"t": "intro", "icon": "🏥", "title": "Health: The Ultimate Treasure", "sub": "Class 8 Science — Chapter 3", "intro": "What does it mean to be healthy? Is it just about not falling sick? The World Health Organization defines health as a state of complete physical, mental, and social well-being — not merely the absence of disease. In this chapter, we will explore what health truly means, how to stay healthy, the causes and types of diseases (communicable and non-communicable), how pathogens spread, our body’s immune system, vaccines, antibiotics, and the growing problem of antibiotic resistance. Let us begin!"}, {"t": "tutor", "icon": "💡", "title": "What Is Health?", "body": "Health is not just about not having diseases. Health also includes feeling good physically, staying positive, and having strong relationships. A healthy person takes care of their body, maintains a positive mindset, and enjoys social life. As per the World Health Organization (WHO), health is defined as a state of complete physical, mental, and social well-being, and not merely the absence of disease. A healthy person can generally perform various tasks more efficiently and cope well in different and difficult situations."}, {"t": "formula", "title": "Three Aspects of Health (WHO Definition)", "formulas": [{"label": "Physical Health", "expr": "Taking care of the body — nutrition, exercise, sleep, hygiene", "note": "Feeling good physically"}, {"label": "Mental Health", "expr": "Maintaining a positive mindset, managing stress, staying happy", "note": "Feeling good mentally and emotionally"}, {"label": "Social Health", "expr": "Having strong relationships, enjoying social life", "note": "Getting along with peers and society"}]}, {"t": "ix_health_triangle", "instruction": "Tap on each aspect of health — Physical, Mental, and Social — to learn what it means and see examples!"}, {"t": "quiz", "q": "Quick Check: According to WHO, health is defined as:", "diff": "easy", "opts": [{"t": "A state of complete physical, mental, and social well-being", "c": true}, {"t": "Just not having any disease", "c": false, "m": "Not having disease is only part of health — WHO’s definition is broader.", "correctMethod": "WHO defines health as complete physical, mental, AND social well-being — not merely the absence of disease."}, {"t": "Being physically strong and muscular", "c": false, "m": "Physical strength is only one aspect of health.", "correctMethod": "Health includes physical, mental, and social well-being together."}, {"t": "Never visiting a doctor", "c": false, "m": "Not visiting a doctor does not mean you are healthy.", "correctMethod": "Health is about complete well-being, not just absence of disease."}]}, {"t": "tutor", "icon": "🥗", "title": "How Can We Stay Healthy?", "body": "For staying healthy we must eat nutritious food, maintain hygiene, stay in a clean place, exercise regularly, get proper sleep, spend time with family and friends, and have a positive attitude. We should eat a balanced diet with plenty of fruits, vegetables, and whole grains. We should avoid processed, fatty, or sugary food. We should stay physically active, limit screen time, get enough sleep, practice yoga or pranayama regularly, and say NO to harmful substances like tobacco, alcohol, and addictive drugs."}, {"t": "real_example", "icon": "🧘", "title": "Ayurveda and Holistic Health", "body": "Ayurveda teaches us that true health is a balance of body, mind, and surroundings. Following dinacharya (daily routine) and ritucharya (seasonal routine) helps maintain this balance. Eating fresh, wholesome food suited to one’s prakriti (body constitution) is essential. Regular exercise, cleanliness, restful sleep, and a calm mind support overall well-being. This can also be achieved through practices like yoga, meditation, and mindfulness."}, {"t": "milestone", "icon": "🏆", "title": "Health Basics Mastered!", "xp": 50, "next": "Now: How Do We Know We Are Unwell?"}, {"t": "tutor", "icon": "🤒", "title": "How Do We Know That We Are Unwell?", "body": "Our body usually works in a certain way to keep us healthy. When we feel unwell, it means something inside us may not be working as it should. We may have symptoms, such as pain, tiredness, or dizziness, and signs like fever, rash, high blood pressure, or swelling that indicate we are unwell. A symptom is what we feel (like pain), while a sign is something that can be seen or measured (like high body temperature when we have fever). These help doctors understand what might be making us unwell."}, {"t": "formula", "title": "Symptoms vs Signs", "formulas": [{"label": "Symptom", "expr": "What the patient FEELS — pain, tiredness, dizziness", "note": "Subjective — only the patient can describe it"}, {"label": "Sign", "expr": "What can be SEEN or MEASURED — fever, rash, swelling, high BP", "note": "Objective — a doctor or instrument can detect it"}]}, {"t": "quiz", "q": "Quick Check: Which of these is a SIGN (not a symptom)?", "diff": "medium", "opts": [{"t": "Fever measured with a thermometer", "c": true}, {"t": "Feeling tired", "c": false, "m": "Tiredness is what the patient feels — it is a symptom.", "correctMethod": "A sign can be measured. Fever measured with a thermometer is a sign. Tiredness is a symptom."}, {"t": "Having a headache", "c": false, "m": "A headache is what the patient feels — it is a symptom.", "correctMethod": "A sign is something measurable like fever, rash, or blood pressure."}, {"t": "Feeling dizzy", "c": false, "m": "Dizziness is what the patient feels — it is a symptom.", "correctMethod": "Signs are measurable. Dizziness is a symptom."}]}, {"t": "milestone", "icon": "🤒", "title": "Symptoms and Signs Mastered!", "xp": 50, "next": "Now: Diseases — Causes and Types!"}, {"t": "tutor", "icon": "🦠", "title": "What Are Diseases?", "body": "A disease is a condition that affects the normal working of the body or mind. It can happen when one or more organs or organ systems stop functioning properly. Some diseases are caused by germs like bacteria, viruses, fungi, worms, or even by protozoa. These disease-causing organisms are called pathogens. Other diseases may result from poor nutrition or an unhealthy lifestyle. Diseases can be grouped into two major types: communicable diseases and non-communicable diseases."}, {"t": "formula", "title": "Two Types of Diseases", "formulas": [{"label": "Communicable Diseases", "expr": "Caused by pathogens — CAN spread from person to person", "note": "Examples: typhoid, dengue, flu, chickenpox, COVID-19"}, {"label": "Non-Communicable Diseases", "expr": "NOT caused by pathogens — do NOT spread from person to person", "note": "Examples: cancer, diabetes, asthma — linked to lifestyle, diet, environment"}, {"label": "Pathogens", "expr": "Disease-causing organisms: bacteria, viruses, fungi, worms, protozoa", "note": "They enter the body through air, food, water, or insect bites"}]}, {"t": "ix_disease_spread", "instruction": "Tap each method of disease transmission to see how pathogens spread! Explore: By Air, Direct Contact, Indirect Contact, By Food/Water, and By Insects (vectors)."}, {"t": "quiz", "q": "Quick Check: Which of these is a COMMUNICABLE disease?", "diff": "easy", "opts": [{"t": "Chickenpox", "c": true}, {"t": "Diabetes", "c": false, "m": "Diabetes is a non-communicable disease linked to lifestyle.", "correctMethod": "Chickenpox is caused by a virus (pathogen) and spreads from person to person — it is communicable."}, {"t": "Asthma", "c": false, "m": "Asthma is a non-communicable disease linked to environment and lifestyle.", "correctMethod": "Chickenpox is communicable — it spreads through air and contact."}, {"t": "Cancer", "c": false, "m": "Cancer is a non-communicable disease.", "correctMethod": "Chickenpox is a communicable disease caused by a virus."}]}, {"t": "truefalse", "q": "Non-communicable diseases like diabetes and heart disease are the most common cause of death in India today.", "ans": true, "explain": "Correct! Non-communicable diseases (NCDs) have become more common due to changes in lifestyle — eating more processed food, getting less exercise, and living longer. Today, most deaths in India are caused by NCDs.", "m": "Think about the news clippings at the start of the chapter — diabetes, heart disease, obesity are all NCDs."}, {"t": "tutor", "icon": "🦮", "title": "How Do Communicable Diseases Spread?", "body": "Pathogens can enter our body through the air we breathe, by consuming contaminated food or water, through direct contact like shaking hands, or indirectly by sharing personal items. Some pathogens are spread by insects like mosquitoes and houseflies — these insects are called vectors. Malaria is spread by mosquitoes carrying protozoa. Dengue is spread by mosquitoes carrying a virus. Cholera and typhoid spread through contaminated water and food."}, {"t": "formula", "title": "Common Disease Transmission Methods", "formulas": [{"label": "By Air", "expr": "Infected person coughs or sneezes → pathogens in air", "note": "Examples: common cold, flu, TB, measles"}, {"label": "By Direct Contact", "expr": "Touching, shaking hands, or close contact with infected person", "note": "Examples: chickenpox"}, {"label": "By Contaminated Food/Water", "expr": "Consuming food or water with pathogens", "note": "Examples: cholera, typhoid, hepatitis A"}, {"label": "By Insects (Vectors)", "expr": "Mosquitoes and flies carry pathogens", "note": "Examples: malaria (protozoa), dengue (virus)"}]}, {"t": "ix_pathogens", "instruction": "Tap on each type of pathogen to learn about it! Explore: Bacteria, Viruses, Fungi, Protozoa, and Worms."}, {"t": "quiz", "q": "Quick Check: Malaria is caused by which pathogen and spread by which vector?", "diff": "medium", "opts": [{"t": "Protozoa spread by mosquitoes", "c": true}, {"t": "Bacteria spread by flies", "c": false, "m": "Malaria is not caused by bacteria.", "correctMethod": "Malaria is caused by protozoa and spread by mosquitoes (which are the vectors)."}, {"t": "Virus spread by mosquitoes", "c": false, "m": "Dengue is caused by a virus spread by mosquitoes. Malaria is caused by protozoa.", "correctMethod": "Malaria is caused by protozoa, not viruses. Dengue is the viral disease spread by mosquitoes."}, {"t": "Fungi spread through water", "c": false, "m": "Malaria is not caused by fungi.", "correctMethod": "Malaria is caused by protozoa and transmitted by mosquitoes."}]}, {"t": "tutor", "icon": "💊", "title": "Non-Communicable Diseases and Deficiency Diseases", "body": "Non-communicable diseases like cancer, diabetes, and asthma are linked to lifestyle, diet, and environment. They are the most common cause of death in India. In Grade 6, you learnt about diseases like scurvy, anaemia, and goitre, which are caused by a lack of specific nutrients in the diet. These are called deficiency diseases and are also non-communicable. Diseases such as cancer, diabetes, and asthma may often persist for a long time (more than 3 months) and are referred to as chronic diseases. Diabetes is becoming more prevalent due to hormonal imbalances, unhealthy eating habits, lack of physical activity, and being overweight."}, {"t": "quiz", "q": "Exercise Q2: Which of the following are NON-communicable diseases? (i) Typhoid (ii) Asthma (iii) Diabetes (iv) Measles", "diff": "medium", "opts": [{"t": "(ii) Asthma and (iii) Diabetes", "c": true}, {"t": "(i) Typhoid and (ii) Asthma", "c": false, "m": "Typhoid is communicable — caused by bacteria and spreads through contaminated food/water.", "correctMethod": "Asthma and Diabetes are non-communicable. Typhoid and Measles are communicable (caused by pathogens)."}, {"t": "(i) Typhoid and (iv) Measles", "c": false, "m": "Both typhoid and measles are communicable diseases caused by pathogens.", "correctMethod": "Asthma and Diabetes are the non-communicable diseases in this list."}, {"t": "(ii) Asthma and (iv) Measles", "c": false, "m": "Measles is communicable — caused by a virus.", "correctMethod": "Asthma and Diabetes are non-communicable. Typhoid and Measles are communicable."}]}, {"t": "milestone", "icon": "🦠", "title": "Diseases Mastered!", "xp": 60, "next": "Now: Prevention, Immunity, and Vaccines!"}, {"t": "tutor", "icon": "🛡", "title": "How to Prevent and Control Diseases", "body": "Prevention is better than cure. Simple precautions can greatly reduce the spread of communicable diseases: keeping ourselves and our surroundings clean, practising basic hygiene, washing hands with soap and water, covering our mouth and nose while coughing or sneezing, wearing a mask in crowded places, avoiding sharing personal items, and keeping our home, food, and water clean. Staying at home and resting when unwell helps the body recover and minimises spreading disease to others."}, {"t": "tutor", "icon": "🛡", "title": "What Is Immunity?", "body": "The natural ability of our body to fight diseases is known as immunity. Our body has a special system called the immune system that helps fight against diseases. You might have taken some drops or injections in your childhood to protect yourself from certain diseases, such as polio, measles, tetanus, and hepatitis. These are vaccines that help prevent serious infections caused by viruses and bacteria."}, {"t": "ix_immunity", "instruction": "Tap to explore how immunity works! See how vaccines train your immune system. Tap: Natural Immunity, Vaccine (Acquired Immunity), and How Vaccines Work."}, {"t": "tutor", "icon": "💉", "title": "Edward Jenner and the First Vaccine", "body": "Smallpox was a deadly disease that caused blisters and killed millions. A milder disease called cowpox, seen in cows, could also infect humans. In the late 1700s, English doctor Edward Jenner discovered that people who had cowpox did not get smallpox. He tested this by injecting cowpox sap into a boy, who later showed no illness when exposed to smallpox. This led to the invention of the first vaccine and helped protect people from smallpox. Mass vaccination eventually helped eradicate smallpox worldwide."}, {"t": "tutor", "icon": "🔬", "title": "Our Scientific Heritage: Variolation in India", "body": "Long before modern vaccines, India had a traditional method called variolation to protect against smallpox. It involved using material from a smallpox sore to scratch the skin and create a mild infection and build immunity. People who performed this practice were known as teekedaars. This shows that the idea of building immunity through controlled exposure was practiced in India long before modern medicine."}, {"t": "quiz", "q": "Quick Check: A vaccine helps our body by:", "diff": "medium", "opts": [{"t": "Training the immune system to recognise and attack harmful germs", "c": true}, {"t": "Killing all bacteria in the body directly", "c": false, "m": "Vaccines do not kill bacteria directly — they train the immune system.", "correctMethod": "Vaccines train the immune system to recognise and fight pathogens before they cause disease."}, {"t": "Curing the disease after someone is already sick", "c": false, "m": "Vaccines are preventive, not curative. They work before you get sick.", "correctMethod": "Vaccines are preventive — they train the immune system in advance, not cure after infection."}, {"t": "Providing nutrition to the body", "c": false, "m": "Vaccines do not provide nutrition.", "correctMethod": "Vaccines work by training the immune system to recognise pathogens."}]}, {"t": "truefalse", "q": "Vaccines are preventive, not curative — they help prevent diseases before they happen, but do not treat them once someone is already sick.", "ans": true, "explain": "Correct! Vaccines are preventive. They train the immune system in advance. Once someone is already sick, vaccines cannot cure the disease — medicines or other treatments are needed.", "m": "Think about the difference between preventing a disease and curing it."}, {"t": "tutor", "icon": "🌍", "title": "India’s Role in Vaccine Production", "body": "India is one of the world’s largest vaccine producers. It manufactures vaccines on a massive scale and supplies them to many countries. Indian vaccine companies played a key role during the COVID-19 pandemic and continue to support global health efforts. Maharaj Kishan Bhan was a well-known Indian doctor and scientist who played a key role in developing the Rotavirus vaccine, which protects children from diarrhoea."}, {"t": "milestone", "icon": "💉", "title": "Immunity and Vaccines Mastered!", "xp": 60, "next": "Now: Antibiotics and Treatment!"}, {"t": "tutor", "icon": "💊", "title": "Antibiotics — Treatment for Bacterial Infections", "body": "If our immune system fails to protect us against an infectious disease, we fall ill and need to visit a doctor. The doctor may give us medicines called antibiotics, which kill the bacteria that might have caused the disease. Antibiotics work only against bacterial infections because they target parts of bacterial cells that are different from human or other animal cells. They do not work against viruses or diseases caused by protozoa."}, {"t": "tutor", "icon": "🔬", "title": "Discovery of Penicillin — The First Antibiotic", "body": "Penicillin was discovered in 1928 by Alexander Fleming, a bacteriologist from London. While studying harmful bacteria, he noticed that a mould on a discarded petri dish stopped the bacteria from growing. He realized the mould released a substance that killed the bacteria. This chance discovery led to the discovery of penicillin, the first antibiotic used to treat bacterial infections."}, {"t": "ix_antibiotic", "instruction": "Tap to explore how antibiotic resistance happens! See the difference between correct use and misuse of antibiotics. Tap: Correct Use, Misuse, and Resistance Develops."}, {"t": "quiz", "q": "Quick Check: Antibiotics are effective against which type of infection?", "diff": "easy", "opts": [{"t": "Bacterial infections only", "c": true}, {"t": "Viral infections like cold and flu", "c": false, "m": "Antibiotics do NOT work against viruses.", "correctMethod": "Antibiotics work only against bacterial infections. They do not work against viruses or protozoa."}, {"t": "All types of infections", "c": false, "m": "Antibiotics are not effective against all infections — only bacterial ones.", "correctMethod": "Antibiotics target bacterial cells specifically. They do not work against viruses."}, {"t": "Fungal infections", "c": false, "m": "Antibiotics are designed for bacteria, not fungi.", "correctMethod": "Antibiotics work only against bacterial infections."}]}, {"t": "truefalse", "q": "Exercise Q9: It is recommended that we should NOT take an antibiotic for a viral infection like a cold, cough, or flu.", "ans": true, "explain": "Correct! Antibiotics work only against bacteria, not viruses. Taking antibiotics for viral infections is ineffective and contributes to antibiotic resistance — where bacteria evolve to survive the antibiotic, making future infections harder to treat.", "m": "Remember: antibiotics kill bacteria, not viruses. Using them wrongly causes antibiotic resistance."}, {"t": "quiz", "q": "Exercise Q6: Saniya says ‘Antibiotics can cure any infection.’ Why is this statement incorrect?", "diff": "hard", "opts": [{"t": "Antibiotics only work against bacterial infections, not viral or fungal infections", "c": true}, {"t": "Antibiotics can cure all diseases including cancer", "c": false, "m": "Antibiotics cannot cure cancer or other non-communicable diseases.", "correctMethod": "Antibiotics are limited to bacterial infections only. They do not work against viruses, protozoa, or non-communicable diseases."}, {"t": "Antibiotics work against viruses too", "c": false, "m": "Antibiotics do NOT work against viruses.", "correctMethod": "Antibiotics only target bacteria. They do not work against viruses, protozoa, or non-infectious diseases."}, {"t": "Antibiotics can prevent all diseases", "c": false, "m": "Antibiotics treat, they do not prevent all diseases.", "correctMethod": "Antibiotics are treatment for bacterial infections, not a cure-all or preventive for everything."}]}, {"t": "quiz", "q": "Exercise Q10: Which disease(s) may spread if drinking water gets contaminated by excreta from an infected person?", "diff": "hard", "opts": [{"t": "Hepatitis A and Cholera", "c": true}, {"t": "Tuberculosis and Chickenpox", "c": false, "m": "TB spreads through air, not contaminated water. Chickenpox spreads through direct contact.", "correctMethod": "Hepatitis A and Cholera spread through contaminated water. TB spreads through air, and chickenpox through contact."}, {"t": "Poliomyelitis and Measles", "c": false, "m": "Measles spreads through air, not water. Polio can spread through contaminated water but the main answer from the list is Hepatitis A and Cholera.", "correctMethod": "Hepatitis A and Cholera are the diseases that spread through contaminated drinking water."}, {"t": "All of the above", "c": false, "m": "Not all these diseases spread through contaminated water.", "correctMethod": "Hepatitis A and Cholera are the water-borne diseases from this list."}]}, {"t": "tutor", "icon": "⚠", "title": "Antibiotic Resistance — A Growing Problem", "body": "Antibiotic resistance is a phenomenon where bacteria that were earlier killed by a given antibiotic are found to survive and multiply despite treatment with that antibiotic. This makes common infections harder to treat and increases the risk of complications, prolonged illness, and even death. To tackle this problem, we must use antibiotics wisely — only when prescribed by a doctor, in the correct dose, and for the right duration. Avoiding unnecessary use helps prevent the rise of resistant bacteria and keeps antibiotics effective for future generations."}, {"t": "real_example", "icon": "🏥", "title": "Community Sanitation in Odisha", "body": "In Bhadrak district, Odisha, a community sanitation campaign helped more people build and use toilets. This reduced open defecation significantly, and improved child health, with fewer cases of diarrhoea and infections. This shows that simple steps like good sanitation can greatly reduce the spread of communicable diseases. Community-level action can have a big impact on public health."}, {"t": "rapid_fire", "qs": [{"q": "Health is defined as complete physical, mental, and ___ well-being?", "opts": ["Social", "Financial", "Spiritual", "Academic"], "ans": 0}, {"q": "Which type of disease spreads from person to person?", "opts": ["Communicable", "Non-communicable", "Chronic", "Deficiency"], "ans": 0}, {"q": "What are disease-causing organisms called?", "opts": ["Pathogens", "Vectors", "Antibiotics", "Vaccines"], "ans": 0}, {"q": "Which insect is a vector for dengue?", "opts": ["Mosquito", "Housefly", "Ant", "Cockroach"], "ans": 0}, {"q": "What is the body’s natural ability to fight diseases called?", "opts": ["Immunity", "Infection", "Resistance", "Pathology"], "ans": 0}, {"q": "Who discovered the first vaccine (smallpox)?", "opts": ["Edward Jenner", "Alexander Fleming", "Robert Hooke", "Louis Pasteur"], "ans": 0}, {"q": "What medicine kills bacteria but NOT viruses?", "opts": ["Antibiotics", "Vaccines", "Painkillers", "Antiseptics"], "ans": 0}, {"q": "What is it called when bacteria survive despite antibiotic treatment?", "opts": ["Antibiotic resistance", "Immunity", "Vaccination", "Infection"], "ans": 0}]}, {"t": "memory_match", "pairs": [{"en": "Pathogen", "hi": "रोगजनक"}, {"en": "Immunity", "hi": "प्रतिरक्षा"}, {"en": "Vaccine", "hi": "टीका"}, {"en": "Antibiotic", "hi": "प्रतिजैविक"}, {"en": "Communicable", "hi": "संक्रामक"}, {"en": "Vector", "hi": "वाहक"}, {"en": "Disease", "hi": "रोग"}, {"en": "Symptom", "hi": "लक्षण"}]}, {"t": "complete", "icon": "🏥", "title": "Chapter 3 Complete!", "sub": "Health: The Ultimate Treasure — Mastered!"}];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;this.shuffledOpts=null;
+    if(this._prevSIdx!==this.sIdx){this.solveStepIdx=0;this.solveAnswered=false;this.weStepIdx=0;this._prevSIdx=this.sIdx;}
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"ix_health_triangle":this.renderIxHealthTriangle(step,cb);break;
+      case"ix_disease_spread":this.renderIxDiseaseSpread(step,cb);break;
+      case"ix_pathogens":this.renderIxPathogens(step,cb);break;
+      case"ix_immunity":this.renderIxImmunity(step,cb);break;
+      case"ix_antibiotic":this.renderIxAntibiotic(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  renderIntro:function(step,cb){
+    var introText=step.intro||"Welcome! Let us begin learning.";
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center"><div class="intro-icon">'+step.icon+'</div><div class="intro-title">'+rt(step.title)+'</div><div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(79,70,229,.08)">'+rt(introText)+'</div>'+
+      '<div class="hint">Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var self=this;if(this.weStepIdx===undefined)this.weStepIdx=0;var idx=this.weStepIdx;
+    if(idx>=step.steps.length){cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";return;}
+    var html='<div class="instruction">Worked Example - Step '+(idx+1)+' of '+step.steps.length+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<=idx&&i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";var isCurrent=(i===idx);
+      html+='<div class="we-step'+cls+'"'+(isCurrent?' style="border-left-color:var(--gold);background:linear-gradient(90deg,#fef3c7,#fde68a);animation:slideIn .3s ease"':'')+'><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(idx>=step.steps.length-1&&step.answer){html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;
+    if(idx<step.steps.length-1){cb.textContent="Next Step ("+(idx+2)+" of "+step.steps.length+")";cb.className="btn btn-primary";cb.disabled=false;cb.style.display="";}
+    else{cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";}
+  },
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;var shuffled=step.opts.slice();
+    for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;}
+    self.shuffledOpts=shuffled;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<shuffled.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(shuffled[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opts=this.shuffledOpts||step.opts;var opt=opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">Not quite.</div>';if(opt.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True or False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">\u2713 True</div><div class="tf-opt" id="tfFalse">\u2717 False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(step.explain)mh+='<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step \u2192";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(misc)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">\ud83c\udfc1</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">\ud83e\ude99 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>\u2b50</span><span>\u2b50</span><span>\u2b50</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"\ud83d\udfe5",cost:0},{id:"ocean",name:"Ocean",icon:"\ud83c\udf0a",cost:50},{id:"forest",name:"Forest",icon:"\ud83c\udf32",cost:80},{id:"sunset",name:"Sunset",icon:"\ud83c\udf05",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">\ud83d\uded2 Shop</div><div class="shop-coins">\ud83e\ude99 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">\ud83e\ude99 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">\u2713 Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+
+  /* ===== SCIENCE SIMULATIONS ===== */
+
+  renderIxHealthTriangle:function(step,cb){
+    var sel="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Health Triangle</div><canvas id="htCanvas" width="300" height="260" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn ht-btn" data-part="physical">Physical</button><button class="shape-btn ht-btn" data-part="mental">Mental</button><button class="shape-btn ht-btn" data-part="social">Social</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="htTitle">Tap a pillar to learn more!</div><div class="d-text" id="htInfo">Health has three aspects: Physical, Mental, and Social well-being.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={"physical":{"title":"Physical Health","info":"Taking care of your body: eating nutritious food, exercising regularly, getting enough sleep, and maintaining personal hygiene. Feeling good physically!"},"mental":{"title":"Mental Health","info":"Maintaining a positive mindset, managing stress, staying happy. Practising yoga, meditation, and mindfulness. Feeling good mentally and emotionally!"},"social":{"title":"Social Health","info":"Having strong relationships, enjoying social life, spending time with family and friends. Getting along well with peers and society!"}};
+    function draw(){
+      var c=document.getElementById("htCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,300,260);
+      var cx=150,cy=130,r=90;
+      var pts=[{x:cx,y:cy-r},{x:cx-r*0.87,y:cy+r*0.5},{x:cx+r*0.87,y:cy+r*0.5}];
+      var labels=["Physical","Mental","Social"];
+      var keys=["physical","mental","social"];
+      var colors=["#10b981","#a855f7","#ec4899"];
+      for(var i=0;i<3;i++){
+        ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[(i+1)%3].x,pts[(i+1)%3].y);ctx.lineTo(pts[(i+2)%3].x,pts[(i+2)%3].y);ctx.closePath();
+        ctx.fillStyle=sel===keys[i]?colors[i]+"33":"rgba(99,102,241,0.08)";ctx.fill();
+        ctx.strokeStyle=sel===keys[i]?colors[i]:"#6366f1";ctx.lineWidth=sel===keys[i]?3:2;ctx.stroke();
+      }
+      ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      for(var i=0;i<3;i++){ctx.fillStyle=sel===keys[i]?colors[i]:"#4f46e5";ctx.fillText(labels[i],pts[i].x,pts[i].y+(i===0?-10:20));}
+      ctx.fillStyle="#64748b";ctx.font="8px sans-serif";
+      ctx.fillText("WHO Definition of Health",cx,250);
+    }
+    var btns=document.querySelectorAll(".ht-btn");
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){sel=this.getAttribute("data-part");var p=parts[sel];document.getElementById("htTitle").textContent=p.title;document.getElementById("htInfo").textContent=p.info;for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");draw();});}
+    draw();
+  },
+
+  renderIxDiseaseSpread:function(step,cb){
+    var sel="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Disease Transmission Methods</div><canvas id="dsCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn ds-btn" data-part="air">By Air</button><button class="shape-btn ds-btn" data-part="direct">Direct Contact</button><button class="shape-btn ds-btn" data-part="indirect">Indirect</button><button class="shape-btn ds-btn" data-part="food">Food/Water</button><button class="shape-btn ds-btn" data-part="insect">Insects</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="dsTitle">Tap a method to explore!</div><div class="d-text" id="dsInfo">Diseases spread in different ways. Tap each button to learn how.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={"air":{"title":"By Air","info":"When an infected person coughs or sneezes, pathogens are released into the air. A healthy person breathes them in and gets infected. Examples: common cold, flu, TB, measles."},"direct":{"title":"By Direct Contact","info":"Touching, shaking hands, or close contact with an infected person spreads pathogens. Examples: chickenpox."},"indirect":{"title":"By Indirect Contact","info":"Sharing personal items like towels, handkerchiefs, or utensils of an infected person spreads pathogens indirectly."},"food":{"title":"By Contaminated Food/Water","info":"Consuming food or water that contains pathogens causes disease. Examples: cholera, typhoid, hepatitis A. Always drink boiled water and eat properly cooked food!"},"insect":{"title":"By Insects (Vectors)","info":"Mosquitoes and flies carry pathogens and transmit them through bites. Malaria (protozoa) and dengue (virus) are spread by mosquitoes. Use mosquito nets and repellents!"}};
+    function draw(){
+      var c=document.getElementById("dsCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,300,200);
+      function drawPerson(x,y,color,label){
+        ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y-10,8,0,2*Math.PI);ctx.fill();
+        ctx.fillRect(x-8,y-2,16,25);
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.textAlign="center";ctx.fillText(label,x,y+30);
+      }
+      if(sel==="air"){ctx.fillStyle="#ef4444";ctx.beginPath();ctx.arc(150,60,6,0,2*Math.PI);ctx.fill();ctx.font="bold 9px sans-serif";ctx.fillText("\u26a0",150,50);
+        for(var i=0;i<4;i++){ctx.strokeStyle="rgba(239,68,68,0.4)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(150,60,20+i*12,-0.5,0.5);ctx.stroke();}
+        drawPerson(80,140,"#64748b","Infected");drawPerson(220,140,"#10b981","Healthy");
+      }else if(sel==="direct"){drawPerson(100,120,"#64748b","Person A");drawPerson(200,120,"#10b981","Person B");
+        ctx.strokeStyle="#f59e0b";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(115,120);ctx.lineTo(185,120);ctx.stroke();
+        ctx.fillStyle="#f59e0b";ctx.font="bold 9px sans-serif";ctx.fillText("handshake",150,110);
+      }else if(sel==="indirect"){drawPerson(80,130,"#64748b","Infected");drawPerson(220,130,"#10b981","Healthy");
+        ctx.fillStyle="#a855f7";ctx.fillRect(135,115,30,15);ctx.fillStyle="#fff";ctx.font="bold 7px sans-serif";ctx.fillText("towel",150,126);
+        ctx.strokeStyle="#a855f7";ctx.lineWidth=2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(95,130);ctx.lineTo(135,122);ctx.moveTo(165,122);ctx.lineTo(205,130);ctx.stroke();ctx.setLineDash([]);
+      }else if(sel==="food"){ctx.fillStyle="#4f46e5";ctx.beginPath();ctx.arc(100,80,25,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#fff";ctx.font="bold 8px sans-serif";ctx.fillText("glass",100,84);
+        ctx.fillStyle="#a855f7";ctx.font="bold 9px sans-serif";ctx.fillText("\u26a0 pathogens",100,115);
+        drawPerson(220,100,"#10b981","Healthy");
+        ctx.strokeStyle="#ef4444";ctx.lineWidth=2;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(125,80);ctx.lineTo(200,100);ctx.stroke();ctx.setLineDash([]);
+      }else if(sel==="insect"){ctx.fillStyle="#64748b";ctx.font="bold 12px sans-serif";ctx.fillText("\ud83e\udeb0",150,80);
+        ctx.strokeStyle="#ef4444";ctx.lineWidth=2;ctx.beginPath();ctx.arc(150,75,30,0,2*Math.PI);ctx.stroke();
+        drawPerson(80,140,"#64748b","Infected");drawPerson(220,140,"#10b981","Healthy");
+        ctx.strokeStyle="#a855f7";ctx.lineWidth=1;ctx.setLineDash([2,2]);ctx.beginPath();ctx.moveTo(130,85);ctx.lineTo(90,125);ctx.moveTo(170,85);ctx.lineTo(210,125);ctx.stroke();ctx.setLineDash([]);
+      }
+    }
+    var btns=document.querySelectorAll(".ds-btn");
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){sel=this.getAttribute("data-part");var p=parts[sel];document.getElementById("dsTitle").textContent=p.title;document.getElementById("dsInfo").textContent=p.info;for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");draw();});}
+    draw();
+  },
+
+  renderIxPathogens:function(step,cb){
+    var sel="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Pathogen Gallery</div><canvas id="pgCanvas" width="280" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn pg-btn" data-part="bacteria">Bacteria</button><button class="shape-btn pg-btn" data-part="virus">Viruses</button><button class="shape-btn pg-btn" data-part="fungi">Fungi</button><button class="shape-btn pg-btn" data-part="protozoa">Protozoa</button><button class="shape-btn pg-btn" data-part="worms">Worms</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="pgTitle">Tap a pathogen to explore!</div><div class="d-text" id="pgInfo">Different pathogens cause different diseases. Tap each one to learn more.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={"bacteria":{"title":"Bacteria","info":"Single-celled organisms that are rod-shaped, spherical, spiral, or comma-shaped. They cause diseases like TB, cholera, and typhoid. Antibiotics can kill bacteria!"},"virus":{"title":"Viruses","info":"Microscopic and acellular. They multiply only inside living cells. They cause diseases like common cold, flu, chickenpox, measles, and COVID-19. Antibiotics do NOT work on viruses!"},"fungi":{"title":"Fungi","info":"Can be unicellular (yeast) or multicellular (mould). They have cell walls but no chloroplasts. They cause skin infections and bread mould."},"protozoa":{"title":"Protozoa","info":"Single-celled organisms that move and feed. Amoeba and Paramecium are protozoa. They cause diseases like malaria (spread by mosquitoes)."},"worms":{"title":"Worms","info":"Parasitic worms that live inside the body, especially in the digestive system. They cause diseases like ascariasis (roundworms). Spread through contaminated food, water, and soil."}};
+    function draw(){
+      var c=document.getElementById("pgCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,200);var cx=140,cy=100;
+      if(sel==="bacteria"){ctx.fillStyle="#ef4444";
+        ctx.beginPath();ctx.ellipse(cx-40,cy,20,10,0,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.arc(cx+10,cy-15,12,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.ellipse(cx+50,cy+10,25,8,0.5,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("rod   sphere   spiral",cx,cy+40);
+      }else if(sel==="virus"){ctx.strokeStyle="#a855f7";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(cx,cy-40);ctx.lineTo(cx+35,cy);ctx.lineTo(cx,cy+40);ctx.lineTo(cx-35,cy);ctx.closePath();ctx.stroke();
+        ctx.fillStyle="#a855f7";ctx.beginPath();ctx.arc(cx,cy,12,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("geometric virus",cx,cy+60);
+      }else if(sel==="fungi"){ctx.strokeStyle="#f59e0b";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(cx-50,cy+30);ctx.lineTo(cx-50,cy-30);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(cx,cy+30);ctx.lineTo(cx,cy-30);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(cx+50,cy+30);ctx.lineTo(cx+50,cy-30);ctx.stroke();
+        ctx.fillStyle="#f59e0b";ctx.beginPath();ctx.arc(cx-50,cy-30,6,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.arc(cx,cy-30,6,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.arc(cx+50,cy-30,6,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("branched filaments",cx,cy+55);
+      }else if(sel==="protozoa"){ctx.fillStyle="#10b981";
+        ctx.beginPath();ctx.moveTo(cx,cy-30);ctx.bezierCurveTo(cx+40,cy-20,cx+40,cy+30,cx,cy+30);ctx.bezierCurveTo(cx-40,cy+20,cx-40,cy-30,cx,cy-30);ctx.fill();
+        ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(cx-5,cy,8,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(cx-5,cy,4,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("Amoeba (irregular)",cx,cy+55);
+      }else if(sel==="worms"){ctx.strokeStyle="#8b4513";ctx.lineWidth=8;
+        ctx.beginPath();ctx.moveTo(cx-60,cy);ctx.bezierCurveTo(cx-30,cy-30,cx+10,cy+30,cx+40,cy);ctx.bezierCurveTo(cx+20,cy-20,cx-10,cy+20,cx+60,cy);ctx.stroke();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("roundworm",cx,cy+40);
+      }
+    }
+    var btns=document.querySelectorAll(".pg-btn");
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){sel=this.getAttribute("data-part");var p=parts[sel];document.getElementById("pgTitle").textContent=p.title;document.getElementById("pgInfo").textContent=p.info;for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");draw();});}
+    draw();
+  },
+
+  renderIxImmunity:function(step,cb){
+    var sel="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Immunity & Vaccine Explorer</div><canvas id="imCanvas" width="280" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn im-btn" data-part="natural">Natural Immunity</button><button class="shape-btn im-btn" data-part="vaccine">Vaccine</button><button class="shape-btn im-btn" data-part="how">How Vaccines Work</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="imTitle">Tap a button to explore!</div><div class="d-text" id="imInfo">Immunity is the body\u2019s natural ability to fight diseases. Learn how it works!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={"natural":{"title":"Natural Immunity","info":"Our body has a natural immune system that fights pathogens every day. It is the body\u2019s built-in defence against diseases. Some people get sick more often because their immunity is weaker."},"vaccine":{"title":"Vaccine (Acquired Immunity)","info":"A vaccine trains the immune system to recognise and attack harmful germs. It is made from weakened, dead, or harmless parts of a pathogen. Vaccines are PREVENTIVE \u2014 they work before you get sick, not after."},"how":{"title":"How Vaccines Work","info":"1. A vaccine introduces a harmless version of the pathogen. 2. The immune system learns to recognise it. 3. The body creates \u2018memory cells\u2019. 4. If the real pathogen enters later, the immune system attacks it quickly!"}};
+    function draw(){
+      var c=document.getElementById("imCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,200);var cx=140,cy=100;
+      if(sel==="natural"){ctx.fillStyle="#10b981";
+        ctx.beginPath();ctx.moveTo(cx,cy-60);ctx.lineTo(cx-50,cy+40);ctx.lineTo(cx+50,cy+40);ctx.closePath();ctx.fill();
+        ctx.strokeStyle="#fff";ctx.lineWidth=3;ctx.stroke();
+        ctx.fillStyle="#fff";ctx.font="bold 20px sans-serif";ctx.fillText("\u26a0",cx,cy+15);
+        ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.fillText("Body\u2019s Natural Shield",cx,cy+65);
+      }else if(sel==="vaccine"){ctx.fillStyle="#4f46e5";ctx.fillRect(cx-6,cy-40,12,60);
+        ctx.fillStyle="#a855f7";ctx.beginPath();ctx.moveTo(cx-6,cy-40);ctx.lineTo(cx+6,cy-40);ctx.lineTo(cx,cy-52);ctx.closePath();ctx.fill();
+        ctx.fillStyle="#ef4444";ctx.beginPath();ctx.arc(cx,cy+25,5,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.fillText("Syringe / Vaccine",cx,cy+55);
+      }else if(sel==="how"){ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(cx-60,cy,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#a855f7";ctx.beginPath();ctx.arc(cx,cy,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#f59e0b";ctx.beginPath();ctx.arc(cx+60,cy,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 7px sans-serif";
+        ctx.fillText("Recognise",cx-60,cy+30);ctx.fillText("Learn",cx,cy+30);ctx.fillText("Remember",cx+60,cy+30);
+        ctx.strokeStyle="#64748b";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx-45,cy);ctx.lineTo(cx-15,cy);ctx.moveTo(cx+15,cy);ctx.lineTo(cx+45,cy);ctx.stroke();
+      }
+    }
+    var btns=document.querySelectorAll(".im-btn");
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){sel=this.getAttribute("data-part");var p=parts[sel];document.getElementById("imTitle").textContent=p.title;document.getElementById("imInfo").textContent=p.info;for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");draw();});}
+    draw();
+  },
+
+  renderIxAntibiotic:function(step,cb){
+    var sel="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Antibiotic Resistance Explorer</div><canvas id="abCanvas" width="280" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn ab-btn" data-part="correct">Correct Use</button><button class="shape-btn ab-btn" data-part="misuse">Misuse</button><button class="shape-btn ab-btn" data-part="resistance">Resistance</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="abTitle">Tap a scenario to explore!</div><div class="d-text" id="abInfo">Antibiotics are powerful medicines but must be used correctly. Learn what happens when they are misused.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={"correct":{"title":"Correct Use of Antibiotics","info":"When prescribed by a doctor, in the correct dose, and for the right duration, antibiotics kill bacteria effectively. The infection is cured and no resistance develops."},"misuse":{"title":"Misuse of Antibiotics","info":"Taking antibiotics for viral infections (like cold or flu), not completing the full course, or taking them without a prescription is misuse. Antibiotics do NOT work on viruses! This leads to antibiotic resistance."},"resistance":{"title":"Antibiotic Resistance Develops","info":"When antibiotics are misused, some bacteria survive and develop resistance. These resistant bacteria multiply and spread. Future infections become harder to treat. Always use antibiotics wisely!"}};
+    function draw(){
+      var c=document.getElementById("abCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,200);var cx=140,cy=100;
+      function drawBacteria(x,y,color,alive){ctx.fillStyle=alive?color:"#cbd5e1";ctx.beginPath();ctx.ellipse(x,y,12,7,0,0,2*Math.PI);ctx.fill();}
+      if(sel==="correct"){ctx.fillStyle="#4f46e5";ctx.font="bold 16px sans-serif";ctx.fillText("\ud83d\udc8a",cx,cy);
+        ctx.strokeStyle="#10b981";ctx.lineWidth=2;
+        for(var i=0;i<5;i++){ctx.beginPath();ctx.moveTo(cx+20,cy-20+i*10);ctx.lineTo(cx+40,cy-20+i*10);ctx.stroke();}
+        drawBacteria(cx-60,cy-30,"#ef4444",false);drawBacteria(cx-60,cy,"#ef4444",false);drawBacteria(cx-60,cy+30,"#ef4444",false);
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.fillText("Bacteria killed!",cx-60,cy+55);
+      }else if(sel==="misuse"){ctx.fillStyle="#4f46e5";ctx.font="bold 16px sans-serif";ctx.fillText("\ud83d\udc89",cx,cy);
+        ctx.strokeStyle="#ef4444";ctx.lineWidth=3;ctx.beginPath();ctx.arc(cx,cy,30,0,2*Math.PI);ctx.stroke();ctx.beginPath();ctx.moveTo(cx-20,cy-20);ctx.lineTo(cx+20,cy+20);ctx.stroke();
+        drawBacteria(cx-60,cy-30,"#ef4444",true);drawBacteria(cx-60,cy,"#ef4444",true);drawBacteria(cx-60,cy+30,"#ef4444",true);
+        ctx.fillStyle="#ef4444";ctx.font="bold 8px sans-serif";ctx.fillText("Not working!",cx-60,cy+55);
+      }else if(sel==="resistance"){for(var i=0;i<8;i++){var x=cx-60+(i%4)*40;var y=cy-30+Math.floor(i/4)*60;drawBacteria(x,y,"#ef4444",true);
+        ctx.strokeStyle="#f59e0b";ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,16,0,2*Math.PI);ctx.stroke();}
+        ctx.fillStyle="#ef4444";ctx.font="bold 8px sans-serif";ctx.fillText("Resistant bacteria multiplying!",cx,cy+70);
+      }
+    }
+    var btns=document.querySelectorAll(".ab-btn");
+    for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){sel=this.getAttribute("data-part");var p=parts[sel];document.getElementById("abTitle").textContent=p.title;document.getElementById("abInfo").textContent=p.info;for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");this.classList.add("active");draw();});}
+    draw();
+  }
+};
+
+App.init();
+
+</script>
+</body>
+</html>

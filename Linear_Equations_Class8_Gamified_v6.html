@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#4f46e5">
+<title>Aasha - Linear Equations | Class 8</title>
+<style>
+:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+input[type=range]{width:100%;max-width:300px;accent-color:var(--brand);height:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 2px 6px rgba(79,70,229,.3)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.complete-coins{font-size:2.2rem;font-weight:800;color:var(--gold);text-align:center;margin:10px 0}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(99,102,241,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.real-example{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid var(--bl);border-radius:12px;padding:12px;max-width:400px;margin:8px auto;font-size:.8rem;line-height:1.6;color:#1e3a8a}
+.real-example .re-icon{font-size:1.2rem;margin-right:4px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.sim-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#e2e8f0;margin:0 2px}
+.sim-step-text{font-size:.78rem;font-weight:600;color:var(--brand);text-align:center;padding:8px 12px;background:linear-gradient(135deg,#e0e7ff,#eef2ff);border-radius:8px;margin:6px auto;max-width:380px;min-height:36px}
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY0NmU1IiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">Learn. Play. Grow.</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">C <span id="statCoins">0</span></span><span class="stat xp">XP <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar"><button class="btn-back" id="backBtn" onclick="App.back()">Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#4f46e5"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">Level Up!</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना"
+}
+
+/* CONN: ONLY connecting words — NO math domain terms */
+var CONN={
+"if":"अगर","because":"क्योंकि","therefore":"इसलिए","however":"हालांकि",
+"so that":"ताकि","although":"यद्यपि","since":"चूंकि","then":"तब","when":"जब",
+"while":"जबकि","that is why":"इसीलिए","in other words":"दूसरे शब्दों में",
+"whereas":"जबकि","furthermore":"इसके अलावा","in contrast":"इसके विपरीत",
+"instead of":"के बजाय","due to":"के कारण","for example":"उदाहरण के लिए",
+"is":"है","are":"हैं","was":"था","were":"थे","how":"कैसे","why":"क्यों",
+"what":"क्या","where":"कहाँ","has":"है","have":"हैं","not":"नहीं","also":"भी",
+"must":"ज़रूरी है","should":"चाहिए","can":"सकता है","could":"सकता था",
+"may":"सकता है","might":"शायद","will":"होगा","would":"होगा",
+"does":"करता है","do":"करते हैं","cannot":"नहीं सकता",
+"between":"के बीच","through":"के माध्यम से"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=2){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[{"t":"intro","icon":"\\u2696\\ufe0f","title":"Linear Equations in One Variable","sub":"Class 8 Math - Chapter 2","intro":"Think about it - you go to a shop, buy 3 notebooks, and the total is Rs 90. How much does one notebook cost? That is a linear equation: 3x = 90. Equations are everywhere - calculating ages, splitting bills, measuring distances, finding unknowns. In this chapter, we will learn what linear equations are, how to solve them step by step, and how to use them to solve real-life problems. Let us begin!"},{"t":"tutor","icon":"\\ud83d\\udca1","title":"What is an Equation?","body":"An equation is a statement that two expressions are equal. It always has an equals sign (=). For example, 2x - 3 = 7 is an equation. The left side (2x - 3) is called the LHS (Left Hand Side), and the right side (7) is called the RHS (Right Hand Side). A linear equation in one variable has only one variable (like x), and the highest power of that variable is 1."},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Linear vs Non-Linear","body":"How do you recognize a linear equation? Check the highest power of the variable. If it is 1, it is linear. Examples of linear expressions: 2x, 2x + 1, 3y - 7, 12 - 5z. These are NOT linear: x squared = 9, y + y squared, 1 + z + z squared + z cubed. The key rule: the variable must not be raised to any power greater than 1."},{"t":"formula","title":"Key Terms You Must Know","formulas":[{"label":"Equation","expr":"LHS = RHS (has = sign)","note":"Example: 2x - 3 = 7"},{"label":"Linear Equation","expr":"Highest power of variable = 1","note":"Example: 3x + 2 = 11"},{"label":"LHS","expr":"Left Hand Side expression","note":"In 2x-3=7, LHS = 2x-3"},{"label":"RHS","expr":"Right Hand Side expression","note":"In 2x-3=7, RHS = 7"},{"label":"Solution","expr":"Value of variable making LHS = RHS","note":"x=5 is the solution of 2x-3=7"}]},{"t":"quiz","q":"Quick Check: Which of these is a linear equation in one variable?","diff":"easy","opts":[{"t":"4x + 7 = 15","c":true},{"t":"x squared = 9","c":false,"m":"x squared has power 2. Not linear!","correctMethod":"x squared = 9 is NOT linear because the power of x is 2."},{"t":"x cubed + 1 = 9","c":false,"m":"x cubed has power 3. Not linear!","correctMethod":"x cubed + 1 = 9 has power 3. Not linear."},{"t":"3y + z = 10","c":false,"m":"Two variables (y and z). We need ONE variable only.","correctMethod":"3y + z = 10 has two variables. Not a linear equation in ONE variable."}]},{"t":"real_example","icon":"\\ud83d\\udecd\\ufe0f","title":"Equations in Daily Life","body":"You encounter equations constantly: 'If 3 pens cost Rs 45, how much is one pen?' - 3x = 45. 'Your age plus your sister age is 25, and she is 3 years older' - x + (x+3) = 25. Every time you have an unknown and a condition, you have an equation waiting to be solved!"},{"t":"ix_balance_sim","instruction":"Drag the slider to change x. Watch the balance scale tip! Find the value of x that balances the equation 3x + 2 = 11."},{"t":"tutor","icon":"\\ud83d\\udca1","title":"The Golden Rule of Equations","body":"Here is the most important rule in solving equations: whatever you do to one side, you MUST do to the other side. Think of it as a balance scale - if you add 3 to the left pan, you must add 3 to the right pan too, or the scale tips. This applies to ALL operations: addition, subtraction, multiplication, and division."},{"t":"formula","title":"The Four Balance Operations","formulas":[{"label":"Add","expr":"a + c to both sides","note":"Use to cancel subtraction"},{"label":"Subtract","expr":"a - c from both sides","note":"Use to cancel addition"},{"label":"Multiply","expr":"a x c on both sides","note":"Use to cancel division"},{"label":"Divide","expr":"a / c on both sides","note":"Use to cancel multiplication"}]},{"t":"quiz","q":"Quick Check: To solve 5x = 35, what do you do to both sides?","diff":"easy","opts":[{"t":"Divide by 5","c":true},{"t":"Add 5","c":false,"m":"Adding 5 would give 5x + 5 = 40. Divide by 5 to get x alone.","correctMethod":"Divide both sides by 5: x = 35/5 = 7."},{"t":"Subtract 5","c":false,"m":"Subtracting 5 gives 5x - 5 = 30. Divide by 5.","correctMethod":"Divide both sides by 5."},{"t":"Multiply by 5","c":false,"m":"Multiplying by 5 gives 25x = 175. Divide by 5.","correctMethod":"Divide both sides by 5: x = 7."}]},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Transposing - A Shortcut","body":"Instead of saying subtract 9 from both sides, we can simply move a number from one side to the other by changing its sign. This is called transposing. If we have 2y + 9 = 4, we transpose +9 to the RHS: 2y = 4 - 9 = -5. Positive becomes negative, negative becomes positive."},{"t":"we","q":"Example 1: Solve 2x - 3 = 7","steps":[{"text":"Add 3 to both sides (to cancel the -3). 2x - 3 + 3 = 7 + 3. This gives 2x = 10."},{"text":"Divide both sides by 2 (to get x alone). 2x/2 = 10/2."},{"text":"x = 5. Check: LHS = 2(5) - 3 = 10 - 3 = 7 = RHS. Correct!"}],"answer":"x = 5"},{"t":"we","q":"Example 2: Solve 2y + 9 = 4","steps":[{"text":"Transpose 9 to RHS (change +9 to -9). 2y = 4 - 9 = -5."},{"text":"Divide both sides by 2. y = -5/2."},{"text":"Check: LHS = 2(-5/2) + 9 = -5 + 9 = 4 = RHS. Correct! Note: the solution is a rational number."}],"answer":"y = -5/2"},{"t":"quiz","q":"Quick Check: In 4p - 7 = 9, after transposing -7, what do you get?","diff":"easy","opts":[{"t":"4p = 9 + 7 = 16","c":true},{"t":"4p = 9 - 7 = 2","c":false,"m":"Transposing -7 means moving it and changing sign. -7 becomes +7.","correctMethod":"Transpose -7 as +7: 4p = 9 + 7 = 16."},{"t":"4p = 9 x 7 = 63","c":false,"m":"Transposing is not multiplication.","correctMethod":"4p = 9 + 7 = 16."},{"t":"4p = 9 / 7","c":false,"m":"Transposing is not division.","correctMethod":"4p = 9 + 7 = 16."}]},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Solutions Can Be Rational!","body":"Notice: in Example 2, the solution y = -5/2 is a rational number. In Class 7, all your equations had integer solutions. Now in Class 8, solutions can be fractions, negatives, decimals. This is why we studied rational numbers in Chapter 1 first!"},{"t":"we","q":"Example 4: Solve 15/4 - 7x = 9","steps":[{"text":"Transpose 15/4 to RHS. -7x = 9 - 15/4 = 36/4 - 15/4 = 21/4."},{"text":"Divide both sides by -7. x = (21/4) / (-7) = 21/4 x (-1/7) = -3/4."},{"text":"Check: LHS = 15/4 - 7(-3/4) = 15/4 + 21/4 = 36/4 = 9 = RHS. Correct!"}],"answer":"x = -3/4"},{"t":"text","title":"Exercise 2.1","body":"Now try these on your own! Each is a DIFFERENT question from the examples above."},{"t":"solve","q":"Ex 2.1 Q1: Solve x - 2 = 7","steps":[{"type":"input","prompt":"Add 2 to both sides. x = 7 + ? ","answer":"2","m":"Add 2 to both sides: x = 7 + 2.","correctMethod":"x = 7 + 2 = 9"}]},{"t":"solve","q":"Ex 2.1 Q5: Solve 6x = 12","steps":[{"type":"input","prompt":"Divide both sides by 6. x = 12 / ? ","answer":"6","m":"x = 12/6.","correctMethod":"x = 12/6 = 2"}]},{"t":"solve","q":"Ex 2.1 Q9: Solve 7x - 9 = 16","steps":[{"type":"input","prompt":"Add 9 to both sides. 7x = 16 + ? ","answer":"9","m":"7x = 16 + 9 = 25.","correctMethod":"7x = 25"},{"type":"input","prompt":"Divide both sides by 7. x = ?/7","answer":"25","m":"x = 25/7.","correctMethod":"x = 25/7"}]},{"t":"solve","q":"Ex 2.1 Q10: Solve 14y - 8 = 13","steps":[{"type":"input","prompt":"Add 8 to both sides. 14y = 13 + ? ","answer":"8","m":"14y = 13 + 8 = 21.","correctMethod":"14y = 21"},{"type":"input","prompt":"Divide by 14. y = 21/? ","answer":"14","m":"y = 21/14 = 3/2.","correctMethod":"y = 3/2"}]},{"t":"solve","q":"Ex 2.1 Q11: Solve 17 + 6p = 9","steps":[{"type":"input","prompt":"Transpose 17. 6p = 9 - ? ","answer":"17","m":"6p = 9 - 17 = -8.","correctMethod":"6p = -8"},{"type":"input","prompt":"Divide by 6. p = ?/6","answer":"-8","m":"p = -8/6 = -4/3.","correctMethod":"p = -4/3"}]},{"t":"milestone","icon":"\\ud83c\\udfc6","title":"Basic Equations Mastered!","xp":50,"next":"Now: Real-life word problems!"},{"t":"tutor","icon":"\\ud83d\\udca1","title":"How to Turn Words Into Equations","body":"Word problems seem scary, but there is a method: Step 1: Read carefully. Identify what is unknown. Step 2: Let the unknown be x. Step 3: Express all other quantities in terms of x. Step 4: Use the given condition to form an equation. Step 5: Solve. Step 6: Check your answer makes sense."},{"t":"ix_word_problem_sim","instruction":"Tap Next to see how a real-life word problem becomes an equation, step by step!"},{"t":"we","q":"Example 7: Sahil's mother is 3 times Sahil's age. After 5 years, sum of ages = 66. Find their ages.","steps":[{"text":"Let Sahil's present age = x. Mother's age = 3x."},{"text":"After 5 years: Sahil = x + 5, Mother = 3x + 5. Sum = (x+5) + (3x+5) = 4x + 10."},{"text":"Equation: 4x + 10 = 66. Transpose 10: 4x = 56."},{"text":"Divide by 4: x = 14. Sahil is 14, mother is 42. Check: in 5 years: 19+47 = 66. Correct!"}],"answer":"Sahil = 14 years, Mother = 42 years"},{"t":"we","q":"Example 8: Bansi has 3 times as many Rs 2 coins as Rs 5 coins. Total = Rs 77. How many of each?","steps":[{"text":"Let number of Rs 5 coins = x. Then Rs 2 coins = 3x."},{"text":"Money from Rs 5 coins = 5x. Money from Rs 2 coins = 2(3x) = 6x. Total = 5x + 6x = 11x."},{"text":"Equation: 11x = 77. So x = 7."},{"text":"Rs 5 coins = 7, Rs 2 coins = 21. Check: 7x5 + 21x2 = 35 + 42 = 77. Correct!"}],"answer":"7 coins of Rs 5, 21 coins of Rs 2"},{"t":"we","q":"Example 9: Sum of 3 consecutive multiples of 11 is 363. Find them.","steps":[{"text":"Let the three multiples be x, x+11, x+22."},{"text":"Sum: x + (x+11) + (x+22) = 3x + 33 = 363."},{"text":"3x = 363 - 33 = 330. x = 110."},{"text":"The three multiples are 110, 121, 132. Check: 110+121+132 = 363. Correct!"}],"answer":"110, 121, 132"},{"t":"quiz","q":"Quick Check: Two numbers are in ratio 4:7. How do you represent them?","diff":"easy","opts":[{"t":"4x and 7x","c":true},{"t":"4 and 7","c":false,"m":"Just 4 and 7 are the ratio, not the actual numbers. Use 4x and 7x.","correctMethod":"4x and 7x - this keeps the ratio 4:7."},{"t":"x/4 and x/7","c":false,"m":"This does not give ratio 4:7. Use 4x and 7x.","correctMethod":"4x and 7x."},{"t":"x+4 and x+7","c":false,"m":"This does not preserve the ratio.","correctMethod":"4x and 7x."}]},{"t":"text","title":"Exercise 2.2","body":"Now solve these word problems on your own - each is different from the examples above!"},{"t":"solve","q":"Ex 2.2 Q4: Sum of two numbers is 95. One exceeds the other by 15. Find them.","steps":[{"type":"input","prompt":"Let smaller number = x. Larger = x + ? ","answer":"15","m":"Larger = x + 15.","correctMethod":"x + 15"},{"type":"input","prompt":"Sum: x + (x+15) = 2x + 15 = 95. So 2x = ? ","answer":"80","m":"2x = 95 - 15 = 80.","correctMethod":"2x = 80"},{"type":"input","prompt":"x = ? (smaller number)","answer":"40","m":"x = 40. Larger = 55.","correctMethod":"Smaller = 40, Larger = 55"}]},{"t":"solve","q":"Ex 2.2 Q5: Two numbers in ratio 5:3 differ by 18. Find them.","steps":[{"type":"input","prompt":"Let numbers be 5x and 3x. Difference: 5x - 3x = ? x","answer":"2","m":"5x - 3x = 2x = 18.","correctMethod":"2x = 18"},{"type":"input","prompt":"x = ? ","answer":"9","m":"x = 9. Numbers: 5x=45, 3x=27.","correctMethod":"x = 9, numbers are 45 and 27"}]},{"t":"solve","q":"Ex 2.2 Q6: Three consecutive integers add to 51. Find them.","steps":[{"type":"input","prompt":"Let integers be x, x+1, x+2. Sum = 3x + ? = 51","answer":"3","m":"Sum = 3x + 3 = 51.","correctMethod":"3x + 3 = 51"},{"type":"input","prompt":"3x = 51 - 3 = ? ","answer":"48","m":"3x = 48.","correctMethod":"3x = 48"},{"type":"input","prompt":"x = ? ","answer":"16","m":"x = 16. Numbers: 16, 17, 18.","correctMethod":"16, 17, 18"}]},{"t":"solve","q":"Ex 2.2 Q7: Sum of 3 consecutive multiples of 8 is 888. Find them.","steps":[{"type":"input","prompt":"Let multiples be x, x+8, x+16. Sum = 3x + ? = 888","answer":"24","m":"Sum = 3x + 24 = 888.","correctMethod":"3x + 24 = 888"},{"type":"input","prompt":"3x = 888 - 24 = ? ","answer":"864","m":"3x = 864.","correctMethod":"3x = 864"},{"type":"input","prompt":"x = ? ","answer":"288","m":"x = 288. Multiples: 288, 296, 304.","correctMethod":"288, 296, 304"}]},{"t":"solve","q":"Ex 2.2 Q12: Fifteen years from now, Ravi's age will be 4 times his present age. Find Ravi's present age.","steps":[{"type":"input","prompt":"Let present age = x. After 15 years: x + 15 = ? x","answer":"4","m":"x + 15 = 4x.","correctMethod":"x + 15 = 4x"},{"type":"input","prompt":"4x - x = ? ","answer":"15","m":"3x = 15. x = 5.","correctMethod":"3x = 15, x = 5"}]},{"t":"milestone","icon":"\\u2b50","title":"Word Problems Mastered!","xp":60,"next":"Now: Variable on both sides!"},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Variable on Both Sides","body":"Sometimes the variable appears on BOTH sides of the equation, like 2x - 3 = x + 2. The strategy: collect all x terms on one side and all numbers on the other. Transpose x from RHS to LHS (it becomes -x). So 2x - x - 3 = 2, which gives x - 3 = 2, so x = 5."},{"t":"we","q":"Example 12: Solve 2x - 3 = x + 2","steps":[{"text":"Transpose x from RHS to LHS (subtract x from both sides). 2x - x - 3 = 2."},{"text":"Simplify: x - 3 = 2."},{"text":"Add 3 to both sides: x = 5. Check: 2(5)-3 = 7 = 5+2. Correct!"}],"answer":"x = 5"},{"t":"quiz","q":"Quick Check: In 6y + 4 = 2y + 12, what is the first step?","diff":"medium","opts":[{"t":"Transpose 2y to LHS: 6y - 2y + 4 = 12","c":true},{"t":"Transpose 6y to RHS: 4 = 2y - 6y + 12","c":false,"m":"Standard approach is to bring y terms to LHS.","correctMethod":"Bring 2y to LHS: 6y - 2y + 4 = 12. Then 4y + 4 = 12."},{"t":"Divide by 6","c":false,"m":"First collect y terms on one side.","correctMethod":"Transpose 2y to LHS first."},{"t":"Add 12 to both sides","c":false,"m":"12 is on the RHS already. Transpose 2y to LHS.","correctMethod":"Transpose 2y to LHS."}]},{"t":"we","q":"Example 13: Solve 5x + 7/2 = 3x - 14/2","steps":[{"text":"Multiply both sides by 2 to clear fractions: 10x + 7 = 6x - 14."},{"text":"Transpose: 10x - 6x = -14 - 7. 4x = -21."},{"text":"Divide by 4: x = -21/4."}],"answer":"x = -21/4"},{"t":"text","title":"Exercise 2.3","body":"Variable on both sides - solve each step by step!"},{"t":"solve","q":"Ex 2.3 Q1: Solve 3x = 2x + 18","steps":[{"type":"input","prompt":"Subtract 2x from both sides. 3x - 2x = ? ","answer":"18","m":"x = 18.","correctMethod":"x = 18"}]},{"t":"solve","q":"Ex 2.3 Q5: Solve 2x - 1 = 14 - x","steps":[{"type":"input","prompt":"Add x to both sides. 2x + x - 1 = ? ","answer":"14","m":"3x - 1 = 14.","correctMethod":"3x - 1 = 14"},{"type":"input","prompt":"Add 1. 3x = ? ","answer":"15","m":"3x = 15. x = 5.","correctMethod":"3x = 15, x = 5"}]},{"t":"solve","q":"Ex 2.3 Q6: Solve 8x + 4 = 3(x-1) + 7","steps":[{"type":"input","prompt":"Expand RHS: 3(x-1) + 7 = 3x - 3 + 7 = 3x + ? ","answer":"4","m":"3x - 3 + 7 = 3x + 4.","correctMethod":"3x + 4"},{"type":"input","prompt":"So 8x + 4 = 3x + 4. Subtract 3x: 5x + 4 = ? ","answer":"4","m":"5x + 4 = 4. So 5x = 0. x = 0.","correctMethod":"5x = 0, x = 0"}]},{"t":"milestone","icon":"\\u2696\\ufe0f","title":"Both Sides Mastered!","xp":50,"next":"Now: Reducing to simpler form!"},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Reducing Equations to Simpler Form","body":"Some equations look complicated because they have fractions. The trick: multiply BOTH sides by the LCM of all denominators. This clears all fractions in one step. Then expand brackets, collect like terms, and solve normally."},{"t":"formula","title":"Reduction Strategy","formulas":[{"label":"Step 1","expr":"Find LCM of all denominators","note":"LCM of 3 and 6 is 6"},{"label":"Step 2","expr":"Multiply both sides by LCM","note":"Clears all fractions"},{"label":"Step 3","expr":"Open brackets and simplify","note":"Expand and collect like terms"},{"label":"Step 4","expr":"Solve the resulting linear equation","note":"Transpose and divide"}]},{"t":"we","q":"Example 16: Solve (6x+1)/3 + 1 = (x-3)/6","steps":[{"text":"Multiply both sides by 6 (LCM of 3 and 6): 2(6x+1) + 6 = x - 3."},{"text":"Expand: 12x + 2 + 6 = x - 3. So 12x + 8 = x - 3."},{"text":"Transpose: 12x - x = -3 - 8. 11x = -11."},{"text":"x = -1. Check: LHS = (-6+1)/3 + 1 = -5/3 + 1 = -2/3. RHS = (-1-3)/6 = -4/6 = -2/3. Correct!"}],"answer":"x = -1"},{"t":"quiz","q":"Quick Check: To clear fractions in x/5 + 1/4 = 1/2, multiply both sides by?","diff":"medium","opts":[{"t":"20 (LCM of 5, 4, 2)","c":true},{"t":"5","c":false,"m":"Multiplying by 5 only clears the first fraction. LCM of 5, 4, 2 is 20.","correctMethod":"LCM of 5, 4, 2 is 20. Multiply both sides by 20."},{"t":"10","c":false,"m":"LCM of 5, 4, 2 is 20, not 10.","correctMethod":"20 is the LCM."},{"t":"2","c":false,"m":"Multiplying by 2 only clears the last fraction. LCM is 20.","correctMethod":"20 is the LCM."}]},{"t":"text","title":"Exercise 2.5","body":"Reduce and solve these equations - different from the example above!"},{"t":"we","q":"Ex 2.5 Q7: Solve 3(t-3) = 5(2t+1)","steps":[{"text":"Expand both sides: 3t - 9 = 10t + 5."},{"text":"Transpose: 3t - 10t = 5 + 9. -7t = 14."},{"text":"Divide by -7: t = -2."}],"answer":"t = -2"},{"t":"solve","q":"Ex 2.5 Q8: Solve 15(y-4) - 2(y-9) + 5(y+6) = 0","steps":[{"type":"input","prompt":"Expand: 15y - 60 - 2y + 18 + 5y + ? = 0","answer":"30","m":"15y - 60 - 2y + 18 + 5y + 30 = 0.","correctMethod":"15y - 60 - 2y + 18 + 5y + 30 = 0"},{"type":"input","prompt":"Combine like terms: (15-2+5)y + (-60+18+30) = ?y - 12","answer":"18","m":"18y - 12 = 0.","correctMethod":"18y - 12 = 0"},{"type":"input","prompt":"18y = 12. y = ?/18 = 2/3","answer":"12","m":"y = 12/18 = 2/3.","correctMethod":"y = 2/3"}]},{"t":"milestone","icon":"\\ud83d\\udd27","title":"Simplification Mastered!","xp":50,"next":"Now: Equations reducible to linear form!"},{"t":"tutor","icon":"\\ud83d\\udca1","title":"Equations Reducible to Linear Form","body":"Some equations have x in both numerator and denominator, like (x+1)/(2x+3) = 3/8. But we can make them linear using cross-multiplication! If a/b = c/d, then a x d = b x c. So (x+1)/(2x+3) = 3/8 becomes 8(x+1) = 3(2x+3). Now it is a regular linear equation!"},{"t":"formula","title":"Cross-Multiplication Rule","formulas":[{"label":"If a/b = c/d","expr":"then a x d = b x c","note":"Multiply numerator of one with denominator of other"},{"label":"Example","expr":"(x+1)/(2x+3) = 3/8 becomes 8(x+1) = 3(2x+3)","note":"Now expand and solve as linear equation"}]},{"t":"we","q":"Example 18: Solve (x+1)/(2x+3) = 3/8","steps":[{"text":"Cross-multiply: 8(x+1) = 3(2x+3)."},{"text":"Expand: 8x + 8 = 6x + 9."},{"text":"Transpose: 8x - 6x = 9 - 8. 2x = 1."},{"text":"x = 1/2. Check: (1/2+1)/(2(1/2)+3) = (3/2)/4 = 3/8. Correct!"}],"answer":"x = 1/2"},{"t":"we","q":"Example 19: Ages of Anu and Raj are in ratio 4:5. After 8 years, ratio becomes 5:6. Find present ages.","steps":[{"text":"Let present ages be 4x and 5x. After 8 years: (4x+8) and (5x+8)."},{"text":"Ratio equation: (4x+8)/(5x+8) = 5/6. Cross-multiply: 6(4x+8) = 5(5x+8)."},{"text":"Expand: 24x + 48 = 25x + 40. Transpose: 48 - 40 = 25x - 24x. 8 = x."},{"text":"Anu = 4(8) = 32 years. Raj = 5(8) = 40 years."}],"answer":"Anu = 32 years, Raj = 40 years"},{"t":"quiz","q":"Quick Check: Cross-multiply (3y-2)/5 = (y+6)/4. What do you get?","diff":"medium","opts":[{"t":"4(3y-2) = 5(y+6)","c":true},{"t":"5(3y-2) = 4(y+6)","c":false,"m":"Cross-multiply: numerator of left x denominator of right = denominator of left x numerator of right. So 4(3y-2) = 5(y+6).","correctMethod":"4(3y-2) = 5(y+6)."},{"t":"5(y+6) = 4(3y-2)","c":false,"m":"That is backwards. Correct: 4(3y-2) = 5(y+6).","correctMethod":"4(3y-2) = 5(y+6)."},{"t":"3y-2 = 5(y+6)/4","c":false,"m":"That is not cross-multiplication.","correctMethod":"4(3y-2) = 5(y+6)."}]},{"t":"text","title":"Exercise 2.6","body":"Cross-multiplication equations - solve each step by step!"},{"t":"solve","q":"Ex 2.6 Q1: Solve (8x-3)/3x = 2","steps":[{"type":"input","prompt":"Cross-multiply: 8x - 3 = ? x 3x","answer":"2","m":"8x - 3 = 2(3x) = 6x.","correctMethod":"8x - 3 = 6x"},{"type":"input","prompt":"8x - 6x = ? ","answer":"3","m":"2x = 3. x = 3/2.","correctMethod":"2x = 3, x = 3/2"}]},{"t":"solve","q":"Ex 2.6 Q3: Solve 4z/(z+15) = 4/9","steps":[{"type":"input","prompt":"Cross-multiply: ? z x 9 = 4(z+15)","answer":"4","m":"9(4z) = 4(z+15).","correctMethod":"9(4z) = 4(z+15)"},{"type":"input","prompt":"36z = 4z + ? ","answer":"60","m":"36z = 4z + 60. 32z = 60. z = 60/32 = 15/8.","correctMethod":"32z = 60, z = 15/8"}]},{"t":"solve","q":"Ex 2.6 Q7: Denominator is 8 more than numerator. Numerator+17, denominator-1 gives 3/2. Find the number.","steps":[{"type":"input","prompt":"Let numerator = x. Denominator = x + ? ","answer":"8","m":"Denominator = x + 8.","correctMethod":"x + 8"},{"type":"input","prompt":"New fraction: (x+17)/(x+8-1) = (x+17)/(x+?) = 3/2","answer":"7","m":"(x+17)/(x+7) = 3/2.","correctMethod":"(x+17)/(x+7) = 3/2"},{"type":"input","prompt":"Cross-multiply: 2(x+17) = 3(x+?). So 2x+34 = 3x+?","answer":"21","m":"2x+34 = 3x+21. x = 13.","correctMethod":"x = 13, rational number = 13/21"}]},{"t":"milestone","icon":"\\ud83c\\udf93","title":"Full Chapter Mastered!","xp":80,"next":"Final assessment - Rapid Fire and Memory Match!"},{"t":"rapid_fire","qs":[{"q":"An equation must have an...","opts":["= sign","+ sign","x sign","No sign"],"ans":0},{"q":"In 2x-3=7, what is the LHS?","opts":["2x-3","7","2x","-3"],"ans":0},{"q":"Solve: x + 5 = 12","opts":["7","17","5","12"],"ans":0},{"q":"Solve: 3x = 21","opts":["7","21","3","63"],"ans":0},{"q":"If 2x-3=x+2, then x=?","opts":["5","2","3","7"],"ans":0},{"q":"Cross-multiply: a/b = c/d gives","opts":["ad=bc","ab=cd","a+b=c+d","a/b=c/d"],"ans":0},{"q":"Solve: 2(x+1)=8","opts":["3","4","7","2"],"ans":0},{"q":"Ratio 2:3, difference=10, numbers?","opts":["20,30","10,20","2,12","5,15"],"ans":0}]},{"t":"memory_match","pairs":[{"en":"Equation","hi":"\\u0938\\u092e\\u0940\\u0915\\u0930\\u0923"},{"en":"Variable","hi":"\\u091a\\u0930"},{"en":"Solution","hi":"\\u0939\\u0932"},{"en":"Transpose","hi":"\\u092a\\u0915\\u094d\\u0937\\u093e\\u0902\\u0924\\u0930\\u0923"},{"en":"Linear","hi":"\\u0930\\u0948\\u0916\\u093f\\u0915"},{"en":"Cross-multiply","hi":"\\u0935\\u091c\\u094d\\u0930 \\u0917\\u0941\\u0923\\u0928"},{"en":"Balance","hi":"\\u0938\\u0902\\u0924\\u0941\\u0932\\u0928"},{"en":"Coefficient","hi":"\\u0917\\u0941\\u0923\\u093e\\u0902\\u0915"}]},{"t":"complete","icon":"\\u2696\\ufe0f","title":"Chapter 2 Complete!","sub":"Linear Equations - Mastered! Class 8"}];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;
+        if(self.weStepIdx>=step.steps.length){
+          self.weStepIdx=0;
+          self.next();
+          return;
+        }
+        self.render();
+        return;
+      }
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    /* CRITICAL FIX: Always reset button */
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;this.shuffledOpts=null;
+    if(this._prevSIdx!==this.sIdx){this.solveStepIdx=0;this.solveAnswered=false;this.weStepIdx=0;this._prevSIdx=this.sIdx;}
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"ix_numbersets":this.renderIxNumberSets(step,cb);break;
+      case"ix_numberline":this.renderIxNumberLine(step,cb);break;
+      case"ix_properties":this.renderIxProperties(step,cb);break;
+      case"ix_reciprocal":this.renderIxReciprocal(step,cb);break;
+      case"ix_between":this.renderIxBetween(step,cb);break;
+      case"discovery":this.renderDiscovery(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  /* ===== SIMPLE STEPS (Continue always enabled) ===== */
+  renderIntro:function(step,cb){
+    var introText=step.intro||"Welcome! Let us begin learning.";
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center">'+
+      '<div class="intro-icon">'+step.icon+'</div>'+
+      '<div class="intro-title">'+rt(step.title)+'</div>'+
+      '<div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(79,70,229,.08)">'+rt(introText)+'</div>'+
+      '<div class="hint">Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderDiscovery:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="discovery-box"><div class="d-title">'+rt(step.discoveryTitle)+'</div><div class="d-text">'+rt(step.body)+'</div></div>'+
+      (step.prop?'<div class="prop-box" style="max-width:400px;margin:0 auto">'+rt(step.prop)+'</div>':'');
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var self=this;
+    if(this.weStepIdx===undefined)this.weStepIdx=0;
+    var idx=this.weStepIdx;
+    if(idx>=step.steps.length){
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";
+      return;
+    }
+    var html='<div class="instruction">Worked Example - Step '+(idx+1)+' of '+step.steps.length+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<=idx&&i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";
+      var isCurrent=(i===idx);
+      html+='<div class="we-step'+cls+'"'+(isCurrent?' style="border-left-color:var(--gold);background:linear-gradient(90deg,#fef3c7,#fde68a);animation:slideIn .3s ease"':'')+'><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(idx>=step.steps.length-1&&step.answer){
+      html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';
+    }
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    if(idx<step.steps.length-1){
+      cb.textContent="Next Step ("+(idx+2)+" of "+step.steps.length+")";
+      cb.className="btn btn-primary";cb.disabled=false;cb.style.display="";
+    }else{
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";
+    }
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">🪙 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>⭐</span><span>⭐</span><span>⭐</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  /* ===== INTERACTIVE SIMULATIONS ===== */
+  renderIxNumberSets:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Numbers ka Family</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="nsCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="ns-badge ns-natural" id="nsNatural">🌱 Natural: 1,2,3...</span>'+
+      '<span class="ns-badge ns-whole" id="nsWhole">🌿 Whole: 0,1,2...</span>'+
+      '<span class="ns-badge ns-integer" id="nsInteger">🍂 Integer: ...-2,-1,0...</span>'+
+      '<span class="ns-badge ns-rational" id="nsRational">🔢 Rational: p/q</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="nsDisc"><div class="d-title" id="nsTitle">Badge dabao!</div>'+
+      '<div class="d-text" id="nsInfo">Har badge tap karke dekho kaun se numbers kahan aate hain.</div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nsCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var active="none";
+    function draw(){
+      ctx.clearRect(0,0,300,200);
+      var sets=[
+        {key:"rational",x:150,y:100,rx:130,ry:80,fill:"rgba(168,85,247,0.08)",border:"#a855f7",label:"Rational",lx:10,ly:15,color:"#6b21a8"},
+        {key:"integer",x:150,y:100,rx:95,ry:62,fill:"rgba(245,158,11,0.1)",border:"#f59e0b",label:"Integer",lx:90,ly:50,color:"#92400e"},
+        {key:"whole",x:150,y:100,rx:60,ry:42,fill:"rgba(59,130,246,0.12)",border:"#3b82f6",label:"Whole",lx:120,ly:72,color:"#1e40af"},
+        {key:"natural",x:150,y:100,rx:32,ry:24,fill:"rgba(16,185,129,0.15)",border:"#10b981",label:"Natural",lx:125,ly:103,color:"#065f46"}
+      ];
+      for(var i=0;i<sets.length;i++){
+        var s=sets[i];
+        ctx.fillStyle=active===s.key?s.fill.replace("0.08","0.25").replace("0.1","0.3").replace("0.12","0.35").replace("0.15","0.4"):s.fill;
+        ctx.beginPath();ctx.ellipse(s.x,s.y,s.rx,s.ry,0,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle=s.border;ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle=s.color;ctx.font="bold 10px sans-serif";ctx.fillText(s.label,s.lx,s.ly);
+      }
+    }
+    var info={
+      natural:{title:"Natural Numbers",info:"1, 2, 3, 4, 5... Yeh counting numbers hain. Sabse chhota set. Sab natural numbers bhi whole, integer aur rational hain."},
+      whole:{title:"Whole Numbers",info:"0, 1, 2, 3, 4... Natural numbers + zero. Har whole number integer aur rational bhi hai."},
+      integer:{title:"Integers",info:"...-3, -2, -1, 0, 1, 2, 3... Negative numbers bhi shamil. Har integer rational hai (-3 = -3/1)."},
+      rational:{title:"Rational Numbers",info:"Sab p/q wale numbers. Sabse bada set! Natural, whole, integer sab iske andar. Plus fractions jaise 1/2, -3/4, etc."}
+    };
+    function setBadge(id,key){
+      var badges=["nsNatural","nsWhole","nsInteger","nsRational"];
+      for(var i=0;i<badges.length;i++){var b=document.getElementById(badges[i]);if(b)b.classList.remove("active");}
+      var el=document.getElementById(id);if(el)el.classList.add("active");
+      active=key;draw();
+      document.getElementById("nsTitle").textContent=info[key].title;
+      document.getElementById("nsInfo").textContent=info[key].info;
+    }
+    document.getElementById("nsNatural").addEventListener("click",function(){setBadge("nsNatural","natural");});
+    document.getElementById("nsWhole").addEventListener("click",function(){setBadge("nsWhole","whole");});
+    document.getElementById("nsInteger").addEventListener("click",function(){setBadge("nsInteger","integer");});
+    document.getElementById("nsRational").addEventListener("click",function(){setBadge("nsRational","rational");});
+    draw();
+  },
+  renderIxNumberLine:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Number Line Explorer</div>'+
+      '<canvas id="nlCanvas" width="360" height="200" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:0 auto"></canvas>'+
+      '<div style="margin-top:10px">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Numerator (p): <span id="nlNum" style="color:var(--pi);font-size:1.1rem">1</span></label>'+
+      '<input type="range" id="slNum" min="-12" max="12" step="1" value="1">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Denominator (q): <span id="nlDen" style="color:var(--pi);font-size:1.1rem">2</span></label>'+
+      '<input type="range" id="slDen" min="1" max="12" step="1" value="2"></div>'+
+      '<div class="discovery-box" style="margin-top:8px"><div class="d-title">Tumhara Rational Number</div><div class="d-text" id="nlInfo">p/q = 1/2 = 0.50</div></div>'+
+      '<div class="interactive-hint">👆 Drag sliders!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nlCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      var num=parseInt(document.getElementById("slNum").value);
+      var den=parseInt(document.getElementById("slDen").value);
+      document.getElementById("nlNum").textContent=num;document.getElementById("nlDen").textContent=den;
+      var val=num/den;ctx.clearRect(0,0,360,200);
+      var cy=110;var range=5;var scale=320/(2*range);
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-25);ctx.lineTo(x,cy+25);ctx.stroke();}
+      ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(20,cy);ctx.lineTo(340,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(340,cy);ctx.lineTo(333,cy-5);ctx.lineTo(333,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+      ctx.fillStyle="#475569";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-6);ctx.lineTo(x,cy+6);ctx.stroke();ctx.fillText(i,x,cy+22);}
+      if(den>0&&den<=12){ctx.strokeStyle="#c4b5fd";ctx.lineWidth=1;for(var i=-range;i<=range;i++){for(var j=1;j<den;j++){var xj=180+(i+j/den)*scale;if(xj>=20&&xj<=340){ctx.beginPath();ctx.moveTo(xj,cy-3);ctx.lineTo(xj,cy+3);ctx.stroke();}}}}
+      var px=180+val*scale;
+      if(px>=10&&px<=350){
+        var g=ctx.createRadialGradient(px,cy,2,px,cy,15);g.addColorStop(0,"rgba(124,58,237,0.4)");g.addColorStop(1,"rgba(124,58,237,0)");
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,cy,15,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#7c3aed";ctx.beginPath();ctx.arc(px,cy,8,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText(num+"/"+den,px,cy-18);
+      }
+      var info="p/q = "+num+"/"+den;if(den!==0){var dec=(num/den).toFixed(4);info+=" = "+dec;if(num===0)info+=" — Zero!";else if(Math.abs(num)===Math.abs(den))info+=" — Integer: "+(num/den);}
+      document.getElementById("nlInfo").innerHTML=info;
+    }
+    document.getElementById("slNum").addEventListener("input",draw);
+    document.getElementById("slDen").addEventListener("input",draw);
+    draw();
+  },
+  renderIxProperties:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Properties Table</div>'+
+      '<table class="prop-table"><tr><th>Operation</th><th>Closed?</th><th>Commutative?</th><th>Associative?</th></tr>'+
+      '<tr id="opAdd"><td><b>Addition (+)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opSub"><td><b>Subtraction (−)</b></td><td class="yes">✓ Yes</td><td class="no">✗ No</td><td class="no">✗ No</td></tr>'+
+      '<tr id="opMul"><td><b>Multiplication (×)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opDiv"><td><b>Division (÷)</b></td><td class="no">✗ No*</td><td class="no">✗ No</td><td class="no">✗ No</td></tr></table>'+
+      '<div class="prop-box" style="max-width:400px;margin:8px auto">* Zero se divide nahi hota. Zero exclude karke division closed hai.</div>'+
+      '<div class="discovery-box" id="propDisc" style="margin-top:8px"><div class="d-title" id="propTitle">Row dabao!</div><div class="d-text" id="propInfo">Har operation ka tap karke examples dekho.</div></div>'+
+      '<div class="interactive-hint">👆 Tap each row!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var pi={
+      add:{title:"Addition — Sab teen properties ✓",info:"Closure: 1/2+1/3=5/6 ✓. Commutative: 1/2+1/3 = 1/3+1/2 = 5/6 ✓. Associative: (1/2+1/3)+1/4 = 1/2+(1/3+1/4) = 13/12 ✓."},
+      sub:{title:"Subtraction — Sirf Closure ✓",info:"Closure: 1/2-1/3=1/6 ✓. NOT Commutative: 1/2-1/3=1/6, 1/3-1/2=-1/6. NOT Associative: (1/2-1/3)-1/4=-1/12, 1/2-(1/3-1/4)=5/12."},
+      mul:{title:"Multiplication — Sab teen ✓",info:"Closure: 2/3×4/5=8/15 ✓. Commutative: 2/3×4/5=4/5×2/3=8/15 ✓. Associative: (2/3×4/5)×6/7 = 2/3×(4/5×6/7) = 48/105 ✓."},
+      div:{title:"Division — Kuch bhi nahi poora",info:"NOT Closed: 1/2÷0 = undefined. NOT Commutative: 1/2÷1/3=3/2, 1/3÷1/2=2/3. NOT Associative: (1/2÷1/3)÷1/4=6, 1/2÷(1/3÷1/4)=3/8."}
+    };
+    function hl(id,key){
+      var rows=["opAdd","opSub","opMul","opDiv"];
+      for(var i=0;i<rows.length;i++){var r=document.getElementById(rows[i]);if(r)r.classList.remove("hl");}
+      var el=document.getElementById(id);if(el)el.classList.add("hl");
+      document.getElementById("propTitle").textContent=pi[key].title;
+      document.getElementById("propInfo").textContent=pi[key].info;
+    }
+    document.getElementById("opAdd").addEventListener("click",function(){hl("opAdd","add");});
+    document.getElementById("opSub").addEventListener("click",function(){hl("opSub","sub");});
+    document.getElementById("opMul").addEventListener("click",function(){hl("opMul","mul");});
+    document.getElementById("opDiv").addEventListener("click",function(){hl("opDiv","div");});
+  },
+  renderIxReciprocal:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Reciprocal Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0">'+
+      '<input type="text" id="recNum" class="fb-input" style="max-width:60px;text-align:center" placeholder="p" value="3">'+
+      '<span style="font-size:1.5rem;font-weight:800;color:var(--brand)">/</span>'+
+      '<input type="text" id="recDen" class="fb-input" style="max-width:60px;text-align:center" placeholder="q" value="5"></div>'+
+      '<button class="btn btn-primary" style="max-width:200px;margin:0 auto" onclick="App.calcReciprocal()">Find Reciprocal</button>'+
+      '<canvas id="recCanvas" width="340" height="100" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="recDisc" style="margin-top:8px;display:none"><div class="d-title" id="recTitle"></div><div class="d-text" id="recInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcReciprocal:function(){
+    var p=parseInt(document.getElementById("recNum").value);
+    var q=parseInt(document.getElementById("recDen").value);
+    if(isNaN(p)||isNaN(q)||q===0){
+      document.getElementById("recDisc").style.display="block";
+      document.getElementById("recTitle").textContent="Galat Input!";
+      document.getElementById("recInfo").innerHTML="Sahi integers daalo. q zero nahi ho sakta!";
+      return;
+    }
+    var rp=q,rq=p;var canvas=document.getElementById("recCanvas");if(!canvas)return;
+    var ctx=canvas.getContext("2d");if(!ctx)return;ctx.clearRect(0,0,340,100);
+    ctx.font="bold 18px sans-serif";ctx.textAlign="center";
+    ctx.fillStyle="#8b5cf6";ctx.fillText(p,80,35);ctx.fillText("—",80,45);ctx.fillText(q,80,60);
+    ctx.fillStyle="#475569";ctx.font="bold 20px sans-serif";ctx.fillText("×",130,50);
+    ctx.fillStyle="#ec4899";ctx.fillText(rp,180,35);ctx.fillText("—",180,45);ctx.fillText(rq,180,60);
+    ctx.fillStyle="#475569";ctx.fillText("=",230,50);
+    var prod=p*rp,denom=q*rq;
+    ctx.fillStyle="#10b981";ctx.font="bold 22px sans-serif";ctx.fillText(prod+"/"+denom+" = 1",290,50);
+    document.getElementById("recDisc").style.display="block";
+    if(p===0){document.getElementById("recTitle").textContent="Zero ka reciprocal nahi hai!";document.getElementById("recInfo").innerHTML="0 × koi bhi = 0, kabhi 1 nahi.";}
+    else{document.getElementById("recTitle").textContent="Reciprocal of "+p+"/"+q+" = "+rp+"/"+rq;document.getElementById("recInfo").innerHTML="Check: ("+p+"/"+q+") × ("+rp+"/"+rq+") = "+prod+"/"+denom+" = 1 ✓";}
+  },
+  renderIxBetween:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Between Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;margin:8px 0">'+
+      '<div><label style="font-size:.7rem;font-weight:600">First (a)</label><input type="text" id="ixA" class="fb-input" style="max-width:80px;text-align:center" value="1/4"></div>'+
+      '<div><label style="font-size:.7rem;font-weight:600">Second (b)</label><input type="text" id="ixB" class="fb-input" style="max-width:80px;text-align:center" value="1/2"></div></div>'+
+      '<button class="btn btn-primary" style="max-width:220px;margin:0 auto" onclick="App.calcBetween()">Find Middle</button>'+
+      '<canvas id="betCanvas" width="340" height="120" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="ixBetDisc" style="margin-top:8px;display:none"><div class="d-title" id="ixBetTitle"></div><div class="d-text" id="ixBetInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcBetween:function(){
+    function pf(s){s=s.trim();if(s.indexOf("/")>=0){var p=s.split("/");return parseInt(p[0])/parseInt(p[1]);}return parseFloat(s);}
+    function tf(d){for(var i=1;i<=100;i++){var n=Math.round(d*i);if(Math.abs(n/i-d)<0.001)return n+"/"+i;}return d.toFixed(4);}
+    var a=pf(document.getElementById("ixA").value);var b=pf(document.getElementById("ixB").value);
+    if(isNaN(a)||isNaN(b)){document.getElementById("ixBetDisc").style.display="block";document.getElementById("ixBetTitle").textContent="Galat!";document.getElementById("ixBetInfo").innerHTML="Sahi fraction daalo jaise 1/4";return;}
+    var mid=(a+b)/2;var aF=document.getElementById("ixA").value.trim();var bF=document.getElementById("ixB").value.trim();var mF=tf(mid);
+    var lo=Math.min(a,b),hi=Math.max(a,b);
+    var canvas=document.getElementById("betCanvas");if(!canvas)return;var ctx=canvas.getContext("2d");if(!ctx)return;
+    ctx.clearRect(0,0,340,120);var cy=60;var m=30;var pad=(hi-lo)*0.2;var min=lo-pad,max=hi+pad;var sc=(340-2*m)/(max-min);
+    ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(m,cy);ctx.lineTo(340-m,cy);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(340-m,cy);ctx.lineTo(333-m,cy-5);ctx.lineTo(333-m,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+    var xa=m+(a-min)*sc;ctx.fillStyle="#8b5cf6";ctx.beginPath();ctx.arc(xa,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+    ctx.fillStyle="#8b5cf6";ctx.font="bold 11px sans-serif";ctx.textAlign="center";ctx.fillText(aF,xa,cy-15);
+    var xb=m+(b-min)*sc;ctx.fillStyle="#ec4899";ctx.beginPath();ctx.arc(xb,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#ec4899";ctx.fillText(bF,xb,cy-15);
+    var xm=m+(mid-min)*sc;var gg=ctx.createRadialGradient(xm,cy,2,xm,cy,18);gg.addColorStop(0,"rgba(16,185,129,0.4)");gg.addColorStop(1,"rgba(16,185,129,0)");
+    ctx.fillStyle=gg;ctx.beginPath();ctx.arc(xm,cy,18,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(xm,cy,9,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#065f46";ctx.font="bold 12px sans-serif";ctx.fillText(mF,xm,cy+25);
+    document.getElementById("ixBetDisc").style.display="block";
+    document.getElementById("ixBetTitle").textContent="Mean = ("+aF+" + "+bF+") ÷ 2 = "+mF;
+    document.getElementById("ixBetInfo").innerHTML=lo.toFixed(4)+" < "+mid.toFixed(4)+" < "+hi.toFixed(4)+". Toh "+mF+" beech mein hai! Aur aise hi aur nikal sakte ho!";
+  },
+  /* ===== ASSESSMENT RENDERERS ===== */
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;
+    var shuffled=step.opts.slice();
+    for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;}
+    self.shuffledOpts=shuffled;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<shuffled.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(shuffled[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opts=this.shuffledOpts||step.opts;
+    var opt=opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">Not quite.</div>';if(opt.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True ya False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">✓ True</div><div class="tf-opt" id="tfFalse">✗ False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>⚠ Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve karo!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" class="fb-input" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step →";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';if(misc)mh+='<div class="misconception"><strong>⚠ Why wrong:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct approach:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">🏁</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+  
+  renderIxBalance:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Balance Scale: 3x + 2 = 11</div>'+
+      '<canvas id="blCanvas" width="320" height="240" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas>'+
+      '<div style="margin-top:10px"><label style="font-size:.78rem;font-weight:700;color:var(--brand)">x = <span id="blX" style="color:var(--pi);font-size:1.2rem">3</span></label>'+
+      '<input type="range" id="blSlider" min="-2" max="8" step="1" value="3" style="width:100%;max-width:280px"></div>'+
+      '<div class="discovery-box" style="margin-top:8px"><div class="d-title" id="blTitle">Balanced!</div>'+
+      '<div class="d-text" id="blInfo">LHS = 3(3)+2 = 11. RHS = 11. Both sides equal!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("blCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      var x=parseInt(document.getElementById("blSlider").value);document.getElementById("blX").textContent=x;
+      ctx.clearRect(0,0,320,240);
+      var lhs=3*x+2;var rhs=11;var balanced=(lhs===rhs);
+      var cx=160;var baseY=200;
+      ctx.fillStyle="#64748b";ctx.beginPath();ctx.moveTo(cx-15,baseY);ctx.lineTo(cx+15,baseY);ctx.lineTo(cx,baseY-35);ctx.closePath();ctx.fill();
+      ctx.strokeStyle="#64748b";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(cx,baseY-35);ctx.lineTo(cx,60);ctx.stroke();
+      var tilt=balanced?0:(lhs>rhs?-0.15:0.15);
+      ctx.save();ctx.translate(cx,60);ctx.rotate(tilt);
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-100,0);ctx.lineTo(100,0);ctx.stroke();
+      ctx.fillStyle=balanced?"#10b981":"#64748b";ctx.beginPath();ctx.arc(-80,0,6,0,2*Math.PI);ctx.fill();ctx.beginPath();ctx.arc(80,0,6,0,2*Math.PI);ctx.fill();
+      ctx.strokeStyle="#64748b";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-80,6);ctx.lineTo(-80,30);ctx.moveTo(80,6);ctx.lineTo(80,30);ctx.stroke();
+      ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      ctx.fillText("3x+2",-80,45);ctx.fillText("11",80,45);
+      ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText("= "+lhs,-80,20);ctx.fillText("= "+rhs,80,20);
+      if(balanced){ctx.fillStyle="#10b981";ctx.font="bold 14px sans-serif";ctx.fillText("BALANCED!",0,-15);}
+      else{ctx.fillStyle="#ef4444";ctx.font="bold 12px sans-serif";ctx.fillText("Not balanced",0,-15);}
+      ctx.restore();
+      ctx.fillStyle="#64748b";ctx.font="10px sans-serif";ctx.textAlign="center";
+      ctx.fillText("LHS = 3("+x+")+2 = "+lhs+"  |  RHS = "+rhs,cx,230);
+      if(balanced){document.getElementById("blTitle").textContent="Balanced! x = "+x+" is the solution!";document.getElementById("blInfo").textContent="LHS = 3("+x+")+2 = "+lhs+". RHS = "+rhs+". Both sides equal!";}
+      else{document.getElementById("blTitle").textContent="Not balanced (LHS="+lhs+", RHS="+rhs+")";document.getElementById("blInfo").textContent="LHS = 3("+x+")+2 = "+lhs+" but RHS = "+rhs+". Try a different value of x!";}
+    }
+    document.getElementById("blSlider").addEventListener("input",draw);draw();
+  },
+  renderIxWordProblem:function(step,cb){
+    var self=this;var wpStep=0;
+    var wpSteps=[
+      {title:"Step 1: Read the problem",text:"Rahul's father is 3 times as old as Rahul. After 10 years, the sum of their ages will be 70. Find their present ages."},
+      {title:"Step 2: Choose a variable",text:"Let Rahul's present age = x years. Then father's age = 3x years."},
+      {title:"Step 3: Express future ages",text:"After 10 years: Rahul = x + 10, Father = 3x + 10."},
+      {title:"Step 4: Form the equation",text:"Sum of future ages = 70. So (x+10) + (3x+10) = 70. Simplify: 4x + 20 = 70."},
+      {title:"Step 5: Solve!",text:"4x = 50. x = 12.5. Rahul = 12.5 years, Father = 37.5 years."}
+    ];
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Word Problem Builder</div>'+
+      '<div class="sim-progress" id="wpProgress"></div>'+
+      '<div class="sim-step-text active" id="wpStepText" style="min-height:60px"></div>'+
+      '<div style="text-align:center;margin-top:8px"><button class="shape-btn" id="wpPrev">Prev</button><button class="shape-btn" id="wpNext">Next</button></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var prog="";for(var i=0;i<wpSteps.length;i++){prog+='<span class="sim-dot" id="wpDot'+i+'" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#e2e8f0;margin:0 2px"></span>';}
+    var pe=document.getElementById("wpProgress");if(pe)pe.innerHTML=prog;
+    function draw(){
+      for(var i=0;i<wpSteps.length;i++){var dot=document.getElementById("wpDot"+i);if(dot){dot.style.background=i<wpStep?"#10b981":(i===wpStep?"#4f46e5":"#e2e8f0");}}
+      var s=wpSteps[wpStep];
+      var st=document.getElementById("wpStepText");if(st)st.innerHTML="<b>"+s.title+"</b><br>"+s.text;
+    }
+    var pv=document.getElementById("wpPrev");if(pv)pv.addEventListener("click",function(){if(wpStep>0){wpStep--;draw();}});
+    var nx=document.getElementById("wpNext");if(nx)nx.addEventListener("click",function(){if(wpStep<wpSteps.length-1){wpStep++;draw();}});
+    draw();
+  },
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"🟣",cost:0},{id:"ocean",name:"Ocean",icon:"🌊",cost:50},{id:"forest",name:"Forest",icon:"🌲",cost:80},{id:"sunset",name:"Sunset",icon:"🌅",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">🛒 Shop</div><div class="shop-coins">🪙 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">🪙 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">✓ Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>
+
+</script>
+</body>
+</html>

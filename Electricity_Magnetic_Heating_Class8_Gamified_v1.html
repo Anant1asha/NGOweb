@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#4f46e5">
+<title>Aasha - Electricity: Magnetic and Heating Effects | Class 8 Science</title>
+<style>
+
+:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(99,102,241,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.tf-btn{display:flex;gap:10px;max-width:400px;margin:8px auto}
+.tf-opt{flex:1;padding:16px;border:2px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;font-size:.9rem;font-weight:700;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.real-example{background:linear-gradient(135deg,#fce7f3,#fbcfe8);border:2px solid var(--pi);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#831843}
+.real-example .re-icon{font-size:1.5rem;float:left;margin-right:8px}
+.complete-coins{font-size:1.2rem;font-weight:800;color:var(--gold);margin:8px 0}
+.btn-restart{padding:10px 20px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:.85rem;margin-top:10px}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.shop-modal{background:#fff;border-radius:18px;padding:20px;max-width:340px;width:90%;max-height:80vh;overflow-y:auto}
+.shop-title{font-size:1.2rem;font-weight:800;text-align:center;margin-bottom:10px}
+.shop-coins{text-align:center;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:10px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.shop-item{text-align:center;padding:12px;border:2px solid var(--border);border-radius:12px}
+.shop-item.owned{border-color:var(--green)}
+.shop-item-icon{font-size:2rem}.shop-item-name{font-size:.76rem;font-weight:600;margin:4px 0}
+.shop-item-cost{font-size:.76rem;color:var(--gold);font-weight:700}
+.shop-buy-btn{padding:6px 16px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;margin-top:4px}
+.diagram-label{font-size:.7rem;font-weight:600;fill:var(--text)}
+
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY0NmU1IiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">Learn. Play. Grow.</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">C <span id="statCoins">0</span></span><span class="stat xp">XP <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar"><button class="btn-back" id="backBtn" onclick="App.back()">Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#4f46e5"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">Level Up!</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना",
+electric:"विद्युत",current:"धारा",circuit:"परिपथ",magnetic:"चुंबकीय",magnet:"चुंबक",
+field:"क्षेत्र",conductor:"चालक",resistance:"प्रतिरोध",heat:"ऊष्मा",energy:"ऊर्जा",
+wire:"तार",cell:"सेल",battery:"बैटरी",switch:"स्विच",compass:"दिक्सूचक",
+terminal:"टर्मिनल",electrode:"इलेक्ट्रोड",electrolyte:"विद्युत्‌ अपघट्य",
+coil:"कुंडली",nail:"कील",insulated:"अवरुद्ध",deflection:"विचलन",direction:"दिशा",
+material:"पदार्थ",thickness:"मोटाई",duration:"अवधि",appliance:"उपकरण",
+element:"तत्व",filament:"तंतु",generate:"उत्पन्न",chemical:"रासायनिक",reaction:"अभिक्रिया",
+disappear:"गायब",effect:"प्रभाव",discovery:"खोज",scientist:"वैज्ञानिक",
+device:"युक्ति",application:"अनुप्रयोग",container:"पात्र",positive:"धनात्मक",
+recharge:"पुनः आवेशित",portable:"वहनीय",supply:"आपूर्ति",flow:"प्रवाह",
+iron:"लोहा",copper:"तांबा",zinc:"जस्ता",carbon:"कार्बन",metal:"धातु",
+attract:"आकर्षित",repel:"प्रतिकर्षित",pole:"ध्रुव",north:"उत्तर",south:"दक्षिण",
+strength:"शक्ति",increase:"बढ़ना",decrease:"घटना",strong:"मजबूत",weak:"कमजोर",
+liquid:"तरल",solid:"ठोस",paste:"लेई",rod:"छड़",container:"पात्र",
+rechargeable:"पुनः आवेश्य",disposable:"उपयोग के बाद फेंकने योग्य",
+temporary:"अस्थायी",permanent:"स्थायी",lift:"उठाना",release:"छोड़ना"
+}
+
+
+/* CONN: ONLY connecting words — NO science domain terms */
+var CONN={
+"can":"सकता है","could":"सकता था","will":"करेगा","would":"करेगा","shall":"करेगा",
+"should":"करना चाहिए","must":"ज़रूरी है","may":"सकता है","might":"शायद कर सके",
+"need":"ज़रूरत है","need to":"ज़रूरत है करना","have to":"करना पड़ता है","had to":"करना पड़ा",
+"ought to":"करना चाहिए","be able to":"सक्षम है","used to":"पहले करता था","dare":"हिम्मत करना",
+"had better":"बेहतर होगा","be going to":"करने वाला है","be supposed to":"करना अपेक्षित है",
+"and":"और","but":"लेकिन","or":"या","so":"इसलिए","because":"क्योंकि","also":"भी","too":"भी",
+"as well":"भी","either":"या भी","neither":"न ही","not only":"न केवल","but also":"बल्कि",
+"whether":"क्या","that":"कि","even":"यहाँ तक कि",
+"because of":"के कारण","due to":"के कारण","since":"क्योंकि","therefore":"इसलिए",
+"thus":"इस प्रकार","hence":"इसलिए","as a result":"परिणामस्वरूप","so that":"ताकि",
+"in order to":"ताकि","consequently":"परिणामस्वरूप","for this reason":"इस कारण",
+"thereby":"इस प्रकार","accordingly":"उसी अनुसार","resulting in":"परिणामस्वरूप","leading to":"की ओर ले जाता है",
+"if":"अगर","unless":"जब तक नहीं","provided":"बशर्ते","as long as":"जब तक",
+"in case":"अगर ऐसा हो","even if":"भले ही","only if":"केवल तभी","whether or not":"चाहे या नहीं",
+"otherwise":"नहीं तो","supposing":"मान लो","assuming":"मानते हुए","on condition that":"इस शर्त पर",
+"in the event that":"अगर ऐसा हो","if not":"अगर नहीं","then":"तब",
+"although":"हालांकि","though":"हालांकि","even though":"फिर भी","however":"हालांकि",
+"yet":"फिर भी","still":"फिर भी","on the other hand":"दूसरी ओर","in contrast":"इसके विपरीत",
+"whereas":"जबकि","instead":"इसके बजाय",
+"before":"पहले","after":"बाद में","when":"जब","while":"जब","as soon as":"जैसे ही",
+"until":"जब तक","next":"अगला","finally":"अंत में",
+"furthermore":"इसके अलावा","moreover":"इसके अलावा","besides":"इसके अलावा",
+"in addition":"इसके अलावा","especially":"विशेष रूप से","particularly":"खासकर",
+"indeed":"वास्तव में","in fact":"वास्तव में",
+"overall":"कुल मिलाकर","in conclusion":"निष्कर्ष में","to sum up":"संक्षेप में",
+"all in all":"कुल मिलाकर","in short":"संक्षेप में",
+"for example":"उदाहरण के लिए","such as":"जैसे","like":"जैसे",
+"first":"पहले","second":"दूसरा","third":"तीसरा",
+"similarly":"इसी तरह","likewise":"इसी तरह",
+"namely":"यानी","in particular":"विशेष रूप से",
+"above all":"सबसे ऊपर","most importantly":"सबसे ज़रूरी",
+"equals":"बराबर है","means":"मतलब","gives":"देता है","shows":"दिखाता है",
+"consider":"सोचो","observe":"देखो","notice":"ध्यान दो","remember":"याद रखो",
+"always":"हमेशा","never":"कभी नहीं","exactly":"ठीक","directly":"सीधे",
+"important":"ज़रूरी","equal":"बराबर","opposite":"विपरीत","parallel":"समान्तर",
+"perpendicular":"लंबवत","consecutive":"क्रमागत"
+}
+
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=4){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[{"t": "intro", "icon": "⚡", "title": "Electricity: Magnetic and Heating Effects", "sub": "Class 8 Science — Chapter 4", "intro": "It was the day of the science exhibition, and Mohini and Aakarsh were amazed by a working model of a lifting electromagnet. Instead of a hook, there was an iron nail wrapped with a wire, connected to a battery. When the circuit was closed, the nail picked up iron clips like a magnet. When the circuit was opened, the clips fell off. How can electricity create a magnet? And why do wires get warm when current flows through them? In this chapter, we will explore the magnetic effect of electric current, electromagnets, the heating effect of electric current, and how batteries generate electricity. Let us begin!"}, {"t": "tutor", "icon": "💡", "title": "Does an Electric Current Have a Magnetic Effect?", "body": "When electric current flows through a conductor (like a wire), it produces a magnetic field around it. This phenomenon is known as the magnetic effect of electric current. The magnetic field disappears when the current stops flowing. In Activity 4.1, when current flows through a wire placed near a magnetic compass, the compass needle gets deflected. When the current stops, the needle returns to its original direction. This shows that a current-carrying wire has a magnetic effect."}, {"t": "formula", "title": "Key Concept: Magnetic Effect of Electric Current", "formulas": [{"label": "Magnetic Effect", "expr": "Current flows in a wire → Magnetic field is produced around it", "note": "The field disappears when current stops"}, {"label": "Magnetic Field", "expr": "The region around a magnet or current-carrying wire where its magnetic effect can be felt", "note": "Detected by deflection of a compass needle"}]}, {"t": "ix_compass", "instruction": "Tap the switch to turn current ON and OFF. Watch the compass needle deflect when current flows, and return to normal when current stops!"}, {"t": "tutor", "icon": "🔬", "title": "Hans Christian Oersted's Discovery", "body": "You have just made the same discovery which was made by the scientist Hans Christian Oersted (1777-1851) in 1820 — that electricity and magnetism are linked. He was a professor at a university in Denmark. It is said that once while giving a demonstration, he noticed that whenever an electrical circuit was closed or opened, the needle of a magnetic compass lying nearby deflected. He investigated this and published his findings. This led to other scientists repeating his experiment and further investigating the connection between electricity and magnetism."}, {"t": "quiz", "q": "Quick Check: What happens to a magnetic compass needle when electric current flows through a nearby wire?", "diff": "easy", "opts": [{"t": "It gets deflected from its original direction", "c": true}, {"t": "It stays perfectly still", "c": false, "m": "The compass needle does move when current flows.", "correctMethod": "Current produces a magnetic field that deflects the compass needle."}, {"t": "It breaks into pieces", "c": false, "m": "The compass is not damaged by the magnetic field.", "correctMethod": "The needle deflects — it does not break."}, {"t": "It becomes hotter", "c": false, "m": "The compass needle does not get warm from current in a nearby wire.", "correctMethod": "The magnetic field deflects the needle, not heat."}]}, {"t": "real_example", "icon": "🏠", "title": "Real-Life Applications of Magnetic Effect", "body": "The magnetic effect of electric current has many practical applications. Devices like electromagnets, electric bells, motors, loudspeakers, and fans all work on this principle. Every time you switch on a ceiling fan, the motor inside uses the magnetic effect of electric current to rotate the blades. The loudspeaker in your phone converts electrical signals into sound using the same principle."}, {"t": "tutor", "icon": "🧲", "title": "What is an Electromagnet?", "body": "Can we use electric current to make a magnet? Yes! When electric current flows through a coil of wire, it behaves like a magnet. This is called an electromagnet. In Activity 4.2, when a wire is wrapped around an iron nail and connected to a cell, the nail picks up iron clips. When the current is stopped, the clips fall off. In Activity 4.3, when an iron nail is inserted inside a cylindrical coil, the coil becomes a stronger magnet and the deflection of the compass needle is much more. A current-carrying coil that behaves as a magnet is called an electromagnet. For practical applications, most electromagnets have an iron core to make them stronger."}, {"t": "formula", "title": "Electromagnet — Key Facts", "formulas": [{"label": "Electromagnet", "expr": "Current-carrying coil that behaves as a magnet", "note": "Most have an iron core for extra strength"}, {"label": "Two Poles", "expr": "An electromagnet has North and South poles — just like a bar magnet", "note": "Poles can be reversed by changing current direction"}, {"label": "Strength depends on", "expr": "Amount of current + Number of turns in the coil", "note": "More current or more turns = stronger electromagnet"}]}, {"t": "ix_electromagnet", "instruction": "Adjust the number of cells and coil turns. Watch how the electromagnet's strength changes — more cells and more turns mean more clips lifted!"}, {"t": "quiz", "q": "Quick Check: How can you make an electromagnet STRONGER?", "diff": "medium", "opts": [{"t": "Increase the number of turns in the coil", "c": true}, {"t": "Decrease the number of turns in the coil", "c": false, "m": "Fewer turns means a weaker electromagnet.", "correctMethod": "More turns = stronger electromagnet. Also, more current (more cells) makes it stronger."}, {"t": "Remove the iron core", "c": false, "m": "Removing the iron core makes the electromagnet weaker.", "correctMethod": "The iron core makes the electromagnet stronger, not weaker."}, {"t": "Use a wooden nail instead of iron", "c": false, "m": "Wood is not a magnetic material.", "correctMethod": "Only magnetic materials like iron strengthen the electromagnet."}]}, {"t": "truefalse", "q": "An electromagnet has two poles — North and South — just like a bar magnet.", "ans": true, "explain": "Yes! Just like a bar magnet, an electromagnet has two poles. The poles can be reversed by changing the direction of the current.", "m": "Think about what you learned in Activity 4.4 — the compass showed opposite attraction at each end."}, {"t": "tutor", "icon": "🚂", "title": "Earth as a Giant Magnet", "body": "Do you remember learning that a freely suspended magnet rests along the north-south direction because our Earth itself behaves like a giant magnet? But why does Earth behave like a magnet? Deep inside the Earth, the movement of liquid iron in the core creates electric currents, which generate a magnetic field. Many migratory birds, fish, and animals use this field to navigate across continents and oceans. The Earth's magnetic field also acts as a shield, blocking harmful particles from space, and helps protect life on Earth."}, {"t": "tutor", "icon": "🏗️", "title": "Lifting Electromagnets in Real Life", "body": "Lifting electromagnets are strong electromagnets that may be hung from cranes. The crane operator can control the magnet by switching the current ON and OFF. When the current is turned ON, the electromagnet lifts iron and steel objects. When the current is switched OFF, the magnetic field disappears, and the objects are released. Lifting electromagnets are widely used in factories and scrap yards to move, lift, and sort heavy metal items efficiently."}, {"t": "milestone", "icon": "🏆", "title": "Magnetic Effect Mastered!", "xp": 50, "next": "Now: The Heating Effect of Electric Current!"}, {"t": "tutor", "icon": "🔥", "title": "Does a Current-Carrying Wire Get Hot?", "body": "When electric current flows through a conductor, it faces some opposition or resistance to its flow. Different conductors offer different levels of resistance. A nichrome wire, for example, offers higher resistance compared to a copper wire of the same size and length. This resistance causes some of the electrical energy to be converted into heat energy. When an electric current passes through a conductor, it gets heated. This warming is known as the heating effect of electric current."}, {"t": "formula", "title": "Heating Effect — Key Facts", "formulas": [{"label": "Heating Effect", "expr": "Current flows through a conductor → Conductor gets heated", "note": "Electrical energy is converted to heat energy"}, {"label": "Resistance", "expr": "Opposition to the flow of electric current", "note": "Higher resistance = more heat generated"}, {"label": "Heat depends on", "expr": "Material, thickness, length of wire + magnitude of current + duration", "note": "More current or longer duration = more heat"}]}, {"t": "ix_heating", "instruction": "Move the slider to increase or decrease the current. Watch the wire change color — from cool blue to glowing red as more current flows through it!"}, {"t": "quiz", "q": "Quick Check: Why does a nichrome wire get warmer than a copper wire of the same size when the same current flows?", "diff": "medium", "opts": [{"t": "Nichrome has higher resistance, so more heat is generated", "c": true}, {"t": "Nichrome is a better conductor, so it heats up faster", "c": false, "m": "Nichrome is NOT a better conductor — it has higher resistance.", "correctMethod": "Higher resistance means more electrical energy is converted to heat. Nichrome has higher resistance than copper."}, {"t": "Copper generates more heat than nichrome", "c": false, "m": "Copper has lower resistance, so it generates less heat.", "correctMethod": "Nichrome has higher resistance, which is why it generates more heat for the same current."}, {"t": "Nichrome is thicker than copper", "c": false, "m": "The question says same size — thickness is the same.", "correctMethod": "With the same size, nichrome's higher resistance causes more heat."}]}, {"t": "real_example", "icon": "🍳", "title": "Heating Effect in Everyday Appliances", "body": "Many household appliances work on the heating effect of electric current. Electric room heaters, electric stoves, electric kettles, electric irons, water heating immersion rods, and hair dryers all contain a rod or coil of wire called a heating element. In some appliances where this element is visible, it can be seen glowing red hot. The incandescent lamp glows because its filament is heated by an electric current. All these devices convert electrical energy into heat energy."}, {"t": "tutor", "icon": "⚠️", "title": "Safety and Problems with Heating Effect", "body": "The heating effect of electric current is useful in many appliances, but sometimes it can cause problems. Overheating in appliances may cause damage to plugs and sockets where plastic parts may melt, or even lead to fires. To prevent unnecessary heating in household switchboards, it is important to use appropriate wires, plugs, and sockets that are rated for the specified electric current. In household circuits, there are safety devices placed in the circuit to minimise such incidents."}, {"t": "truefalse", "q": "The heat generated in a wire depends on the material, thickness, length of the wire, and the duration for which current flows.", "ans": true, "explain": "Correct! All these factors affect how much heat is generated — the material's resistance, the wire's thickness and length, and how long current flows.", "m": "Think about the different factors that affect resistance and heat generation."}, {"t": "quiz", "q": "Nichrome wire is commonly used in electrical heating devices because it:", "diff": "medium", "opts": [{"t": "Generates more heat for a given current due to its high resistance", "c": true}, {"t": "Is a good conductor of electricity", "c": false, "m": "If it were a good conductor, it would generate less heat.", "correctMethod": "Nichrome has high resistance, which converts more electrical energy into heat — that is why it is used in heating devices."}, {"t": "Is cheaper than copper", "c": false, "m": "Cost is not the reason — it is about resistance properties.", "correctMethod": "The reason is its high resistance, not cost."}, {"t": "Is an insulator of electricity", "c": false, "m": "An insulator would not allow current to flow at all.", "correctMethod": "Nichrome is a conductor with high resistance, not an insulator."}]}, {"t": "we", "q": "Worked Example: An electric iron uses a nichrome wire as its heating element. The wire offers high resistance to current flow. When connected to a battery, the wire gets hot and the iron can press clothes. If 2 cells are used instead of 1, what happens to the heat generated?", "steps": [{"text": "Step 1: Recall that heat generated depends on the magnitude of electric current flowing through the wire."}, {"text": "Step 2: A battery with more cells gives a larger current compared to a single cell."}, {"text": "Step 3: Larger current means more electrical energy is converted to heat energy."}, {"text": "Step 4: Therefore, with 2 cells, the wire heats up MORE than with 1 cell. The heat generated is more with 2 cells."}], "answer": "More heat is generated with 2 cells because larger current flows through the wire."}, {"t": "milestone", "icon": "🔥", "title": "Heating Effect Mastered!", "xp": 50, "next": "Now: How Does a Battery Generate Electricity?"}, {"t": "tutor", "icon": "🔋", "title": "How Does a Battery Generate Electricity?", "body": "Portable sources of electricity, such as cells and batteries, are fascinating. Using these, we could light up a small lamp, make a magnet, and heat up a wire. But what is inside these cells and batteries that produces electricity? Let us explore the Voltaic cell, the dry cell, and rechargeable batteries."}, {"t": "tutor", "icon": "⚗️", "title": "The Voltaic Cell", "body": "A Voltaic cell, also known as a Galvanic cell, contains two metal rods made of different materials and a liquid called an electrolyte, placed in a glass or plastic container. The rods, called electrodes, are partly dipped in the electrolyte, which is usually a weak acid or salt solution. A chemical reaction between the rods and the electrolyte produces electricity. When the circuit is connected, electric current flows from the positive terminal through the circuit to the negative terminal. Over time, the chemicals get used up, and the cell stops working. It is then called dead and cannot supply any more electricity."}, {"t": "ix_voltaic", "instruction": "Tap on the different parts of the Voltaic cell to learn what each component does! Tap Electrode 1, Electrode 2, Electrolyte, and the connecting wire."}, {"t": "formula", "title": "Voltaic Cell — Key Parts", "formulas": [{"label": "Electrodes", "expr": "Two metal rods made of DIFFERENT materials", "note": "Example: copper and zinc"}, {"label": "Electrolyte", "expr": "A liquid (weak acid or salt solution) that conducts electricity", "note": "Example: lemon juice or salt water"}, {"label": "How it works", "expr": "Chemical reaction between electrodes and electrolyte → electricity", "note": "When chemicals are used up, the cell is dead"}]}, {"t": "quiz", "q": "Quick Check: What is the liquid used in a Voltaic cell called?", "diff": "easy", "opts": [{"t": "Electrolyte", "c": true}, {"t": "Electrode", "c": false, "m": "Electrodes are the metal rods, not the liquid.", "correctMethod": "The liquid is called the electrolyte. Electrodes are the solid metal rods."}, {"t": "Filament", "c": false, "m": "A filament is part of a lamp, not a Voltaic cell.", "correctMethod": "The liquid in a Voltaic cell is called the electrolyte."}, {"t": "Insulator", "c": false, "m": "An insulator blocks current — the liquid conducts it.", "correctMethod": "The liquid that conducts electricity is called the electrolyte."}]}, {"t": "tutor", "icon": "🍋", "title": "Make Your Own Voltaic Cell with Lemons!", "body": "In Activity 4.6, you can make your own Voltaic cell using lemons! Insert a copper wire and an iron nail in a lemon. Repeat for several lemons. Join the copper wires and nails in series. Connect an LED between the copper wire of the first lemon and the iron nail of the last lemon. The LED glows! In this cell, the metal electrodes are the copper wires and iron nails. The electrolyte is the lemon juice, which helps conduct electricity. You may also use salt solutions instead of lemon juice. Common metal pairs for Voltaic cells include zinc/copper, aluminium/copper, and iron/copper."}, {"t": "tutor", "icon": "🔋", "title": "The Dry Cell", "body": "Voltaic cells were an important discovery, but they are not convenient for everyday use. Instead, dry cells are one of the most widely used electric cells today. They are called dry because the electrolyte is not a liquid but a thick moist paste. A dry cell consists of a zinc container which acts as the negative terminal and a carbon rod at the centre covered with a metal cap that acts as the positive terminal. The carbon rod is surrounded by the paste-like electrolyte. The dry cell is a single-use cell — once it is used up, it has to be disposed of."}, {"t": "ix_drycell", "instruction": "Tap on the parts of the dry cell to explore its internal structure — the zinc container, carbon rod, electrolyte paste, and metal cap!"}, {"t": "truefalse", "q": "Dry cells are called 'dry' because they contain no electrolyte at all.", "ans": false, "explain": "Dry cells are called 'dry' because the electrolyte is not a liquid but a thick moist paste — they still have an electrolyte, just not in liquid form!", "m": "Remember — the electrolyte is a paste, not absent. Dry cells DO have electrolyte, just in paste form."}, {"t": "tutor", "icon": "📱", "title": "Rechargeable Batteries", "body": "Rechargeable batteries can be recharged and reused multiple times. This prevents wastage and saves money over time. There are many different kinds — from small batteries used in watches and phones to bigger batteries that run inverters or drive electric vehicles. However, rechargeable batteries also do not last forever. After being charged and used many times, they slowly wear out. Today, the lithium-ion (Li-ion) battery is the most common type of rechargeable battery. Scientists are also working on solid-state batteries, which would be much safer, charge faster, and last longer."}, {"t": "quiz", "q": "Quick Check: Which type of battery is the most common rechargeable battery used today?", "diff": "easy", "opts": [{"t": "Lithium-ion (Li-ion)", "c": true}, {"t": "Voltaic cell", "c": false, "m": "Voltaic cells are the earliest type and are not rechargeable.", "correctMethod": "Lithium-ion batteries are the most common rechargeable batteries today."}, {"t": "Dry cell", "c": false, "m": "Dry cells are single-use and cannot be recharged.", "correctMethod": "Lithium-ion batteries are rechargeable and used in phones, laptops, and EVs."}, {"t": "Lemon cell", "c": false, "m": "Lemon cells are homemade and not practical for daily use.", "correctMethod": "Lithium-ion batteries are the standard rechargeable batteries."}]}, {"t": "milestone", "icon": "🔋", "title": "Batteries Mastered!", "xp": 60, "next": "Now: Let's test everything with Rapid Fire!"}, {"t": "rapid_fire", "qs": [{"q": "When electric current flows through a wire, what does it produce around the wire?", "opts": ["Magnetic field", "Heat only", "Light", "Sound"], "ans": 0}, {"q": "A current-carrying coil that behaves as a magnet is called?", "opts": ["Electromagnet", "Voltaic cell", "Dry cell", "Insulator"], "ans": 0}, {"q": "Which wire offers higher resistance — nichrome or copper?", "opts": ["Nichrome", "Copper", "Both are equal", "Neither"], "ans": 0}, {"q": "What is the liquid in a Voltaic cell called?", "opts": ["Electrolyte", "Electrode", "Filament", "Terminal"], "ans": 0}, {"q": "What acts as the negative terminal in a dry cell?", "opts": ["Zinc container", "Carbon rod", "Metal cap", "Electrolyte paste"], "ans": 0}, {"q": "What type of battery can be recharged and reused?", "opts": ["Rechargeable battery", "Dry cell", "Voltaic cell", "Lemon cell"], "ans": 0}, {"q": "Deep inside the Earth, movement of which metal creates electric currents?", "opts": ["Liquid iron", "Copper", "Aluminium", "Zinc"], "ans": 0}, {"q": "The heat generated in a wire depends on the magnitude of what?", "opts": ["Electric current", "Voltage", "Resistance only", "Wire color"], "ans": 0}]}, {"t": "memory_match", "pairs": [{"en": "Electromagnet", "hi": "विद्युत चुंबक"}, {"en": "Magnetic Field", "hi": "चुंबकीय क्षेत्र"}, {"en": "Resistance", "hi": "प्रतिरोध"}, {"en": "Electrolyte", "hi": "विद्युत् अपघट्य"}, {"en": "Electrode", "hi": "इलेक्ट्रोड"}, {"en": "Heating Effect", "hi": "ऊष्मीय प्रभाव"}, {"en": "Dry Cell", "hi": "शुष्क सेल"}, {"en": "Conductor", "hi": "चालक"}]}, {"t": "quiz", "q": "Exercise Q3: An electric current flows through a nichrome wire for a short time. (i) The wire becomes warm. (ii) A magnetic compass placed below the wire is deflected. Which is correct?", "diff": "medium", "opts": [{"t": "Both (i) and (ii) are correct", "c": true}, {"t": "Only (i) is correct", "c": false, "m": "The compass IS also deflected because current produces a magnetic field.", "correctMethod": "Current through a wire produces both heat (heating effect) AND a magnetic field (magnetic effect). So both statements are correct."}, {"t": "Only (ii) is correct", "c": false, "m": "The wire DOES become warm — the heating effect is also present.", "correctMethod": "Both effects occur: the wire gets warm AND the compass deflects."}, {"t": "Both are not correct", "c": false, "m": "Both effects do occur when current flows.", "correctMethod": "Both the heating effect and magnetic effect occur simultaneously."}]}, {"t": "truefalse", "q": "Exercise Q2(i): Dry cells are less portable compared to Voltaic cells.", "ans": false, "explain": "Dry cells are MORE portable than Voltaic cells. Dry cells use a paste electrolyte, making them compact and easy to carry, while Voltaic cells use liquid electrolyte which can spill.", "m": "Think about which cell you use in your remote control and torch — is it a dry cell or a Voltaic cell?"}, {"t": "truefalse", "q": "Exercise Q2(ii): A coil becomes an electromagnet only when electric current flows through it.", "ans": true, "explain": "Correct! A coil only behaves as a magnet (electromagnet) when current flows through it. When current stops, the magnetic effect disappears.", "m": "Remember what happened in the activities — the clips fell off when the current was stopped."}, {"t": "truefalse", "q": "Exercise Q2(iii): An electromagnet using a single cell attracts more iron clips than the same electromagnet with a battery of 2 cells.", "ans": false, "explain": "Wrong! A battery with 2 cells gives MORE current, creating a STRONGER magnetic field, so it attracts MORE clips, not fewer. A single cell provides less current, so fewer clips are attracted.", "m": "More cells = more current = stronger electromagnet = more clips."}, {"t": "quiz", "q": "Exercise Q5: Nichrome wire is commonly used in electrical heating devices because it:", "diff": "medium", "opts": [{"t": "Generates more heat for a given current", "c": true}, {"t": "Is a good conductor of electricity", "c": false, "m": "A good conductor would generate less heat, not more.", "correctMethod": "Nichrome has high resistance, which generates more heat for the same current — that is why it is used in heating devices."}, {"t": "Is cheaper than copper", "c": false, "m": "Cost is not the reason for using nichrome in heating devices.", "correctMethod": "The reason is its high resistance, not its cost."}, {"t": "Is an insulator of electricity", "c": false, "m": "An insulator would not allow current to flow.", "correctMethod": "Nichrome is a conductor with high resistance, not an insulator."}]}, {"t": "quiz", "q": "Exercise Q11: Four coils of similar shape and size are made from iron, copper, aluminium, and nichrome. When current is passed through them, compass needles placed near the coils will show deflection in:", "diff": "hard", "opts": [{"t": "All four circuits", "c": true}, {"t": "Only in the iron circuit", "c": false, "m": "All metals conduct electricity and produce a magnetic field.", "correctMethod": "All four coils carry current, so ALL produce a magnetic field and deflect the compass. The material affects resistance and heat, not whether a magnetic field is produced."}, {"t": "Only in circuits with iron and copper", "c": false, "m": "Aluminium and nichrome also conduct electricity.", "correctMethod": "Any current-carrying conductor produces a magnetic field, regardless of the metal."}, {"t": "Only in the nichrome circuit", "c": false, "m": "All four metals conduct electricity and produce magnetic fields.", "correctMethod": "All four coils carry current, so all four produce magnetic fields and deflect the compass."}]}, {"t": "complete", "icon": "⚡", "title": "Chapter 4 Complete!", "sub": "Electricity: Magnetic and Heating Effects — Mastered!"}];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;this.shuffledOpts=null;
+    if(this._prevSIdx!==this.sIdx){this.solveStepIdx=0;this.solveAnswered=false;this.weStepIdx=0;this._prevSIdx=this.sIdx;}
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"ix_compass":this.renderIxCompass(step,cb);break;
+      case"ix_electromagnet":this.renderIxElectromagnet(step,cb);break;
+      case"ix_heating":this.renderIxHeating(step,cb);break;
+      case"ix_voltaic":this.renderIxVoltaic(step,cb);break;
+      case"ix_drycell":this.renderIxDryCell(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  renderIntro:function(step,cb){
+    var introText=step.intro||"Welcome! Let us begin learning.";
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center"><div class="intro-icon">'+step.icon+'</div><div class="intro-title">'+rt(step.title)+'</div><div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(79,70,229,.08)">'+rt(introText)+'</div>'+
+      '<div class="hint">Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var self=this;if(this.weStepIdx===undefined)this.weStepIdx=0;var idx=this.weStepIdx;
+    if(idx>=step.steps.length){cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";return;}
+    var html='<div class="instruction">Worked Example - Step '+(idx+1)+' of '+step.steps.length+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<=idx&&i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";var isCurrent=(i===idx);
+      html+='<div class="we-step'+cls+'"'+(isCurrent?' style="border-left-color:var(--gold);background:linear-gradient(90deg,#fef3c7,#fde68a);animation:slideIn .3s ease"':'')+'><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(idx>=step.steps.length-1&&step.answer){html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;
+    if(idx<step.steps.length-1){cb.textContent="Next Step ("+(idx+2)+" of "+step.steps.length+")";cb.className="btn btn-primary";cb.disabled=false;cb.style.display="";}
+    else{cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";}
+  },
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;var shuffled=step.opts.slice();
+    for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;}
+    self.shuffledOpts=shuffled;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<shuffled.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(shuffled[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opts=this.shuffledOpts||step.opts;var opt=opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">Not quite.</div>';if(opt.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True or False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">\u2713 True</div><div class="tf-opt" id="tfFalse">\u2717 False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(step.explain)mh+='<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step \u2192";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(misc)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">\ud83c\udfc1</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">\ud83e\ude99 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>\u2b50</span><span>\u2b50</span><span>\u2b50</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"\ud83d\udfe5",cost:0},{id:"ocean",name:"Ocean",icon:"\ud83c\udf0a",cost:50},{id:"forest",name:"Forest",icon:"\ud83c\udf32",cost:80},{id:"sunset",name:"Sunset",icon:"\ud83c\udf05",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">\ud83d\uded2 Shop</div><div class="shop-coins">\ud83e\ude99 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">\ud83e\ude99 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">\u2713 Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+
+  /* ===== SCIENCE SIMULATIONS ===== */
+
+  /* SIM 1: Compass Deflection - Toggle switch to see compass needle deflect */
+  renderIxCompass:function(step,cb){
+    var isOn=false;
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Compass Deflection</div><canvas id="cpCanvas" width="300" height="240" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:8px"><button class="shape-btn" id="cpSwitch">Turn Current ON</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="cpTitle">Current is OFF</div><div class="d-text" id="cpInfo">The compass needle points north. No magnetic field from the wire.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("cpCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      ctx.clearRect(0,0,300,240);
+      // Draw wire
+      ctx.strokeStyle=isOn?"#ef4444":"#64748b";ctx.lineWidth=4;
+      ctx.beginPath();ctx.moveTo(20,80);ctx.lineTo(280,80);ctx.stroke();
+      // Draw switch
+      ctx.fillStyle=isOn?"#10b981":"#64748b";
+      ctx.beginPath();ctx.arc(150,80,8,0,2*Math.PI);ctx.fill();
+      ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      ctx.fillText(isOn?"ON":"OFF",150,100);
+      // Draw battery
+      ctx.fillStyle="#4f46e5";ctx.fillRect(20,70,20,20);
+      ctx.fillStyle="#fff";ctx.font="bold 8px sans-serif";ctx.fillText("+",30,84);
+      // Draw compass
+      var cx=150,cy=160,radius=40;
+      ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(cx,cy,radius,0,2*Math.PI);ctx.fill();
+      ctx.strokeStyle="#64748b";ctx.lineWidth=2;ctx.stroke();
+      // Compass needle
+      var angle=isOn?Math.PI/4:0; // deflect when current on
+      ctx.save();ctx.translate(cx,cy);ctx.rotate(angle);
+      ctx.fillStyle="#ef4444";ctx.beginPath();ctx.moveTo(0,-radius+5);ctx.lineTo(5,0);ctx.lineTo(0,radius-5);ctx.lineTo(-5,0);ctx.closePath();ctx.fill();
+      ctx.fillStyle="#4f46e5";ctx.beginPath();ctx.moveTo(0,-radius+5);ctx.lineTo(-5,0);ctx.lineTo(0,radius-5);ctx.lineTo(5,0);ctx.closePath();ctx.fill();
+      ctx.restore();
+      // N label
+      ctx.fillStyle="#64748b";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      ctx.fillText("N",cx,cy-radius-5);
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";
+      ctx.fillText("Wire",250,75);
+      ctx.fillText("Compass",cx,cy+radius+15);
+      if(isOn){
+        ctx.fillStyle="#ef4444";ctx.font="bold 11px sans-serif";
+        ctx.fillText("Current flowing!",cx,30);
+        // Draw field lines
+        ctx.strokeStyle="rgba(239,68,68,0.3)";ctx.lineWidth=2;
+        for(var i=0;i<3;i++){
+          ctx.beginPath();ctx.arc(150,80,30+i*20,0,Math.PI);ctx.stroke();
+        }
+      }
+    }
+    document.getElementById("cpSwitch").addEventListener("click",function(){
+      isOn=!isOn;
+      var btn=document.getElementById("cpSwitch");
+      btn.textContent=isOn?"Turn Current OFF":"Turn Current ON";
+      btn.className=isOn?"shape-btn active":"shape-btn";
+      if(isOn){
+        document.getElementById("cpTitle").textContent="Current is ON — Needle Deflected!";
+        document.getElementById("cpInfo").textContent="The compass needle deflects because the current-carrying wire produces a magnetic field around it!";
+      }else{
+        document.getElementById("cpTitle").textContent="Current is OFF";
+        document.getElementById("cpInfo").textContent="The compass needle returns to its original direction. The magnetic field has disappeared.";
+      }
+      draw();
+    });
+    draw();
+  },
+
+  /* SIM 2: Electromagnet Strength - Adjust cells and turns */
+  renderIxElectromagnet:function(step,cb){
+    var cells=1,turns=20;
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Electromagnet Strength Explorer</div><canvas id="emCanvas" width="300" height="260" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="margin-top:8px"><label style="font-size:.78rem;font-weight:700;color:var(--brand)">Cells: <span id="emCells" style="color:var(--pi)">1</span></label><br><input type="range" id="emCellSlider" min="1" max="4" step="1" value="1" style="width:100%;max-width:280px"></div><div style="margin-top:6px"><label style="font-size:.78rem;font-weight:700;color:var(--brand)">Coil Turns: <span id="emTurns" style="color:var(--pi)">20</span></label><br><input type="range" id="emTurnSlider" min="10" max="100" step="10" value="20" style="width:100%;max-width:280px"></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="emTitle">Strength: Weak</div><div class="d-text" id="emInfo">1 cell, 20 turns. Lifts 1 clip.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("emCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      ctx.clearRect(0,0,300,260);
+      // Calculate strength
+      var strength=cells*turns;var clips=Math.min(Math.floor(strength/20),8);
+      var strengthLabel=strength<40?"Weak":strength<100?"Medium":strength<200?"Strong":"Very Strong!";
+      // Draw battery
+      for(var i=0;i<cells;i++){
+        ctx.fillStyle="#4f46e5";ctx.fillRect(30+i*15,100,12,30);
+        ctx.fillStyle="#fff";ctx.font="bold 8px sans-serif";ctx.textAlign="center";
+        ctx.fillText("+",36+i*15,108);
+      }
+      ctx.strokeStyle="#64748b";ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(30+cells*15,115);ctx.lineTo(100,115);ctx.stroke();
+      // Draw coil/nail
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(100,115);ctx.lineTo(100,80);ctx.stroke();
+      // Draw nail (vertical)
+      ctx.fillStyle="#64748b";ctx.fillRect(120,50,8,100);
+      // Draw coil wraps
+      var wrapCount=Math.min(Math.floor(turns/5),12);
+      ctx.strokeStyle="#a855f7";ctx.lineWidth=2;
+      for(var i=0;i<wrapCount;i++){
+        var y=55+i*7;
+        ctx.beginPath();ctx.ellipse(124,y,18,5,0,0,2*Math.PI);ctx.stroke();
+      }
+      // Draw wire back to battery
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(142,80);ctx.lineTo(200,80);ctx.lineTo(200,115);ctx.lineTo(30,115);ctx.stroke();
+      // Draw clips hanging
+      ctx.fillStyle="#64748b";
+      for(var i=0;i<clips;i++){
+        var cy=155+Math.floor(i/4)*15;
+        var cx=100+(i%4)*15;
+        ctx.beginPath();ctx.arc(cx,cy,3,0,2*Math.PI);ctx.fill();
+        ctx.strokeStyle="#64748b";ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(cx,150);ctx.lineTo(cx,cy);ctx.stroke();
+      }
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Iron Nail",124,42);
+      ctx.fillText(cells+" Cell"+(cells>1?"s":""),36+cells*7,148);
+      // Update discovery box
+      document.getElementById("emCells").textContent=cells;
+      document.getElementById("emTurns").textContent=turns;
+      document.getElementById("emTitle").textContent="Strength: "+strengthLabel;
+      document.getElementById("emInfo").textContent=cells+" cell"+(cells>1?"s":"")+", "+turns+" turns. Lifts "+clips+" clip"+(clips!=1?"s":"")+".";
+    }
+    document.getElementById("emCellSlider").addEventListener("input",function(){cells=parseInt(this.value);draw();});
+    document.getElementById("emTurnSlider").addEventListener("input",function(){turns=parseInt(this.value);draw();});
+    draw();
+  },
+
+  /* SIM 3: Heating Effect - Slider for current, wire changes color */
+  renderIxHeating:function(step,cb){
+    var current=1;
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Heating Effect Demo</div><canvas id="htCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="margin-top:8px"><label style="font-size:.78rem;font-weight:700;color:var(--brand)">Current: <span id="htCurrent" style="color:var(--pi)">1</span> (arbitrary units)</label><br><input type="range" id="htSlider" min="0" max="10" step="1" value="1" style="width:100%;max-width:280px"></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="htTitle">Wire is cool</div><div class="d-text" id="htInfo">Low current means little heat is generated.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("htCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      ctx.clearRect(0,0,300,200);
+      // Determine color based on current
+      var heatLevel=current/10;
+      var r=Math.floor(59+heatLevel*196);
+      var g=Math.floor(100-heatLevel*100);
+      var b=Math.floor(229-heatLevel*229);
+      var wireColor="rgb("+r+","+g+","+b+")";
+      // Draw wire (nichrome)
+      ctx.strokeStyle=wireColor;ctx.lineWidth=8;
+      ctx.beginPath();ctx.moveTo(30,100);ctx.lineTo(270,100);ctx.stroke();
+      // Draw nails
+      ctx.fillStyle="#64748b";
+      ctx.fillRect(25,70,10,60);ctx.fillRect(265,70,10,60);
+      // Draw battery
+      ctx.fillStyle="#4f46e5";ctx.fillRect(30,140,20,20);
+      ctx.strokeStyle="#64748b";ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(40,140);ctx.lineTo(40,130);ctx.lineTo(270,130);ctx.lineTo(270,130);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(50,150);ctx.lineTo(270,150);ctx.stroke();
+      // Draw heat waves if current is high
+      if(current>=4){
+        ctx.strokeStyle="rgba(239,68,68,0.5)";ctx.lineWidth=2;
+        for(var i=0;i<3;i++){
+          var yOff=100-20-i*15;
+          ctx.beginPath();
+          ctx.moveTo(80+i*50,yOff);
+          ctx.quadraticCurveTo(95+i*50,yOff-10,110+i*50,yOff);
+          ctx.stroke();
+        }
+      }
+      // Glow effect for high current
+      if(current>=7){
+        ctx.shadowColor="rgba(255,100,0,0.5)";ctx.shadowBlur=20;
+        ctx.strokeStyle="rgba(255,100,0,0.3)";ctx.lineWidth=8;
+        ctx.beginPath();ctx.moveTo(30,100);ctx.lineTo(270,100);ctx.stroke();
+        ctx.shadowBlur=0;
+      }
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Nichrome Wire",150,65);
+      ctx.fillText("Battery",40,175);
+      // Update discovery box
+      document.getElementById("htCurrent").textContent=current;
+      var label,info;
+      if(current<=2){label="Wire is cool";info="Low current means little heat is generated.";}
+      else if(current<=5){label="Wire is warm";info="Moderate current — the wire is getting warm due to resistance.";}
+      else if(current<=8){label="Wire is HOT!";info="High current — lots of heat generated! The wire glows red.";}
+      else{label="Wire is GLOWING RED HOT!";info="Very high current — maximum heat! This is how heating elements work.";}
+      document.getElementById("htTitle").textContent=label;
+      document.getElementById("htInfo").textContent=info;
+    }
+    document.getElementById("htSlider").addEventListener("input",function(){current=parseInt(this.value);draw();});
+    draw();
+  },
+
+  /* SIM 4: Voltaic Cell Explorer - Interactive labeled diagram */
+  renderIxVoltaic:function(step,cb){
+    var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Voltaic Cell Explorer</div><canvas id="vcCanvas" width="300" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fff;cursor:pointer"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn vc-btn" data-part="electrode1">Electrode 1</button><button class="shape-btn vc-btn" data-part="electrode2">Electrode 2</button><button class="shape-btn vc-btn" data-part="electrolyte">Electrolyte</button><button class="shape-btn vc-btn" data-part="wire">Wire + Lamp</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="vcTitle">Tap a part to explore!</div><div class="d-text" id="vcInfo">The Voltaic cell converts chemical energy into electrical energy.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={
+      "electrode1":{"title":"Electrode 1 (e.g. Copper)","info":"A metal rod dipped in the electrolyte. Acts as the positive terminal. Different metals are used for the two electrodes."},
+      "electrode2":{"title":"Electrode 2 (e.g. Zinc)","info":"A different metal rod dipped in the electrolyte. Acts as the negative terminal. The difference between the two metals creates the electric current."},
+      "electrolyte":{"title":"Electrolyte (Liquid)","info":"A weak acid or salt solution that conducts electricity. It reacts chemically with the electrodes to produce electricity. Lemon juice or salt water can be used!"},
+      "wire":{"title":"Connecting Wire + Lamp","info":"Electric current flows from the positive terminal through the wire to the negative terminal. The lamp glows when current flows, showing the cell is working!"}
+    };
+    function draw(){
+      var c=document.getElementById("vcCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,300,280);
+      // Container
+      ctx.strokeStyle="#64748b";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(80,100);ctx.lineTo(80,240);ctx.lineTo(220,240);ctx.lineTo(220,100);ctx.stroke();
+      // Electrolyte
+      ctx.fillStyle=selected==="electrolyte"?"rgba(245,158,11,0.4)":"rgba(99,102,241,0.2)";
+      ctx.fillRect(82,130,136,108);
+      // Electrode 1 (left - copper)
+      ctx.fillStyle=selected==="electrode1"?"#f59e0b":"#b87333";
+      ctx.fillRect(110,60,12,170);
+      // Electrode 2 (right - zinc)
+      ctx.fillStyle=selected==="electrode2"?"#f59e0b":"#a0a0a0";
+      ctx.fillRect(178,60,12,170);
+      // Wire connecting top of electrodes with lamp
+      ctx.strokeStyle=selected==="wire"?"#f59e0b":"#4f46e5";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(116,60);ctx.lineTo(116,40);ctx.lineTo(184,40);ctx.lineTo(184,60);ctx.stroke();
+      // Lamp
+      ctx.fillStyle=selected==="wire"?"#f59e0b":"#fbbf24";
+      ctx.beginPath();ctx.arc(150,40,10,0,2*Math.PI);ctx.fill();
+      ctx.strokeStyle="#64748b";ctx.lineWidth=1;ctx.stroke();
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Cu",116,55);
+      ctx.fillText("Zn",184,55);
+      ctx.fillText("Electrolyte",150,200);
+      ctx.fillText("(Liquid)",150,212);
+      ctx.fillText("Glass Container",150,255);
+    }
+    var btns=document.querySelectorAll(".vc-btn");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var p=parts[selected];
+        document.getElementById("vcTitle").textContent=p.title;
+        document.getElementById("vcInfo").textContent=p.info;
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  },
+
+  /* SIM 5: Dry Cell Explorer - Interactive labeled diagram */
+  renderIxDryCell:function(step,cb){
+    var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Dry Cell Explorer</div><canvas id="dcCanvas" width="280" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn dc-btn" data-part="zinc">Zinc Container</button><button class="shape-btn dc-btn" data-part="carbon">Carbon Rod</button><button class="shape-btn dc-btn" data-part="electrolyte">Electrolyte Paste</button><button class="shape-btn dc-btn" data-part="cap">Metal Cap</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="dcTitle">Tap a part to explore!</div><div class="d-text" id="dcInfo">A dry cell converts chemical energy into electrical energy using a paste electrolyte.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={
+      "zinc":{"title":"Zinc Container","info":"The outer container of the dry cell. It acts as the NEGATIVE terminal. Zinc is used because it reacts with the electrolyte to produce electricity."},
+      "carbon":{"title":"Carbon Rod","info":"A rod at the centre of the cell. It acts as the POSITIVE terminal. It is surrounded by the electrolyte paste."},
+      "electrolyte":{"title":"Electrolyte Paste","info":"A thick moist paste (not liquid!) that conducts electricity. This is why it is called a 'dry' cell — the electrolyte is a paste, not a liquid."},
+      "cap":{"title":"Metal Cap","info":"The metal cap on top of the carbon rod. This is the positive terminal that connects to the external circuit."}
+    };
+    function draw(){
+      var c=document.getElementById("dcCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,280);
+      // Zinc container (outer)
+      ctx.fillStyle=selected==="zinc"?"#f59e0b":"#a0a0a0";
+      ctx.fillRect(90,60,100,200);
+      // Electrolyte paste (inner)
+      ctx.fillStyle=selected==="electrolyte"?"#f59e0b":"rgba(99,102,241,0.3)";
+      ctx.fillRect(105,75,70,170);
+      // Carbon rod (center)
+      ctx.fillStyle=selected==="carbon"?"#f59e0b":"#333333";
+      ctx.fillRect(130,80,20,160);
+      // Metal cap (top)
+      ctx.fillStyle=selected==="cap"?"#f59e0b":"#b87333";
+      ctx.fillRect(125,50,30,20);
+      // Labels with arrows
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="left";
+      // Zinc container label
+      ctx.fillText("Zinc",195,100);ctx.fillText("Container",195,112);
+      ctx.strokeStyle="#64748b";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(190,105);ctx.lineTo(165,105);ctx.stroke();
+      // Carbon rod label
+      ctx.fillText("Carbon",195,160);ctx.fillText("Rod",195,172);
+      ctx.beginPath();ctx.moveTo(190,165);ctx.lineTo(155,165);ctx.stroke();
+      // Electrolyte label
+      ctx.fillStyle="#4f46e5";
+      ctx.fillText("Electrolyte",10,160);ctx.fillText("Paste",10,172);
+      ctx.beginPath();ctx.moveTo(55,165);ctx.lineTo(100,165);ctx.stroke();
+      // Metal cap label
+      ctx.fillText("Metal",195,55);ctx.fillText("Cap",195,67);
+      ctx.beginPath();ctx.moveTo(190,60);ctx.lineTo(160,60);ctx.stroke();
+      // + and - signs
+      ctx.fillStyle="#ef4444";ctx.font="bold 14px sans-serif";ctx.textAlign="center";
+      ctx.fillText("+",140,42);
+      ctx.fillText("\u2212",90,270);
+      ctx.fillStyle="#64748b";ctx.font="8px sans-serif";
+      ctx.fillText("(Positive)",140,28);
+      ctx.fillText("(Negative)",90,280);
+    }
+    var btns=document.querySelectorAll(".dc-btn");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var p=parts[selected];
+        document.getElementById("dcTitle").textContent=p.title;
+        document.getElementById("dcInfo").textContent=p.info;
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  }
+};
+
+App.init();
+
+</script>
+</body>
+</html>

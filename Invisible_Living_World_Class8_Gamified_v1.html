@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#4f46e5">
+<title>Aasha - The Invisible Living World | Class 8 Science</title>
+<style>
+
+:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(99,102,241,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.tf-btn{display:flex;gap:10px;max-width:400px;margin:8px auto}
+.tf-opt{flex:1;padding:16px;border:2px solid var(--border);border-radius:12px;text-align:center;cursor:pointer;font-size:.9rem;font-weight:700;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.real-example{background:linear-gradient(135deg,#fce7f3,#fbcfe8);border:2px solid var(--pi);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#831843}
+.real-example .re-icon{font-size:1.5rem;float:left;margin-right:8px}
+.complete-coins{font-size:1.2rem;font-weight:800;color:var(--gold);margin:8px 0}
+.btn-restart{padding:10px 20px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:.85rem;margin-top:10px}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.shop-modal{background:#fff;border-radius:18px;padding:20px;max-width:340px;width:90%;max-height:80vh;overflow-y:auto}
+.shop-title{font-size:1.2rem;font-weight:800;text-align:center;margin-bottom:10px}
+.shop-coins{text-align:center;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:10px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.shop-item{text-align:center;padding:12px;border:2px solid var(--border);border-radius:12px}
+.shop-item.owned{border-color:var(--green)}
+.shop-item-icon{font-size:2rem}.shop-item-name{font-size:.76rem;font-weight:600;margin:4px 0}
+.shop-item-cost{font-size:.76rem;color:var(--gold);font-weight:700}
+.shop-buy-btn{padding:6px 16px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;margin-top:4px}
+
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGY0NmU1IiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">Learn. Play. Grow.</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">C <span id="statCoins">0</span></span><span class="stat xp">XP <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar"><button class="btn-back" id="backBtn" onclick="App.back()">Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#4f46e5"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">Level Up!</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",divide:"भाग",draw:"खींचना",
+each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+example:"उदाहरण",expand:"विस्तार",
+explain:"समझाना",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",from:"से",
+function:"फलन",general:"सामान्य",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",high:"उच्च",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",practice:"अभ्यास",present:"उपस्थित",
+problem:"समस्या",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",real:"वास्तविक",reason:"कारण",
+related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",very:"बहुत",
+visual:"दृश्य",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना",
+/* Science terms - Chapter 2 */
+cell:"कोशिका",cells:"कोशिकाएँ",membrane:"झिल्ली",nucleus:"केंद्रक",cytoplasm:"कोशिका द्रव्य",
+wall:"भित्ति",microorganism:"सूक्ष्मजीव",microorganisms:"सूक्ष्मजीव",microbe:"सूक्ष्मजीव",microbes:"सूक्ष्मजीव",
+bacteria:"जीवाणु",bacterium:"जीवाणु",fungi:"कवक",fungus:"कवक",protozoa:"प्रोटोज़ोआ",
+algae:"शैवाल",virus:"वायरस",viruses:"वायरस",yeast:"यीस्ट",mould:"फफूंद",mold:"फफूंद",
+tissue:"ऊतक",organ:"अंग",organism:"जीव",unicellular:"एककोशिकीय",multicellular:"बहुकोशिकीय",
+decomposition:"अपघटन",decompose:"अपघटित करना",decompose:"अपघटित करना",ferment:"किण्वित करना",fermentation:"किण्वन",
+microscope:"सूक्ष्मदर्शी",lens:"लेंस",lenses:"लेंस",magnify:"आवर्धित करना",magnification:"आवर्धन",
+visible:"दृश्य",invisible:"अदृश्य",naked:"नंगी",eye:"आँख",observation:"निरीक्षण",observe:"निरीक्षण करें",
+living:"जीवित",life:"जीवन",unit:"इकाई",basic:"मूल",structure:"संरचना",function:"कार्य",
+shape:"आकार",size:"आकार",rigid:"कठोर",rigidity:"कठोरता",strength:"शक्ति",porous:"छिद्रयुक्त",
+entry:"प्रवेश",exit:"निकास",waste:"अपशिष्ट",material:"पदार्थ",compound:"यौगिक",compounds:"यौगिक",
+carbohydrate:"कार्बोहाइड्रेट",protein:"प्रोटीन",fat:"वसा",mineral:"खनिज",salt:"लवण",salts:"लवण",
+growth:"वृद्धि",regulate:"नियंत्रित करना",activity:"गतिविधि",activities:"गतिविधियाँ",
+plastid:"प्लास्टिड",chloroplast:"हरितलवक",chlorophyll:"हरितलवक",green:"हरा",photosynthesis:"प्रकाश संश्लेषण",
+vacuole:"रिक्तिका",store:"भंडारण करना",substance:"पदार्थ",substances:"पदार्थ",nutrient:"पोषक",nutrients:"पोषक",
+manure:"खाद",fertiliser:"उर्वरक",soil:"मिट्टी",environment:"पर्यावरण",clean:"साफ करना",recycle:"पुनर्चक्रित करना",
+dough:"आटा",fluffy:"मुलायम",rise:"फूलना",bubble:"बुलबुला",bubbles:"बुलबुले",
+gas:"गैस",oxygen:"ऑक्सीजन",carbon:"कार्बन",dioxide:"डाइऑक्साइड",nitrogen:"नाइट्रोजन",methane:"मीथेन",
+acid:"अम्ल",lactic:"लैक्टिक",alcohol:"अल्कोहल",sour:"खट्टा",milk:"दूध",curd:"दही",
+root:"जड़",nodule:"गाँठ",nodules:"गाँठ",legume:"फली",legumes:"फली",crop:"फसल",crops:"फसल",
+rotation:"चक्र",farmer:"किसान",trap:"पकड़ना",atmosphere:"वायुमंडल",air:"वायु",
+water:"जल",pond:"तालाब",stagnant:"ठहरा हुआ",suspension:"निलंबन",slide:"स्लाइड",coverslip:"कवरस्लिप",
+stain:"अभिरंजक",safranin:"सफ्रेनिन",glycerin:"ग्लिसरीन",
+slice:"पतला टुकड़ा",cork:"कॉर्क",honeycomb:"छत्ता",compartment:"कोष्ठिका",brick:"ईंट",
+infect:"संक्रमित करना",disease:"रोग",host:"परपोषी",multiply:"गुणन करना",reproduce:"प्रजनन करना",
+nucleoid:"न्यूक्लिऑइड",nuclear:"नाभिकीय",well:"अच्छी",defined:"परिभाषित",distinguish:"भेद करना",feature:"विशेषता",
+spindle:"तकली",nerve:"तंत्रिका",neuron:"तंत्रिका कोशिका",muscle:"पेशी",branch:"शाखा",branched:"शाखित",
+long:"लंबा",thin:"पतला",round:"गोल",flat:"चपटा",flexible:"लचीला",elongated:"लंबा",
+contract:"सिकुड़ना",relax:"ढीला होना",churn:"मथना",digestive:"पाचन",digestion:"पाचन",stomach:"पेट",pipe:"नली",
+food:"भोजन",juice:"रस",acid:"अम्ल",
+system:"तंत्र",systems:"तंत्र",organ:"अंग",organs:"अंग",tissue:"ऊतक",tissues:"ऊतक",
+complete:"पूर्ण",several:"कई",major:"प्रमुख",building:"भवन",block:"ब्लॉक",blocks:"ब्लॉक",
+egg:"अंडा",divide:"विभाजित करना",ability:"क्षमता",single:"एक",carry:"ले जाना",survive:"जीवित रहना",survival:"जीवन",
+ostrich:"शुतुरमुर्ग",largest:"सबसे बड़ा",diameter:"व्यास",shell:"खोल",protect:"सुरक्षा करना",protection:"सुरक्षा",nourish:"पोषण देना",
+superfood:"सुपरफूड",protein:"प्रोटीन",supplement:"पूरक",medicine:"दवा",biofuel:"जैव ईंधन",
+biogas:"बायोगैस",fuel:"ईंधन",cooking:"खाना बनाना",heating:"तापन",electricity:"बिजली",
+pollution:"प्रदूषण",climate:"जलवायु",habitat:"आवास",destruction:"विनाश",conserve:"संरक्षित करना",conservation:"संरक्षण",
+patent:"पेटेंट",invention:"आविष्कार",scientist:"वैज्ञानिक",discover:"खोजना",discovery:"खोज",publish:"प्रकाशित करना",
+book:"पुस्तक",drawing:"चित्र",detail:"विवरण",detailed:"विस्तृत",artist:"कलाकार",careful:"सावधान",skilled:"कुशल"
+}
+
+
+/* CONN: ONLY connecting words */
+var CONN={
+"can":"सकता है","could":"सकता था","will":"करेगा","would":"करेगा","shall":"करेगा",
+"should":"करना चाहिए","must":"ज़रूरी है","may":"सकता है","might":"शायद कर सके",
+"need":"ज़रूरत है","need to":"ज़रूरत है करना","have to":"करना पड़ता है","had to":"करना पड़ा",
+"ought to":"करना चाहिए","be able to":"सक्षम है","used to":"पहले करता था","dare":"हिम्मत करना",
+"had better":"बेहतर होगा","be going to":"करने वाला है","be supposed to":"करना अपेक्षित है",
+"and":"और","but":"लेकिन","or":"या","so":"इसलिए","because":"क्योंकि","also":"भी","too":"भी",
+"as well":"भी","either":"या भी","neither":"न ही","not only":"न केवल","but also":"बल्कि",
+"whether":"क्या","that":"कि","even":"यहाँ तक कि",
+"because of":"के कारण","due to":"के कारण","since":"क्योंकि","therefore":"इसलिए",
+"thus":"इस प्रकार","hence":"इसलिए","as a result":"परिणामस्वरूप","so that":"ताकि",
+"in order to":"ताकि","consequently":"परिणामस्वरूप","for this reason":"इस कारण",
+"thereby":"इस प्रकार","accordingly":"उसी अनुसार","resulting in":"परिणामस्वरूप","leading to":"की ओर ले जाता है",
+"if":"अगर","unless":"जब तक नहीं","provided":"बशर्ते","as long as":"जब तक",
+"in case":"अगर ऐसा हो","even if":"भले ही","only if":"केवल तभी","whether or not":"चाहे या नहीं",
+"otherwise":"नहीं तो","supposing":"मान लो","assuming":"मानते हुए","on condition that":"इस शर्त पर",
+"in the event that":"अगर ऐसा हो","if not":"अगर नहीं","then":"तब",
+"although":"हालांकि","though":"हालांकि","even though":"फिर भी","however":"हालांकि",
+"yet":"फिर भी","still":"फिर भी","on the other hand":"दूसरी ओर","in contrast":"इसके विपरीत",
+"whereas":"जबकि","instead":"इसके बजाय",
+"before":"पहले","after":"बाद में","when":"जब","while":"जब","as soon as":"जैसे ही",
+"until":"जब तक","next":"अगला","finally":"अंत में",
+"furthermore":"इसके अलावा","moreover":"इसके अलावा","besides":"इसके अलावा",
+"in addition":"इसके अलावा","especially":"विशेष रूप से","particularly":"खासकर",
+"indeed":"वास्तव में","in fact":"वास्तव में",
+"overall":"कुल मिलाकर","in conclusion":"निष्कर्ष में","to sum up":"संक्षेप में",
+"all in all":"कुल मिलाकर","in short":"संक्षेप में",
+"for example":"उदाहरण के लिए","such as":"जैसे","like":"जैसे",
+"first":"पहले","second":"दूसरा","third":"तीसरा",
+"similarly":"इसी तरह","likewise":"इसी तरह",
+"namely":"यानी","in particular":"विशेष रूप से",
+"above all":"सबसे ऊपर","most importantly":"सबसे ज़रूरी",
+"equals":"बराबर है","means":"मतलब","gives":"देता है","shows":"दिखाता है",
+"consider":"सोचो","observe":"देखो","notice":"ध्यान दो","remember":"याद रखो",
+"always":"हमेशा","never":"कभी नहीं","exactly":"ठीक","directly":"सीधे",
+"important":"ज़रूरी","equal":"बराबर","opposite":"विपरीत","parallel":"समान्तर",
+"perpendicular":"लंबवत","consecutive":"क्रमागत"
+}
+
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=4){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[{"t": "intro", "icon": "🔬", "title": "The Invisible Living World", "sub": "Class 8 Science — Chapter 2", "intro": "The human eye can only see objects above a certain size. For a long time, many tiny things around us remained unknown. The invention of the microscope opened a fascinating hidden world filled with tiny living creatures. In this chapter, we will explore cells — the basic unit of life — learn about microorganisms like bacteria, fungi, and protozoa, discover how microbes help clean our environment and make our food, and understand why the cell is considered the basic unit of life. Let us begin!"}, {"t": "tutor", "icon": "🔬", "title": "The Discovery of the Microscope", "body": "Long ago, people discovered that a curved piece of glass could make small things look bigger. The piece of glass was shaped like a lentil seed — thick in the middle and thin at the edge — hence they called it a lens. Over time, lenses were improved to become more powerful. Each new tool, from simple magnifying glasses to microscopes, helped humans see what their eyes could not. The invention of the microscope opened a fascinating hidden world filled with tiny living creatures."}, {"t": "tutor", "icon": "📖", "title": "Robert Hooke and the First Cells", "body": "In 1665, a scientist named Robert Hooke published a book called Micrographia. He was a careful observer and a skilled artist. In this book, he showed detailed drawings of tiny things that people had never seen before — things he saw using a tool we now call a microscope. His microscope made things look 200 to 300 times bigger. One day, he looked at a thin slice of cork and saw it was made of many small, empty spaces. These compartments reminded him of a honeycomb. He called each small space a cell. This was the first time the word cell was used in science to describe the basic unit of life."}, {"t": "tutor", "icon": "🔍", "title": "Antonie van Leeuwenhoek — Father of Microbiology", "body": "Around the same time in the 1660s, Antonie van Leeuwenhoek, a Dutch scientist, made better lenses that allowed him to build more useful microscopes. He was the first person to clearly see and describe tiny living things like bacteria and blood cells. Because of this, he is known as the Father of Microbiology."}, {"t": "quiz", "q": "Quick Check: Who first used the word 'cell' in science?", "diff": "easy", "opts": [{"t": "Robert Hooke", "c": true}, {"t": "Antonie van Leeuwenhoek", "c": false, "m": "Leeuwenhoek was the first to see bacteria, but Hooke named the cell.", "correctMethod": "Robert Hooke coined the word 'cell' in 1665 when he looked at cork under a microscope."}, {"t": "Albert Einstein", "c": false, "m": "Einstein was a physicist, not a microbiologist.", "correctMethod": "Robert Hooke, not Einstein, discovered cells by looking at cork."}, {"t": "Charles Darwin", "c": false, "m": "Darwin studied evolution, not cells under a microscope.", "correctMethod": "Robert Hooke was the one who first used the word 'cell'."}]}, {"t": "formula", "title": "Key Terms: The Microscope", "formulas": [{"label": "Lens", "expr": "A curved piece of glass that makes small things look bigger", "note": "Shaped like a lentil seed — thick in the middle, thin at the edge"}, {"label": "Microscope", "expr": "A tool that magnifies objects 100 to 400 times", "note": "Opened the hidden world of tiny living creatures"}, {"label": "Electron Microscope", "expr": "Magnifies the cell about 10,00,000 times", "note": "Used to see structures inside cells"}]}, {"t": "tutor", "icon": "🧱", "title": "What is a Cell?", "body": "All living beings are made up of cells. In Activity 2.2, when you observe an onion peel under a microscope, you see nearly rectangular structures. These are the cells of the onion peel, which are closely arranged without any space between them. In Activity 2.3, when you observe human cheek cells, you see polygon-shaped structures. Cells have three main parts: the cell membrane, the cytoplasm, and the nucleus. Some cells, like onion peel cells, have an extra outer layer called the cell wall."}, {"t": "ix_cell", "instruction": "Tap on the parts of the cell to learn what each one does! Explore the cell membrane, cytoplasm, nucleus, and cell wall."}, {"t": "formula", "title": "Parts of a Cell", "formulas": [{"label": "Cell Membrane", "expr": "Outer layer that encloses the cytoplasm and nucleus", "note": "Porous — allows entry of useful materials and exit of waste"}, {"label": "Cytoplasm", "expr": "Jelly-like substance between cell membrane and nucleus", "note": "Contains compounds like carbohydrates, proteins, fats, and mineral salts"}, {"label": "Nucleus", "expr": "Round structure in the middle, covered by a thin membrane", "note": "Regulates all activities of the cell and controls growth"}, {"label": "Cell Wall", "expr": "Extra outer layer in plant cells (not animal cells)", "note": "Provides rigidity and strength to plants"}]}, {"t": "quiz", "q": "Quick Check: Which part of the cell regulates all activities and controls growth?", "diff": "easy", "opts": [{"t": "Nucleus", "c": true}, {"t": "Cell membrane", "c": false, "m": "The cell membrane controls entry and exit of materials, not all activities.", "correctMethod": "The nucleus regulates all activities of the cell and controls growth."}, {"t": "Cytoplasm", "c": false, "m": "Cytoplasm contains compounds and is where life processes take place, but it does not regulate activities.", "correctMethod": "The nucleus is the control center of the cell."}, {"t": "Cell wall", "c": false, "m": "The cell wall provides rigidity, not control of activities.", "correctMethod": "The nucleus regulates all cell activities."}]}, {"t": "truefalse", "q": "The cell membrane is porous and allows the entry of useful materials and the exit of waste.", "ans": true, "explain": "Correct! The cell membrane is porous — it lets useful materials in and waste materials out.", "m": "Think about what 'porous' means — it allows things to pass through."}, {"t": "tutor", "icon": "🌿", "title": "Plant vs Animal Cells", "body": "Plant and animal cells differ in structure. Plant cells have an extra outer layer called the cell wall, which provides rigidity and strength. Plant cells also have tiny rod-shaped structures called plastids. Some plastids, like chloroplasts, contain chlorophyll, which makes them green and helps in photosynthesis. Plant cells have a large space called a vacuole that stores important substances and helps maintain the shape of the cell. In animal cells, vacuoles are usually not present, or if present, they are usually small."}, {"t": "ix_cell_compare", "instruction": "Tap the buttons to switch between plant and animal cells. Tap on each labeled part to learn its function!"}, {"t": "quiz", "q": "Quick Check: Which of these is found ONLY in plant cells, not in animal cells?", "diff": "medium", "opts": [{"t": "Cell wall and chloroplasts", "c": true}, {"t": "Nucleus", "c": false, "m": "Both plant and animal cells have a nucleus.", "correctMethod": "The cell wall and chloroplasts are found only in plant cells. Both cell types have a nucleus."}, {"t": "Cell membrane", "c": false, "m": "Both plant and animal cells have a cell membrane.", "correctMethod": "The cell wall and chloroplasts are unique to plant cells."}, {"t": "Cytoplasm", "c": false, "m": "Both plant and animal cells have cytoplasm.", "correctMethod": "The cell wall and chloroplasts are found only in plant cells."}]}, {"t": "tutor", "icon": "🔀", "title": "Why Do Cells Have Different Shapes?", "body": "Cells come in many shapes! A muscle cell is shaped like a spindle, while a nerve cell (neuron) is very long and has branches. Some cells are round, while others are long and thin. The unique shape, size, and structure of cells help them carry out their specific functions. For example, nerve cells carry messages in our body. Their elongated shape and branched structure help them reach different parts of the body and pass on messages quickly. In plants, some cells form long tubes that help carry water throughout the plant."}, {"t": "real_example", "icon": "💪", "title": "How Cell Shape Relates to Function", "body": "Think about your digestive system. A group of muscle cells in the food pipe contract and relax in a wave-like manner, pushing food down to the stomach. This movement is possible because muscle cells are thin, flexible, and spindle-shaped. The stomach has different types of cells: muscle cells in the stomach wall help churn the food, while other cells in the inner lining produce digestive juices and acid that help break down the food. All these cells work together to make digestion possible."}, {"t": "milestone", "icon": "🧱", "title": "Cells Mastered!", "xp": 50, "next": "Now: Levels of Organisation in Living Beings!"}, {"t": "tutor", "icon": "🏗️", "title": "Levels of Organisation in the Body", "body": "The body of a living organism is organised in a complex way. A cell is the basic unit of life, just like a brick is the basic unit of a wall. A group of similar cells forms a tissue. Different tissues are organised to form an organ. Several organs work together to form an organ system that performs a major function of the body. All the organ systems together make up a complete organism — like a plant or an animal. So, the levels of organisation are: Cell → Tissue → Organ → Organ System → Organism."}, {"t": "ix_levels", "instruction": "Tap each level to see how cells build up into a complete organism! Start from the cell and work your way up to the organism."}, {"t": "formula", "title": "Levels of Organisation", "formulas": [{"label": "Level 1", "expr": "Cell — the basic unit of life", "note": "Like a single brick"}, {"label": "Level 2", "expr": "Tissue — a group of similar cells", "note": "Like many bricks arranged together"}, {"label": "Level 3", "expr": "Organ — different tissues organised together", "note": "Like a wall with windows and doors"}, {"label": "Level 4", "expr": "Organ System — several organs working together", "note": "Like a whole room"}, {"label": "Level 5", "expr": "Organism — all organ systems together", "note": "Like a complete building!"}]}, {"t": "quiz", "q": "Quick Check: What is a tissue?", "diff": "easy", "opts": [{"t": "A group of similar cells that work together", "c": true}, {"t": "A single cell that does everything", "c": false, "m": "A single cell is just a cell, not a tissue.", "correctMethod": "A tissue is a GROUP of similar cells working together."}, {"t": "An organ like the heart", "c": false, "m": "An organ is made of tissues, not the other way around.", "correctMethod": "A tissue is a group of similar cells. An organ is made of different tissues."}, {"t": "A type of microorganism", "c": false, "m": "Tissues are found in multicellular organisms, not microbes.", "correctMethod": "A tissue is a group of similar cells working together."}]}, {"t": "truefalse", "q": "Multicellular organisms are made up of many cells, while unicellular organisms are made of just one cell.", "ans": true, "explain": "Correct! Multicellular organisms like humans and plants have many cells. Unicellular organisms like bacteria and Amoeba have just one cell that carries out all life functions.", "m": "Remember: 'multi' means many, 'uni' means one."}, {"t": "milestone", "icon": "🏗️", "title": "Organisation Mastered!", "xp": 50, "next": "Now: What Are Microorganisms?"}, {"t": "tutor", "icon": "🦠", "title": "What Are Microorganisms?", "body": "Some living organisms are made up of just one or very few cells. They are so small that they cannot be seen with the naked eye. These are called microorganisms. Some microorganisms, like bacteria and Amoeba, are made of just one cell (unicellular). Others, like some fungi and algae, have many cells (multicellular). They are found all around us — in water, soil, air, and even inside our body! To observe microorganisms, we need a microscope which magnifies their size and makes them visible to us."}, {"t": "ix_microbes", "instruction": "Tap on each type of microorganism to learn about it! Explore bacteria, protozoa, fungi, algae, and viruses."}, {"t": "formula", "title": "Types of Microorganisms", "formulas": [{"label": "Bacteria", "expr": "Unicellular — spherical, rod, comma, or spiral shaped", "note": "Have a nucleoid instead of a well-defined nucleus"}, {"label": "Protozoa", "expr": "Unicellular — e.g. Amoeba, Paramecium", "note": "Single cell that moves and feeds"}, {"label": "Fungi", "expr": "Can be unicellular (yeast) or multicellular (mould)", "note": "Have cell wall but no chloroplasts — cannot make their own food"}, {"label": "Algae", "expr": "Can be unicellular or multicellular", "note": "Contain chlorophyll — can make their own food using sunlight"}, {"label": "Viruses", "expr": "Microscopic and acellular — not truly living", "note": "Multiply only inside a living host cell"}]}, {"t": "quiz", "q": "Quick Check: Which microorganism does NOT have a well-defined nucleus?", "diff": "medium", "opts": [{"t": "Bacteria", "c": true}, {"t": "Yeast", "c": false, "m": "Yeast is a fungus and has a well-defined nucleus.", "correctMethod": "Bacteria do not have a well-defined nucleus. Instead, they have a nucleoid region."}, {"t": "Amoeba", "c": false, "m": "Amoeba is a protozoan and has a well-defined nucleus.", "correctMethod": "Only bacteria lack a well-defined nucleus — they have a nucleoid instead."}, {"t": "Algae", "c": false, "m": "Algae have a well-defined nucleus.", "correctMethod": "Bacteria are unique among microorganisms in lacking a well-defined nucleus."}]}, {"t": "truefalse", "q": "Viruses are microscopic and acellular — they can multiply only inside a living host cell.", "ans": true, "explain": "Correct! Viruses are not true cells (acellular). They can only reproduce when they enter a living cell. They may infect plants, animals, or bacteria.", "m": "Remember: viruses are acellular and need a host to multiply."}, {"t": "tutor", "icon": "♻️", "title": "Microbes Clean the Environment", "body": "Microorganisms can be found everywhere — in water, soil, air, and even in some food items. Some microorganisms, like fungi and bacteria, act on plant and animal waste and slowly break it down into simpler, nutrient-rich manure. This process is called decomposition. The nutrients go back to the soil and help plants grow better. Microorganisms also decompose bodies of dead animals. So, microbes help recycle waste and return important nutrients to nature. Without microorganisms, waste would pile up and nutrients would not be recycled!"}, {"t": "real_example", "icon": "🌱", "title": "Making Manure with Microbes", "body": "In Activity 2.7, students fill a container with garden soil, add fruit and vegetable peels, and cover it with soil. After 2-3 weeks, the peels have turned into a dark-coloured material — manure! This happens because microorganisms in the soil break down the plant waste into nutrient-rich manure. Gardeners collect dry leaves and plant waste in pits for the same reason — to make natural manure using the power of microbes."}, {"t": "quiz", "q": "Quick Check: What is the process by which microorganisms break down complex substances into simpler nutrient-rich substances?", "diff": "medium", "opts": [{"t": "Decomposition", "c": true}, {"t": "Fermentation", "c": false, "m": "Fermentation is about converting sugar to alcohol or acid (like in yeast making bread rise).", "correctMethod": "Decomposition is the breakdown of complex substances into simpler ones by microorganisms."}, {"t": "Photosynthesis", "c": false, "m": "Photosynthesis is how plants make food using sunlight.", "correctMethod": "Decomposition is the correct term for microbes breaking down waste."}, {"t": "Respiration", "c": false, "m": "Respiration is how organisms release energy from food.", "correctMethod": "Decomposition is the process of breaking down waste into nutrients."}]}, {"t": "tutor", "icon": "🍞", "title": "Yeast Makes Bread Rise!", "body": "Yeast is a type of microorganism that belongs to the fungi group. Yeast grows well in warm conditions. Like other organisms, yeast respires and breaks down food to release energy. During this process, carbon dioxide is released, which forms bubbles that make the dough soft and fluffy. Yeast also produces a small amount of alcohol, which gives the dough a slightly different smell. This special property of yeast is used in making breads, cakes, and pastries! Some bacteria, like Lactobacillus, help in fermentation of batter for making idli and dosa, and dough for making bhatura."}, {"t": "ix_fermentation", "instruction": "Toggle between the bowl WITH yeast and the bowl WITHOUT yeast. Watch what happens to the dough over time!"}, {"t": "quiz", "q": "Quick Check: Why does dough rise when yeast is added?", "diff": "medium", "opts": [{"t": "Yeast releases carbon dioxide gas which forms bubbles in the dough", "c": true}, {"t": "Yeast produces heat which expands the dough", "c": false, "m": "Yeast does not produce heat to expand dough.", "correctMethod": "Yeast releases carbon dioxide during respiration, which forms bubbles that make the dough fluffy."}, {"t": "Yeast adds water to the dough", "c": false, "m": "Yeast does not add water.", "correctMethod": "Carbon dioxide released by yeast creates bubbles that make dough rise."}, {"t": "Yeast changes the flour into a different substance", "c": false, "m": "Yeast does not transform flour into a different substance.", "correctMethod": "The carbon dioxide gas from yeast respiration makes the dough rise."}]}, {"t": "tutor", "icon": "🥛", "title": "How Curd is Made", "body": "Curd contains several types of bacteria. One of them is Lactobacillus. This bacterium feeds on the sugar in milk (lactose), multiplies, and ferments the milk to form curd. Instead of producing alcohol (like yeast), these bacteria produce lactic acid, which makes curd sour. These bacteria grow well in warm conditions. That is why curd forms in a warm place but not in a cold place like a refrigerator. This is why we add a small spoonful of curd to warm milk to make more curd!"}, {"t": "truefalse", "q": "Lactobacillus bacteria produce lactic acid which makes curd sour.", "ans": true, "explain": "Correct! Lactobacillus ferments the lactose sugar in milk, producing lactic acid. This acid is what gives curd its sour taste.", "m": "Think about what makes curd taste different from milk — it is the acid produced by bacteria."}, {"t": "tutor", "icon": "🌱", "title": "Rhizobium — The Nitrogen Helper", "body": "Some bacteria, like Rhizobium, live in the root nodules of legumes such as beans, peas, and lentils. These bacteria trap nitrogen from the air and make it useful for the plants. This helps plants grow better without chemical fertilisers. That is why farmers grow legumes in rotation with other crops — it naturally increases the nitrogen in the soil and keeps it healthy for the next crop."}, {"t": "tutor", "icon": "🌊", "title": "Amazing Microalgae", "body": "Microalgae are microscopic plant-like organisms that live in water, soil, air, and even on trees. They make their own food using sunlight. While doing this, they also release oxygen and produce more than half of the Earth's oxygen supply! They are rich in nutrients and serve as a food source for many aquatic animals. Some, like Spirulina, Chlorella, and Diatoms, are used by humans as health supplements and medicines. Spirulina is called a superfood because it is rich in protein — more than 60% of its body weight!"}, {"t": "milestone", "icon": "🍞", "title": "Microbes and Food Mastered!", "xp": 60, "next": "Now: Why is the Cell the Basic Unit of Life?"}, {"t": "tutor", "icon": "🔬", "title": "Why is the Cell the Basic Unit of Life?", "body": "The body of all living organisms is made up of tiny building blocks called cells. A single cell contains various components that help organisms perform their functions and survive. All plants and animals are made up of many cells (multicellular). Some microorganisms, like bacteria and protozoa, are made up of just one cell (unicellular). They carry out all functions necessary for survival in a single cell. Other microbes, like algae and fungi, can be made of one or more cells. For example, yeast is a unicellular fungus while mould is a multicellular fungus."}, {"t": "quiz", "q": "Quick Check: Which of the following is a UNICELLULAR organism?", "diff": "easy", "opts": [{"t": "Bacteria", "c": true}, {"t": "Human", "c": false, "m": "Humans are multicellular — made of billions of cells.", "correctMethod": "Bacteria are unicellular — made of just one cell."}, {"t": "Mango tree", "c": false, "m": "Plants are multicellular.", "correctMethod": "Bacteria are unicellular organisms."}, {"t": "Mould (fungi)", "c": false, "m": "Mould is a multicellular fungus. Yeast is the unicellular fungus.", "correctMethod": "Bacteria are unicellular. Mould is multicellular."}]}, {"t": "truefalse", "q": "Bacteria have a nucleoid instead of a well-defined nucleus, which distinguishes them from cells of yeast, protozoa, algae, fungi, plants, and animals.", "ans": true, "explain": "Correct! The absence of a well-defined nucleus and nuclear membrane is the key feature that distinguishes bacteria from all other cell types.", "m": "Remember: bacteria have a nucleoid, not a nucleus. This is what makes them unique."}, {"t": "rapid_fire", "qs": [{"q": "Who is known as the Father of Microbiology?", "opts": ["Antonie van Leeuwenhoek", "Robert Hooke", "Charles Darwin", "Albert Einstein"], "ans": 0}, {"q": "What is the basic unit of life?", "opts": ["Cell", "Atom", "Molecule", "Tissue"], "ans": 0}, {"q": "Which part of the cell controls all activities?", "opts": ["Nucleus", "Cell membrane", "Cytoplasm", "Cell wall"], "ans": 0}, {"q": "Which microorganism makes bread rise?", "opts": ["Yeast", "Bacteria", "Virus", "Algae"], "ans": 0}, {"q": "Which bacterium helps form curd?", "opts": ["Lactobacillus", "Rhizobium", "Amoeba", "Paramecium"], "ans": 0}, {"q": "What is the process of breaking down waste by microbes called?", "opts": ["Decomposition", "Fermentation", "Photosynthesis", "Respiration"], "ans": 0}, {"q": "Which bacteria live in root nodules of legumes?", "opts": ["Rhizobium", "Lactobacillus", "Yeast", "Spirulina"], "ans": 0}, {"q": "What do microalgae produce that is more than half of Earth's supply?", "opts": ["Oxygen", "Carbon dioxide", "Nitrogen", "Methane"], "ans": 0}]}, {"t": "memory_match", "pairs": [{"en": "Cell", "hi": "कोशिका"}, {"en": "Nucleus", "hi": "केंद्रक"}, {"en": "Cytoplasm", "hi": "कोशिका द्रव्य"}, {"en": "Bacteria", "hi": "जीवाणु"}, {"en": "Fungi", "hi": "कवक"}, {"en": "Microorganism", "hi": "सूक्ष्मजीव"}, {"en": "Fermentation", "hi": "किण्वन"}, {"en": "Tissue", "hi": "पबसत"}]}, {"t": "quiz", "q": "Exercise Q2(i): Aanandi added yeast to sugar solution in test tube B and attached a balloon. After 3-4 hours, the balloon was inflated. What is the explanation?", "diff": "hard", "opts": [{"t": "Yeast produced a gas (carbon dioxide) inside the test tube which inflated the balloon", "c": true}, {"t": "Water evaporated and filled the balloon with water vapour", "c": false, "m": "The balloon inflated due to gas produced by yeast, not water vapour.", "correctMethod": "Yeast respires and releases carbon dioxide gas, which inflated the balloon."}, {"t": "The warm atmosphere expanded the air inside the test tube", "c": false, "m": "While warmth helps yeast grow, the inflation is from the gas yeast produces.", "correctMethod": "Yeast produces carbon dioxide during respiration, inflating the balloon."}, {"t": "Sugar reacted with warm air to produce gas", "c": false, "m": "Sugar alone does not react with air — yeast is needed.", "correctMethod": "Yeast breaks down sugar and releases carbon dioxide gas."}]}, {"t": "quiz", "q": "Exercise Q5(i): Identify the microorganism: 'I live in every kind of environment, and inside your gut.'", "diff": "easy", "opts": [{"t": "Bacteria", "c": true}, {"t": "Yeast", "c": false, "m": "Yeast is used in baking, not typically found in the gut.", "correctMethod": "Bacteria live in every kind of environment, including inside our gut where they help in digestion."}, {"t": "Rhizobium", "c": false, "m": "Rhizobium lives in root nodules of legumes, not in the gut.", "correctMethod": "Bacteria are found everywhere, including inside our gut."}, {"t": "Spirulina", "c": false, "m": "Spirulina is a microalga found in water, not typically in the gut.", "correctMethod": "Bacteria are the microorganisms that live in every environment and inside our gut."}]}, {"t": "quiz", "q": "Exercise Q5(ii): Identify the microorganism: 'I make bread and cakes soft and fluffy.'", "diff": "easy", "opts": [{"t": "Yeast", "c": true}, {"t": "Bacteria", "c": false, "m": "Bacteria like Lactobacillus make curd, not bread.", "correctMethod": "Yeast produces carbon dioxide which makes dough soft and fluffy — used in bread and cake making."}, {"t": "Rhizobium", "c": false, "m": "Rhizobium helps plants get nitrogen, not make bread.", "correctMethod": "Yeast is the microorganism that makes bread and cakes soft and fluffy."}, {"t": "Virus", "c": false, "m": "Viruses do not help in food preparation.", "correctMethod": "Yeast is used in making bread, cakes, and pastries."}]}, {"t": "quiz", "q": "Exercise Q5(iii): Identify the microorganism: 'I live in the roots of pulse crops and provide nutrients for their growth.'", "diff": "easy", "opts": [{"t": "Rhizobium", "c": true}, {"t": "Yeast", "c": false, "m": "Yeast is used in baking, not in root nodules.", "correctMethod": "Rhizobium bacteria live in the root nodules of legumes and trap nitrogen from the air for plants."}, {"t": "Lactobacillus", "c": false, "m": "Lactobacillus helps make curd, not fix nitrogen in roots.", "correctMethod": "Rhizobium lives in root nodules and provides nitrogen to pulse crops."}, {"t": "Spirulina", "c": false, "m": "Spirulina is a microalga, not found in roots.", "correctMethod": "Rhizobium is the bacterium that lives in the roots of pulse crops."}]}, {"t": "truefalse", "q": "Exercise Q3 reasoning: A farmer growing beans does not need to add nitrogen fertiliser because Rhizobium bacteria in the root nodules trap nitrogen from the air for the plant.", "ans": true, "explain": "Correct! Rhizobium bacteria in the root nodules of legumes (like beans) convert atmospheric nitrogen into a form the plant can use. This is why farmers rotate legume crops with other crops — it naturally enriches the soil with nitrogen.", "m": "Think about why legumes are special — they have Rhizobium in their roots!"}, {"t": "quiz", "q": "Exercise: Which of these correctly describes the levels of organisation from simplest to most complex?", "diff": "medium", "opts": [{"t": "Cell → Tissue → Organ → Organ System → Organism", "c": true}, {"t": "Organism → Organ System → Organ → Tissue → Cell", "c": false, "m": "This is the reverse order — from complex to simple.", "correctMethod": "The correct order from simplest to most complex is: Cell → Tissue → Organ → Organ System → Organism."}, {"t": "Tissue → Cell → Organ → Organism → Organ System", "c": false, "m": "Tissue comes after cell, and organism comes after organ system.", "correctMethod": "Cell → Tissue → Organ → Organ System → Organism is the correct order."}, {"t": "Cell → Organ → Tissue → Organism → Organ System", "c": false, "m": "Organ comes after tissue, not before.", "correctMethod": "Cell → Tissue → Organ → Organ System → Organism is the correct order."}]}, {"t": "complete", "icon": "🔬", "title": "Chapter 2 Complete!", "sub": "The Invisible Living World: Beyond Our Naked Eye — Mastered!"}];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;this.shuffledOpts=null;
+    if(this._prevSIdx!==this.sIdx){this.solveStepIdx=0;this.solveAnswered=false;this.weStepIdx=0;this._prevSIdx=this.sIdx;}
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"ix_cell":this.renderIxCell(step,cb);break;
+      case"ix_cell_compare":this.renderIxCellCompare(step,cb);break;
+      case"ix_microbes":this.renderIxMicrobes(step,cb);break;
+      case"ix_levels":this.renderIxLevels(step,cb);break;
+      case"ix_fermentation":this.renderIxFermentation(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  renderIntro:function(step,cb){
+    var introText=step.intro||"Welcome! Let us begin learning.";
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center"><div class="intro-icon">'+step.icon+'</div><div class="intro-title">'+rt(step.title)+'</div><div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#eef2ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(79,70,229,.08)">'+rt(introText)+'</div>'+
+      '<div class="hint">Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue \u2192";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var self=this;if(this.weStepIdx===undefined)this.weStepIdx=0;var idx=this.weStepIdx;
+    if(idx>=step.steps.length){cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";return;}
+    var html='<div class="instruction">Worked Example - Step '+(idx+1)+' of '+step.steps.length+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<=idx&&i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";var isCurrent=(i===idx);
+      html+='<div class="we-step'+cls+'"' +(isCurrent?' style="border-left-color:var(--gold);background:linear-gradient(90deg,#fef3c7,#fde68a);animation:slideIn .3s ease"':'')+'><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(idx>=step.steps.length-1&&step.answer){html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;
+    if(idx<step.steps.length-1){cb.textContent="Next Step ("+(idx+2)+" of "+step.steps.length+")";cb.className="btn btn-primary";cb.disabled=false;cb.style.display="";}
+    else{cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;cb.style.display="";}
+  },
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;var shuffled=step.opts.slice();
+    for(var i=shuffled.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;}
+    self.shuffledOpts=shuffled;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<shuffled.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(shuffled[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opts=this.shuffledOpts||step.opts;var opt=opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">Not quite.</div>';if(opt.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True or False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">\u2713 True</div><div class="tf-opt" id="tfFalse">\u2717 False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(step.explain)mh+='<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step \u2192";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';if(misc)mh+='<div class="misconception"><strong>\u26a0 Why wrong:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct approach:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">\ud83c\udfc1</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">\ud83e\ude99 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>\u2b50</span><span>\u2b50</span><span>\u2b50</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"\ud83d\udfe5",cost:0},{id:"ocean",name:"Ocean",icon:"\ud83c\udf0a",cost:50},{id:"forest",name:"Forest",icon:"\ud83c\udf32",cost:80},{id:"sunset",name:"Sunset",icon:"\ud83c\udf05",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">\ud83d\uded2 Shop</div><div class="shop-coins">\ud83e\ude99 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">\ud83e\ude99 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">\u2713 Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+
+  /* ===== SCIENCE SIMULATIONS FOR CHAPTER 2 ===== */
+
+  /* SIM 1: Cell Explorer - Interactive labeled plant cell */
+  renderIxCell:function(step,cb){
+    var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Cell Explorer</div><canvas id="ceCanvas" width="300" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn ce-btn" data-part="cellwall">Cell Wall</button><button class="shape-btn ce-btn" data-part="membrane">Cell Membrane</button><button class="shape-btn ce-btn" data-part="cytoplasm">Cytoplasm</button><button class="shape-btn ce-btn" data-part="nucleus">Nucleus</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="ceTitle">Tap a part to explore!</div><div class="d-text" id="ceInfo">A plant cell has a cell wall, cell membrane, cytoplasm, and nucleus.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var parts={
+      "cellwall":{"title":"Cell Wall","info":"The extra outer layer in plant cells. It provides rigidity and strength to plants. This is why plant cells look firm and are arranged compactly. Animal cells do NOT have a cell wall."},
+      "membrane":{"title":"Cell Membrane","info":"The outer layer that encloses the cytoplasm and nucleus. It is porous and allows the entry of materials essential for life processes and the exit of waste material. It separates one cell from another."},
+      "cytoplasm":{"title":"Cytoplasm","info":"The jelly-like substance between the cell membrane and nucleus. It contains other components of the cell and compounds like carbohydrates, proteins, fats, and mineral salts. Most life processes take place here."},
+      "nucleus":{"title":"Nucleus","info":"The round structure in the middle, covered by a thin membrane. It regulates ALL activities that occur within the cell. It also regulates growth. It is the control center of the cell!"}
+    };
+    function draw(){
+      var c=document.getElementById("ceCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,300,280);
+      // Cell wall (outer)
+      ctx.fillStyle=selected==="cellwall"?"#f59e0b":"#a7f3d0";
+      ctx.fillRect(40,40,220,200);
+      // Cell membrane (inner)
+      ctx.fillStyle=selected==="membrane"?"#f59e0b":"rgba(99,102,241,0.3)";
+      ctx.fillRect(55,55,190,170);
+      // Cytoplasm
+      ctx.fillStyle=selected==="cytoplasm"?"#f59e0b":"rgba(236,72,153,0.15)";
+      ctx.fillRect(60,60,180,160);
+      // Nucleus
+      ctx.fillStyle=selected==="nucleus"?"#f59e0b":"#7c3aed";
+      ctx.beginPath();ctx.arc(150,140,30,0,2*Math.PI);ctx.fill();
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Cell Wall",150,30);
+      ctx.fillText("Cell Membrane",150,50);
+      ctx.fillText("Cytoplasm",80,75);
+      ctx.fillStyle="#fff";ctx.fillText("Nucleus",150,143);
+      // Vacuole (hint)
+      ctx.strokeStyle="#64748b";ctx.lineWidth=1;
+      ctx.beginPath();ctx.ellipse(220,100,25,35,0,0,2*Math.PI);ctx.stroke();
+      ctx.fillStyle="#64748b";ctx.font="7px sans-serif";ctx.fillText("Vacuole",220,100);
+    }
+    var btns=document.querySelectorAll(".ce-btn");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var p=parts[selected];
+        document.getElementById("ceTitle").textContent=p.title;
+        document.getElementById("ceInfo").textContent=p.info;
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  },
+
+  /* SIM 2: Plant vs Animal Cell Comparison */
+  renderIxCellCompare:function(step,cb){
+    var cellType="plant";var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Plant vs Animal Cell</div><div style="text-align:center;margin-bottom:6px"><button class="shape-btn cc-type-btn active" data-type="plant">Plant Cell</button><button class="shape-btn cc-type-btn" data-type="animal">Animal Cell</button></div><canvas id="ccCanvas" width="300" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn cc-part-btn" data-part="cellwall">Cell Wall</button><button class="shape-btn cc-part-btn" data-part="membrane">Membrane</button><button class="shape-btn cc-part-btn" data-part="nucleus">Nucleus</button><button class="shape-btn cc-part-btn" data-part="chloroplast">Chloroplast</button><button class="shape-btn cc-part-btn" data-part="vacuole">Vacuole</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="ccTitle">Plant Cell</div><div class="d-text" id="ccInfo">Plant cells have a cell wall, chloroplasts, and a large vacuole. Tap parts to learn more!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var partInfo={
+      "cellwall":{"title":"Cell Wall","plantInfo":"Found in plant cells. Provides rigidity and strength. NOT present in animal cells.","animalInfo":"NOT present in animal cells. Animal cells only have a cell membrane."},
+      "membrane":{"title":"Cell Membrane","plantInfo":"Present in plant cells (inside the cell wall). Porous — allows entry of useful materials and exit of waste.","animalInfo":"The outer boundary of animal cells. Porous — controls what enters and exits the cell."},
+      "nucleus":{"title":"Nucleus","plantInfo":"Present in plant cells. Regulates all cell activities and controls growth.","animalInfo":"Present in animal cells. Regulates all cell activities and controls growth."},
+      "chloroplast":{"title":"Chloroplast","plantInfo":"Found in plant cells. Contains chlorophyll — makes plants green and helps in photosynthesis.","animalInfo":"NOT present in animal cells. Animals cannot make their own food."},
+      "vacuole":{"title":"Vacuole","plantInfo":"Large in plant cells. Stores important substances and helps maintain cell shape.","animalInfo":"Usually absent or very small in animal cells."}
+    };
+    function draw(){
+      var c=document.getElementById("ccCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,300,280);
+      if(cellType==="plant"){
+        // Cell wall
+        ctx.fillStyle=selected==="cellwall"?"#f59e0b":"#a7f3d0";
+        ctx.fillRect(40,40,220,200);
+        // Membrane
+        ctx.fillStyle=selected==="membrane"?"#f59e0b":"rgba(99,102,241,0.2)";
+        ctx.fillRect(55,55,190,170);
+        // Cytoplasm
+        ctx.fillStyle="rgba(236,72,153,0.1)";ctx.fillRect(60,60,180,160);
+        // Nucleus
+        ctx.fillStyle=selected==="nucleus"?"#f59e0b":"#7c3aed";
+        ctx.beginPath();ctx.arc(120,140,28,0,2*Math.PI);ctx.fill();
+        // Chloroplasts
+        ctx.fillStyle=selected==="chloroplast"?"#f59e0b":"#10b981";
+        for(var i=0;i<4;i++){ctx.beginPath();ctx.ellipse(200,80+i*30,12,8,0,0,2*Math.PI);ctx.fill();}
+        // Vacuole
+        ctx.fillStyle=selected==="vacuole"?"rgba(245,158,11,0.5)":"rgba(99,102,241,0.15)";
+        ctx.beginPath();ctx.ellipse(190,140,30,50,0,0,2*Math.PI);ctx.fill();
+        // Labels
+        ctx.fillStyle="#4f46e5";ctx.font="bold 8px sans-serif";ctx.textAlign="center";
+        ctx.fillText("Cell Wall",150,30);ctx.fillText("Membrane",150,50);
+        ctx.fillStyle="#fff";ctx.fillText("Nucleus",120,143);
+        ctx.fillText("Chloroplasts",200,80);ctx.fillText("Vacuole",190,140);
+      }else{
+        // Animal cell - no cell wall, no chloroplasts, small/no vacuole
+        ctx.fillStyle=selected==="membrane"?"#f59e0b":"rgba(99,102,241,0.3)";
+        ctx.beginPath();ctx.ellipse(150,140,110,100,0,0,2*Math.PI);ctx.fill();
+        // Cytoplasm
+        ctx.fillStyle="rgba(236,72,153,0.1)";ctx.beginPath();ctx.ellipse(150,140,105,95,0,0,2*Math.PI);ctx.fill();
+        // Nucleus
+        ctx.fillStyle=selected==="nucleus"?"#f59e0b":"#7c3aed";
+        ctx.beginPath();ctx.arc(150,140,35,0,2*Math.PI);ctx.fill();
+        // Labels
+        ctx.fillStyle="#4f46e5";ctx.font="bold 9px sans-serif";ctx.textAlign="center";
+        ctx.fillText("Cell Membrane",150,35);
+        ctx.fillStyle="#fff";ctx.fillText("Nucleus",150,143);
+        // No cell wall, no chloroplasts, no large vacuole
+        ctx.fillStyle="#ef4444";ctx.font="bold 8px sans-serif";
+        ctx.fillText("No Cell Wall!",150,260);
+        ctx.fillText("No Chloroplasts!",150,272);
+      }
+    }
+    var typeBtns=document.querySelectorAll(".cc-type-btn");
+    for(var i=0;i<typeBtns.length;i++){
+      typeBtns[i].addEventListener("click",function(){
+        cellType=this.getAttribute("data-type");selected="";
+        for(var j=0;j<typeBtns.length;j++)typeBtns[j].classList.remove("active");
+        this.classList.add("active");
+        document.getElementById("ccTitle").textContent=cellType==="plant"?"Plant Cell":"Animal Cell";
+        document.getElementById("ccInfo").textContent=cellType==="plant"?"Plant cells have a cell wall, chloroplasts, and a large vacuole. Tap parts to learn more!":"Animal cells have NO cell wall, NO chloroplasts, and small/no vacuole. Tap parts to compare!";
+        // Reset part buttons
+        var pb=document.querySelectorAll(".cc-part-btn");for(var k=0;k<pb.length;k++)pb[k].classList.remove("active");
+        draw();
+      });
+    }
+    var partBtns=document.querySelectorAll(".cc-part-btn");
+    for(var i=0;i<partBtns.length;i++){
+      partBtns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var p=partInfo[selected];
+        var info=cellType==="plant"?p.plantInfo:p.animalInfo;
+        document.getElementById("ccTitle").textContent=p.title+" ("+cellType.charAt(0).toUpperCase()+cellType.slice(1)+" Cell)";
+        document.getElementById("ccInfo").textContent=info;
+        for(var j=0;j<partBtns.length;j++)partBtns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  },
+
+  /* SIM 3: Microbe Gallery */
+  renderIxMicrobes:function(step,cb){
+    var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Microbe Gallery</div><canvas id="mgCanvas" width="280" height="220" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn mg-btn" data-part="bacteria">Bacteria</button><button class="shape-btn mg-btn" data-part="protozoa">Protozoa</button><button class="shape-btn mg-btn" data-part="fungi">Fungi</button><button class="shape-btn mg-btn" data-part="algae">Algae</button><button class="shape-btn mg-btn" data-part="virus">Virus</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="mgTitle">Tap a microbe to explore!</div><div class="d-text" id="mgInfo">Microorganisms are tiny living things that cannot be seen with the naked eye.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var microbes={
+      "bacteria":{"title":"Bacteria","info":"Unicellular organisms that are spherical, rod, comma, or spiral shaped. They do NOT have a well-defined nucleus — instead they have a nucleoid region. Bacteria are found everywhere: in water, soil, air, and even inside our gut!"},
+      "protozoa":{"title":"Protozoa","info":"Unicellular organisms like Amoeba and Paramecium. They are single cells that can move and feed. Amoeba has an irregular shape and moves using pseudopodia. Paramecium moves using tiny hair-like structures called cilia."},
+      "fungi":{"title":"Fungi","info":"Can be unicellular (like yeast) or multicellular (like mould). Fungi have a cell wall but do NOT have chloroplasts, so they cannot make their own food through photosynthesis. Yeast is used in baking bread. Mould grows on bread and fruits."},
+      "algae":{"title":"Algae","info":"Can be unicellular or multicellular. They contain chlorophyll, so they CAN make their own food using sunlight (photosynthesis). Microalgae produce more than half of Earth's oxygen supply! Spirulina is a superfood rich in protein."},
+      "virus":{"title":"Viruses","info":"Microscopic and acellular — they are NOT true cells. They can multiply ONLY inside a living host cell. They may infect plants, animals, or bacteria and may cause diseases. Viruses are different from all other microorganisms."}
+    };
+    function draw(){
+      var c=document.getElementById("mgCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,220);
+      if(!selected){
+        ctx.fillStyle="#64748b";ctx.font="bold 12px sans-serif";ctx.textAlign="center";
+        ctx.fillText("Select a microbe above",140,110);return;
+      }
+      ctx.fillStyle="#4f46e5";ctx.font="bold 11px sans-serif";ctx.textAlign="center";
+      ctx.fillText(selected.toUpperCase(),140,20);
+      if(selected==="bacteria"){
+        // Rod shape
+        ctx.fillStyle="#10b981";ctx.fillRect(80,60,50,25);ctx.beginPath();ctx.arc(80,72,12,0,2*Math.PI);ctx.fill();ctx.beginPath();ctx.arc(130,72,12,0,2*Math.PI);ctx.fill();
+        // Spiral
+        ctx.strokeStyle="#10b981";ctx.lineWidth=3;ctx.beginPath();
+        for(var i=0;i<60;i++){var x=80+i;var y=110+Math.sin(i*0.3)*8;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();
+        // Spherical
+        ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(140,170,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#fff";ctx.font="8px sans-serif";ctx.fillText("Rod",105,75);ctx.fillText("Spiral",110,100);ctx.fillText("Spherical",140,173);
+      }else if(selected==="protozoa"){
+        // Amoeba (irregular)
+        ctx.fillStyle="#a855f7";ctx.beginPath();
+        ctx.moveTo(100,80);ctx.quadraticCurveTo(70,60,80,100);ctx.quadraticCurveTo(60,130,100,120);
+        ctx.quadraticCurveTo(130,140,150,120);ctx.quadraticCurveTo(190,130,180,90);
+        ctx.quadraticCurveTo(200,60,160,70);ctx.quadraticCurveTo(130,50,100,80);ctx.fill();
+        // Nucleus
+        ctx.fillStyle="#7c3aed";ctx.beginPath();ctx.arc(130,100,12,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#fff";ctx.font="8px sans-serif";ctx.fillText("Amoeba",130,100);
+      }else if(selected==="fungi"){
+        // Bread mould - branched filaments
+        ctx.strokeStyle="#6b7280";ctx.lineWidth=2;
+        ctx.beginPath();ctx.moveTo(140,180);ctx.lineTo(140,120);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(140,140);ctx.lineTo(100,110);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(140,130);ctx.lineTo(180,100);ctx.stroke();
+        // Sporangia (sac-like)
+        ctx.fillStyle="#6b7280";ctx.beginPath();ctx.arc(140,110,15,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.arc(100,110,10,0,2*Math.PI);ctx.fill();
+        ctx.beginPath();ctx.arc(180,100,10,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="8px sans-serif";ctx.fillText("Mould",140,112);
+      }else if(selected==="algae"){
+        // Spirogyra/green algae
+        ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(140,80,30,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(140,80,20,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(140,80,10,0,2*Math.PI);ctx.fill();
+        // Chlorophyll dots
+        ctx.fillStyle="#059669";
+        for(var i=0;i<6;i++){ctx.beginPath();ctx.arc(120+i*8,75+Math.sin(i)*10,3,0,2*Math.PI);ctx.fill();}
+        ctx.fillStyle="#4f46e5";ctx.font="8px sans-serif";ctx.fillText("Green Algae",140,130);
+        ctx.fillText("(has chlorophyll)",140,145);
+      }else if(selected==="virus"){
+        // Virus - geometric shape
+        ctx.fillStyle="#ef4444";
+        ctx.beginPath();
+        for(var i=0;i<8;i++){var angle=i*Math.PI/4;var r=35;var x=140+Math.cos(angle)*r;var y=100+Math.sin(angle)*r;
+        if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.closePath();ctx.fill();
+        // Inner circle
+        ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(140,100,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#ef4444";ctx.beginPath();ctx.arc(140,100,8,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="8px sans-serif";ctx.fillText("Virus",140,103);
+        ctx.fillText("(acellular)",140,160);
+      }
+    }
+    var btns=document.querySelectorAll(".mg-btn");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var m=microbes[selected];
+        document.getElementById("mgTitle").textContent=m.title;
+        document.getElementById("mgInfo").textContent=m.info;
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  },
+
+  /* SIM 4: Levels of Organisation Builder */
+  renderIxLevels:function(step,cb){
+    var selected="";
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Levels of Organisation</div><canvas id="loCanvas" width="280" height="260" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn lo-btn" data-part="cell">Cell</button><button class="shape-btn lo-btn" data-part="tissue">Tissue</button><button class="shape-btn lo-btn" data-part="organ">Organ</button><button class="shape-btn lo-btn" data-part="system">Organ System</button><button class="shape-btn lo-btn" data-part="organism">Organism</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="loTitle">Tap a level to explore!</div><div class="d-text" id="loInfo">Cells build up to form tissues, organs, organ systems, and finally a complete organism.</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var levels={
+      "cell":{"title":"Cell \u2014 Level 1","info":"The basic unit of life, just like a single brick. All living beings are made up of cells. A cell contains a cell membrane, cytoplasm, and nucleus."},
+      "tissue":{"title":"Tissue \u2014 Level 2","info":"A group of similar cells that work together to perform a specific function. Like many bricks arranged together to form a layer."},
+      "organ":{"title":"Organ \u2014 Level 3","info":"Different tissues organised together to form an organ. Examples: heart, stomach, leaf. Like a wall with windows and doors."},
+      "system":{"title":"Organ System \u2014 Level 4","info":"Several organs working together to perform a major function. Example: digestive system (mouth, food pipe, stomach, intestines). Like a whole room in a building."},
+      "organism":{"title":"Organism \u2014 Level 5","info":"All organ systems together make up a complete organism \u2014 like a plant or an animal. Like a complete building! Humans, trees, and animals are all organisms."}
+    };
+    function draw(){
+      var c=document.getElementById("loCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,260);
+      if(!selected){
+        ctx.fillStyle="#64748b";ctx.font="bold 11px sans-serif";ctx.textAlign="center";
+        ctx.fillText("Select a level above",140,130);return;
+      }
+      if(selected==="cell"){
+        // Single cell
+        ctx.fillStyle="#a7f3d0";ctx.fillRect(100,100,80,60);
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=2;ctx.strokeRect(100,100,80,60);
+        ctx.fillStyle="#7c3aed";ctx.beginPath();ctx.arc(140,130,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.fillText("1 Cell",140,180);
+      }else if(selected==="tissue"){
+        // Group of cells
+        ctx.fillStyle="#a7f3d0";
+        for(var r=0;r<3;r++){for(var c2=0;c2<4;c2++){ctx.fillRect(60+c2*45,70+r*45,40,35);}}
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=1;
+        for(var r=0;r<3;r++){for(var c2=0;c2<4;c2++){ctx.strokeRect(60+c2*45,70+r*45,40,35);}}
+        ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.fillText("Many Cells = Tissue",140,220);
+      }else if(selected==="organ"){
+        // Organ (heart shape)
+        ctx.fillStyle="#ef4444";
+        ctx.beginPath();ctx.moveTo(140,90);ctx.bezierCurveTo(100,60,70,100,100,130);
+        ctx.bezierCurveTo(110,150,130,160,140,180);ctx.bezierCurveTo(150,160,170,150,180,130);
+        ctx.bezierCurveTo(210,100,180,60,140,90);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.fillText("Organ (Heart)",140,210);
+      }else if(selected==="system"){
+        // Digestive system simplified
+        ctx.fillStyle="#fbbf24";ctx.beginPath();ctx.arc(140,60,15,0,2*Math.PI);ctx.fill();
+        ctx.fillStyle="#4f46e5";ctx.font="7px sans-serif";ctx.fillText("Mouth",140,63);
+        ctx.strokeStyle="#fbbf24";ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(140,75);ctx.lineTo(140,110);ctx.stroke();
+        ctx.fillText("Food Pipe",170,90);
+        ctx.fillStyle="#f59e0b";ctx.beginPath();ctx.ellipse(140,130,25,20,0,0,2*Math.PI);ctx.fill();
+        ctx.fillText("Stomach",140,133);
+        ctx.strokeStyle="#fbbf24";ctx.lineWidth=4;ctx.beginPath();
+        ctx.moveTo(140,150);ctx.lineTo(130,170);ctx.lineTo(150,190);ctx.lineTo(135,210);ctx.stroke();
+        ctx.fillText("Intestines",160,190);
+        ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.fillText("Organ System",140,240);
+      }else if(selected==="organism"){
+        // Complete organism (stick figure)
+        ctx.fillStyle="#4f46e5";
+        ctx.beginPath();ctx.arc(140,60,15,0,2*Math.PI);ctx.fill();
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(140,75);ctx.lineTo(140,140);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(120,100);ctx.lineTo(160,100);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(140,140);ctx.lineTo(125,175);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(140,140);ctx.lineTo(155,175);ctx.stroke();
+        ctx.font="bold 10px sans-serif";ctx.fillText("Organism",140,205);
+        ctx.font="7px sans-serif";ctx.fillText("(Complete Living Being)",140,220);
+      }
+    }
+    var btns=document.querySelectorAll(".lo-btn");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        selected=this.getAttribute("data-part");
+        var l=levels[selected];
+        document.getElementById("loTitle").textContent=l.title;
+        document.getElementById("loInfo").textContent=l.info;
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+    draw();
+  },
+
+  /* SIM 5: Fermentation Demo */
+  renderIxFermentation:function(step,cb){
+    var bowl="A";var stage=0; // 0=start, 1=after 2hrs, 2=after 4hrs
+    document.getElementById("screen").innerHTML='<div class="instruction">'+rt(step.instruction)+'</div><div class="visual-card"><div class="visual-title">Yeast Fermentation Demo</div><canvas id="fdCanvas" width="280" height="220" style="display:block;margin:0 auto;border-radius:8px;background:#fff"></canvas><div style="text-align:center;margin-top:6px"><button class="shape-btn fd-bowl-btn active" data-bowl="A">Bowl A (with yeast)</button><button class="shape-btn fd-bowl-btn" data-bowl="B">Bowl B (no yeast)</button></div><div style="text-align:center;margin-top:6px"><button class="shape-btn" id="fdStage">Advance Time \u2192</button></div><div class="discovery-box" style="margin-top:8px"><div class="d-title" id="fdTitle">Bowl A \u2014 Start</div><div class="d-text" id="fdInfo">Dough with yeast, sugar, and warm water. Tap to advance time!</div></div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    function draw(){
+      var c=document.getElementById("fdCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+      ctx.clearRect(0,0,280,220);
+      // Draw bowl
+      ctx.strokeStyle="#64748b";ctx.lineWidth=3;
+      ctx.beginPath();ctx.arc(140,140,80,0,Math.PI);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(60,140);ctx.lineTo(60,160);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(220,140);ctx.lineTo(220,160);ctx.stroke();
+      // Dough level depends on bowl and stage
+      var doughHeight=60;var hasBubbles=false;
+      if(bowl==="A"){
+        if(stage===0){doughHeight=60;hasBubbles=false;}
+        else if(stage===1){doughHeight=75;hasBubbles=true;}
+        else if(stage===2){doughHeight=95;hasBubbles=true;}
+      }else{
+        doughHeight=60;hasBubbles=false;
+      }
+      // Draw dough
+      ctx.fillStyle=bowl==="A"?"#fef3c7":"#fde68a";
+      ctx.beginPath();ctx.arc(140,140,doughHeight,0,Math.PI);ctx.fill();
+      // Bubbles
+      if(hasBubbles){
+        ctx.fillStyle="rgba(255,255,255,0.6)";
+        for(var i=0;i<8;i++){
+          var bx=100+Math.random()*80;var by=120+Math.random()*(doughHeight-30);
+          var br=3+Math.random()*5;
+          ctx.beginPath();ctx.arc(bx,by,br,0,2*Math.PI);ctx.fill();
+        }
+      }
+      // Labels
+      ctx.fillStyle="#4f46e5";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Bowl "+bowl,140,30);
+      if(bowl==="A"){
+        ctx.fillStyle="#a855f7";ctx.font="8px sans-serif";
+        if(stage===0)ctx.fillText("Dough just made",140,45);
+        else if(stage===1)ctx.fillText("After 2 hours \u2014 dough rising!",140,45);
+        else ctx.fillText("After 4 hours \u2014 dough is fluffy!",140,45);
+        // Yeast icon
+        ctx.fillStyle="#ef4444";ctx.font="7px sans-serif";
+        ctx.fillText("+ yeast",100,100);
+      }else{
+        ctx.fillStyle="#64748b";ctx.font="8px sans-serif";
+        ctx.fillText("No yeast \u2014 dough stays flat",140,45);
+      }
+    }
+    function updateInfo(){
+      if(bowl==="A"){
+        if(stage===0){document.getElementById("fdTitle").textContent="Bowl A \u2014 Start";document.getElementById("fdInfo").textContent="Dough with yeast, sugar, and warm water. Yeast is starting to respire and release carbon dioxide.";}
+        else if(stage===1){document.getElementById("fdTitle").textContent="Bowl A \u2014 After 2 Hours";document.getElementById("fdInfo").textContent="The dough has risen! Yeast released carbon dioxide gas, forming bubbles that make the dough soft and fluffy. A slightly different smell comes from the alcohol produced.";}
+        else{document.getElementById("fdTitle").textContent="Bowl A \u2014 After 4 Hours";document.getElementById("fdInfo").textContent="The dough is now fully risen and fluffy! This is how bread and cakes are made. The carbon dioxide from yeast makes the dough rise.";}
+      }else{
+        document.getElementById("fdTitle").textContent="Bowl B \u2014 No Yeast";
+        document.getElementById("fdInfo").textContent="Without yeast, the dough stays flat and does NOT rise. No carbon dioxide is produced. The dough does not become fluffy. This is why yeast is essential for making bread!";
+      }
+    }
+    var bowlBtns=document.querySelectorAll(".fd-bowl-btn");
+    for(var i=0;i<bowlBtns.length;i++){
+      bowlBtns[i].addEventListener("click",function(){
+        bowl=this.getAttribute("data-bowl");stage=0;
+        for(var j=0;j<bowlBtns.length;j++)bowlBtns[j].classList.remove("active");
+        this.classList.add("active");
+        updateInfo();draw();
+      });
+    }
+    var stageBtn=document.getElementById("fdStage");
+    if(stageBtn)stageBtn.addEventListener("click",function(){
+      if(bowl==="A"){stage++;if(stage>2)stage=0;}
+      else{stage=0;}
+      updateInfo();draw();
+    });
+    draw();
+  }
+};
+
+App.init();
+
+</script>
+</body>
+</html>

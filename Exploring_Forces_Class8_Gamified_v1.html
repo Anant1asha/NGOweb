@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Aasha - Exploring Forces | Class 8 Science</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f1e;color:#e8e8f0;overscroll-behavior:none}
+#app{max-width:600px;margin:0 auto;min-height:100vh;background:linear-gradient(180deg,#12122a 0%,#1a1a3a 100%);position:relative;display:flex;flex-direction:column}
+#header{position:sticky;top:0;z-index:100;background:rgba(18,18,42,0.95);backdrop-filter:blur(10px);padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.h-left{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.h-back{background:none;border:none;color:#8b8bd0;font-size:22px;cursor:pointer;padding:4px;flex-shrink:0}
+.h-title{font-size:14px;font-weight:600;color:#c8c8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.h-stat{background:rgba(255,255,255,0.06);border-radius:8px;padding:4px 10px;display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600}
+.h-stat .icon{font-size:15px}
+.xp-stat{color:#ffd966}
+.coin-stat{color:#ffcc6b}
+.level-stat{color:#7ee8d0}
+#screen{flex:1;padding:16px;overflow-y:auto;padding-bottom:80px}
+.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#7c5cff,#5cb8ff);border-radius:2px;transition:width 0.4s ease}
+#footer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:600px;z-index:100;background:rgba(18,18,42,0.95);backdrop-filter:blur(10px);padding:12px 16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;gap:10px}
+.btn-primary{flex:1;background:linear-gradient(135deg,#7c5cff,#5c8bff);color:#fff;border:none;border-radius:12px;padding:14px;font-size:16px;font-weight:700;cursor:pointer;transition:transform 0.15s,opacity 0.2s}
+.btn-primary:active{transform:scale(0.97)}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed}
+.btn-secondary{background:rgba(255,255,255,0.08);color:#c8c8e8;border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px 20px;font-size:15px;font-weight:600;cursor:pointer;transition:transform 0.15s}
+.btn-secondary:active{transform:scale(0.97)}
+.intro-card{text-align:center;padding:32px 20px}
+.intro-card .icon{font-size:56px;display:block;margin-bottom:16px}
+.intro-card h1{font-size:26px;font-weight:800;background:linear-gradient(135deg,#7c5cff,#5cb8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.intro-card .sub{font-size:14px;color:#8b8bd0;margin-bottom:20px}
+.intro-card .intro-text{font-size:15px;line-height:1.7;color:#b8b8d8;text-align:left}
+.tutor-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.tutor-card .icon{font-size:32px;display:block;margin-bottom:12px}
+.tutor-card h2{font-size:18px;font-weight:700;color:#e8e8f0;margin-bottom:12px}
+.tutor-card .body{font-size:15px;line-height:1.75;color:#c0c0d8}
+.tutor-card .body .hindi-pop{color:#7ee8d0;cursor:pointer;border-bottom:1px dotted #7ee8d0}
+.formula-card{background:rgba(124,92,255,0.08);border:1px solid rgba(124,92,255,0.2);border-radius:16px;padding:20px;margin-bottom:16px}
+.formula-card h2{font-size:18px;font-weight:700;color:#7c5cff;margin-bottom:16px}
+.formula-item{background:rgba(255,255,255,0.03);border-radius:10px;padding:14px;margin-bottom:10px}
+.formula-item .label{font-size:14px;font-weight:700;color:#5cb8ff;margin-bottom:4px}
+.formula-item .expr{font-size:15px;color:#e8e8f0;font-weight:500;margin-bottom:4px}
+.formula-item .note{font-size:13px;color:#8b8bd0}
+.quiz-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.quiz-card .q-text{font-size:16px;font-weight:600;color:#e8e8f0;line-height:1.6;margin-bottom:16px}
+.quiz-card .diff{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin-bottom:12px}
+.diff-easy{background:rgba(126,232,208,0.15);color:#7ee8d0}
+.diff-medium{background:rgba(255,204,107,0.15);color:#ffcc6b}
+.diff-hard{background:rgba(255,107,107,0.15);color:#ff6b6b}
+.quiz-opt{background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px 16px;margin-bottom:10px;font-size:15px;color:#c8c8e8;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:10px}
+.quiz-opt:active{transform:scale(0.98)}
+.quiz-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.quiz-opt.correct{background:rgba(126,232,208,0.12);border-color:#7ee8d0}
+.quiz-opt.correct .opt-letter{background:#7ee8d0;color:#12122a}
+.quiz-opt.wrong{background:rgba(255,107,107,0.12);border-color:#ff6b6b}
+.quiz-opt.wrong .opt-letter{background:#ff6b6b;color:#12122a}
+.quiz-opt.disabled{opacity:0.5;pointer-events:none}
+.quiz-feedback{margin-top:14px;padding:14px;border-radius:10px;font-size:14px;line-height:1.6;display:none}
+.quiz-feedback.show{display:block;animation:fadeIn 0.3s}
+.quiz-feedback.correct{background:rgba(126,232,208,0.1);color:#7ee8d0;border:1px solid rgba(126,232,208,0.2)}
+.quiz-feedback.wrong{background:rgba(255,107,107,0.1);color:#ff9999;border:1px solid rgba(255,107,107,0.2)}
+.quiz-feedback .correct-method{margin-top:8px;color:#b8b8d8;font-style:italic}
+.tf-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.tf-card .q-text{font-size:16px;font-weight:600;color:#e8e8f0;line-height:1.6;margin-bottom:16px}
+.tf-btns{display:flex;gap:12px;margin-bottom:16px}
+.tf-btn{flex:1;padding:16px;border-radius:12px;border:2px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:#c8c8e8;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.tf-btn:active{transform:scale(0.97)}
+.tf-btn.true-btn.selected{background:rgba(126,232,208,0.12);border-color:#7ee8d0;color:#7ee8d0}
+.tf-btn.false-btn.selected{background:rgba(255,107,107,0.12);border-color:#ff6b6b;color:#ff6b6b}
+.we-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.we-card .q-text{font-size:16px;font-weight:600;color:#e8e8f0;line-height:1.6;margin-bottom:16px}
+.we-step{background:rgba(255,255,255,0.03);border-radius:10px;padding:14px;margin-bottom:10px;display:none}
+.we-step.show{display:block;animation:fadeIn 0.4s}
+.we-step .step-label{font-size:13px;font-weight:700;color:#5cb8ff;margin-bottom:6px}
+.we-step .step-text{font-size:15px;color:#c8c8e8;line-height:1.6}
+.solve-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.solve-card .q-text{font-size:16px;font-weight:600;color:#e8e8f0;line-height:1.6;margin-bottom:16px}
+.solve-input{width:100%;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;font-size:16px;color:#e8e8f0;margin-bottom:12px;font-family:inherit}
+.solve-input:focus{outline:none;border-color:#7c5cff}
+.solve-input::placeholder{color:#5a5a8a}
+.rf-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.rf-card .rf-q{font-size:18px;font-weight:700;color:#e8e8f0;margin-bottom:16px}
+.rf-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.rf-opt{background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px;font-size:14px;color:#c8c8e8;cursor:pointer;text-align:center;transition:all 0.2s}
+.rf-opt:active{transform:scale(0.97)}
+.rf-opt.correct{background:rgba(126,232,208,0.12);border-color:#7ee8d0}
+.rf-opt.wrong{background:rgba(255,107,107,0.12);border-color:#ff6b6b}
+.rf-timer{width:60px;height:60px;border-radius:50%;border:3px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;font-weight:800;color:#ffcc6b}
+.rf-timer.urgent{color:#ff6b6b;border-color:#ff6b6b}
+.rf-score{text-align:center;font-size:15px;color:#8b8bd0;margin-bottom:12px}
+.mm-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.mm-card-item{aspect-ratio:1;border-radius:10px;background:rgba(124,92,255,0.15);border:2px solid rgba(124,92,255,0.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#c8c8e8;cursor:pointer;transition:all 0.3s;text-align:center;padding:4px;overflow:hidden}
+.mm-card-item:active{transform:scale(0.95)}
+.mm-card-item.flipped{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15)}
+.mm-card-item.matched{background:rgba(126,232,208,0.12);border-color:#7ee8d0;color:#7ee8d0;pointer-events:none}
+.mm-card-item.wrong-match{background:rgba(255,107,107,0.12);border-color:#ff6b6b}
+.mm-score{text-align:center;font-size:15px;color:#8b8bd0}
+.milestone-card{text-align:center;padding:40px 20px}
+.milestone-card .icon{font-size:56px;display:block;margin-bottom:16px;animation:bounce 1s ease-in-out}
+.milestone-card h2{font-size:22px;font-weight:800;color:#7ee8d0;margin-bottom:12px}
+.milestone-card .xp-earned{font-size:18px;color:#ffcc6b;font-weight:700;margin-bottom:8px}
+.milestone-card .next-hint{font-size:14px;color:#8b8bd0}
+.complete-card{text-align:center;padding:40px 20px}
+.complete-card .icon{font-size:64px;display:block;margin-bottom:16px;animation:bounce 1s ease-in-out}
+.complete-card h2{font-size:26px;font-weight:800;background:linear-gradient(135deg,#7c5cff,#5cb8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.complete-card .sub{font-size:16px;color:#7ee8d0;margin-bottom:24px}
+.complete-card .stats{background:rgba(255,255,255,0.04);border-radius:12px;padding:20px;margin-bottom:20px}
+.complete-card .stat-row{display:flex;justify-content:space-between;padding:8px 0;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.complete-card .stat-row:last-child{border-bottom:none}
+.complete-card .stat-row .label{color:#8b8bd0}
+.complete-card .stat-row .val{color:#e8e8f0;font-weight:700}
+.sim-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;margin-bottom:16px}
+.sim-card .sim-title{font-size:16px;font-weight:700;color:#5cb8ff;margin-bottom:8px}
+.sim-card .sim-instruction{font-size:14px;color:#8b8bd0;margin-bottom:16px;line-height:1.5}
+.sim-canvas{width:100%;border-radius:12px;background:rgba(0,0,0,0.2);margin-bottom:12px;display:block}
+.sim-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.sim-btn{background:rgba(124,92,255,0.15);border:1px solid rgba(124,92,255,0.25);border-radius:8px;padding:10px 14px;font-size:13px;color:#c8c8e8;cursor:pointer;transition:all 0.2s;flex:1;min-width:100px;text-align:center}
+.sim-btn:active{transform:scale(0.96)}
+.sim-btn.active{background:rgba(124,92,255,0.3);border-color:#7c5cff;color:#e8e8f0}
+.discovery-box{background:rgba(126,232,208,0.06);border:1px solid rgba(126,232,208,0.15);border-radius:10px;padding:14px;font-size:14px;line-height:1.6;color:#b8b8d8;min-height:60px}
+.discovery-box .d-title{font-weight:700;color:#7ee8d0;margin-bottom:4px}
+.real-example-card{background:rgba(92,184,255,0.06);border:1px solid rgba(92,184,255,0.15);border-radius:16px;padding:20px;margin-bottom:16px}
+.real-example-card .icon{font-size:32px;display:block;margin-bottom:12px}
+.real-example-card h2{font-size:18px;font-weight:700;color:#5cb8ff;margin-bottom:12px}
+.real-example-card .body{font-size:15px;line-height:1.75;color:#c0c0d8}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-card{background:linear-gradient(135deg,#1a1a3a,#2a2a5a);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:32px 24px;max-width:360px;width:100%;text-align:center;animation:slideUp 0.4s ease}
+.modal-card .icon{font-size:48px;display:block;margin-bottom:12px}
+.modal-card h2{font-size:22px;font-weight:800;color:#ffcc6b;margin-bottom:8px}
+.modal-card p{font-size:15px;color:#c8c8e8;margin-bottom:20px}
+.modal-card .modal-btn{background:linear-gradient(135deg,#7c5cff,#5c8bff);color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:16px;font-weight:700;cursor:pointer}
+.confetti{position:fixed;width:10px;height:10px;z-index:300;pointer-events:none;animation:confettiFall 2s linear forwards}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}
+.shop-card{background:linear-gradient(180deg,#1a1a3a,#2a2a5a);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:24px;max-width:380px;width:100%;max-height:80vh;overflow-y:auto}
+.shop-card h2{font-size:20px;font-weight:800;color:#ffcc6b;margin-bottom:6px;text-align:center}
+.shop-card .shop-coins{font-size:14px;color:#8b8bd0;text-align:center;margin-bottom:20px}
+.shop-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.shop-item .si-info{flex:1;min-width:0}
+.shop-item .si-name{font-size:14px;font-weight:700;color:#e8e8f0}
+.shop-item .si-desc{font-size:12px;color:#8b8bd0}
+.shop-item .si-price{font-size:15px;font-weight:700;color:#ffcc6b;flex-shrink:0}
+.shop-item .si-btn{background:rgba(124,92,255,0.2);border:1px solid rgba(124,92,255,0.3);border-radius:8px;padding:8px 14px;font-size:13px;color:#c8c8e8;cursor:pointer;flex-shrink:0}
+.shop-item .si-btn:active{transform:scale(0.95)}
+.shop-item .si-btn.bought{background:rgba(126,232,208,0.15);border-color:#7ee8d0;color:#7ee8d0}
+.shop-item .si-btn.equipped{background:rgba(92,184,255,0.15);border-color:#5cb8ff;color:#5cb8ff}
+.shop-close{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:12px;font-size:15px;color:#c8c8e8;cursor:pointer;margin-top:10px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes confettiFall{to{transform:translateY(100vh) rotate(720deg);opacity:0}}
+.word-pop{position:fixed;background:rgba(30,30,60,0.95);border:1px solid rgba(124,92,255,0.3);border-radius:10px;padding:8px 14px;font-size:14px;color:#7ee8d0;z-index:400;pointer-events:none;white-space:nowrap}
+
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="header">
+    <div class="h-left">
+      <button class="h-back" onclick="App.back()">←</button>
+      <div class="h-title">Loading...</div>
+    </div>
+    <div class="h-right">
+      <div class="h-stat xp-stat"><span class="icon">⚡</span><span id="xp-val">0</span></div>
+      <div class="h-stat coin-stat"><span class="icon">🪙</span><span id="coin-val">0</span></div>
+      <div class="h-stat level-stat"><span class="icon">⭐</span><span id="level-val">1</span></div>
+      <button class="h-back" onclick="App.openShop()">🛒</button>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+  <div id="screen"></div>
+  <div id="footer">
+    <button class="btn-primary" id="next-btn" onclick="App.next()">Next →</button>
+  </div>
+</div>
+<script>
+
+var WM={
+"force":"बल","push":"धक्का","pull":"खींचना","friction":"घर्षण","muscular":"पेशीय","magnetic":"चुंबकीय",
+"electrostatic":"स्थिर वैद्युत","gravitational":"गुरुत्वाकर्षण","gravity":"गुरुत्व","weight":"भार","mass":"द्रव्यमान",
+"newton":"न्यूटन","spring":"स्प्रिंग","balance":"तुला","buoyant":"उत्प्लावक","upthrust":"उत्प्लावन","float":"तैरना",
+"sink":"डूबना","density":"घनत्व","charge":"आवेश","static":"स्थैतिक","attract":"आकर्षित करना","repel":"प्रतिकर्षित करना",
+"contact":"संपर्क","non-contact":"असंपर्क","interaction":"परस्पर क्रिया","surface":"पृष्ठ","irregularities":"अनियमितताएँ",
+"object":"वस्तु","motion":"गति","speed":"गति","direction":"दिशा","shape":"आकार","rest":"विराम",
+"move":"चलना","stop":"रुकना","apply":"लागू करना","experience":"अनुभव करना","exert":"लगाना",
+"opposite":"विपरीत","towards":"की ओर","upward":"ऊपर की ओर","downward":"नीचे की ओर","vertical":"ऊर्ध्वाधर",
+"earth":"पृथ्वी","moon":"चंद्रमा","planet":"ग्रह","attractive":"आकर्षक","repulsive":"प्रतिकर्षी",
+"magnet":"चुंबक","pole":"ध्रुव","like":"समान","unlike":"विपरीत","positive":"धनात्मक","negative":"ऋणात्मक",
+"charged":"आवेशित","uncharged":"अनावेशित","scale":"पैमाना","balloon":"गुब्बारा","paper":"कागज","woollen":"ऊनी",
+"cloth":"कपड़ा","rub":"रगड़ना","compass":"दिक्सूचक","needle":"सुई","ball":"गेंद","rolling":"लुढ़कता हुआ",
+"ground":"जमीन","rough":"ऊबड़","smooth":"चिकना","glass":"काँच","wood":"लकड़ी","sand":"रेत","ceramic":"सिरेमिक",
+"box":"डिब्बा","door":"दरवाजा","table":"मेज","floor":"फर्श","incline":"झुकाव","slope":"ढाल",
+"bicycle":"साइकिल","pedal":"पैडल","brake":"ब्रेक","fielder":"फील्डर","bat":"बल्ला","football":"फुटबॉल",
+"stretched":"खिंचा हुआ","rubber":"रबर","band":"पट्टी","drawer":"दराज","pressing":"दबाना","lifting":"उठाना",
+"muscle":"पेशी","body":"शरीर","animal":"जानवर","bird":"पक्षी","fish":"मछली","insect":"कीड़ा",
+"walking":"चलना","running":"दौड़ना","jumping":"कूदना","contract":"सिकुड़ना","elongate":"लंबा होना",
+"spring balance":"स्प्रिंग तुला","hook":"हुक","stretch":"खिंचाव","device":"उपकरण","measure":"मापना",
+"gram":"ग्राम","kilogram":"किलोग्राम","matter":"पदार्थ","unit":"इकाई","symbol":"प्रतीक",
+"liquid":"तरल","water":"पानी","bottle":"बोतल","bucket":"बाल्टी","coin":"सिक्का","wooden":"लकड़ी का",
+"block":"ब्लॉक","displaces":"विस्थापित करना","Archimedes":"आर्किमिडीज़","principle":"सिद्धांत","immersed":"डूबा हुआ",
+"pumice":"पमिस","rock":"चट्टान","porous":"छिद्रयुक्त","aeroplane":"विमान","ship":"जहाज","streamlined":"सुवाह्य",
+"because":"क्योंकि","therefore":"इसलिए","however":"हालांकि","although":"यद्यपि","whereas":"जबकि",
+"since":"चूंकि","thus":"इस प्रकार","hence":"अतः","while":"जबकि","moreover":"इसके अतिरिक्त",
+"furthermore":"इसके अलावा","consequently":"परिणामस्वरूप","nevertheless":"फिर भी","thereby":"जिससे",
+"similarly":"इसी प्रकार","for example":"उदाहरण के लिए","such as":"जैसे","namely":"अर्थात",
+"first":"पहले","then":"तब","next":"अगला","finally":"अंत में","subsequently":"बाद में",
+"begin":"शुरू करना","start":"प्रारंभ","end":"समाप्त","complete":"पूर्ण","allow":"अनुमति देना",
+"cause":"कारण","prevent":"रोकना","reduce":"कम करना","increase":"बढ़ाना","decrease":"घटाना",
+"observe":"प्रेक्षण करना","analyse":"विश्लेषण करना","infer":"निष्कर्ष निकालना","conclude":"निष्कर्ष निकालना",
+"determine":"निर्धारित करना","depends":"निर्भर करता है","result":"परिणाम","effect":"प्रभाव","due to":"के कारण",
+"is":"है","are":"हैं","was":"था","were":"थे","has":"है","have":"हैं","can":"सकता है","cannot":"नहीं सकता",
+"may":"सकता है","must":"अनिवार्य","should":"चाहिए","will":"होगा","shall":"होगा","would":"होता",
+"called":"कहलाता","known":"ज्ञात","muscular force":"पेशीय बल",
+"magnetic force":"चुंबकीय बल","electrostatic force":"स्थिर वैद्युत बल","gravitational force":"गुरुत्वाकर्षण बल",
+"buoyant force":"उत्प्लावक बल","contact force":"संपर्क बल","non-contact force":"असंपर्क बल","frictional force":"घर्षण बल",
+"force of friction":"घर्षण बल","force of gravity":"गुरुत्व बल","SI unit":"SI इकाई"
+};
+
+
+var CONN={
+"because":"क्योंकि","therefore":"इसलिए","however":"हालांकि","although":"यद्यपि","whereas":"जबकि",
+"since":"चूंकि","thus":"इस प्रकार","hence":"अतः","while":"जबकि","moreover":"इसके अतिरिक्त",
+"furthermore":"इसके अलावा","consequently":"परिणामस्वरूप","nevertheless":"फिर भी","thereby":"जिससे",
+"similarly":"इसी प्रकार","for example":"उदाहरण के लिए","such as":"जैसे","namely":"अर्थात",
+"first":"पहले","then":"तब","next":"अगला","finally":"अंत में","subsequently":"बाद में",
+"called":"कहलाता","known":"ज्ञात","is":"है","are":"हैं","was":"था","were":"थे",
+"can":"सकता","cannot":"नहीं सकता","may":"सकता","must":"अनिवार्य","should":"चाहिए",
+"will":"होगा","would":"होता","has":"है","have":"हैं","due to":"के कारण"
+};
+
+
+function rt(text){
+  var words=text.split(/\s+/);
+  var result=[];
+  var connCount=0;
+  var maxConn=4;
+  for(var i=0;i<words.length;i++){
+    var w=words[i].replace(/[.,;:!?'"]/g,'').toLowerCase();
+    if(CONN[w]&&connCount<maxConn){
+      result.push('<span class="hindi-pop" data-hi="'+CONN[w]+'" onclick="showWord(this)">'+words[i]+'</span>');
+      connCount++;
+    }else{
+      result.push(words[i]);
+    }
+  }
+  return result.join(' ');
+}
+function applyLLE(el){
+  if(!el)return;
+  var nodes=el.querySelectorAll('.body, .q-text, .intro-text, .step-text, .expr, .note');
+  nodes.forEach(function(n){
+    if(n.getAttribute('data-lle'))return;
+    n.setAttribute('data-lle','1');
+    n.innerHTML=rt(n.textContent);
+  });
+}
+var wordPopTimer=null;
+function showWord(el){
+  if(wordPopTimer)clearTimeout(wordPopTimer);
+  var existing=document.querySelector('.word-pop');
+  if(existing)existing.remove();
+  var hi=el.getAttribute('data-hi')||'';
+  if(!hi){hi=WM[el.textContent.toLowerCase().replace(/[.,;:!?'"]/g,'')]||'';}
+  if(!hi)return;
+  var rect=el.getBoundingClientRect();
+  var pop=document.createElement('div');
+  pop.className='word-pop';
+  pop.textContent=hi;
+  pop.style.left=rect.left+'px';
+  pop.style.top=(rect.top-36)+'px';
+  document.body.appendChild(pop);
+  wordPopTimer=setTimeout(function(){
+    if(pop.parentNode)pop.remove();
+  },3000);
+}
+
+var STEPS=[
+  {
+    "t": "intro",
+    "icon": "💪",
+    "title": "Exploring Forces",
+    "sub": "Class 8 Science — Chapter 5",
+    "intro": "It was a windy day. Sonali and Ragini were cycling when the wind pushed against them. They had to pedal harder! On the way back downhill, their bicycles moved fast even without pedalling — something was pulling them down. In this chapter, we will explore what forces are, the different types of forces (contact and non-contact), how forces change speed, direction, and shape, friction, gravity, weight, mass, and why some objects float while others sink. Let us begin!"
+  },
+  {
+    "t": "tutor",
+    "icon": "💡",
+    "title": "What Is a Force?",
+    "body": "Have you ever pushed a box, pulled a door open, or lifted a bag? In all these actions, you applied a push or pull on an object. Generally, the push or pull applied on an object is called force in science. A force is a push or pull on an object resulting from the object's interaction with another object. At least two objects must interact for a force to come into play. The SI unit of force is newton (written with a small 'n') and its symbol is N."
+  },
+  {
+    "t": "formula",
+    "title": "Key Facts About Force",
+    "formulas": [
+      {
+        "label": "Force",
+        "expr": "A push or pull on an object",
+        "note": "Requires interaction between two objects"
+      },
+      {
+        "label": "SI Unit",
+        "expr": "newton (N)",
+        "note": "Named after Sir Isaac Newton"
+      },
+      {
+        "label": "Key Rule",
+        "expr": "At least two objects must interact for a force to come into play",
+        "note": "When interaction stops, the force disappears"
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: What is the SI unit of force?",
+    "diff": "easy",
+    "opts": [
+      {
+        "t": "newton (N)",
+        "c": true
+      },
+      {
+        "t": "kilogram (kg)",
+        "c": false,
+        "m": "Kilogram is the unit of mass, not force.",
+        "correctMethod": "The SI unit of force is newton (N), named after Sir Isaac Newton."
+      },
+      {
+        "t": "metre (m)",
+        "c": false,
+        "m": "Metre is the unit of length.",
+        "correctMethod": "Force is measured in newtons (N)."
+      },
+      {
+        "t": "joule (J)",
+        "c": false,
+        "m": "Joule is the unit of energy.",
+        "correctMethod": "The unit of force is newton (N)."
+      }
+    ]
+  },
+  {
+    "t": "tutor",
+    "icon": "🔄",
+    "title": "What Can a Force Do?",
+    "body": "The force applied on an object may: make an object move from rest, change the speed of an object if it is moving, change the direction of motion of an object, or bring about a change in the shape of an object. Whenever there is a change in speed, direction, or shape, a force is acting on the object. None of these changes take place without the action of force."
+  },
+  {
+    "t": "ix_force_effects",
+    "instruction": "Tap each effect of force to see a visual demonstration! Explore: Move from Rest, Change Speed, Change Direction, and Change Shape."
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: Which of these is NOT an effect of force?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "Changing the colour of an object",
+        "c": true
+      },
+      {
+        "t": "Making an object move from rest",
+        "c": false,
+        "m": "Force CAN make an object move from rest.",
+        "correctMethod": "Force does not change colour. It can change speed, direction, or shape — but not colour."
+      },
+      {
+        "t": "Changing the speed of a moving object",
+        "c": false,
+        "m": "Force CAN change the speed of an object.",
+        "correctMethod": "Changing colour is not an effect of force. Force affects motion and shape."
+      },
+      {
+        "t": "Changing the shape of an object",
+        "c": false,
+        "m": "Force CAN change the shape of an object.",
+        "correctMethod": "Colour change is not caused by force. Force changes speed, direction, or shape."
+      }
+    ]
+  },
+  {
+    "t": "milestone",
+    "icon": "💪",
+    "title": "Force Basics Mastered!",
+    "xp": 50,
+    "next": "Now: Types of Forces — Contact and Non-Contact!"
+  },
+  {
+    "t": "tutor",
+    "icon": "🤝",
+    "title": "Contact Forces: Muscular Force and Friction",
+    "body": "Forces that act only when there is physical contact between objects are called contact forces. Muscular force is the force resulting from the action of muscles in our body. When we walk, run, lift, push, jump, or stretch, the force is caused by our muscles. Animals, birds, fish, and insects also use muscular forces for movement and survival. Friction is another contact force. When a ball rolls on the ground, it stops after some time. The force that comes into play when an object moves or tries to move over another surface is called friction. Friction always acts in a direction opposite to the direction of motion."
+  },
+  {
+    "t": "ix_friction",
+    "instruction": "Tap on different surfaces to see how friction changes! Compare smooth glass, wood, cloth, and sand. Watch how far the object slides on each surface."
+  },
+  {
+    "t": "formula",
+    "title": "Friction — Key Facts",
+    "formulas": [
+      {
+        "label": "Friction",
+        "expr": "Force that acts when surfaces are in contact and one moves over the other",
+        "note": "Always acts OPPOSITE to the direction of motion"
+      },
+      {
+        "label": "Cause",
+        "expr": "Irregularities on surfaces lock into each other",
+        "note": "Even smooth surfaces have microscopic irregularities"
+      },
+      {
+        "label": "Rough vs Smooth",
+        "expr": "Friction is GREATER on rough surfaces",
+        "note": "Friction is LESS on smooth surfaces"
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: Friction acts in which direction relative to the object's motion?",
+    "diff": "easy",
+    "opts": [
+      {
+        "t": "Opposite to the direction of motion",
+        "c": true
+      },
+      {
+        "t": "Same direction as the motion",
+        "c": false,
+        "m": "If friction acted in the same direction, it would speed up the object, not stop it.",
+        "correctMethod": "Friction always acts OPPOSITE to the direction of motion — that is why objects slow down and stop."
+      },
+      {
+        "t": "Perpendicular to the motion",
+        "c": false,
+        "m": "Friction acts along the surface, not perpendicular.",
+        "correctMethod": "Friction acts opposite to the direction of motion."
+      },
+      {
+        "t": "Friction has no specific direction",
+        "c": false,
+        "m": "Friction always has a specific direction — opposite to motion.",
+        "correctMethod": "Friction always opposes motion — it acts in the opposite direction."
+      }
+    ]
+  },
+  {
+    "t": "truefalse",
+    "q": "Exercise Q2(ii): Due to friction, the speed of a ball rolling on a flat ground increases.",
+    "ans": false,
+    "explain": "False! Friction acts OPPOSITE to the direction of motion, so it SLOWS DOWN the ball — the speed decreases, not increases. Friction is what brings the ball to a stop.",
+    "m": "Remember: friction opposes motion. It reduces speed, it does not increase it."
+  },
+  {
+    "t": "tutor",
+    "icon": "🧲",
+    "title": "Non-Contact Forces: Magnetic, Electrostatic, and Gravitational",
+    "body": "There are forces whose effect can be experienced even if the objects are not in contact. These are called non-contact forces. Magnetic force is exerted by a magnet on another magnet or magnetic material without touching it. Electrostatic force is exerted by a charged body on another charged or uncharged body — like when a rubbed plastic scale attracts small paper pieces. Gravitational force is the force with which the Earth attracts objects towards itself — it is always attractive and acts without contact."
+  },
+  {
+    "t": "ix_noncontact",
+    "instruction": "Tap each non-contact force to explore it! Learn about: Magnetic Force, Electrostatic Force, and Gravitational Force."
+  },
+  {
+    "t": "formula",
+    "title": "Three Types of Non-Contact Forces",
+    "formulas": [
+      {
+        "label": "Magnetic Force",
+        "expr": "Force exerted by a magnet on another magnet or magnetic material",
+        "note": "Can attract OR repel — like poles repel, unlike poles attract"
+      },
+      {
+        "label": "Electrostatic Force",
+        "expr": "Force exerted by a charged body on another charged or uncharged body",
+        "note": "Like charges repel, unlike charges attract"
+      },
+      {
+        "label": "Gravitational Force",
+        "expr": "Force with which the Earth attracts objects towards itself",
+        "note": "ALWAYS attractive — never repulsive. Also called gravity."
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: Which non-contact force is ALWAYS attractive (never repulsive)?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "Gravitational force",
+        "c": true
+      },
+      {
+        "t": "Magnetic force",
+        "c": false,
+        "m": "Magnetic force can both attract and repel (like poles repel).",
+        "correctMethod": "Gravitational force is always attractive — it only pulls, never pushes. Magnetic and electrostatic forces can both attract and repel."
+      },
+      {
+        "t": "Electrostatic force",
+        "c": false,
+        "m": "Electrostatic force can both attract and repel (like charges repel).",
+        "correctMethod": "Only gravitational force is always attractive. Magnetic and electrostatic forces can be either attractive or repulsive."
+      },
+      {
+        "t": "Muscular force",
+        "c": false,
+        "m": "Muscular force is a contact force, not a non-contact force.",
+        "correctMethod": "Gravitational force is the non-contact force that is always attractive."
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Exercise Q3: Two balloons rubbed with a woollen cloth are brought near each other. What happens and why?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "They repel each other because they acquired similar (like) charges",
+        "c": true
+      },
+      {
+        "t": "They attract each other because they acquired opposite charges",
+        "c": false,
+        "m": "Both balloons were rubbed the same way, so they got the SAME type of charge, not opposite.",
+        "correctMethod": "Both balloons acquire similar charges when rubbed the same way. Like charges repel each other, so the balloons move apart."
+      },
+      {
+        "t": "Nothing happens because balloons are not magnetic",
+        "c": false,
+        "m": "This is about electrostatic charge, not magnetism.",
+        "correctMethod": "The rubbed balloons acquire similar static charges. Like charges repel — the balloons push apart."
+      },
+      {
+        "t": "They stick together because of gravity",
+        "c": false,
+        "m": "Gravity is not what makes balloons stick together.",
+        "correctMethod": "Similar charges from rubbing cause the balloons to repel each other."
+      }
+    ]
+  },
+  {
+    "t": "milestone",
+    "icon": "🧲",
+    "title": "Types of Forces Mastered!",
+    "xp": 60,
+    "next": "Now: Gravity, Weight, and Mass!"
+  },
+  {
+    "t": "tutor",
+    "icon": "🌍",
+    "title": "Gravitational Force and Weight",
+    "body": "Since all objects fall towards the Earth, it means the Earth attracts (pulls) them. The force with which the Earth attracts objects towards itself is called the gravitational force or gravity. The force with which the Earth pulls an object towards itself is called the weight of the object. Since weight is a force, its SI unit is also newton (N). When an object is thrown upwards, gravity slows it down, it stops momentarily at the top, and then falls back down with increasing speed. Gravitational force is always attractive — it only pulls, never pushes."
+  },
+  {
+    "t": "ix_gravity",
+    "instruction": "Tap to see how gravity works! Explore: Throwing a Ball Up, Dropping an Object, and Weight on Different Planets. See how weight changes but mass stays the same!"
+  },
+  {
+    "t": "tutor",
+    "icon": "⚖️",
+    "title": "Weight vs Mass — What's the Difference?",
+    "body": "Mass is the amount of matter in an object, measured in grams (g) or kilograms (kg). Its value remains the same everywhere — on Earth, on the Moon, or on Mars. Weight, on the other hand, is the gravitational force with which the Earth pulls an object. Since gravitational force varies from place to place (and is different on different planets), weight can change, but mass does not. For example, an object with mass 1 kg weighs 10 N on Earth but only 1.6 N on the Moon! A spring balance is a device used to measure weight — when an object is hung from the hook, the spring stretches, and the amount of stretching gives the weight."
+  },
+  {
+    "t": "formula",
+    "title": "Weight vs Mass",
+    "formulas": [
+      {
+        "label": "Mass",
+        "expr": "Amount of matter in an object",
+        "note": "Measured in grams (g) or kilograms (kg). Stays the SAME everywhere."
+      },
+      {
+        "label": "Weight",
+        "expr": "Gravitational force with which the Earth pulls an object",
+        "note": "Measured in newtons (N). CHANGES from place to place."
+      },
+      {
+        "label": "Spring Balance",
+        "expr": "Device used to measure weight",
+        "note": "Object hung from hook stretches the spring — more stretch = more weight"
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: What is the difference between mass and weight?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "Mass stays the same everywhere; weight changes with location",
+        "c": true
+      },
+      {
+        "t": "Mass changes with location; weight stays the same",
+        "c": false,
+        "m": "It is the opposite — mass stays constant, weight changes.",
+        "correctMethod": "Mass is the amount of matter and stays the same everywhere. Weight is the gravitational pull and changes from place to place."
+      },
+      {
+        "t": "Mass and weight are the same thing",
+        "c": false,
+        "m": "They are different — mass is in kg, weight is in N.",
+        "correctMethod": "Mass (in kg) and weight (in N) are different. Mass stays constant; weight varies with gravity."
+      },
+      {
+        "t": "Both mass and weight change with location",
+        "c": false,
+        "m": "Only weight changes with location. Mass stays constant.",
+        "correctMethod": "Mass stays the same everywhere. Only weight changes due to differences in gravitational pull."
+      }
+    ]
+  },
+  {
+    "t": "truefalse",
+    "q": "Exercise Q9: The weight of an object on the Moon becomes one-sixth of its weight on the Earth. Does the mass also become one-sixth?",
+    "ans": false,
+    "explain": "False! The weight changes because the Moon's gravitational force is weaker than Earth's. But the mass of the object stays exactly the same — mass is the amount of matter, and that does not change with location. Only weight changes.",
+    "m": "Remember: mass = amount of matter (stays same). Weight = gravitational pull (changes with location)."
+  },
+  {
+    "t": "milestone",
+    "icon": "🌍",
+    "title": "Gravity and Weight Mastered!",
+    "xp": 50,
+    "next": "Now: Floating and Sinking!"
+  },
+  {
+    "t": "tutor",
+    "icon": "🌊",
+    "title": "Why Do Some Objects Float and Others Sink?",
+    "body": "If we place some objects on water, some float while others sink. Why? When an object is placed in a liquid, the gravitational force acts on it downwards. But the liquid applies a force on the object in the upward direction — this is called upthrust or buoyant force. If the gravitational force is more than the buoyant force, the object sinks. If the two forces are equal, the object floats. A coin sinks because its weight (gravitational force) is greater than the buoyant force. A wooden block floats because the buoyant force equals its weight."
+  },
+  {
+    "t": "ix_buoyancy",
+    "instruction": "Tap to explore floating and sinking! Place different objects in water and see what happens. See how buoyant force and gravity determine whether an object floats or sinks."
+  },
+  {
+    "t": "formula",
+    "title": "Floating and Sinking",
+    "formulas": [
+      {
+        "label": "Buoyant Force (Upthrust)",
+        "expr": "Upward force applied by a liquid on an object",
+        "note": "All liquids apply this force on objects placed in them"
+      },
+      {
+        "label": "Object SINKS when",
+        "expr": "Gravitational force (weight) > Buoyant force",
+        "note": "Example: a coin in water"
+      },
+      {
+        "label": "Object FLOATS when",
+        "expr": "Gravitational force (weight) = Buoyant force",
+        "note": "Example: a wooden block in water"
+      },
+      {
+        "label": "Archimedes' Principle",
+        "expr": "Upward force = weight of liquid displaced by the object",
+        "note": "Discovered by the Greek scientist Archimedes"
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Quick Check: When does an object FLOAT in a liquid?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "When buoyant force equals the gravitational force (weight)",
+        "c": true
+      },
+      {
+        "t": "When buoyant force is less than the gravitational force",
+        "c": false,
+        "m": "If buoyant force is less than weight, the object sinks — it does not float.",
+        "correctMethod": "An object floats when buoyant force EQUALS the gravitational force. If buoyant force is less, the object sinks."
+      },
+      {
+        "t": "When there is no gravitational force",
+        "c": false,
+        "m": "Gravity always acts on objects on Earth.",
+        "correctMethod": "Floating happens when buoyant force equals gravitational force — not when gravity is absent."
+      },
+      {
+        "t": "When the object is very small",
+        "c": false,
+        "m": "Size alone does not determine floating — it depends on the forces.",
+        "correctMethod": "Floating depends on the balance between buoyant force and weight, not size."
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Exercise Q4: A coin sinks in water but a bigger wooden block floats. Why?",
+    "diff": "hard",
+    "opts": [
+      {
+        "t": "The coin's weight is greater than the buoyant force; the wooden block's weight equals the buoyant force",
+        "c": true
+      },
+      {
+        "t": "The wooden block is bigger, so it floats",
+        "c": false,
+        "m": "Size alone does not determine floating — it is about the forces.",
+        "correctMethod": "Floating depends on the balance of forces, not size. The coin's weight exceeds the buoyant force (sinks), while the block's weight equals the buoyant force (floats)."
+      },
+      {
+        "t": "The coin is made of metal which always sinks",
+        "c": false,
+        "m": "It is about the force balance, not just the material.",
+        "correctMethod": "The coin sinks because its weight exceeds the buoyant force. The block floats because its weight equals the buoyant force."
+      },
+      {
+        "t": "The wooden block has no weight",
+        "c": false,
+        "m": "All objects have weight — the question is whether buoyant force balances it.",
+        "correctMethod": "Both objects have weight. The coin sinks because weight exceeds buoyant force. The block floats because weight equals buoyant force."
+      }
+    ]
+  },
+  {
+    "t": "rapid_fire",
+    "qs": [
+      {
+        "q": "What is a push or pull on an object called?",
+        "opts": [
+          "Force",
+          "Energy",
+          "Power",
+          "Work"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "What is the SI unit of force?",
+        "opts": [
+          "Newton (N)",
+          "Kilogram (kg)",
+          "Joule (J)",
+          "Metre (m)"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "Which force opposes motion between two surfaces?",
+        "opts": [
+          "Friction",
+          "Gravity",
+          "Magnetic",
+          "Muscular"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "Which force is exerted by muscles?",
+        "opts": [
+          "Muscular force",
+          "Magnetic force",
+          "Electrostatic",
+          "Gravitational"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "Which force is exerted by a magnet without contact?",
+        "opts": [
+          "Magnetic force",
+          "Friction",
+          "Muscular",
+          "None"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "Which force pulls objects towards the Earth?",
+        "opts": [
+          "Gravitational force",
+          "Friction",
+          "Electrostatic",
+          "Muscular"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "What is the amount of matter in an object called?",
+        "opts": [
+          "Mass",
+          "Weight",
+          "Force",
+          "Volume"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "What is the upward force applied by a liquid on an object?",
+        "opts": [
+          "Buoyant force",
+          "Gravity",
+          "Friction",
+          "Muscular"
+        ],
+        "ans": 0
+      }
+    ]
+  },
+  {
+    "t": "memory_match",
+    "pairs": [
+      {
+        "en": "Force",
+        "hi": "बल"
+      },
+      {
+        "en": "Friction",
+        "hi": "घर्षण"
+      },
+      {
+        "en": "Gravity",
+        "hi": "गुरुत्व"
+      },
+      {
+        "en": "Mass",
+        "hi": "द्रव्यमान"
+      },
+      {
+        "en": "Weight",
+        "hi": "भार"
+      },
+      {
+        "en": "Buoyant Force",
+        "hi": "उत्प्लावन बल"
+      },
+      {
+        "en": "Muscular Force",
+        "hi": "पेशीय बल"
+      },
+      {
+        "en": "Magnetic Force",
+        "hi": "चुंबकीय बल"
+      }
+    ]
+  },
+  {
+    "t": "truefalse",
+    "q": "Exercise Q2(i): A force is always required to change the speed of motion of an object.",
+    "ans": true,
+    "explain": "True! Any change in speed requires a force. Without force, an object's speed cannot change. This is a fundamental principle of physics.",
+    "m": "Remember: force causes changes in speed, direction, and shape. Without force, none of these change."
+  },
+  {
+    "t": "truefalse",
+    "q": "Exercise Q2(iii): There is no force between two charged objects placed at a small distance apart.",
+    "ans": false,
+    "explain": "False! Charged objects exert electrostatic force on each other even without contact. Like charges repel and unlike charges attract. This is a non-contact force.",
+    "m": "Remember: electrostatic force is a non-contact force — it acts even at a distance."
+  },
+  {
+    "t": "quiz",
+    "q": "Exercise Q1 Match: Muscular force is an example of which type of force?",
+    "diff": "easy",
+    "opts": [
+      {
+        "t": "Contact force",
+        "c": true
+      },
+      {
+        "t": "Non-contact force",
+        "c": false,
+        "m": "Muscular force requires physical contact between muscles and the object.",
+        "correctMethod": "Muscular force is a contact force — it requires physical contact between the body and the object."
+      },
+      {
+        "t": "Magnetic force",
+        "c": false,
+        "m": "Magnetic force is a non-contact force. Muscular force is different.",
+        "correctMethod": "Muscular force is a contact force because muscles must touch the object."
+      },
+      {
+        "t": "Gravitational force",
+        "c": false,
+        "m": "Gravitational force is a non-contact force. Muscular force is different.",
+        "correctMethod": "Muscular force is a contact force, not gravitational."
+      }
+    ]
+  },
+  {
+    "t": "quiz",
+    "q": "Exercise Q7: Why do we sometimes slip on smooth surfaces like ice or polished floors?",
+    "diff": "medium",
+    "opts": [
+      {
+        "t": "Friction is very low on smooth surfaces, so there is less grip",
+        "c": true
+      },
+      {
+        "t": "Gravity is weaker on smooth surfaces",
+        "c": false,
+        "m": "Gravity is the same everywhere on Earth — it does not change with the surface.",
+        "correctMethod": "Smooth surfaces have very low friction, so there is less grip and we slip. Friction provides the grip we need to walk."
+      },
+      {
+        "t": "Smooth surfaces have more friction",
+        "c": false,
+        "m": "Smooth surfaces have LESS friction, not more.",
+        "correctMethod": "Smooth surfaces like ice have very low friction, which is why we slip — less grip."
+      },
+      {
+        "t": "Smooth surfaces increase muscular force",
+        "c": false,
+        "m": "Smooth surfaces do not affect muscular force.",
+        "correctMethod": "The low friction on smooth surfaces means less grip, causing us to slip."
+      }
+    ]
+  },
+  {
+    "t": "complete",
+    "icon": "💪",
+    "title": "Chapter 5 Complete!",
+    "sub": "Exploring Forces — Mastered!"
+  }
+];
+
+var App={
+  sIdx:0,
+  xp:0,
+  coins:0,
+  level:1,
+  streak:0,
+  weStepIdx:0,
+  rfIdx:0,
+  rfScore:0,
+  rfTimer:null,
+  rfTimeLeft:30,
+  mmFlipped:[],
+  mmMatched:[],
+  mmMoves:0,
+  shuffledOpts:null,
+  quizAnswered:false,
+  themes:{default:{bg:"#12122a",accent:"#7c5cff"},midnight:{bg:"#0a0a1e",accent:"#3c5cff"},forest:{bg:"#0a1e12",accent:"#2cb87a"},sunset:{bg:"#1e120a",accent:"#ff8c3c"}},
+  ownedThemes:["default"],
+  equippedTheme:"default",
+  init:function(){
+    this.sIdx=0;
+    this.xp=0;
+    this.coins=0;
+    this.level=1;
+    this.streak=0;
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];
+    if(!step)return;
+    var screen=document.getElementById("screen");
+    var html="";
+    switch(step.t){
+      case"intro":html=this.renderIntro(step);break;
+      case"tutor":html=this.renderTutor(step);break;
+      case"formula":html=this.renderFormula(step);break;
+      case"quiz":html=this.renderQuiz(step);break;
+      case"truefalse":html=this.renderTrueFalse(step);break;
+      case"we":html=this.renderWE(step);break;
+      case"solve":html=this.renderSolve(step);break;
+      case"rapid_fire":html=this.renderRapidFire(step);break;
+      case"memory_match":html=this.renderMemoryMatch(step);break;
+      case"real_example":html=this.renderRealExample(step);break;
+      case"milestone":html=this.renderMilestone(step);break;
+      case"complete":html=this.renderComplete(step);break;
+      case"ix_force_effects":this.renderIxForceEffects(step);return;
+      case"ix_friction":this.renderIxFriction(step);return;
+      case"ix_noncontact":this.renderIxNoncontact(step);return;
+      case"ix_gravity":this.renderIxGravity(step);return;
+      case"ix_buoyancy":this.renderIxBuoyancy(step);return;
+      default:html="<div class='tutor-card'><p>Unknown step type: "+step.t+"</p></div>";
+    }
+    screen.innerHTML=html;
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+  },
+  updateStats:function(){
+    var els={
+      xp:document.getElementById("xp-val"),
+      coins:document.getElementById("coin-val"),
+      level:document.getElementById("level-val")
+    };
+    if(els.xp)els.xp.textContent=this.xp;
+    if(els.coins)els.coins.textContent=this.coins;
+    if(els.level)els.level.textContent=this.level;
+  },
+  updateProgress:function(){
+    var bar=document.querySelector(".progress-fill");
+    if(bar){
+      var pct=((this.sIdx+1)/STEPS.length)*100;
+      bar.style.width=pct+"%";
+    }
+    var title=document.querySelector(".h-title");
+    if(title){
+      title.textContent="Step "+(this.sIdx+1)+" / "+STEPS.length;
+    }
+  },
+  updateFooter:function(){
+    var step=STEPS[this.sIdx];
+    var btn=document.getElementById("next-btn");
+    if(!btn)return;
+    if(step.t==="quiz"||step.t==="truefalse"||step.t==="solve"||step.t==="rapid_fire"||step.t==="memory_match"||step.t==="we"){
+      btn.disabled=true;
+    }else{
+      btn.disabled=false;
+    }
+    if(step.t==="complete"){
+      btn.textContent="Restart";
+    }else{
+      btn.textContent="Next →";
+    }
+  },
+  next:function(){
+    if(this.sIdx<STEPS.length-1){
+      this.sIdx++;
+      this.weStepIdx=0;
+      this.render();
+      var screen=document.getElementById("screen");
+      screen.scrollTop=0;
+    }else{
+      this.init();
+    }
+  },
+  back:function(){
+    if(this.sIdx>0){
+      this.sIdx--;
+      this.weStepIdx=0;
+      this.render();
+      var screen=document.getElementById("screen");
+      screen.scrollTop=0;
+    }
+  },
+  checkLevelUp:function(){
+    var thresholds=[0,50,120,200,300,420,560,720,900,1100];
+    var newLevel=1;
+    for(var i=0;i<thresholds.length;i++){
+      if(this.xp>=thresholds[i])newLevel=i+1;
+    }
+    if(newLevel>this.level){
+      this.level=newLevel;
+      this.coins+=20;
+      this.showLevelUp();
+    }
+  },
+  showLevelUp:function(){
+    var overlay=document.createElement("div");
+    overlay.className="modal-overlay";
+    overlay.innerHTML='<div class="modal-card"><span class="icon">🎉</span><h2>Level '+this.level+'!</h2><p>You earned 20 bonus coins!</p><button class="modal-btn" onclick="this.parentElement.parentElement.remove();App.render();">Awesome!</button></div>';
+    document.body.appendChild(overlay);
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var colors=["#7c5cff","#5cb8ff","#7ee8d0","#ffcc6b","#ff6b6b"];
+    for(var i=0;i<30;i++){
+      var c=document.createElement("div");
+      c.className="confetti";
+      c.style.left=Math.random()*100+"vw";
+      c.style.top="-10px";
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDelay=Math.random()*0.5+"s";
+      c.style.animationDuration=(1.5+Math.random())+"s";
+      document.body.appendChild(c);
+      setTimeout(function(el){if(el&&el.parentNode)el.remove();},3000,c);
+    }
+  },
+  renderIntro:function(step){
+    return '<div class="intro-card"><span class="icon">'+(step.icon||'📘')+'</span><h1>'+step.title+'</h1><div class="sub">'+step.sub+'</div><div class="intro-text">'+step.intro+'</div></div>';
+  },
+  renderTutor:function(step){
+    return '<div class="tutor-card"><span class="icon">'+(step.icon||'📖')+'</span><h2>'+step.title+'</h2><div class="body">'+step.body+'</div></div>';
+  },
+  renderRealExample:function(step){
+    return '<div class="real-example-card"><span class="icon">'+(step.icon||'💡')+'</span><h2>'+step.title+'</h2><div class="body">'+step.body+'</div></div>';
+  },
+  renderFormula:function(step){
+    var html='<div class="formula-card"><h2>'+step.title+'</h2>';
+    for(var i=0;i<step.formulas.length;i++){
+      var f=step.formulas[i];
+      html+='<div class="formula-item"><div class="label">'+f.label+'</div><div class="expr">'+f.expr+'</div><div class="note">'+f.note+'</div></div>';
+    }
+    html+='</div>';
+    return html;
+  },
+  renderQuiz:function(step){
+    var opts=step.opts.slice();
+    for(var i=opts.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=opts[i];opts[i]=opts[j];opts[j]=tmp;
+    }
+    this.shuffledOpts=opts;
+    this.quizAnswered=false;
+    var letters=["A","B","C","D"];
+    var html='<div class="quiz-card"><div class="diff diff-'+step.diff+'">'+step.diff.toUpperCase()+'</div><div class="q-text">'+step.q+'</div>';
+    for(var i=0;i<opts.length;i++){
+      html+='<div class="quiz-opt" onclick="App.checkQuiz('+i+')"><div class="opt-letter">'+letters[i]+'</div><div>'+opts[i].t+'</div></div>';
+    }
+    html+='<div class="quiz-feedback" id="quiz-feedback"></div></div>';
+    return html;
+  },
+  checkQuiz:function(idx){
+    if(this.quizAnswered)return;
+    this.quizAnswered=true;
+    var opt=this.shuffledOpts[idx];
+    var optsEls=document.querySelectorAll(".quiz-opt");
+    for(var i=0;i<optsEls.length;i++){
+      optsEls[i].classList.add("disabled");
+      if(this.shuffledOpts[i].c){
+        optsEls[i].classList.add("correct");
+      }
+    }
+    var fb=document.getElementById("quiz-feedback");
+    if(opt.c){
+      this.xp+=15;
+      this.coins+=5;
+      this.streak++;
+      fb.className="quiz-feedback show correct";
+      fb.innerHTML="✅ Correct! +15 XP, +5 coins";
+      this.checkLevelUp();
+    }else{
+      this.streak=0;
+      fb.className="quiz-feedback show wrong";
+      var m=opt.m||"Not quite right.";
+      var cm=opt.correctMethod||"";
+      fb.innerHTML="❌ "+m;
+      if(cm)fb.innerHTML+='<div class="correct-method">'+cm+'</div>';
+      setTimeout(function(){
+        var retryBtn=document.createElement("button");
+        retryBtn.className="btn-primary";
+        retryBtn.textContent="Try Again";
+        retryBtn.style.marginTop="10px";
+        retryBtn.onclick=function(){
+          App.quizAnswered=false;
+          App.render();
+        };
+        fb.appendChild(retryBtn);
+      },500);
+    }
+    if(opt.c){
+      var btn=document.getElementById("next-btn");
+      if(btn)btn.disabled=false;
+    }
+    this.updateStats();
+  },
+  renderTrueFalse:function(step){
+    return '<div class="tf-card"><div class="q-text">'+step.q+'</div><div class="tf-btns"><button class="tf-btn true-btn" onclick="App.checkTrueFalse(true)">True</button><button class="tf-btn false-btn" onclick="App.checkTrueFalse(false)">False</button></div><div class="quiz-feedback" id="tf-feedback"></div></div>';
+  },
+  checkTrueFalse:function(answer){
+    var step=STEPS[this.sIdx];
+    var fb=document.getElementById("tf-feedback");
+    var btns=document.querySelectorAll(".tf-btn");
+    btns[0].classList.add("disabled");
+    btns[1].classList.add("disabled");
+    if(answer===step.ans){
+      btns[answer?0:1].classList.add("selected");
+      this.xp+=10;
+      this.coins+=3;
+      this.streak++;
+      fb.className="quiz-feedback show correct";
+      fb.innerHTML="✅ Correct! +10 XP, +3 coins. "+(step.explain||"");
+      this.checkLevelUp();
+    }else{
+      btns[answer?0:1].classList.add("selected");
+      this.streak=0;
+      fb.className="quiz-feedback show wrong";
+      var hint=step.m||"";
+      fb.innerHTML="❌ Not quite. "+(step.explain||"");
+      if(hint)fb.innerHTML+='<div class="correct-method">'+hint+'</div>';
+      setTimeout(function(){
+        var retryBtn=document.createElement("button");
+        retryBtn.className="btn-primary";
+        retryBtn.textContent="Try Again";
+        retryBtn.style.marginTop="10px";
+        retryBtn.onclick=function(){
+          App.render();
+        };
+        fb.appendChild(retryBtn);
+      },500);
+    }
+    if(answer===step.ans){
+      var btn=document.getElementById("next-btn");
+      if(btn)btn.disabled=false;
+    }
+    this.updateStats();
+  },
+  renderWE:function(step){
+    var html='<div class="we-card"><div class="q-text">'+step.q+'</div>';
+    for(var i=0;i<step.steps.length;i++){
+      html+='<div class="we-step" id="we-step-'+i+'"><div class="step-label">Step '+(i+1)+'</div><div class="step-text">'+step.steps[i]+'</div></div>';
+    }
+    html+='</div>';
+    setTimeout(function(){
+      var s=document.getElementById("we-step-0");
+      if(s)s.classList.add("show");
+    },100);
+    return html;
+  },
+  renderSolve:function(step){
+    return '<div class="solve-card"><div class="q-text">'+step.q+'</div><input type="text" class="solve-input" id="solve-input" placeholder="Type your answer..." onkeydown="if(event.key===\'Enter\')App.checkSolve()"><div class="quiz-feedback" id="solve-feedback"></div></div>';
+  },
+  checkSolve:function(){
+    var step=STEPS[this.sIdx];
+    var input=document.getElementById("solve-input");
+    var val=input.value.trim().toLowerCase();
+    var fb=document.getElementById("solve-feedback");
+    var correct=false;
+    if(Array.isArray(step.a)){
+      for(var i=0;i<step.a.length;i++){
+        if(val===step.a[i].toLowerCase())correct=true;
+      }
+    }else{
+      if(val===String(step.a).toLowerCase())correct=true;
+    }
+    if(correct){
+      this.xp+=20;
+      this.coins+=8;
+      this.streak++;
+      fb.className="quiz-feedback show correct";
+      fb.innerHTML="✅ Correct! +20 XP, +8 coins. "+(step.explain||"");
+      input.disabled=true;
+      this.checkLevelUp();
+      var btn=document.getElementById("next-btn");
+      if(btn)btn.disabled=false;
+    }else{
+      this.streak=0;
+      fb.className="quiz-feedback show wrong";
+      fb.innerHTML="❌ Not quite. Try again!";
+    }
+    this.updateStats();
+  },
+  renderRapidFire:function(step){
+    this.rfIdx=0;
+    this.rfScore=0;
+    this.rfTimeLeft=30;
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.renderRFQuestion();
+    return '<div class="rf-card" id="rf-card"></div>';
+  },
+  renderRFQuestion:function(){
+    var step=STEPS[this.sIdx];
+    var q=step.qs[this.rfIdx];
+    if(!q){
+      this.endRF();
+      return;
+    }
+    var card=document.getElementById("rf-card");
+    if(!card)return;
+    var html='<div class="rf-timer" id="rf-timer">'+this.rfTimeLeft+'</div><div class="rf-score">Question '+(this.rfIdx+1)+'/'+step.qs.length+' | Score: '+this.rfScore+'</div><div class="rf-q">'+q.q+'</div><div class="rf-opts">';
+    for(var i=0;i<q.opts.length;i++){
+      html+='<div class="rf-opt" onclick="App.checkRF('+i+')">'+q.opts[i]+'</div>';
+    }
+    html+='</div>';
+    card.innerHTML=html;
+    var self=this;
+    this.rfTimer=setInterval(function(){
+      self.rfTimeLeft--;
+      var t=document.getElementById("rf-timer");
+      if(t){
+        t.textContent=self.rfTimeLeft;
+        if(self.rfTimeLeft<=10)t.classList.add("urgent");
+      }
+      if(self.rfTimeLeft<=0){
+        clearInterval(self.rfTimer);
+        self.endRF();
+      }
+    },1000);
+  },
+  checkRF:function(idx){
+    var step=STEPS[this.sIdx];
+    var q=step.qs[this.rfIdx];
+    var opts=document.querySelectorAll(".rf-opt");
+    for(var i=0;i<opts.length;i++){
+      opts[i].classList.add("disabled");
+      opts[i].style.pointerEvents="none";
+    }
+    if(idx===q.ans){
+      opts[idx].classList.add("correct");
+      this.rfScore++;
+      this.xp+=5;
+    }else{
+      opts[idx].classList.add("wrong");
+      opts[q.ans].classList.add("correct");
+    }
+    var self=this;
+    setTimeout(function(){
+      self.rfIdx++;
+      if(self.rfIdx<step.qs.length){
+        self.renderRFQuestion();
+      }else{
+        self.endRF();
+      }
+    },800);
+  },
+  endRF:function(){
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    var step=STEPS[this.sIdx];
+    var total=step.qs.length;
+    var card=document.getElementById("rf-card");
+    if(!card)return;
+    var pct=Math.round((this.rfScore/total)*100);
+    var bonus=0;
+    if(pct>=80)bonus=30;
+    else if(pct>=60)bonus=20;
+    else if(pct>=40)bonus=10;
+    this.coins+=bonus;
+    this.checkLevelUp();
+    card.innerHTML='<div class="rf-score" style="font-size:24px;color:#7ee8d0;font-weight:800">Rapid Fire Complete!</div><div class="rf-score" style="font-size:20px;color:#ffcc6b;margin:10px 0">Score: '+this.rfScore+'/'+total+'</div><div class="rf-score">Bonus coins: +'+bonus+'</div>';
+    var btn=document.getElementById("next-btn");
+    if(btn)btn.disabled=false;
+    this.updateStats();
+  },
+  renderMemoryMatch:function(step){
+    var cards=[];
+    for(var i=0;i<step.pairs.length;i++){
+      cards.push({type:"en",text:step.pairs[i].en,pairIdx:i});
+      cards.push({type:"hi",text:step.pairs[i].hi,pairIdx:i});
+    }
+    for(var i=cards.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=cards[i];cards[i]=cards[j];cards[j]=tmp;
+    }
+    this.mmFlipped=[];
+    this.mmMatched=[];
+    this.mmMoves=0;
+    var html='<div class="mm-card"><div class="mm-score">Moves: <span id="mm-moves">0</span> | Matched: <span id="mm-matched">0</span>/'+step.pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){
+      html+='<div class="mm-card-item" data-idx="'+i+'" data-pair="'+cards[i].pairIdx+'" data-type="'+cards[i].type+'" data-text="'+cards[i].text+'" onclick="App.flipMM(this)">?</div>';
+    }
+    html+='</div><div class="quiz-feedback" id="mm-feedback"></div></div>';
+    return html;
+  },
+  flipMM:function(el){
+    var idx=parseInt(el.getAttribute("data-idx"));
+    if(this.mmFlipped.length>=2)return;
+    if(this.mmMatched.indexOf(idx)>=0)return;
+    if(this.mmFlipped.indexOf(idx)>=0)return;
+    el.classList.add("flipped");
+    el.textContent=el.getAttribute("data-text");
+    this.mmFlipped.push(idx);
+    if(this.mmFlipped.length===2){
+      this.mmMoves++;
+      var movesEl=document.getElementById("mm-moves");
+      if(movesEl)movesEl.textContent=this.mmMoves;
+      var self=this;
+      setTimeout(function(){
+        self.checkMM();
+      },800);
+    }
+  },
+  checkMM:function(){
+    var c1=document.querySelector('[data-idx="'+this.mmFlipped[0]+'"]');
+    var c2=document.querySelector('[data-idx="'+this.mmFlipped[1]+'"]');
+    if(!c1||!c2)return;
+    var p1=c1.getAttribute("data-pair");
+    var p2=c2.getAttribute("data-pair");
+    if(p1===p2){
+      c1.classList.add("matched");
+      c2.classList.add("matched");
+      this.mmMatched.push(this.mmFlipped[0]);
+      this.mmMatched.push(this.mmFlipped[1]);
+      var matchedEl=document.getElementById("mm-matched");
+      if(matchedEl)matchedEl.textContent=this.mmMatched.length/2;
+      this.xp+=5;
+      this.coins+=2;
+      this.checkLevelUp();
+    }else{
+      c1.classList.add("wrong-match");
+      c2.classList.add("wrong-match");
+      setTimeout(function(){
+        c1.classList.remove("flipped","wrong-match");
+        c2.classList.remove("flipped","wrong-match");
+        c1.textContent="?";
+        c2.textContent="?";
+      },600);
+    }
+    this.mmFlipped=[];
+    var step=STEPS[this.sIdx];
+    if(this.mmMatched.length>=step.pairs.length*2){
+      var fb=document.getElementById("mm-feedback");
+      if(fb){
+        fb.className="quiz-feedback show correct";
+        fb.innerHTML="🎉 All matched! Bonus: +20 coins";
+      }
+      this.coins+=20;
+      var btn=document.getElementById("next-btn");
+      if(btn)btn.disabled=false;
+    }
+    this.updateStats();
+  },
+  renderMilestone:function(step){
+    this.xp+=step.xp||50;
+    this.coins+=10;
+    this.checkLevelUp();
+    this.fireConfetti();
+    var html='<div class="milestone-card"><span class="icon">'+(step.icon||'🏆')+'</span><h2>'+step.title+'</h2><div class="xp-earned">+'+(step.xp||50)+' XP, +10 coins</div><div class="next-hint">'+step.next+'</div></div>';
+    this.updateStats();
+    return html;
+  },
+  renderComplete:function(step){
+    var totalXP=this.xp;
+    var totalCoins=this.coins;
+    var level=this.level;
+    var html='<div class="complete-card"><span class="icon">'+(step.icon||'🎓')+'</span><h2>'+step.title+'</h2><div class="sub">'+step.sub+'</div><div class="stats"><div class="stat-row"><span class="label">Total XP</span><span class="val">'+totalXP+'</span></div><div class="stat-row"><span class="label">Coins Earned</span><span class="val">'+totalCoins+'</span></div><div class="stat-row"><span class="label">Level Reached</span><span class="val">'+level+'</span></div><div class="stat-row"><span class="label">Steps Completed</span><span class="val">'+STEPS.length+'</span></div></div></div>';
+    this.fireConfetti();
+    return html;
+  },
+  openShop:function(){
+    var overlay=document.createElement("div");
+    overlay.className="shop-overlay";
+    overlay.id="shop-overlay";
+    var html='<div class="shop-card"><h2>🛒 Shop</h2><div class="shop-coins">You have '+this.coins+' coins</div>';
+    var themesList=[
+      {id:"default",name:"Default",desc:"Classic purple theme",price:0},
+      {id:"midnight",name:"Midnight",desc:"Deep blue night theme",price:50},
+      {id:"forest",name:"Forest",desc:"Green nature theme",price:80},
+      {id:"sunset",name:"Sunset",desc:"Warm orange theme",price:100}
+    ];
+    for(var i=0;i<themesList.length;i++){
+      var t=themesList[i];
+      var owned=this.ownedThemes.indexOf(t.id)>=0;
+      var equipped=this.equippedTheme===t.id;
+      var btnClass=equipped?"equipped":(owned?"bought":"");
+      var btnText=equipped?"Equipped":(owned?"Equip":"Buy");
+      html+='<div class="shop-item"><div class="si-info"><div class="si-name">'+t.name+'</div><div class="si-desc">'+t.desc+'</div></div>';
+      if(!owned){
+        html+='<div class="si-price">'+t.price+' 🪙</div>';
+      }
+      html+='<button class="si-btn '+btnClass+'" onclick="App.buyTheme(\''+t.id+'\','+t.price+',this)">'+btnText+'</button></div>';
+    }
+    html+='<button class="shop-close" onclick="document.getElementById(\'shop-overlay\').remove();">Close</button></div>';
+    overlay.innerHTML=html;
+    document.body.appendChild(overlay);
+  },
+  buyTheme:function(id,price,btn){
+    if(this.ownedThemes.indexOf(id)>=0){
+      this.equippedTheme=id;
+      this.applyTheme();
+      this.openShop();
+      return;
+    }
+    if(this.coins>=price){
+      this.coins-=price;
+      this.ownedThemes.push(id);
+      this.equippedTheme=id;
+      this.applyTheme();
+      this.openShop();
+      this.updateStats();
+    }
+  },
+  applyTheme:function(){
+    var t=this.themes[this.equippedTheme]||this.themes.default;
+    var app=document.getElementById("app");
+    if(app){
+      app.style.background="linear-gradient(180deg,"+t.bg+" 0%,"+t.bg+" 100%)";
+    }
+  },
+
+  // ===== SIMULATION RENDERERS =====
+
+  renderIxForceEffects:function(step){
+    var screen=document.getElementById("screen");
+    screen.innerHTML='<div class="sim-card"><div class="sim-title">Effects of Force</div><div class="sim-instruction">'+step.instruction+'</div><canvas class="sim-canvas" id="sim-canvas" width="540" height="300"></canvas><div class="sim-btns"><button class="sim-btn active" data-effect="move">Move from Rest</button><button class="sim-btn" data-effect="speed">Change Speed</button><button class="sim-btn" data-effect="direction">Change Direction</button><button class="sim-btn" data-effect="shape">Change Shape</button></div><div class="discovery-box" id="discovery-box"><div class="d-title">Move from Rest</div>A force can make a stationary object start moving. When you push a box, it moves from rest.</div></div>';
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+    var canvas=document.getElementById("sim-canvas");
+    var ctx=canvas.getContext("2d");
+    var self=this;
+    function draw(effect){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#1a1a2e";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      var info={};
+      if(effect==="move"){
+        ctx.fillStyle="#8b7355";
+        ctx.fillRect(180,180,80,60);
+        ctx.strokeStyle="#7c5cff";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(140,210);
+        ctx.lineTo(170,210);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(170,210);
+        ctx.lineTo(162,204);
+        ctx.lineTo(162,216);
+        ctx.closePath();
+        ctx.fillStyle="#7c5cff";
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="14px sans-serif";
+        ctx.fillText("Force →",120,195);
+        info={title:"Move from Rest",text:"A force can make a stationary object start moving. When you push a box, it moves from rest."};
+      }else if(effect==="speed"){
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="14px sans-serif";
+        ctx.fillText("Speed +",80,150);
+        ctx.fillStyle="#7ee8d0";
+        ctx.beginPath();
+        ctx.arc(200,180,25,0,Math.PI*2);
+        ctx.fill();
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(230,180);
+        ctx.lineTo(340,180);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(340,180);
+        ctx.lineTo(330,174);
+        ctx.lineTo(330,186);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillText("Faster →",280,170);
+        ctx.fillStyle="#ff6b6b";
+        ctx.fillText("Speed -",80,250);
+        ctx.beginPath();
+        ctx.arc(200,260,25,0,Math.PI*2);
+        ctx.fill();
+        ctx.strokeStyle="#ff6b6b";
+        ctx.beginPath();
+        ctx.moveTo(230,260);
+        ctx.lineTo(340,260);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(340,260);
+        ctx.lineTo(330,254);
+        ctx.lineTo(330,266);
+        ctx.closePath();
+        ctx.fillStyle="#ff6b6b";
+        ctx.fill();
+        ctx.fillText("Slower →",280,250);
+        info={title:"Change Speed",text:"A force can increase or decrease the speed of a moving object. When you press the accelerator of a car, it speeds up. When you apply brakes, it slows down."};
+      }else if(effect==="direction"){
+        ctx.strokeStyle="#5cb8ff";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(100,150);
+        ctx.quadraticCurveTo(200,80,300,150);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(300,150);
+        ctx.lineTo(292,144);
+        ctx.lineTo(292,156);
+        ctx.closePath();
+        ctx.fillStyle="#5cb8ff";
+        ctx.fill();
+        ctx.fillStyle="#ffcc6b";
+        ctx.beginPath();
+        ctx.arc(200,120,12,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Ball changes direction",150,200);
+        info={title:"Change Direction",text:"A force can change the direction of a moving object. When a batsman hits a ball, the ball changes direction. When you turn a steering wheel, you change direction."};
+      }else if(effect==="shape"){
+        ctx.strokeStyle="#ff6b6b";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.ellipse(200,180,50,40,0,0,Math.PI*2);
+        ctx.stroke();
+        ctx.fillStyle="rgba(255,107,107,0.1)";
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Balloon (normal)",150,250);
+        ctx.strokeStyle="#7c5cff";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.ellipse(400,180,30,50,0,0,Math.PI*2);
+        ctx.stroke();
+        ctx.fillStyle="rgba(124,92,255,0.1)";
+        ctx.fill();
+        ctx.fillText("Balloon (squeezed)",360,250);
+        info={title:"Change Shape",text:"A force can change the shape of an object. When you squeeze a balloon, press dough, or stretch a rubber band, the shape changes."};
+      }
+      var db=document.getElementById("discovery-box");
+      if(db){
+        db.innerHTML='<div class="d-title">'+info.title+'</div>'+info.text;
+      }
+    }
+    draw("move");
+    var btns=document.querySelectorAll(".sim-btn");
+    btns.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        btns.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        draw(btn.getAttribute("data-effect"));
+      });
+    });
+  },
+
+  renderIxFriction:function(step){
+    var screen=document.getElementById("screen");
+    screen.innerHTML='<div class="sim-card"><div class="sim-title">Friction Explorer</div><div class="sim-instruction">'+step.instruction+'</div><canvas class="sim-canvas" id="sim-canvas" width="540" height="300"></canvas><div class="sim-btns"><button class="sim-btn active" data-surface="glass">Glass (Very Smooth)</button><button class="sim-btn" data-surface="wood">Wood (Smooth)</button><button class="sim-btn" data-surface="cloth">Cloth (Rough)</button><button class="sim-btn" data-surface="sand">Sand (Very Rough)</button></div><div class="discovery-box" id="discovery-box"><div class="d-title">Glass Surface</div>Friction is very LOW on glass. The object slides far before stopping.</div></div>';
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+    var canvas=document.getElementById("sim-canvas");
+    var ctx=canvas.getContext("2d");
+    var self=this;
+    var surfaces={
+      glass:{color:"#7ee8d0",friction:"Very Low",distance:380,texture:"smooth"},
+      wood:{color:"#d4a76a",friction:"Low",distance:280,texture:"smooth"},
+      cloth:{color:"#ff6b6b",friction:"High",distance:150,texture:"rough"},
+      sand:{color:"#ffcc6b",friction:"Very High",distance:60,texture:"rough"}
+    };
+    function draw(surface){
+      var s=surfaces[surface];
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#1a1a2e";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle=s.color;
+      ctx.fillRect(20,220,500,40);
+      ctx.globalAlpha=0.3;
+      ctx.fillStyle=s.color;
+      for(var i=0;i<500;i+=8){
+        if(s.texture==="rough"){
+          var h=Math.random()*8;
+          ctx.fillRect(20+i,220-h,4,h);
+        }
+      }
+      ctx.globalAlpha=1;
+      ctx.fillStyle="#7c5cff";
+      ctx.fillRect(30,180,50,40);
+      ctx.strokeStyle="#ff6b6b";
+      ctx.lineWidth=3;
+      var arrowStart=80;
+      var arrowEnd=80+s.distance;
+      if(arrowEnd>500)arrowEnd=500;
+      ctx.beginPath();
+      ctx.moveTo(arrowStart,165);
+      ctx.lineTo(arrowEnd,165);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(arrowEnd,165);
+      ctx.lineTo(arrowEnd-10,159);
+      ctx.lineTo(arrowEnd-10,171);
+      ctx.closePath();
+      ctx.fillStyle="#ff6b6b";
+      ctx.fill();
+      ctx.fillStyle="#ff6b6b";
+      ctx.font="12px sans-serif";
+      ctx.fillText("Motion →",arrowStart,155);
+      ctx.strokeStyle="#ffcc6b";
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(arrowEnd+10,200);
+      ctx.lineTo(arrowEnd-20,200);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(arrowEnd-20,200);
+      ctx.lineTo(arrowEnd-12,194);
+      ctx.lineTo(arrowEnd-12,206);
+      ctx.closePath();
+      ctx.fillStyle="#ffcc6b";
+      ctx.fill();
+      ctx.fillStyle="#ffcc6b";
+      ctx.font="12px sans-serif";
+      ctx.fillText("← Friction",arrowEnd-60,215);
+      ctx.fillStyle="#e8e8f0";
+      ctx.font="14px sans-serif";
+      ctx.fillText("Distance: "+s.distance+"px",350,250);
+      var db=document.getElementById("discovery-box");
+      if(db){
+        db.innerHTML='<div class="d-title">'+surface.charAt(0).toUpperCase()+surface.slice(1)+' Surface</div>Friction is '+s.friction+' on '+surface+'. The object slides '+s.distance+'px before stopping. '+(s.friction==="Very Low"||s.friction==="Low"?"Lower friction means the object travels farther before stopping.":"Higher friction means the object stops sooner.")+'';
+      }
+    }
+    draw("glass");
+    var btns=document.querySelectorAll(".sim-btn");
+    btns.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        btns.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        draw(btn.getAttribute("data-surface"));
+      });
+    });
+  },
+
+  renderIxNoncontact:function(step){
+    var screen=document.getElementById("screen");
+    screen.innerHTML='<div class="sim-card"><div class="sim-title">Non-Contact Forces</div><div class="sim-instruction">'+step.instruction+'</div><canvas class="sim-canvas" id="sim-canvas" width="540" height="300"></canvas><div class="sim-btns"><button class="sim-btn active" data-force="magnetic">Magnetic Force</button><button class="sim-btn" data-force="electrostatic">Electrostatic Force</button><button class="sim-btn" data-force="gravitational">Gravitational Force</button></div><div class="discovery-box" id="discovery-box"><div class="d-title">Magnetic Force</div>A magnet exerts force on another magnet or magnetic material without touching it. Like poles repel, unlike poles attract.</div></div>';
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+    var canvas=document.getElementById("sim-canvas");
+    var ctx=canvas.getContext("2d");
+    function draw(force){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#1a1a2e";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      var info={};
+      if(force==="magnetic"){
+        ctx.fillStyle="#ff6b6b";
+        ctx.fillRect(120,140,80,40);
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="14px sans-serif";
+        ctx.fillText("N",125,165);
+        ctx.fillText("S",185,165);
+        ctx.fillStyle="#7c5cff";
+        ctx.fillRect(340,140,80,40);
+        ctx.fillText("N",345,165);
+        ctx.fillText("S",405,165);
+        ctx.strokeStyle="#5cb8ff";
+        ctx.lineWidth=2;
+        ctx.globalAlpha=0.5;
+        for(var i=0;i<5;i++){
+          ctx.beginPath();
+          ctx.moveTo(200,160);
+          ctx.quadraticCurveTo(240,140-i*8,300,140-i*8,340,160);
+          ctx.stroke();
+        }
+        ctx.globalAlpha=1;
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(210,160);
+        ctx.lineTo(330,160);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(330,160);
+        ctx.lineTo(322,154);
+        ctx.lineTo(322,166);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.fillText("Attract →",240,130);
+        info={title:"Magnetic Force",text:"A magnet exerts force on another magnet or magnetic material without touching it. Like poles (N-N, S-S) repel each other. Unlike poles (N-S) attract each other. This is a non-contact force."};
+      }else if(force==="electrostatic"){
+        ctx.fillStyle="#7c5cff";
+        ctx.beginPath();
+        ctx.arc(150,150,35,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="16px sans-serif";
+        ctx.fillText("(-)",140,155);
+        ctx.fillText("Charged",110,205);
+        ctx.fillStyle="#ffcc6b";
+        for(var i=0;i<5;i++){
+          ctx.beginPath();
+          ctx.arc(350+i*15,140+Math.random()*40,5,0,Math.PI*2);
+          ctx.fill();
+        }
+        ctx.fillStyle="#ffcc6b";
+        ctx.fillText("Paper bits",350,200);
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=2;
+        ctx.globalAlpha=0.4;
+        for(var i=0;i<4;i++){
+          ctx.beginPath();
+          ctx.moveTo(180,150);
+          ctx.lineTo(350+i*15,150);
+          ctx.stroke();
+        }
+        ctx.globalAlpha=1;
+        info={title:"Electrostatic Force",text:"When a plastic scale is rubbed with polythene, it becomes charged. A charged object exerts force on uncharged objects like small paper pieces — pulling them towards it. This is a non-contact force. Like charges repel, unlike charges attract."};
+      }else if(force==="gravitational"){
+        ctx.fillStyle="#5cb8ff";
+        ctx.beginPath();
+        ctx.arc(270,260,50,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Earth",255,265);
+        ctx.fillStyle="#ff6b6b";
+        ctx.beginPath();
+        ctx.arc(270,60,15,0,Math.PI*2);
+        ctx.fill();
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(270,75);
+        ctx.lineTo(270,205);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(270,205);
+        ctx.lineTo(264,195);
+        ctx.lineTo(276,195);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#7ee8d0";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Gravity ↓",285,140);
+        info={title:"Gravitational Force",text:"The Earth attracts all objects towards itself. This force is called gravitational force or gravity. It always pulls objects downward. It is always attractive — never repulsive. When you throw a ball up, gravity pulls it back down."};
+      }
+      var db=document.getElementById("discovery-box");
+      if(db){
+        db.innerHTML='<div class="d-title">'+info.title+'</div>'+info.text;
+      }
+    }
+    draw("magnetic");
+    var btns=document.querySelectorAll(".sim-btn");
+    btns.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        btns.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        draw(btn.getAttribute("data-force"));
+      });
+    });
+  },
+
+  renderIxGravity:function(step){
+    var screen=document.getElementById("screen");
+    screen.innerHTML='<div class="sim-card"><div class="sim-title">Gravity Explorer</div><div class="sim-instruction">'+step.instruction+'</div><canvas class="sim-canvas" id="sim-canvas" width="540" height="300"></canvas><div class="sim-btns"><button class="sim-btn active" data-mode="throw">Throw Ball Up</button><button class="sim-btn" data-mode="drop">Drop Object</button><button class="sim-btn" data-mode="planets">Weight on Planets</button></div><div class="discovery-box" id="discovery-box"><div class="d-title">Throwing a Ball Up</div>When you throw a ball upward, gravity slows it down. It stops momentarily at the top, then falls back down with increasing speed.</div></div>';
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+    var canvas=document.getElementById("sim-canvas");
+    var ctx=canvas.getContext("2d");
+    function draw(mode){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#1a1a2e";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      var info={};
+      if(mode==="throw"){
+        ctx.strokeStyle="#5cb8ff";
+        ctx.lineWidth=2;
+        ctx.setLineDash([5,5]);
+        ctx.beginPath();
+        ctx.moveTo(270,250);
+        ctx.lineTo(270,50);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle="#ff6b6b";
+        ctx.beginPath();
+        ctx.arc(270,60,12,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#ffcc6b";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Top (stops)",290,65);
+        ctx.fillStyle="#ff6b6b";
+        ctx.globalAlpha=0.3;
+        ctx.beginPath();
+        ctx.arc(270,120,10,0,Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha=0.5;
+        ctx.beginPath();
+        ctx.arc(270,180,11,0,Math.PI*2);
+        ctx.fill();
+        ctx.globalAlpha=1;
+        ctx.beginPath();
+        ctx.arc(270,240,12,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.fillText("Going up ↑",290,120);
+        ctx.fillText("Slowing down",290,180);
+        ctx.fillText("Falling ↓ (speeding up)",290,240);
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(270,100);
+        ctx.lineTo(270,230);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(270,230);
+        ctx.lineTo(264,222);
+        ctx.lineTo(276,222);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        info={title:"Throwing a Ball Up",text:"When you throw a ball upward, gravity slows it down. It stops momentarily at the top, then falls back down with increasing speed. Gravity always acts downward — it slows the ball going up and speeds it up coming down."};
+      }else if(mode==="drop"){
+        ctx.fillStyle="#5cb8ff";
+        ctx.fillRect(0,270,540,30);
+        ctx.fillStyle="#7ee8d0";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Ground",10,290);
+        ctx.fillStyle="#ff6b6b";
+        ctx.beginPath();
+        ctx.arc(270,50,12,0,Math.PI*2);
+        ctx.fill();
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(270,65);
+        ctx.lineTo(270,255);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(270,255);
+        ctx.lineTo(264,245);
+        ctx.lineTo(276,245);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#7ee8d0";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Gravity pulls down ↓",290,150);
+        info={title:"Dropping an Object",text:"When you drop an object from a height, it takes a straight vertical path downward. Gravity pulls it straight down. The object accelerates — its speed increases as it falls."};
+      }else if(mode==="planets"){
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="14px sans-serif";
+        ctx.fillText("Mass: 1 kg everywhere!",180,30);
+        var planets=[
+          {name:"Earth",weight:"10 N",color:"#5cb8ff",x:50},
+          {name:"Moon",weight:"1.6 N",color:"#c8c8c8",x:150},
+          {name:"Mars",weight:"3.8 N",color:"#ff6b6b",x:250},
+          {name:"Venus",weight:"9 N",color:"#ffcc6b",x:350},
+          {name:"Jupiter",weight:"25.4 N",color:"#d4a76a",x:450}
+        ];
+        for(var i=0;i<planets.length;i++){
+          var p=planets[i];
+          ctx.fillStyle=p.color;
+          ctx.beginPath();
+          ctx.arc(p.x,120,20,0,Math.PI*2);
+          ctx.fill();
+          ctx.fillStyle="#e8e8f0";
+          ctx.font="11px sans-serif";
+          ctx.fillText(p.name,p.x-15,160);
+          ctx.fillStyle="#7ee8d0";
+          ctx.fillText(p.weight,p.x-20,175);
+        }
+        ctx.fillStyle="#ffcc6b";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Mass stays 1 kg everywhere",170,220);
+        ctx.fillStyle="#7ee8d0";
+        ctx.fillText("Weight changes with gravity!",170,245);
+        info={title:"Weight on Different Planets",text:"An object with mass 1 kg weighs 10 N on Earth, only 1.6 N on the Moon, 3.8 N on Mars, 9 N on Venus, and 25.4 N on Jupiter! The mass stays the same — only the weight changes because gravitational force is different on each planet."};
+      }
+      var db=document.getElementById("discovery-box");
+      if(db){
+        db.innerHTML='<div class="d-title">'+info.title+'</div>'+info.text;
+      }
+    }
+    draw("throw");
+    var btns=document.querySelectorAll(".sim-btn");
+    btns.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        btns.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        draw(btn.getAttribute("data-mode"));
+      });
+    });
+  },
+
+  renderIxBuoyancy:function(step){
+    var screen=document.getElementById("screen");
+    screen.innerHTML='<div class="sim-card"><div class="sim-title">Floating and Sinking</div><div class="sim-instruction">'+step.instruction+'</div><canvas class="sim-canvas" id="sim-canvas" width="540" height="300"></canvas><div class="sim-btns"><button class="sim-btn active" data-mode="float">Floating Object</button><button class="sim-btn" data-mode="sink">Sinking Object</button><button class="sim-btn" data-mode="archimedes">Archimedes Principle</button></div><div class="discovery-box" id="discovery-box"><div class="d-title">Floating Object</div>A wooden block floats when buoyant force equals the gravitational force (weight).</div></div>';
+    applyLLE(screen);
+    this.updateStats();
+    this.updateProgress();
+    this.updateFooter();
+    var canvas=document.getElementById("sim-canvas");
+    var ctx=canvas.getContext("2d");
+    function draw(mode){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#1a1a2e";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="rgba(92,184,255,0.2)";
+      ctx.fillRect(40,150,460,130);
+      ctx.fillStyle="#5cb8ff";
+      ctx.font="12px sans-serif";
+      ctx.fillText("Water",460,165);
+      var info={};
+      if(mode==="float"){
+        ctx.fillStyle="#d4a76a";
+        ctx.fillRect(220,130,80,40);
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Wooden Block",220,125);
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(260,120);
+        ctx.lineTo(260,80);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(260,80);
+        ctx.lineTo(254,90);
+        ctx.lineTo(266,90);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fillText("Buoyant Force ↑",275,95);
+        ctx.strokeStyle="#ff6b6b";
+        ctx.beginPath();
+        ctx.moveTo(260,175);
+        ctx.lineTo(260,215);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(260,215);
+        ctx.lineTo(254,205);
+        ctx.lineTo(266,205);
+        ctx.closePath();
+        ctx.fillStyle="#ff6b6b";
+        ctx.fill();
+        ctx.fillStyle="#ff6b6b";
+        ctx.fillText("Weight ↓",275,210);
+        ctx.fillStyle="#7ee8d0";
+        ctx.font="14px sans-serif";
+        ctx.fillText("Buoyant Force = Weight → FLOATS",130,265);
+        info={title:"Floating Object",text:"A wooden block floats because the buoyant force (upward) equals the gravitational force/weight (downward). When these two forces are equal, the object floats on the surface of the liquid."};
+      }else if(mode==="sink"){
+        ctx.fillStyle="#ffcc6b";
+        ctx.beginPath();
+        ctx.arc(260,220,15,0,Math.PI*2);
+        ctx.fill();
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Coin",250,250);
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(260,205);
+        ctx.lineTo(260,165);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(260,165);
+        ctx.lineTo(254,175);
+        ctx.lineTo(266,175);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fillText("Buoyant ↑ (small)",275,175);
+        ctx.strokeStyle="#ff6b6b";
+        ctx.lineWidth=4;
+        ctx.beginPath();
+        ctx.moveTo(260,235);
+        ctx.lineTo(260,100);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(260,100);
+        ctx.lineTo(252,115);
+        ctx.lineTo(268,115);
+        ctx.closePath();
+        ctx.fillStyle="#ff6b6b";
+        ctx.fill();
+        ctx.fillStyle="#ff6b6b";
+        ctx.font="16px sans-serif";
+        ctx.fillText("Weight ↓ (large)",275,130);
+        ctx.fillStyle="#ff6b6b";
+        ctx.font="14px sans-serif";
+        ctx.fillText("Weight > Buoyant Force → SINKS",120,65);
+        info={title:"Sinking Object",text:"A coin sinks because its weight (gravitational force, downward) is greater than the buoyant force (upward). When the gravitational force is more than the buoyant force, the object sinks to the bottom."};
+      }else if(mode==="archimedes"){
+        ctx.fillStyle="rgba(92,184,255,0.15)";
+        ctx.fillRect(150,120,240,150);
+        ctx.fillStyle="#d4a76a";
+        ctx.fillRect(220,160,80,50);
+        ctx.fillStyle="#e8e8f0";
+        ctx.font="12px sans-serif";
+        ctx.fillText("Object",232,190);
+        ctx.strokeStyle="#5cb8ff";
+        ctx.lineWidth=2;
+        ctx.setLineDash([4,4]);
+        ctx.strokeRect(150,120,240,150);
+        ctx.setLineDash([]);
+        ctx.fillStyle="#7ee8d0";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Water displaced",155,135);
+        ctx.strokeStyle="#7ee8d0";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(260,155);
+        ctx.lineTo(260,100);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(260,100);
+        ctx.lineTo(254,110);
+        ctx.lineTo(266,110);
+        ctx.closePath();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fill();
+        ctx.fillStyle="#7ee8d0";
+        ctx.fillText("Upward Force = Weight of",270,95);
+        ctx.fillText("Displaced Water",270,110);
+        ctx.fillStyle="#ffcc6b";
+        ctx.font="13px sans-serif";
+        ctx.fillText("Archimedes' Principle",200,295);
+        info={title:"Archimedes' Principle",text:"Archimedes, a Greek scientist, discovered that when an object is immersed in a liquid, it experiences an upward force equal to the weight of the liquid it displaces. If the weight of liquid displaced is less than the object's weight, it sinks. If equal, it floats."};
+      }
+      var db=document.getElementById("discovery-box");
+      if(db){
+        db.innerHTML='<div class="d-title">'+info.title+'</div>'+info.text;
+      }
+    }
+    draw("float");
+    var btns=document.querySelectorAll(".sim-btn");
+    btns.forEach(function(btn){
+      btn.addEventListener("click",function(){
+        btns.forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        draw(btn.getAttribute("data-mode"));
+      });
+    });
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>

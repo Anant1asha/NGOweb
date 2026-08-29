@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aasha - Lines and Angles | Class 5 Math</title>
+<style>
+
+:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.complete-sub{font-size:.9rem;color:var(--muted);text-align:center;margin-bottom:8px}
+.complete-coins{font-size:1.2rem;font-weight:800;color:var(--gold);text-align:center;margin:8px 0}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.btn-restart{padding:10px 20px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:8px}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}.formula-box .f-note{font-size:.68rem;color:var(--muted)}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-front,.mm-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700}
+.mm-card-front{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff}
+.mm-card-back{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#78350f;transform:rotateY(180deg)}
+.mm-card.matched .mm-card-front,.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.rf-question{font-size:.88rem;font-weight:600;margin:6px 0;text-align:center}
+.rf-opt{display:block;width:100%;padding:10px;margin-bottom:6px;border:2px solid var(--border);border-radius:10px;background:#fff;cursor:pointer;font-size:.8rem;font-weight:500;text-align:left;transition:all .2s}
+.rf-opt:hover{border-color:var(--bl)}
+.rf-opt.correct{border-color:var(--green);background:#d1fae5}.rf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-opt-text{flex:1}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.tf-btn{display:flex;gap:10px;justify-content:center;margin:10px 0}
+.tf-opt{flex:1;max-width:160px;padding:14px;border:3px solid var(--border);border-radius:12px;background:#fff;cursor:pointer;text-align:center;font-size:.9rem;font-weight:700;transition:all .2s}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.real-example{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:8px auto}
+.re-icon{font-size:2rem;text-align:center;margin-bottom:6px}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center}
+.shop-modal{background:#fff;border-radius:18px;padding:20px;max-width:320px;width:90%;max-height:80vh;overflow-y:auto}
+.shop-title{font-size:1.1rem;font-weight:800;text-align:center;color:var(--brand);margin-bottom:4px}
+.shop-coins{font-size:.85rem;font-weight:700;color:var(--gold);text-align:center;margin-bottom:12px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.shop-item{border:2px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+.shop-item.owned{border-color:var(--green)}
+.shop-item-icon{font-size:1.5rem}.shop-item-name{font-size:.72rem;font-weight:600;margin:4px 0}
+.shop-item-cost{font-size:.7rem;color:var(--gold);font-weight:700}
+.shop-buy-btn{padding:5px 12px;background:var(--brand);color:#fff;border:none;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;margin-top:4px}
+.prop-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px auto;max-width:400px}
+.prop-table{width:100%;border-collapse:collapse;margin:4px 0;font-size:.76rem}
+.prop-table th{background:var(--brand);color:#fff;padding:6px;border-radius:4px;font-size:.68rem}
+.prop-table td{padding:6px;border:1px solid var(--border);text-align:center}
+.ns-badge{padding:6px 12px;border-radius:10px;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;border:2px solid var(--border)}
+.ns-badge:hover{transform:scale(1.05)}
+.ns-natural{background:#d1fae5;color:#065f46}.ns-whole{background:#dbeafe;color:#1e40af}.ns-integer{background:#fef3c7;color:#92400e}.ns-rational{background:#fce7f3;color:#991b1b}
+
+</style>
+</head>
+<body>
+<div class="hdr">
+  <img class="hdr-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%234f46e5'/%3E%3Ctext x='20' y='28' font-size='22' text-anchor='middle' fill='white'%3E📐%3C/text%3E%3C/svg%3E" alt="logo">
+  <div>
+    <div class="hdr-name">Lines & Angles</div>
+    <div class="hdr-hi">Class 5 Math</div>
+    <div class="hdr-tag">Chapter 2</div>
+  </div>
+</div>
+<div class="topbar">
+  <button class="btn-back" id="backBtn">←</button>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <span class="stat lvl">🏆 L1</span>
+  <span class="stat xp">⭐ 0</span>
+  <span class="stat coins">🪙 0</span>
+</div>
+<div id="screen" class="screen"></div>
+<div class="bottom-bar">
+  <span id="stepStatus" style="font-size:.7rem;color:var(--muted);white-space:nowrap"></span>
+  <button class="btn btn-primary" id="continueBtn">Start →</button>
+</div>
+<dialog id="levelUpDialog">
+  <div style="font-size:3rem;text-align:center">🎉</div>
+  <div style="font-size:1.2rem;font-weight:800;text-align:center;color:var(--brand)">Level Up!</div>
+  <div style="text-align:center;margin:8px 0">You reached Level <span id="luLevel">2</span></div>
+  <div style="text-align:center;font-size:.8rem;color:var(--gold);font-weight:700">🪙 +10 coins</div>
+  <button class="btn btn-primary" id="luClose" style="margin-top:12px">Awesome!</button>
+</dialog>
+<dialog id="wordDialog">
+  <div id="dlgWord" style="font-size:1.2rem;font-weight:800;color:var(--brand)"></div>
+  <div id="dlgHindi" style="font-size:1rem;color:var(--purple);margin:6px 0"></div>
+  <div id="dlgDesc" style="font-size:.78rem;color:var(--muted)"></div>
+  <button class="btn btn-primary" id="dlgClose" style="margin-top:12px">Close</button>
+</dialog>
+<div id="confetti"></div>
+<script>
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना"
+}
+
+/* CONN: ONLY connecting words — NO math domain terms */
+var CONN={
+"can":"सकता है","could":"सकता था","will":"करेगा","would":"करेगा","shall":"करेगा",
+"should":"करना चाहिए","must":"ज़रूरी है","may":"सकता है","might":"शायद कर सके",
+"need":"ज़रूरत है","need to":"ज़रूरत है करना","have to":"करना पड़ता है","had to":"करना पड़ा",
+"ought to":"करना चाहिए","be able to":"सक्षम है","used to":"पहले करता था","dare":"हिम्मत करना",
+"had better":"बेहतर होगा","be going to":"करने वाला है","be supposed to":"करना अपेक्षित है",
+"and":"और","but":"लेकिन","or":"या","so":"इसलिए","because":"क्योंकि","also":"भी","too":"भी",
+"as well":"भी","either":"या भी","neither":"न ही","not only":"न केवल","but also":"बल्कि",
+"whether":"क्या","that":"कि","even":"यहाँ तक कि",
+"because of":"के कारण","due to":"के कारण","since":"क्योंकि","therefore":"इसलिए",
+"thus":"इस प्रकार","hence":"इसलिए","as a result":"परिणामस्वरूप","so that":"ताकि",
+"in order to":"ताकि","consequently":"परिणामस्वरूप","for this reason":"इस कारण",
+"thereby":"इस प्रकार","accordingly":"उसी अनुसार","resulting in":"परिणामस्वरूप","leading to":"की ओर ले जाता है",
+"if":"अगर","unless":"जब तक नहीं","provided":"बशर्ते","as long as":"जब तक",
+"in case":"अगर ऐसा हो","even if":"भले ही","only if":"केवल तभी","whether or not":"चाहे या नहीं",
+"otherwise":"नहीं तो","supposing":"मान लो","assuming":"मानते हुए","on condition that":"इस शर्त पर",
+"in the event that":"अगर ऐसा हो","if not":"अगर नहीं","then":"तब",
+"although":"हालांकि","though":"हालांकि","even though":"फिर भी","however":"हालांकि",
+"yet":"फिर भी","still":"फिर भी","on the other hand":"दूसरी ओर","in contrast":"इसके विपरीत",
+"whereas":"जबकि","instead":"इसके बजाय",
+"before":"पहले","after":"बाद में","when":"जब","while":"जब","as soon as":"जैसे ही",
+"until":"जब तक","next":"अगला","finally":"अंत में",
+"furthermore":"इसके अलावा","moreover":"इसके अलावा","besides":"इसके अलावा",
+"in addition":"इसके अलावा","especially":"विशेष रूप से","particularly":"खासकर",
+"indeed":"वास्तव में","in fact":"वास्तव में",
+"overall":"कुल मिलाकर","in conclusion":"निष्कर्ष में","to sum up":"संक्षेप में",
+"all in all":"कुल मिलाकर","in short":"संक्षेप में",
+"for example":"उदाहरण के लिए","such as":"जैसे","like":"जैसे",
+"first":"पहले","second":"दूसरा","third":"तीसरा",
+"similarly":"इसी तरह","likewise":"इसी तरह",
+"namely":"यानी","in particular":"विशेष रूप से",
+"above all":"सबसे ऊपर","most importantly":"सबसे ज़रूरी"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=4){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS = [{"t": "intro", "icon": "📐", "title": "Lines and Angles", "sub": "Class 5 Math — Chapter 2", "intro": "Have you ever opened a book and watched the cover swing open? Or seen a clock's hands move? These are all angles! In this chapter, we will learn about points, lines, rays, angles, and how to measure them. We will explore types of angles — acute, right, obtuse, and reflex — and learn to use a protractor. Let us start our geometry journey!"}, {"t": "tutor", "icon": "📍", "title": "What is a Point?", "body": "Mark a small dot on paper with a sharp pencil. The sharper the tip, the thinner the dot. This tiny dot gives you an idea of a point. A point determines a precise location, but it has no length, breadth, or height. We name points with capital letters like Z, P, or T. We read them as 'Point Z', 'Point P', and 'Point T'. Points are the building blocks of geometry!"}, {"t": "formula", "title": "Key Facts About Points", "formulas": [{"label": "Point", "expr": "A precise location with no size", "note": "No length, no breadth, no height"}, {"label": "Naming", "expr": "Capital letters: A, B, C, ...", "note": "We read 'Point A', 'Point B', etc."}, {"label": "Models", "expr": "Tip of a compass, pencil point, needle tip", "note": "All show a precise location"}]}, {"t": "quiz", "q": "Figure it Out: Rihan marked one point on a paper. How many lines can he draw through it?", "diff": "easy", "opts": [{"t": "Infinite (countless) lines", "c": true}, {"t": "Only one line", "c": false, "m": "Through a single point, you can draw many lines in different directions.", "correctMethod": "Through one point, you can draw infinite lines — one in every direction!"}, {"t": "Exactly two lines", "c": false, "m": "You can draw more than two lines through one point.", "correctMethod": "Infinite lines can pass through a single point."}, {"t": "No lines can pass through a point", "c": false, "m": "Lines can definitely pass through a point.", "correctMethod": "Countless lines can pass through one point."}]}, {"t": "quiz", "q": "Figure it Out: Sheetal marked two points on a paper. How many different lines can she draw through both?", "diff": "easy", "opts": [{"t": "Exactly one line", "c": true}, {"t": "Two lines", "c": false, "m": "Two points determine only one straight line.", "correctMethod": "Any two points determine exactly one unique line that passes through both."}, {"t": "Infinite lines", "c": false, "m": "Infinite lines pass through one point, but through two points, only one line.", "correctMethod": "Two points determine exactly one unique line."}, {"t": "No lines", "c": false, "m": "You can always draw a line through two points.", "correctMethod": "Exactly one line passes through two given points."}]}, {"t": "milestone", "icon": "📍", "title": "Points and Lines Mastered!", "xp": 40, "next": "Now: Line Segments, Lines, and Rays!"}, {"t": "tutor", "icon": "📏", "title": "Line Segments, Lines, and Rays", "body": "A line segment is the shortest path between two points. It has two endpoints, A and B. We write it as AB or BA. A line is like a line segment extended forever in both directions — it never ends! We cannot draw a full line, but we can imagine it. A ray is part of a line that starts at one point and goes on forever in one direction. Think of sun rays or a torch beam — they start at one point and travel endlessly in one direction. We write a ray as AP, where A is the starting point."}, {"t": "formula", "title": "Line Segment vs Line vs Ray", "formulas": [{"label": "Line Segment", "expr": "Two endpoints, shortest path between them", "note": "Written as AB or BA. Has a fixed length."}, {"label": "Line", "expr": "Extends forever in BOTH directions", "note": "Written as AB. Cannot be drawn fully. No endpoints."}, {"label": "Ray", "expr": "Starts at one point, goes forever in ONE direction", "note": "Written as AP (starting point first). Like sun rays."}]}, {"t": "ix_point_line", "instruction": "Tap each button to see the difference between a Point, Line Segment, Line, and Ray! Watch how they are drawn on the canvas."}, {"t": "quiz", "q": "Figure it Out: Here is a ray OA. It starts at O and passes through A and B. Can you also name it as OB?", "diff": "medium", "opts": [{"t": "Yes, because the ray starts at O and goes through both A and B in the same direction", "c": true}, {"t": "No, because A comes before B", "c": false, "m": "A ray is named by its starting point and ANY point on its path.", "correctMethod": "Yes! Since the ray starts at O and passes through both A and B, it can be called OA or OB — they are the same ray."}, {"t": "No, because OB is a different ray", "c": false, "m": "If the ray starts at O and goes through A then B, OA and OB name the same ray.", "correctMethod": "Yes, OA and OB name the same ray because both A and B lie on the same ray from O."}, {"t": "Only if A and B are the same point", "c": false, "m": "A and B can be different points on the same ray.", "correctMethod": "Yes, the ray can be named OA or OB since both points are on the ray starting at O."}]}, {"t": "quiz", "q": "Figure it Out: Can we write ray OA as AO? Why or why not?", "diff": "medium", "opts": [{"t": "No, because a ray starts at a specific point. OA starts at O, but AO would start at A", "c": true}, {"t": "Yes, because they have the same letters", "c": false, "m": "The order of letters matters for rays! The first letter is the starting point.", "correctMethod": "No! Ray OA starts at O and goes toward A. Ray AO would start at A and go toward O — a different ray!"}, {"t": "Yes, because rays go in both directions", "c": false, "m": "Rays go in only ONE direction, not both.", "correctMethod": "No, OA and AO are different rays. OA starts at O, AO starts at A."}, {"t": "No, because O and A are not points", "c": false, "m": "O and A are points. The issue is the direction of the ray.", "correctMethod": "No! The starting point matters. OA starts at O; AO starts at A — different rays."}]}, {"t": "milestone", "icon": "📏", "title": "Lines and Rays Mastered!", "xp": 40, "next": "Now: What is an Angle?"}, {"t": "tutor", "icon": "📐", "title": "What is an Angle?", "body": "An angle is formed by two rays that share a common starting point. The common point is called the vertex, and the two rays are called the arms of the angle. For example, if rays BD and BE share point B, then B is the vertex, and BD and BE are the arms. We name the angle as Angle DBE or Angle EBD. We use the symbol ∠, so we write ∠DBE or ∠EBD. Note: the vertex is always written as the MIDDLE letter! The size of an angle is the amount of rotation or turn needed to move one ray to the other."}, {"t": "formula", "title": "Parts of an Angle", "formulas": [{"label": "Vertex", "expr": "The common starting point of two rays", "note": "Always written as the MIDDLE letter in the angle name"}, {"label": "Arms", "expr": "The two rays that form the angle", "note": "Example: rays BD and BE are the arms of angle DBE"}, {"label": "Angle Symbol", "expr": "∠", "note": "We write ∠DBE or ∠EBD (vertex in middle)"}, {"label": "Size of Angle", "expr": "Amount of rotation or turn", "note": "More rotation = bigger angle"}]}, {"t": "quiz", "q": "Figure it Out: Why can angle APB not be labelled as just angle P?", "diff": "medium", "opts": [{"t": "Because there might be other angles at P, so we need to specify which one using points on the arms", "c": true}, {"t": "Because P is not a valid letter", "c": false, "m": "P is a perfectly valid letter for naming a point.", "correctMethod": "If there are multiple rays from P, saying 'angle P' is ambiguous. We need three letters to specify which angle: APB, BPC, etc."}, {"t": "Because angles must have four letters", "c": false, "m": "Angles are named with three letters: vertex in the middle.", "correctMethod": "We need three letters (like APB) to clearly identify which angle at vertex P we mean."}, {"t": "Because P is not the vertex", "c": false, "m": "P IS the vertex in angle APB. The issue is ambiguity, not the vertex.", "correctMethod": "If multiple angles share vertex P, we must use three letters to distinguish them."}]}, {"t": "ix_angle_builder", "instruction": "Build your own angle! Use the + and - buttons to change the angle size. Watch the angle grow and see its type change from acute to right to obtuse to straight!"}, {"t": "quiz", "q": "Figure it Out: Mark three points A, B, C not on one line. Draw all lines through pairs. How many lines do you get?", "diff": "medium", "opts": [{"t": "3 lines (AB, BC, CA)", "c": true}, {"t": "1 line", "c": false, "m": "Three pairs of points give three different lines.", "correctMethod": "Three points (not on a line) give 3 lines: AB, BC, and CA."}, {"t": "6 lines", "c": false, "m": "There are only 3 pairs: AB, BC, CA.", "correctMethod": "With 3 points, you get exactly 3 lines connecting each pair."}, {"t": "2 lines", "c": false, "m": "Three points make three pairs, not two.", "correctMethod": "Three points give 3 lines: AB, BC, and CA."}]}, {"t": "milestone", "icon": "📐", "title": "Angles Mastered!", "xp": 40, "next": "Now: Comparing and Special Types of Angles!"}, {"t": "tutor", "icon": "🔄", "title": "Comparing Angles and Special Types", "body": "We can compare two angles by superimposition — placing one angle over the other so their vertices overlap. The angle whose arms are wider apart is bigger. A full turn is 360 degrees (360°). A straight angle is 180° — it looks like a straight line, and is half a full turn. A right angle is 90° — it is exactly half of a straight angle, and looks like the letter 'L'. Two lines that meet at right angles are called perpendicular lines. A straight angle contains two right angles!"}, {"t": "formula", "title": "Special Types of Angles", "formulas": [{"label": "Full Turn", "expr": "360°", "note": "A complete rotation, like a full circle"}, {"label": "Straight Angle", "expr": "180°", "note": "Half a full turn. Arms lie in a straight line."}, {"label": "Right Angle", "expr": "90°", "note": "Quarter turn. Half of a straight angle. Looks like 'L'."}, {"label": "Perpendicular Lines", "expr": "Lines that meet at right angles (90°)", "note": "Like the corner of a square"}]}, {"t": "truefalse", "q": "A straight angle contains two right angles.", "ans": true, "explain": "True! A straight angle is 180°, and a right angle is 90°. So 180° = 2 × 90° = two right angles. When you fold a straight angle in half, you get two equal right angles.", "m": "Remember: straight angle = 180° = two right angles (90° each)."}, {"t": "ix_angle_types", "instruction": "Tap each angle type to see it! Explore: Acute (sharp, less than 90°), Right (exactly 90°), Obtuse (blunt, 90°-180°), and Reflex (180°-360°). See real-life examples!"}, {"t": "formula", "title": "Types of Angles and Their Measures", "formulas": [{"label": "Acute Angle", "expr": "More than 0° and less than 90°", "note": "Acute means 'sharp'. Like a sharp pencil tip."}, {"label": "Right Angle", "expr": "Exactly 90°", "note": "Looks like the letter 'L'. Quarter of a full turn."}, {"label": "Obtuse Angle", "expr": "More than 90° and less than 180°", "note": "Obtuse means 'blunt'. Like a blunt knife."}, {"label": "Straight Angle", "expr": "Exactly 180°", "note": "Arms form a straight line. Half a full turn."}, {"label": "Reflex Angle", "expr": "More than 180° and less than 360°", "note": "Bigger than a straight angle but less than a full turn."}]}, {"t": "quiz", "q": "An angle measures 45°. What type of angle is it?", "diff": "easy", "opts": [{"t": "Acute angle (less than 90°)", "c": true}, {"t": "Right angle (90°)", "c": false, "m": "45° is less than 90°, so it is not a right angle.", "correctMethod": "45° is less than 90°, so it is an acute angle. Acute means sharp!"}, {"t": "Obtuse angle (90°-180°)", "c": false, "m": "45° is less than 90°, so it cannot be obtuse.", "correctMethod": "45° < 90°, so it is an acute angle."}, {"t": "Reflex angle (180°-360°)", "c": false, "m": "45° is much less than 180°.", "correctMethod": "45° is an acute angle because it is less than 90°."}]}, {"t": "quiz", "q": "An angle measures 120°. What type of angle is it?", "diff": "easy", "opts": [{"t": "Obtuse angle (more than 90°, less than 180°)", "c": true}, {"t": "Acute angle", "c": false, "m": "120° is more than 90°, so it is not acute.", "correctMethod": "120° is between 90° and 180°, so it is an obtuse angle."}, {"t": "Right angle", "c": false, "m": "A right angle is exactly 90°, not 120°.", "correctMethod": "120° > 90° and < 180°, so it is obtuse."}, {"t": "Reflex angle", "c": false, "m": "120° is less than 180°, so it is not reflex.", "correctMethod": "120° is an obtuse angle (between 90° and 180°)."}]}, {"t": "quiz", "q": "An angle measures 250°. What type of angle is it?", "diff": "medium", "opts": [{"t": "Reflex angle (more than 180°, less than 360°)", "c": true}, {"t": "Obtuse angle", "c": false, "m": "Obtuse is between 90° and 180°. 250° is more than 180°.", "correctMethod": "250° is between 180° and 360°, so it is a reflex angle."}, {"t": "Straight angle", "c": false, "m": "A straight angle is exactly 180°, not 250°.", "correctMethod": "250° > 180° and < 360°, so it is a reflex angle."}, {"t": "Right angle", "c": false, "m": "A right angle is exactly 90°.", "correctMethod": "250° is a reflex angle because it is more than 180°."}]}, {"t": "milestone", "icon": "🔄", "title": "Angle Types Mastered!", "xp": 50, "next": "Now: Measuring Angles with Degrees!"}, {"t": "tutor", "icon": "🌡️", "title": "Measuring Angles in Degrees", "body": "To measure angles precisely, mathematicians divided a full circle into 360 equal parts. Each part is called 1 degree, written as 1°. So a full turn is 360°, a straight angle is 180° (half of 360°), and a right angle is 90° (half of 180°). We use a tool called a protractor to measure angles. A protractor is a half-circle divided into 180 equal parts. The number 360 comes from ancient times — the Rigveda speaks of a wheel with 360 spokes! 360 is special because it can be divided evenly by 1, 2, 3, 4, 5, 6, 8, 9, 10, and 12."}, {"t": "formula", "title": "Measuring Angles", "formulas": [{"label": "Full Turn", "expr": "360°", "note": "A complete circle. Divided into 360 equal parts."}, {"label": "Straight Angle", "expr": "180°", "note": "Half of 360°. Half a turn."}, {"label": "Right Angle", "expr": "90°", "note": "Half of 180°. Quarter of a turn."}, {"label": "1 Degree (1°)", "expr": "1/360 of a full turn", "note": "The unit for measuring angles"}, {"label": "Protractor", "expr": "Tool to measure angles in degrees", "note": "Half-circle with 180 marks from 0° to 180°"}]}, {"t": "truefalse", "q": "The word 'acute' means 'sharp' and 'obtuse' means 'blunt'.", "ans": true, "explain": "True! Acute angles are sharp (less than 90°) like a sharp pencil. Obtuse angles are blunt (between 90° and 180°) like a blunt knife. The names come from these everyday meanings!", "m": "Acute = sharp (< 90°). Obtuse = blunt (90°-180°)."}, {"t": "ix_protractor", "instruction": "Learn to use a protractor! Tap different angle measurements (30°, 60°, 90°, 120°, 150°, 180°) and see how to read them on a protractor."}, {"t": "quiz", "q": "A pinch of history: Why do we use 360 degrees for a full turn?", "diff": "hard", "opts": [{"t": "Because 360 is the smallest number divisible by all numbers 1-10 (except 7), making it very useful", "c": true}, {"t": "Because there are 360 days in a year", "c": false, "m": "Ancient calendars had 360 days, but the real reason 360 stayed is its divisibility.", "correctMethod": "360 can be divided evenly by 1, 2, 3, 4, 5, 6, 8, 9, 10, and 12 — very useful! It is also mentioned in the Rigveda."}, {"t": "Because 360 is a prime number", "c": false, "m": "360 is NOT prime — it has many factors, which is exactly why it is useful!", "correctMethod": "360 is useful because it has MANY factors (divisible by 1-10 except 7), not because it is prime."}, {"t": "Because there are 360 minutes in a day", "c": false, "m": "There are 1440 minutes in a day. The 360° comes from ancient mathematics.", "correctMethod": "360 is divisible by many numbers, making it perfect for dividing a circle into equal parts."}]}, {"t": "milestone", "icon": "🌡️", "title": "Measuring Angles Mastered!", "xp": 50, "next": "Now: Angles in Real Life — Clocks and More!"}, {"t": "tutor", "icon": "🕐", "title": "Angles in Real Life: Clocks and More", "body": "Angles are everywhere! The hands of a clock make angles at different times. At 1 o'clock, the angle is 30°. Why? Because a full turn (360°) divided by 12 hours = 30° per hour. So at 2 o'clock the angle is 60°, at 3 o'clock it is 90° (a right angle!), and at 6 o'clock it is 180° (a straight angle). The Ashoka Chakra has 24 spokes. The angle between two adjacent spokes is 360° ÷ 24 = 15°. Angles also describe how wide a door is opened, the slope of a slide, and the swing of a pendulum!"}, {"t": "formula", "title": "Angles in Real Life", "formulas": [{"label": "Clock Angles", "expr": "360° ÷ 12 = 30° per hour", "note": "1 o'clock = 30°, 2 o'clock = 60°, 3 o'clock = 90°, 6 o'clock = 180°"}, {"label": "Ashoka Chakra", "expr": "360° ÷ 24 = 15° between adjacent spokes", "note": "24 spokes, so each spoke is 15° apart"}, {"label": "Door Opening", "expr": "Vertex = hinge, arms = door and wall", "note": "The wider the door opens, the bigger the angle"}, {"label": "Triangle Angles", "expr": "Sum of all three angles = 180°", "note": "The angles of any triangle add up to 180°!"}]}, {"t": "ix_clock_angles", "instruction": "Explore angles made by clock hands! Tap different times (1, 2, 3, 6, 9, 12 o'clock) and see the angle between the hands. Notice the pattern: 30° per hour!"}, {"t": "quiz", "q": "Figure it Out: At 1 o'clock, the angle between the clock hands is 30°. What is the angle at 3 o'clock?", "diff": "easy", "opts": [{"t": "90° (a right angle)", "c": true}, {"t": "30°", "c": false, "m": "30° is the angle at 1 o'clock. At 3 o'clock it is 3 times that.", "correctMethod": "3 o'clock: 3 × 30° = 90°. That is a right angle!"}, {"t": "60°", "c": false, "m": "60° is at 2 o'clock. At 3 o'clock it is more.", "correctMethod": "At 3 o'clock: 3 × 30° = 90° — a right angle."}, {"t": "180°", "c": false, "m": "180° is at 6 o'clock. At 3 o'clock it is less.", "correctMethod": "3 × 30° = 90° at 3 o'clock."}]}, {"t": "quiz", "q": "Figure it Out: What is the angle between the clock hands at 6 o'clock?", "diff": "easy", "opts": [{"t": "180° (a straight angle)", "c": true}, {"t": "90°", "c": false, "m": "90° is at 3 o'clock. At 6 o'clock the hands point in opposite directions.", "correctMethod": "At 6 o'clock: 6 × 30° = 180°. The hands form a straight line — a straight angle!"}, {"t": "360°", "c": false, "m": "360° is a full turn. At 6 o'clock it is half of that.", "correctMethod": "6 × 30° = 180° — a straight angle at 6 o'clock."}, {"t": "60°", "c": false, "m": "60° is at 2 o'clock. At 6 o'clock it is much more.", "correctMethod": "At 6 o'clock, the angle is 6 × 30° = 180°."}]}, {"t": "quiz", "q": "Figure it Out: The Ashoka Chakra has 24 spokes. What is the angle between two spokes next to each other?", "diff": "medium", "opts": [{"t": "15° (360° ÷ 24 = 15°)", "c": true}, {"t": "30°", "c": false, "m": "30° would be for 12 spokes (like a clock). The Ashoka Chakra has 24.", "correctMethod": "360° ÷ 24 = 15°. Each pair of adjacent spokes is 15° apart."}, {"t": "10°", "c": false, "m": "360° ÷ 24 = 15°, not 10°.", "correctMethod": "360° ÷ 24 = 15° between adjacent spokes."}, {"t": "24°", "c": false, "m": "It is 360° ÷ 24 = 15°, not 24°.", "correctMethod": "The angle is 360° ÷ 24 = 15°."}]}, {"t": "quiz", "q": "Figure it Out: The Ashoka Chakra has 24 spokes. What is the largest acute angle formed between two spokes?", "diff": "hard", "opts": [{"t": "75° (5 × 15° = 75°, which is less than 90°)", "c": true}, {"t": "90°", "c": false, "m": "90° is a right angle, not acute. The largest acute must be less than 90°.", "correctMethod": "5 spokes apart = 5 × 15° = 75°. This is the largest acute angle (less than 90°). 6 × 15° = 90° which is a right angle."}, {"t": "80°", "c": false, "m": "The angles are multiples of 15°. 80° is not a multiple of 15°.", "correctMethod": "Multiples of 15°: 15, 30, 45, 60, 75, 90... The largest acute (less than 90°) is 75°."}, {"t": "60°", "c": false, "m": "60° is acute, but 75° is larger and still acute.", "correctMethod": "75° = 5 × 15° is the largest acute angle. The next one, 90°, is a right angle."}]}, {"t": "quiz", "q": "Let's Explore: If ∠TER = 80° and ∠REB is a straight angle (180°), what is ∠BET?", "diff": "hard", "opts": [{"t": "100° (180° - 80° = 100°)", "c": true}, {"t": "80°", "c": false, "m": "∠BET is the remaining part of the straight angle after ∠TER.", "correctMethod": "∠REB = 180° (straight angle). ∠TER = 80°. So ∠BET = 180° - 80° = 100°."}, {"t": "180°", "c": false, "m": "180° is the full straight angle, not just ∠BET.", "correctMethod": "∠BET = 180° - 80° = 100°. It is the other part of the straight angle."}, {"t": "260°", "c": false, "m": "260° would be 360° - 100°. We need 180° - 80° = 100°.", "correctMethod": "Since ∠REB is a straight angle (180°), ∠BET = 180° - 80° = 100°."}]}, {"t": "quiz", "q": "Figure it Out: At 9 o'clock, what is the angle between the clock hands?", "diff": "medium", "opts": [{"t": "270° (or 90° measuring the other way)", "c": true}, {"t": "90°", "c": false, "m": "90° is the smaller angle. At 9 o'clock, the larger angle is 270°. Both are valid.", "correctMethod": "At 9 o'clock: 9 × 30° = 270°. The smaller angle is 360° - 270° = 90°. The reflex angle is 270°."}, {"t": "180°", "c": false, "m": "180° is at 6 o'clock. At 9 o'clock it is different.", "correctMethod": "9 × 30° = 270°. This is a reflex angle (more than 180°)."}, {"t": "45°", "c": false, "m": "45° would not be a multiple of 30° at this hour.", "correctMethod": "At 9 o'clock, the reflex angle is 270° (9 × 30°)."}]}, {"t": "truefalse", "q": "The sum of all three angles of any triangle is 180°.", "ans": true, "explain": "True! If you measure all three angles of any triangle and add them up, you always get 180°. This is the same as a straight angle! Try it with different triangles — the sum is always 180°.", "m": "Triangle angles always sum to 180° — the same as a straight angle."}, {"t": "we", "tag": "Worked Example", "question": "Classify each angle and find the missing angle:\\n(a) An angle of 55° — what type is it?\\n(b) An angle of 135° — what type is it?\\n(c) In a triangle, two angles are 50° and 60°. Find the third angle.", "steps": ["Part (a): 55° is less than 90°. So it is an ACUTE angle (sharp).", "Part (b): 135° is more than 90° and less than 180°. So it is an OBTUSE angle (blunt).", "Part (c): The sum of all three angles in a triangle is 180°.", "So: Angle 1 + Angle 2 + Angle 3 = 180°", "50° + 60° + Angle 3 = 180°", "110° + Angle 3 = 180°. So Angle 3 = 180° - 110° = 70°."], "answer": "(a) Acute  (b) Obtuse  (c) Third angle = 70°"}, {"t": "solve", "tag": "Solve", "question": "The Ashoka Chakra has 24 spokes. What is the angle between two spokes that are 4 positions apart?", "hint": "Each adjacent pair is 360° ÷ 24 = 15° apart. Multiply by 4.", "answer": "60", "steps": ["The full circle is 360°.", "The Ashoka Chakra has 24 spokes, so the angle between adjacent spokes is 360° ÷ 24 = 15°.", "If two spokes are 4 positions apart, the angle is 4 × 15°.", "4 × 15° = 60°.", "So the angle is 60°."]}, {"t": "rapid_fire", "qs": [{"q": "How many degrees in a right angle?", "opts": ["90°", "180°", "45°", "360°"], "ans": 0}, {"q": "How many degrees in a straight angle?", "opts": ["180°", "90°", "360°", "45°"], "ans": 0}, {"q": "How many degrees in a full turn?", "opts": ["360°", "180°", "90°", "270°"], "ans": 0}, {"q": "An angle of 60° is what type?", "opts": ["Acute", "Right", "Obtuse", "Reflex"], "ans": 0}, {"q": "An angle of 120° is what type?", "opts": ["Obtuse", "Acute", "Right", "Straight"], "ans": 0}, {"q": "What is the angle at 3 o'clock?", "opts": ["90°", "60°", "30°", "180°"], "ans": 0}, {"q": "What is the angle at 6 o'clock?", "opts": ["180°", "90°", "270°", "60°"], "ans": 0}, {"q": "Lines meeting at 90° are called?", "opts": ["Perpendicular", "Parallel", "Curved", "Diagonal"], "ans": 0}]}, {"t": "memory_match", "pairs": [{"en": "Point", "hi": "बिंदु"}, {"en": "Line", "hi": "रेखा"}, {"en": "Angle", "hi": "कोण"}, {"en": "Vertex", "hi": "शीर्ष"}, {"en": "Degree", "hi": "डिग्री"}, {"en": "Acute", "hi": "न्यून"}, {"en": "Obtuse", "hi": "स्तुश"}, {"en": "Right Angle", "hi": "समकोण"}]}, {"t": "quiz", "q": "Puzzle: I am an acute angle. Double me — still acute. Triple me — still acute. Quadruple me — still acute! But 5 times me is obtuse. What could I be?", "diff": "hard", "opts": [{"t": "20° (double=40°, triple=60°, quadruple=80° — all acute. 5×20=100° which is obtuse!)", "c": true}, {"t": "10° (double=20°, triple=30°, quadruple=40° — all acute. But 5×10=50° which is still acute, not obtuse)", "c": false, "m": "Check: 5 × 10° = 50°, which is still acute (less than 90°). So 10° does not work.", "correctMethod": "20° works! 2×20=40, 3×20=60, 4×20=80 — all acute. 5×20=100° which is obtuse!"}, {"t": "15° (double=30°, triple=45°, quadruple=60°. But 5×15=75° which is still acute)", "c": false, "m": "5 × 15° = 75°, which is still acute. So 15° does not work.", "correctMethod": "15° does not work because 5 × 15° = 75° is still acute. Try 20°: 5 × 20° = 100° (obtuse)!"}, {"t": "25° (double=50°, triple=75°, but quadruple=100° which is already obtuse!)", "c": false, "m": "4 × 25° = 100°, which is obtuse, not acute. So 25° fails at quadruple.", "correctMethod": "25° fails because 4 × 25° = 100° is already obtuse. The answer is 19°, 20°, 21°, or 22°."}]}, {"t": "quiz", "q": "Figure it Out: At 2 o'clock, what is the angle between the clock hands?", "diff": "easy", "opts": [{"t": "60° (2 × 30° = 60°)", "c": true}, {"t": "30°", "c": false, "m": "30° is at 1 o'clock. At 2 o'clock it is double that.", "correctMethod": "At 2 o'clock: 2 × 30° = 60°. This is an acute angle!"}, {"t": "90°", "c": false, "m": "90° is at 3 o'clock. At 2 o'clock it is less.", "correctMethod": "2 × 30° = 60° at 2 o'clock."}, {"t": "120°", "c": false, "m": "120° would be at 4 o'clock (4 × 30°).", "correctMethod": "At 2 o'clock: 2 × 30° = 60°."}]}, {"t": "complete", "icon": "📐", "title": "Chapter 2 Complete!", "sub": "Lines and Angles — Mastered!"}];
+
+var App={
+  sIdx:0, xp:0, coins:0, level:1, streak:0,
+  answered:false, selTf:null, weStepIdx:0, solveAnswered:false,
+  ownedThemes:["default"], selTheme:"default",
+  rfIdx:0, rfScore:0, rfTimer:null, rfTimeLeft:10,
+  mmFlipped:[], mmMatched:[], mmMoves:0,
+
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    this.answered=false;this.selTf=null;this.solveAnswered=false;this.weStepIdx=0;
+    var cb=document.getElementById("continueBtn");
+    if(cb){cb.style.display="";cb.disabled=false;}
+    document.getElementById("screen").innerHTML="";
+    var pct=Math.round((this.sIdx/(STEPS.length-1))*100);
+    var pf=document.querySelector(".progress-fill");
+    if(pf)pf.style.width=pct+"%";
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"tutor":case"text":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"discovery":this.renderDiscovery(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"ix_point_line":this.renderIxPointLine(step,cb);break;
+      case"ix_angle_builder":this.renderIxAngleBuilder(step,cb);break;
+      case"ix_angle_types":this.renderIxAngleTypes(step,cb);break;
+      case"ix_protractor":this.renderIxProtractor(step,cb);break;
+      case"ix_clock_angles":this.renderIxClockAngles(step,cb);break;
+      default:this.renderTutor(step,cb);
+    }
+    applyLLE();
+    var ss=document.getElementById("stepStatus");
+    if(ss)ss.textContent=(this.sIdx+1)+" / "+STEPS.length;
+  },
+
+  updateStats:function(){
+    var c=document.querySelector(".stat.coins");
+    if(c)c.textContent="🪙 "+this.coins;
+    var x=document.querySelector(".stat.xp");
+    if(x)x.textContent="⭐ "+this.xp;
+    var l=document.querySelector(".stat.lvl");
+    if(l)l.textContent="🏆 L"+this.level;
+  },
+
+  checkLevelUp:function(){
+    var need=this.level*100;
+    if(this.xp>=need){
+      this.level++;this.coins+=10;
+      this.showLevelUp();
+    }
+  },
+
+  showLevelUp:function(){
+    var d=document.getElementById("levelUpDialog");
+    if(d){
+      var n=document.getElementById("luLevel");
+      if(n)n.textContent=this.level;
+      if(d.open)d.close();
+      d.showModal();
+    }
+    this.fireConfetti();
+  },
+
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");
+    if(!c)return;
+    c.style.display="block";c.innerHTML="";
+    var colors=["#4f46e5","#6366f1","#f59e0b","#10b981","#ec4899","#a855f7"];
+    for(var i=0;i<40;i++){
+      var p=document.createElement("div");
+      p.style.cssText="position:absolute;width:8px;height:8px;border-radius:2px;background:"+colors[i%6]+";left:"+Math.random()*100+"%;top:-10px;animation:cf "+(1+Math.random()*2)+"s linear "+(Math.random()*1)+"s forwards";
+      c.appendChild(p);
+    }
+    setTimeout(function(){c.style.display="none";c.innerHTML="";},4000);
+  },
+
+  next:function(){
+    if(this.sIdx<STEPS.length-1){
+      this.sIdx++;this.render();
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+  },
+
+  back:function(){
+    if(this.sIdx>0){
+      this.sIdx--;this.render();
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+  },
+
+  renderIntro:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="intro-icon">'+step.icon+'</div>'+
+      '<div class="intro-title">'+rt(step.title)+'</div>'+
+      '<div class="intro-sub">'+rt(step.sub)+'</div>'+
+      '<div class="card"><p class="bt">'+rt(step.intro)+'</p></div>';
+    if(cb){cb.textContent="Start →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  renderTutor:function(step,cb){
+    var icon=step.icon||"💡";
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title||"Learn")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+icon+'</span>'+
+      '<p class="bt">'+rt(step.body)+'</p></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  renderRealExample:function(step,cb){
+    var icon=step.icon||"🌟";
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title||"Real Example")+'</div>'+
+      '<div class="real-example"><div class="re-icon">'+icon+'</div>'+
+      '<p class="bt">'+rt(step.body)+'</p></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title||"Key Formulas")+'</div>';
+    html+='<div class="visual-card">';
+    for(var i=0;i<step.formulas.length;i++){
+      var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div>'+
+        '<div class="f-expr">'+rt(f.expr)+'</div>'+
+        '<div class="f-note">'+rt(f.note)+'</div></div>';
+    }
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  renderDiscovery:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="discovery-box"><div class="d-title">'+rt(step.title||"Discovery")+'</div>'+
+      '<div class="d-text">'+rt(step.body||"")+'</div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  renderQuiz:function(step,cb){
+    var self=this;
+    var opts=step.opts.slice();
+    for(var i=opts.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=opts[i];opts[i]=opts[j];opts[j]=tmp;
+    }
+    var diffClass=step.diff?("diff-"+step.diff):"";
+    var diffBadge=step.diff?'<span class="diff-badge '+diffClass+'">'+step.diff+'</span>':"";
+    var html='<div class="instruction">'+rt("Quick Check")+diffBadge+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div id="quizOpts">';
+    for(var i=0;i<opts.length;i++){
+      html+='<div class="quiz-opt" data-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(opts[i].t)+'</div></div>';
+    }
+    html+='</div><div id="quizFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    if(cb){cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;}
+    var els=document.querySelectorAll("#quizOpts .quiz-opt");
+    for(var i=0;i<els.length;i++){
+      els[i].addEventListener("click",function(){
+        if(self.answered)return;
+        var all=document.querySelectorAll("#quizOpts .quiz-opt");
+        for(var j=0;j<all.length;j++)all[j].classList.remove("selected");
+        this.classList.add("selected");
+        this.setAttribute("data-sel","1");
+        if(cb){cb.disabled=false;}
+      });
+    }
+    this._quizOpts=opts;
+  },
+
+  checkQuiz:function(step,cb){
+    if(this.answered)return;this.answered=true;
+    var opts=this._quizOpts||step.opts;
+    var selEl=null;
+    var els=document.querySelectorAll("#quizOpts .quiz-opt");
+    for(var i=0;i<els.length;i++){
+      if(els[i].classList.contains("selected")){selEl=els[i];break;}
+    }
+    if(!selEl){this.answered=false;return;}
+    var selIdx=parseInt(selEl.getAttribute("data-idx"));
+    var selOpt=opts[selIdx];
+    var fb=document.getElementById("quizFb");
+    if(selOpt.c){
+      selEl.classList.add("correct");
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }else{
+      selEl.classList.add("wrong");
+      for(var i=0;i<els.length;i++){
+        if(opts[i].c){els[i].classList.add("correct");break;}
+      }
+      var mh='<div class="feedback no">✗ Not quite.</div>';
+      if(selOpt.m)mh+='<div class="misconception"><strong>⚠ Why wrong:</strong> '+rt(selOpt.m)+'</div>';
+      if(selOpt.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct approach:</strong> '+rt(selOpt.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;
+      this.streak=0;this.updateStats();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }
+    applyLLE();
+  },
+
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True or False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">✓ True</div><div class="tf-opt" id="tfFalse">✗ False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    if(cb){cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;}
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){
+      if(self.answered)return;
+      te.classList.add("sel-true");fe.classList.remove("sel-false");
+      self.selTf=true;if(cb){cb.disabled=false;}
+    });
+    if(fe)fe.addEventListener("click",function(){
+      if(self.answered)return;
+      fe.classList.add("sel-false");te.classList.remove("sel-true");
+      self.selTf=false;if(cb){cb.disabled=false;}
+    });
+  },
+
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>'+
+        (step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';
+      if(step.m)mh+='<div class="misconception"><strong>⚠ Hint:</strong> '+rt(step.m)+'</div>';
+      if(step.explain)mh+='<div class="correct-method"><strong>✓ Explanation:</strong> '+rt(step.explain)+'</div>';
+      if(fb)fb.innerHTML=mh;
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }
+    applyLLE();
+  },
+
+  renderWE:function(step,cb){
+    var self=this;
+    this.weStepIdx=0;
+    var html='<div class="instruction">'+rt(step.tag||"Worked Example")+'</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.question)+'</div>';
+    html+='<div id="weSteps"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    this._weStep=step;
+    this._renderWEStep();
+    if(cb){cb.textContent="Next Step →";cb.className="btn btn-primary";cb.disabled=false;}
+  },
+
+  _renderWEStep:function(){
+    var step=this._weStep;if(!step)return;
+    var c=document.getElementById("weSteps");if(!c)return;
+    var idx=this.weStepIdx;
+    if(idx<step.steps.length){
+      var isLast=(idx===step.steps.length-1);
+      var div=document.createElement("div");
+      div.className="we-step"+(isLast?" green final":"");
+      div.innerHTML='<span class="we-num">'+(idx+1)+'</span>'+rt(step.steps[idx]);
+      if(isLast&&step.answer)div.innerHTML+='<div style="margin-top:8px;font-weight:800;color:#047857">Answer: '+rt(step.answer)+'</div>';
+      c.appendChild(div);
+    }
+    applyLLE();
+  },
+
+  renderSolve:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.tag||"Solve")+'</div>'+
+      '<div class="card"><div class="we-question">'+rt(step.question)+'</div>'+
+      '<input type="text" id="solveInput" placeholder="Enter your answer...">'+
+      '<div id="solveFb"></div></div>'+
+      (step.hint?'<div class="hint">💡 '+rt(step.hint)+'</div>':'');
+    if(cb){cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=false;}
+    this._solveStep=step;
+  },
+
+  checkSolve:function(step,cb){
+    if(this.solveAnswered)return;this.solveAnswered=true;
+    var inp=document.getElementById("solveInput");
+    var val=inp?inp.value.trim():"";
+    var fb=document.getElementById("solveFb");
+    var correct=(val===step.answer);
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +10 XP</div>';
+      this.xp+=10;this.coins+=5;this.streak++;this.updateStats();this.checkLevelUp();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }else{
+      var mh='<div class="feedback no">✗ Not quite. Answer: '+step.answer+'</div>';
+      if(step.steps){
+        mh+='<div class="correct-method"><strong>✓ Solution:</strong></div>';
+        for(var i=0;i<step.steps.length;i++){
+          mh+='<div class="we-step"><span class="we-num">'+(i+1)+'</span>'+rt(step.steps[i])+'</div>';
+        }
+      }
+      if(fb)fb.innerHTML=mh;
+      this.streak=0;this.updateStats();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";}
+    }
+    applyLLE();
+  },
+
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+ '+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next||"")+'</div>';
+    this.xp+=step.xp;this.coins+=5;this.updateStats();this.checkLevelUp();
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+    this.fireConfetti();
+  },
+
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div class="complete-sub">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">🪙 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>⭐</span><span>⭐</span><span>⭐</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    if(cb)cb.style.display="none";this.fireConfetti();
+  },
+
+  renderRapidFire:function(step,cb){
+    var self=this;
+    this.rfIdx=0;this.rfScore=0;
+    this._rfQs=step.qs;
+    this._rfCb=cb;
+    if(cb){cb.style.display="none";}
+    this._rfNext();
+  },
+
+  _rfNext:function(){
+    if(this.rfIdx>=this._rfQs.length){
+      document.getElementById("screen").innerHTML=
+        '<div style="text-align:center;padding:20px">'+
+        '<div style="font-size:3rem">🎯</div>'+
+        '<div class="complete-title">Rapid Fire Complete!</div>'+
+        '<div class="complete-coins">Score: '+this.rfScore+'/'+this._rfQs.length+'</div>'+
+        '<div class="complete-coins">🪙 +'+(this.rfScore*2)+' coins</div></div>';
+      this.coins+=this.rfScore*2;this.xp+=this.rfScore*3;
+      this.updateStats();this.checkLevelUp();
+      if(this._rfCb){this._rfCb.style.display="";this._rfCb.textContent="Continue →";this._rfCb.className="btn btn-green";}
+      return;
+    }
+    var q=this._rfQs[this.rfIdx];
+    var html='<div class="rf-header"><span class="rf-q-num">Question '+(this.rfIdx+1)+' of '+this._rfQs.length+'</span></div>';
+    html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimer" style="width:100%"></div></div>';
+    html+='<div class="card"><div class="rf-question">'+rt(q.q)+'</div>';
+    for(var i=0;i<q.opts.length;i++){
+      html+='<button class="rf-opt" data-idx="'+i+'"><span class="rf-opt-text">'+rt(q.opts[i])+'</span></button>';
+    }
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    var self=this;this.rfTimeLeft=10;
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    var tb=document.getElementById("rfTimer");
+    this.rfTimer=setInterval(function(){
+      self.rfTimeLeft--;
+      if(tb)tb.style.width=(self.rfTimeLeft*10)+"%";
+      if(self.rfTimeLeft<=3&&tb)tb.classList.add("danger");
+      if(self.rfTimeLeft<=0){clearInterval(self.rfTimer);self._rfAnswer(-1);}
+    },1000);
+    var els=document.querySelectorAll(".rf-opt");
+    for(var i=0;i<els.length;i++){
+      els[i].addEventListener("click",function(){
+        if(self.rfTimer){clearInterval(self.rfTimer);self.rfTimer=null;}
+        self._rfAnswer(parseInt(this.getAttribute("data-idx")));
+      });
+    }
+    applyLLE();
+  },
+
+  _rfAnswer:function(idx){
+    var q=this._rfQs[this.rfIdx];
+    var els=document.querySelectorAll(".rf-opt");
+    if(idx===q.ans){
+      if(els[idx])els[idx].classList.add("correct");
+      this.rfScore++;
+    }else{
+      if(idx>=0&&els[idx])els[idx].classList.add("wrong");
+      if(els[q.ans])els[q.ans].classList.add("correct");
+    }
+    for(var i=0;i<els.length;i++)els[i].style.pointerEvents="none";
+    var self=this;
+    setTimeout(function(){self.rfIdx++;self._rfNext();},1200);
+  },
+
+  endRF:function(){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+  },
+
+  renderMemoryMatch:function(step,cb){
+    var self=this;
+    this.mmFlipped=[];this.mmMatched=[];this.mmMoves=0;
+    var cards=[];
+    for(var i=0;i<step.pairs.length;i++){
+      cards.push({type:"en",text:step.pairs[i].en,pairIdx:i});
+      cards.push({type:"hi",text:step.pairs[i].hi,pairIdx:i});
+    }
+    for(var i=cards.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=cards[i];cards[i]=cards[j];cards[j]=tmp;
+    }
+    this._mmCards=cards;
+    var html='<div class="instruction">'+rt("Match English words with their Hindi meanings!")+'</div>';
+    html+='<div class="mm-info">Moves: <span id="mmMoves">0</span> | Matched: <span id="mmMatched">0</span>/'+step.pairs.length+'</div>';
+    html+='<div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){
+      html+='<div class="mm-card" data-idx="'+i+'"><div class="mm-card-inner">'+
+        '<div class="mm-card-front">?</div>'+
+        '<div class="mm-card-back">'+cards[i].text+'</div></div></div>';
+    }
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    if(cb){cb.style.display="none";}
+    var els=document.querySelectorAll(".mm-card");
+    for(var i=0;i<els.length;i++){
+      els[i].addEventListener("click",function(){
+        var idx=parseInt(this.getAttribute("data-idx"));
+        self._mmFlip(idx,this);
+      });
+    }
+  },
+
+  _mmFlip:function(idx,el){
+    if(this.mmFlipped.length>=2)return;
+    if(el.classList.contains("flipped")||el.classList.contains("matched"))return;
+    el.classList.add("flipped");
+    this.mmFlipped.push({idx:idx,el:el});
+    if(this.mmFlipped.length===2){
+      this.mmMoves++;
+      var m=document.getElementById("mmMoves");
+      if(m)m.textContent=this.mmMoves;
+      var a=this.mmFlipped[0],b=this.mmFlipped[1];
+      var cardA=this._mmCards[a.idx],cardB=this._mmCards[b.idx];
+      var self=this;
+      if(cardA.pairIdx===cardB.pairIdx&&cardA.type!==cardB.type){
+        setTimeout(function(){
+          a.el.classList.add("matched");b.el.classList.add("matched");
+          self.mmMatched.push(cardA.pairIdx);
+          var mc=document.getElementById("mmMatched");
+          if(mc)mc.textContent=self.mmMatched.length;
+          self.mmFlipped=[];
+          if(self.mmMatched.length===self._mmCards.length/2){
+            self.xp+=20;self.coins+=10;self.updateStats();self.checkLevelUp();
+            document.getElementById("screen").innerHTML+='<div class="feedback ok" style="margin-top:8px">🎉 All matched! +20 XP, +10 coins</div>';
+            var cb=document.getElementById("continueBtn");
+            if(cb){cb.style.display="";cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+          }
+        },500);
+      }else{
+        setTimeout(function(){
+          a.el.classList.remove("flipped");b.el.classList.remove("flipped");
+          self.mmFlipped=[];
+        },1000);
+      }
+    }
+  },
+
+  restart:function(){
+    this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;
+    this.ownedThemes=["default"];this.selTheme="default";
+    this.render();
+  },
+
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"🟣",cost:0},{id:"ocean",name:"Ocean",icon:"🌊",cost:50},{id:"forest",name:"Forest",icon:"🌲",cost:80},{id:"sunset",name:"Sunset",icon:"🌅",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">🛒 Shop</div><div class="shop-coins">🪙 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">🪙 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">✓ Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();
+    var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");
+    for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");
+    for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;self.renderShop();});}
+  },
+
+  /* ===== INTERACTIVE SIMULATIONS ===== */
+
+  renderIxPointLine:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Points, Lines & Rays Explorer</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="plCanvas" width="320" height="180" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="shape-btn active" id="plPoint">📍 Point</span>'+
+      '<span class="shape-btn" id="plSegment">📏 Line Segment</span>'+
+      '<span class="shape-btn" id="plLine">↔️ Line</span>'+
+      '<span class="shape-btn" id="plRay">➡️ Ray</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="plDisc"><div class="d-title">Tap a button!</div>'+
+      '<div class="d-text">Choose a concept to see it drawn on the canvas.</div></div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+    var c=document.getElementById("plCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var mode="point";
+    function draw(){
+      ctx.clearRect(0,0,320,180);
+      ctx.fillStyle="#fafaff";ctx.fillRect(0,0,320,180);
+      if(mode==="point"){
+        ctx.fillStyle="#4f46e5";
+        ctx.beginPath();ctx.arc(160,90,5,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#1e293b";ctx.font="bold 14px sans-serif";
+        ctx.fillText("P",170,95);
+        ctx.font="11px sans-serif";ctx.fillStyle="#64748b";
+        ctx.fillText("A point — precise location, no size",60,160);
+      }else if(mode==="segment"){
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(60,90);ctx.lineTo(260,90);ctx.stroke();
+        ctx.fillStyle="#4f46e5";
+        ctx.beginPath();ctx.arc(60,90,5,0,Math.PI*2);ctx.fill();
+        ctx.beginPath();ctx.arc(260,90,5,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#1e293b";ctx.font="bold 14px sans-serif";
+        ctx.fillText("A",48,80);ctx.fillText("B",268,80);
+        ctx.font="11px sans-serif";ctx.fillStyle="#64748b";
+        ctx.fillText("Line segment AB — shortest path, two endpoints",40,160);
+      }else if(mode==="line"){
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(30,90);ctx.lineTo(290,90);ctx.stroke();
+        drawArrow(ctx,290,90,1,0);
+        drawArrow(ctx,30,90,-1,0);
+        ctx.fillStyle="#4f46e5";
+        ctx.beginPath();ctx.arc(120,90,4,0,Math.PI*2);ctx.fill();
+        ctx.beginPath();ctx.arc(200,90,4,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#1e293b";ctx.font="bold 13px sans-serif";
+        ctx.fillText("A",110,80);ctx.fillText("B",195,80);
+        ctx.font="11px sans-serif";ctx.fillStyle="#64748b";
+        ctx.fillText("Line — extends forever in both directions (arrows)",30,160);
+      }else if(mode==="ray"){
+        ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+        ctx.beginPath();ctx.moveTo(60,90);ctx.lineTo(290,90);ctx.stroke();
+        drawArrow(ctx,290,90,1,0);
+        ctx.fillStyle="#4f46e5";
+        ctx.beginPath();ctx.arc(60,90,5,0,Math.PI*2);ctx.fill();
+        ctx.beginPath();ctx.arc(200,90,4,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#1e293b";ctx.font="bold 14px sans-serif";
+        ctx.fillText("A",48,80);ctx.fillText("P",195,80);
+        ctx.font="11px sans-serif";ctx.fillStyle="#64748b";
+        ctx.fillText("Ray AP — starts at A, goes forever in one direction",25,160);
+      }
+    }
+    function drawArrow(ctx,x,y,dx,dy){
+      ctx.fillStyle="#4f46e5";
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x-dx*8-dy*5,y-dy*8+dx*5);
+      ctx.lineTo(x-dx*8+dy*5,y-dy*8-dx*5);
+      ctx.closePath();ctx.fill();
+    }
+    draw();
+    var disc=document.getElementById("plDisc");
+    var infos={
+      point:{t:"Point",d:"A point determines a precise location. It has no length, breadth, or height. Named with capital letters like P."},
+      segment:{t:"Line Segment",d:"The shortest path between two points A and B. Has two endpoints. Written as AB or BA."},
+      line:{t:"Line",d:"A line segment extended forever in both directions. No endpoints. Any two points determine one unique line."},
+      ray:{t:"Ray",d:"Part of a line starting at one point, going forever in one direction. Like sun rays! Written as AP (starting point first)."}
+    };
+    function setMode(m,id){
+      mode=m;draw();
+      var btns=document.querySelectorAll(".shape-btn");
+      for(var i=0;i<btns.length;i++)btns[i].classList.remove("active");
+      var el=document.getElementById(id);if(el)el.classList.add("active");
+      var info=infos[m];
+      if(disc)disc.innerHTML='<div class="d-title">'+info.t+'</div><div class="d-text">'+info.d+'</div>';
+      applyLLE();
+    }
+    var p=document.getElementById("plPoint");
+    if(p)p.addEventListener("click",function(){setMode("point","plPoint");});
+    var s=document.getElementById("plSegment");
+    if(s)s.addEventListener("click",function(){setMode("segment","plSegment");});
+    var l=document.getElementById("plLine");
+    if(l)l.addEventListener("click",function(){setMode("line","plLine");});
+    var r=document.getElementById("plRay");
+    if(r)r.addEventListener("click",function(){setMode("ray","plRay");});
+    setMode("point","plPoint");
+  },
+
+  renderIxAngleBuilder:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Angle Builder</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="abCanvas" width="280" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>'+
+      '<div style="display:flex;justify-content:center;gap:8px;margin:8px 0">'+
+      '<button class="btn btn-primary" style="max-width:60px;padding:8px" id="abMinus">−</button>'+
+      '<div style="text-align:center;min-width:80px"><div id="abDegree" style="font-size:1.3rem;font-weight:800;color:var(--brand)">90°</div><div id="abType" style="font-size:.7rem;color:var(--muted)">Right Angle</div></div>'+
+      '<button class="btn btn-primary" style="max-width:60px;padding:8px" id="abPlus">+</button>'+
+      '</div>'+
+      '<div class="discovery-box" id="abDisc"><div class="d-title">Right Angle</div>'+
+      '<div class="d-text">A right angle is exactly 90°. It looks like the letter L!</div></div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+    var c=document.getElementById("abCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var angle=90;
+    function classify(a){
+      if(a===0)return "Zero angle";
+      if(a<90)return "Acute angle (sharp)";
+      if(a===90)return "Right angle (like L)";
+      if(a<180)return "Obtuse angle (blunt)";
+      if(a===180)return "Straight angle";
+      return "Reflex angle";
+    }
+    function draw(){
+      ctx.clearRect(0,0,280,200);
+      ctx.fillStyle="#fafaff";ctx.fillRect(0,0,280,200);
+      var cx=80,cy=160;
+      var rad=angle*Math.PI/180;
+      var ex2=cx+100*Math.cos(-rad);
+      var ey2=cy+100*Math.sin(-rad);
+      ctx.strokeStyle="#6366f1";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+100,cy);ctx.stroke();
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(ex2,ey2);ctx.stroke();
+      ctx.fillStyle="#4f46e5";
+      ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle="#1e293b";ctx.font="bold 12px sans-serif";
+      ctx.fillText("O",cx-12,cy+15);
+      if(angle>2){
+        ctx.strokeStyle="#f59e0b";ctx.lineWidth=2;
+        ctx.beginPath();
+        var arcR=Math.min(35,angle*0.8);
+        ctx.arc(cx,cy,arcR,0,-rad,true);
+        ctx.stroke();
+      }
+      var dEl=document.getElementById("abDegree");
+      if(dEl)dEl.textContent=angle+"°";
+      var tEl=document.getElementById("abType");
+      var cls=classify(angle);
+      if(tEl)tEl.textContent=cls;
+      var disc=document.getElementById("abDisc");
+      if(disc){
+        var parts=cls.split("(");
+        var dText=parts[0];
+        if(parts[1])dText+=" ("+parts[1];
+        disc.innerHTML='<div class="d-title">'+dText+'</div><div class="d-text">'+getDesc(angle)+'</div>';
+        applyLLE();
+      }
+    }
+    function getDesc(a){
+      if(a===0)return "A zero angle has no turn at all.";
+      if(a<90)return "An acute angle is less than 90°. Acute means 'sharp'!";
+      if(a===90)return "A right angle is exactly 90°. It looks like the letter L. Quarter of a full turn.";
+      if(a<180)return "An obtuse angle is between 90° and 180°. Obtuse means 'blunt'.";
+      if(a===180)return "A straight angle is 180°. The arms form a straight line. Half a full turn.";
+      return "A reflex angle is more than 180° and less than 360°.";
+    }
+    draw();
+    var plus=document.getElementById("abPlus");
+    if(plus)plus.addEventListener("click",function(){
+      angle+=15;if(angle>180)angle=180;draw();
+    });
+    var minus=document.getElementById("abMinus");
+    if(minus)minus.addEventListener("click",function(){
+      angle-=15;if(angle<15)angle=15;draw();
+    });
+  },
+
+  renderIxAngleTypes:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Angle Types Gallery</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="atCanvas" width="280" height="180" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="shape-btn active" id="atAcute">🔺 Acute</span>'+
+      '<span class="shape-btn" id="atRight">📐 Right</span>'+
+      '<span class="shape-btn" id="atObtuse">⬊ Obtuse</span>'+
+      '<span class="shape-btn" id="atReflex">🔄 Reflex</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="atDisc"><div class="d-title">Acute Angle</div>'+
+      '<div class="d-text">Less than 90°. Acute means sharp, like a sharp pencil!</div></div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+    var c=document.getElementById("atCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var mode="acute";
+    var data={
+      acute:{angle:45,name:"Acute Angle",desc:"Less than 90°. Acute means sharp, like a sharp pencil tip!"},
+      right:{angle:90,name:"Right Angle",desc:"Exactly 90°. Looks like the letter L! Quarter of a full turn."},
+      obtuse:{angle:120,name:"Obtuse Angle",desc:"Between 90° and 180°. Obtuse means blunt, like a blunt knife!"},
+      reflex:{angle:250,name:"Reflex Angle",desc:"More than 180° and less than 360°. Bigger than a straight angle!"}
+    };
+    function draw(){
+      ctx.clearRect(0,0,280,180);
+      ctx.fillStyle="#fafaff";ctx.fillRect(0,0,280,180);
+      var d=data[mode];
+      var cx=70,cy=140;
+      var rad=d.angle*Math.PI/180;
+      var ex2=cx+90*Math.cos(-rad);
+      var ey2=cy+90*Math.sin(-rad);
+      ctx.strokeStyle="#6366f1";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+90,cy);ctx.stroke();
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(ex2,ey2);ctx.stroke();
+      ctx.fillStyle="#4f46e5";
+      ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();
+      if(d.angle>2){
+        ctx.strokeStyle="#f59e0b";ctx.lineWidth=2;
+        ctx.beginPath();
+        var arcR=30;
+        if(d.angle>180){
+          ctx.arc(cx,cy,arcR,0,-rad,true);
+        }else{
+          ctx.arc(cx,cy,arcR,0,-rad,true);
+        }
+        ctx.stroke();
+      }
+      ctx.fillStyle="#1e293b";ctx.font="bold 14px sans-serif";
+      ctx.fillText(d.angle+"°",150,40);
+      ctx.font="11px sans-serif";ctx.fillStyle="#64748b";
+      var disc=document.getElementById("atDisc");
+      if(disc){disc.innerHTML='<div class="d-title">'+d.name+'</div><div class="d-text">'+d.desc+'</div>';applyLLE();}
+    }
+    draw();
+    function setMode(m,id){
+      mode=m;draw();
+      var btns=document.querySelectorAll(".shape-btn");
+      for(var i=0;i<btns.length;i++)btns[i].classList.remove("active");
+      var el=document.getElementById(id);if(el)el.classList.add("active");
+    }
+    var a=document.getElementById("atAcute");
+    if(a)a.addEventListener("click",function(){setMode("acute","atAcute");});
+    var r=document.getElementById("atRight");
+    if(r)r.addEventListener("click",function(){setMode("right","atRight");});
+    var o=document.getElementById("atObtuse");
+    if(o)o.addEventListener("click",function(){setMode("obtuse","atObtuse");});
+    var rf=document.getElementById("atReflex");
+    if(rf)rf.addEventListener("click",function(){setMode("reflex","atReflex");});
+  },
+
+  renderIxProtractor:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Protractor Simulator</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="prCanvas" width="300" height="180" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="shape-btn active" data-angle="30">30°</span>'+
+      '<span class="shape-btn" data-angle="60">60°</span>'+
+      '<span class="shape-btn" data-angle="90">90°</span>'+
+      '<span class="shape-btn" data-angle="120">120°</span>'+
+      '<span class="shape-btn" data-angle="150">150°</span>'+
+      '<span class="shape-btn" data-angle="180">180°</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="prDisc"><div class="d-title">30° Angle</div>'+
+      '<div class="d-text">Place the protractor center on the vertex. Read the angle where the second arm crosses the scale!</div></div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+    var c=document.getElementById("prCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var angle=30;
+    function draw(){
+      ctx.clearRect(0,0,300,180);
+      ctx.fillStyle="#fafaff";ctx.fillRect(0,0,300,180);
+      var cx=150,cy=160;
+      ctx.strokeStyle="#cbd5e1";ctx.lineWidth=2;
+      ctx.beginPath();ctx.arc(cx,cy,130,Math.PI,0);ctx.stroke();
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=0;i<=180;i+=10){
+        var rad=(180-i)*Math.PI/180;
+        var x1=cx+125*Math.cos(rad);
+        var y1=cy-125*Math.sin(rad);
+        var x2=cx+130*Math.cos(rad);
+        var y2=cy-130*Math.sin(rad);
+        ctx.beginPath();ctx.moveTo(x1,160-(125*Math.sin(rad)));ctx.lineTo(x2,160-(130*Math.sin(rad)));ctx.stroke();
+      }
+      ctx.strokeStyle="#6366f1";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(cx-100,cy);ctx.lineTo(cx+100,cy);ctx.stroke();
+      var rad=angle*Math.PI/180;
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=3;
+      var ex2=cx+90*Math.cos(-rad);
+      var ey2=cy+90*Math.sin(-rad);
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+90*Math.cos(-rad),cy+90*Math.sin(-rad));ctx.stroke();
+      ctx.fillStyle="#4f46e5";
+      ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle="#f59e0b";ctx.lineWidth=2;
+      ctx.beginPath();ctx.arc(cx,cy,25,0,-rad,true);ctx.stroke();
+      ctx.fillStyle="#1e293b";ctx.font="bold 16px sans-serif";
+      ctx.fillText(angle+"°",cx+15,cy-50);
+      var disc=document.getElementById("prDisc");
+      if(disc){
+        var type="";
+        if(angle<90)type="Acute angle";
+        else if(angle===90)type="Right angle";
+        else if(angle<180)type="Obtuse angle";
+        else type="Straight angle";
+        disc.innerHTML='<div class="d-title">'+angle+"° — "+type+'</div><div class="d-text">Place the protractor center on the vertex, align the base with one arm, and read the angle on the scale!</div>';
+        applyLLE();
+      }
+    }
+    draw();
+    var btns=document.querySelectorAll("[data-angle]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        angle=parseInt(this.getAttribute("data-angle"));
+        var all=document.querySelectorAll("[data-angle]");
+        for(var j=0;j<all.length;j++)all[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+  },
+
+  renderIxClockAngles:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Clock Angles</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="ckCanvas" width="220" height="220" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="shape-btn active" data-hour="1">1:00</span>'+
+      '<span class="shape-btn" data-hour="2">2:00</span>'+
+      '<span class="shape-btn" data-hour="3">3:00</span>'+
+      '<span class="shape-btn" data-hour="6">6:00</span>'+
+      '<span class="shape-btn" data-hour="9">9:00</span>'+
+      '<span class="shape-btn" data-hour="12">12:00</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="ckDisc"><div class="d-title">1:00 — 30°</div>'+
+      '<div class="d-text">Each hour = 30°. The angle = hour × 30°!</div></div></div>';
+    if(cb){cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;}
+    var c=document.getElementById("ckCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var hour=1;
+    function draw(){
+      ctx.clearRect(0,0,220,220);
+      ctx.fillStyle="#fafaff";ctx.fillRect(0,0,220,220);
+      var cx=110,cy=110,r=90;
+      ctx.strokeStyle="#cbd5e1";ctx.lineWidth=3;
+      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+      ctx.fillStyle="#4f46e5";
+      ctx.font="bold 14px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
+      for(var i=1;i<=12;i++){
+        var ang=(i/12)*Math.PI*2-Math.PI/2;
+        var x=cx+(r-18)*Math.cos(ang);
+        var y=cy+(r-18)*Math.sin(ang);
+        ctx.fillText(i,x,y);
+      }
+      ctx.textAlign="start";ctx.textBaseline="alphabetic";
+      var hourAng=(hour/12)*Math.PI*2-Math.PI/2;
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=4;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.lineTo(cx+(r-25)*Math.cos(hourAng),cy+(r-25)*Math.sin(hourAng));
+      ctx.stroke();
+      ctx.strokeStyle="#6366f1";ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.lineTo(cx,cy-(r-15));
+      ctx.stroke();
+      ctx.fillStyle="#1e293b";
+      ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fill();
+      var angle=hour*30;
+      if(hour===12)angle=0;
+      ctx.strokeStyle="#f59e0b";ctx.lineWidth=2;
+      ctx.beginPath();
+      var arcR=35;
+      var sAng=-Math.PI/2;
+      var eAng=sAng+(angle*Math.PI/180);
+      ctx.arc(cx,cy,arcR,sAng,eAng);
+      ctx.stroke();
+      ctx.fillStyle="#f59e0b";ctx.font="bold 16px sans-serif";
+      ctx.fillText(angle+"°",cx-15,cy+50);
+      var disc=document.getElementById("ckDisc");
+      if(disc){
+        var desc="";
+        if(angle===0)desc="At 12 o'clock, both hands point up. The angle is 0° (or 360°).";
+        else if(angle===90)desc="At 3 o'clock, the angle is 90° — a right angle!";
+        else if(angle===180)desc="At 6 o'clock, the angle is 180° — a straight angle!";
+        else if(angle===270)desc="At 9 o'clock, the reflex angle is 270° (the smaller angle is 90°).";
+        else desc="At "+hour+" o'clock, the angle is "+hour+" × 30° = "+angle+"°.";
+        disc.innerHTML='<div class="d-title">'+hour+':00 — '+angle+'°</div><div class="d-text">'+desc+' Each hour on the clock is 360° ÷ 12 = 30°.</div>';
+        applyLLE();
+      }
+    }
+    draw();
+    var btns=document.querySelectorAll("[data-hour]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        hour=parseInt(this.getAttribute("data-hour"));
+        var all=document.querySelectorAll("[data-hour]");
+        for(var j=0;j<all.length;j++)all[j].classList.remove("active");
+        this.classList.add("active");
+        draw();
+      });
+    }
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>

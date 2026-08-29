@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Aasha - Patterns in Mathematics | Class 5 Math</title>
+<style>:root{--brand:#4f46e5;--bl:#6366f1;--surface:#eef2ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:linear-gradient(180deg,#eef2ff,#e0e7ff 300px);color:var(--text);line-height:1.6;font-size:16px;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#eef2ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(79,70,229,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand)}.hdr-hi{font-size:.7rem;color:var(--muted)}.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--bl),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:#fef3c7}.stat.xp{color:var(--purple);background:#ede9fe}.stat.lvl{color:var(--brand);background:#e0e7ff}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}.profile-swap{margin-left:auto;padding:3px 8px;background:#e0e7ff;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;text-align:center;animation:pop .5s ease}.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.intro-body{font-size:.88rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#e0e7ff,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.9rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-card{background:linear-gradient(180deg,#fff,#eef2ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#e0e7ff;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#e0e7ff,#eef2ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(99,102,241,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#e0e7ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(79,70,229,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(99,102,241,.2)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;text-align:center;animation:pop .5s ease}.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;text-align:center}.complete-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:6px}
+.complete-sub{font-size:.9rem;color:var(--muted);margin-bottom:8px;text-align:center}
+.complete-coins{font-size:1.2rem;font-weight:800;color:var(--gold);text-align:center;margin:8px 0}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}.star-row span{font-size:1.8rem}
+.btn-restart{display:block;margin:12px auto;padding:10px 24px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.bottom-bar{position:sticky;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(79,70,229,.3)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.formula-box{background:linear-gradient(135deg,#e0e7ff,#c7d2fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600}.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}.formula-box .f-note{font-size:.72rem;color:var(--muted);margin-top:4px}
+.discovery-box{background:linear-gradient(135deg,#e0e7ff,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}.discovery-box .d-text{font-size:.76rem;line-height:1.5}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-front,.mm-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:.7rem;font-weight:700;border:2px solid}
+.mm-card-front{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border-color:var(--brand)}
+.mm-card-back{background:#fff;color:var(--text);border-color:var(--border);transform:rotateY(180deg)}
+.mm-card.matched .mm-card-front{background:linear-gradient(135deg,var(--green),#34d399);border-color:var(--green)}
+.mm-card.matched{pointer-events:none}.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.rf-question{font-size:.9rem;font-weight:600;margin:8px 0;text-align:center;max-width:400px;margin-left:auto;margin-right:auto}
+.rf-opt{display:block;width:100%;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff;text-align:left;font-size:.8rem;font-weight:500}
+.rf-opt:hover{border-color:var(--bl)}.rf-opt.correct{border-color:var(--green);background:#d1fae5}.rf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-opt-text{display:inline}
+.rf-timer{text-align:center;font-size:.72rem;color:var(--muted);font-weight:700;margin:4px 0}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#eef2ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.shape-btn{padding:8px 14px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-size:.76rem;font-weight:600;transition:all .2s;background:#fff;display:inline-block;margin:3px}
+.shape-btn:hover{border-color:var(--bl)}.shape-btn.active{border-color:var(--brand);background:#e0e7ff;color:var(--brand)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.tf-btn{display:flex;gap:10px;margin:10px 0}
+.tf-opt{flex:1;padding:14px;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:center;font-size:.85rem;font-weight:700;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.real-example{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:2px solid #6ee7b7;border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.8rem;line-height:1.6;color:#065f46}
+.re-icon{font-size:1.5rem;float:left;margin-right:8px}
+.prop-box{background:linear-gradient(135deg,#fff,#f0fdf4);border:2px solid #86efac;border-radius:12px;padding:12px;margin:8px auto;max-width:400px}
+.prop-table{width:100%;border-collapse:collapse;font-size:.76rem;margin:8px auto;max-width:380px}
+.prop-table th{background:#e0e7ff;color:var(--brand);padding:8px;border:1px solid var(--border);font-weight:700;text-align:center}
+.prop-table td{padding:8px;border:1px solid var(--border);text-align:center}
+.ns-badge{display:inline-block;padding:6px 12px;border:2px solid var(--border);border-radius:8px;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s;margin:3px}
+.ns-badge:hover{border-color:var(--bl)}
+.ns-badge.ns-natural{background:#d1fae5;color:#065f46;border-color:#6ee7b7}
+.ns-badge.ns-whole{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
+.ns-badge.ns-integer{background:#fef3c7;color:#92400e;border-color:#fcd34d}
+.ns-badge.ns-rational{background:#fce7f3;color:#9d174d;border-color:#f9a8d4}
+.ns-badge.active{box-shadow:0 0 0 3px rgba(79,70,229,.3);transform:scale(1.05)}
+.shop-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:400;display:flex;align-items:center;justify-content:center}
+.shop-modal{background:#fff;border-radius:18px;padding:20px;max-width:340px;width:90%;max-height:80vh;overflow-y:auto}
+.shop-title{font-size:1.1rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.shop-coins{text-align:center;font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:12px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.shop-item{background:#f8fafc;border:2px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+.shop-item.owned{border-color:var(--green)}
+.shop-item-icon{font-size:1.8rem;margin-bottom:4px}
+.shop-item-name{font-size:.72rem;font-weight:700;color:var(--text)}
+.shop-item-cost{font-size:.7rem;color:var(--gold);font-weight:700;margin:4px 0}
+.shop-buy-btn{padding:6px 12px;background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;border:none;border-radius:8px;font-size:.7rem;font-weight:700;cursor:pointer;width:100%}
+</style>
+</head>
+<body>
+<div class="hdr">
+<svg class="hdr-logo" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#a855f7"/>
+</linearGradient></defs>
+<rect width="40" height="40" rx="10" fill="url(#lg)"/>
+<text x="20" y="27" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold" font-family="sans-serif">A</text>
+</svg>
+<div><div class="hdr-name">Aasha</div><div class="hdr-hi">Hi, Student!</div><div class="hdr-tag">Class 5 Math</div></div>
+</div>
+<div class="topbar">
+<div class="stat lvl" id="statLvl">1</div>
+<div class="progress-track"><div class="progress-fill"></div></div>
+<div class="stat xp" id="statXp">0</div>
+<div class="stat coins" id="statCoins">0</div>
+</div>
+<div class="profile-bar">
+<div class="profile-avatar">S</div>
+<div class="profile-name">Student</div>
+<button class="profile-swap" onclick="App.renderShop()">Shop</button>
+</div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar">
+<button class="btn-back" id="backBtn">&larr;</button>
+<button class="btn btn-primary" id="continueBtn">Continue</button>
+</div>
+<div id="confetti"></div>
+<dialog id="levelUpDialog">
+<div style="font-size:2.5rem;text-align:center">Level Up!</div>
+<div style="font-size:1.5rem;font-weight:800;color:var(--brand);text-align:center;margin:8px 0">Level <span id="luLevel">2</span></div>
+<div style="font-size:.9rem;color:var(--gold);font-weight:700;text-align:center" id="luReward">+10 Coins!</div>
+<button class="btn btn-green" style="max-width:200px;margin:10px auto 0" id="luClose">Continue</button>
+</dialog>
+<dialog id="wordDialog">
+<div style="font-size:1.2rem;font-weight:800;color:var(--brand);margin-bottom:4px" id="dlgWord"></div>
+<div style="font-size:1rem;color:var(--purple);font-weight:600;margin-bottom:4px" id="dlgHindi"></div>
+<div style="font-size:.8rem;color:var(--muted)" id="dlgDesc"></div>
+<button class="btn btn-primary" style="max-width:200px;margin:10px auto 0" id="dlgClose">Close</button>
+</dialog>
+<script>
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argue:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",art:"कला",ask:"पूछना",at:"पर",
+away:"दूर",back:"वापस",bad:"बुरा",balance:"संतुलन",base:"आधार",
+basic:"मूल",be:"होना",beautiful:"सुंदर",because:"क्योंकि",become:"बनना",
+before:"पहले",begin:"शुरू",behind:"पीछे",believe:"मानना",below:"नीचे",
+best:"सर्वश्रेष्ठ",better:"बेहतर",between:"के बीच",big:"बड़ा",block:"ब्लॉक",
+body:"शरीर",book:"किताब",both:"दोनों",bottom:"नीचे",box:"बॉक्स",
+branch:"शाखा",break:"टूटना",bring:"लाना",broad:"व्यापक",build:"बनाना",
+building:"इमारत",but:"लेकिन",buy:"खरीदना",call:"कहना",can:"सकता",
+cannot:"नहीं सकता",capacity:"क्षमता",card:"कार्ड",careful:"सावधान",carry:"ले जाना",
+case:"मामला",cause:"कारण",certain:"निश्चित",change:"बदलाव",check:"जाँच",
+child:"बच्चा",choose:"चुनना",circle:"वृत्त",city:"शहर",claim:"दावा",
+class:"कक्षा",clear:"स्पष्ट",close:"बंद",code:"कोड",coin:"सिक्का",
+cold:"ठंडा",collect:"इकट्ठा",colour:"रंग",come:"आना",common:"सामान्य",
+complete:"पूरा",complex:"जटिल",computer:"कंप्यूटर",concept:"अवधारणा",condition:"शर्त",
+connect:"जोड़ना",consecutive:"क्रमिक",consider:"विचार",constitute:"बनाना",contact:"संपर्क",
+continue:"जारी",correct:"सही",corner:"कोना",count:"गिनती",course:"कोर्स",
+create:"बनाना",cross:"पार",cube:"घन",current:"वर्तमान",curve:"वक्र",
+cut:"काटना",daily:"दैनिक",damage:"नुकसान",day:"दिन",deal:"सौदा",
+decide:"तय",decrease:"कमी",deep:"गहरा",describe:"वर्णन",design:"डिज़ाइन",
+detail:"विवरण",determine:"निर्धारित",develop:"विकसित",device:"उपकरण",different:"अलग",
+difficult:"कठिन",direction:"दिशा",discover:"खोजना",distance:"दूरी",divide:"विभाजित",
+do:"करना",double:"दोगुना",down:"नीचे",draw:"बनाना",each:"प्रत्येक",
+early:"जल्दी",earth:"पृथ्वी",easy:"आसान",edge:"किनारा",effect:"प्रभाव",
+effort:"प्रयास",either:"या तो",element:"तत्व",else:"अन्य",end:"अंत",
+energy:"ऊर्जा",enjoy:"आनंद",enough:"पर्याप्त",equal:"बराबर",equation:"समीकरण",
+even:"सम",every:"हर",everyone:"हर कोई",everything:"सब कुछ",example:"उदाहरण",
+exercise:"अभ्यास",exist:"मौजूद",expand:"विस्तार",explain:"समझाना",explore:"पता लगाना",
+face:"चेहरा",fact:"तथ्य",factor:"कारक",fall:"गिरना",family:"परिवार",
+far:"दूर",fast:"तेज़",feel:"महसूस",few:"कुछ",field:"क्षेत्र",
+figure:"आकृति",fill:"भरना",find:"खोजना",fine:"अच्छा",first:"पहला",
+flat:"सपाट",follow:"अनुसरण",food:"भोजन",foot:"पैर",for:"के लिए",
+force:"बल",form:"रूप",formation:"रचना",forward:"आगे",found:"पाया",
+four:"चार",fraction:"भिन्न",free:"मुक्त",friend:"मित्र",from:"से",
+front:"आगे",full:"पूरा",fun:"मज़ा",future:"भविष्य",game:"खेल",
+general:"सामान्य",geometry:"ज्यामिति",get:"पाना",girl:"लड़की",give:"देना",
+go:"जाना",goal:"लक्ष्य",going:"जा रहा",good:"अच्छा",graph:"आलेख",
+great:"महान",grow:"बढ़ना",grow_up:"बड़ा होना",half:"आधा",hand:"हाथ",
+happen:"होना",happy:"खुश",hard:"कठिन",has:"है",have:"है",
+head:"सिर",hear:"सुनना",heart:"दिल",heat:"गर्मी",help:"मदद",
+helpful:"उपयोगी",here:"यहाँ",high:"ऊँचा",higher:"अधिक",him:"उसे",
+hold:"पकड़ना",home:"घर",honest:"ईमानदार",hope:"आशा",house:"मकान",
+how:"कैसे",however:"हालांकि",human:"मानव",hundred:"सौ",idea:"विचार",
+identify:"पहचानना",if:"अगर",imagine:"कल्पना",important:"महत्वपूर्ण",impossible:"असंभव",
+improve:"सुधार",increase:"वृद्धि",indeed:"वास्तव में",indicate:"संकेत",inside:"अंदर",
+instead:"इसके बजाय",interact:"परस्पर",interesting:"दिलचस्प",into:"में",introduce:"परिचय",
+is:"है",it:"यह",item:"वस्तु",itself:"स्वयं",join:"जुड़ना",
+journey:"यात्रा",joy:"आनंद",just:"बस",keep:"रखना",key:"चाबी",
+kind:"प्रकार",know:"जानना",knowledge:"ज्ञान",large:"बड़ा",last:"अंतिम",
+later:"बाद में",learn:"सीखना",least:"कम से कम",left:"बायाँ",length:"लंबाई",
+less:"कम",lesson:"पाठ",let:"चलो",level:"स्तर",life:"जीवन",
+light:"प्रकाश",like:"जैसे",line:"रेखा",list:"सूची",little:"थोड़ा",
+live:"रहना",local:"स्थानीय",long:"लंबा",look:"देखना",loop:"लूप",
+lose:"हारना",lot:"बहुत",low:"कम",lower:"निचला",machine:"मशीन",
+make:"बनाना",man:"आदमी",many:"कई",mark:"निशान",match:"मिलान",
+material:"सामग्री",mathematics:"गणित",matter:"मामला",may:"सकता",me:"मुझे",
+mean:"मतलब",meaning:"अर्थ",measure:"मापना",method:"विधि",might:"शायद",
+mind:"दिमाग",mine:"मेरा",minute:"मिनट",missing:"गायब",model:"मॉडल",
+modern:"आधुनिक",moment:"क्षण",money:"पैसा",month:"महीना",moon:"चंद्रमा",
+more:"अधिक",most:"अधिकांश",motion:"गति",move:"चलना",movement:"आंदोलन",
+much:"बहुत",must:"ज़रूरी",my:"मेरा",name:"नाम",natural:"प्राकृतिक",
+nature:"प्रकृति",near:"पास",need:"ज़रूरत",never:"कभी नहीं",new:"नया",
+next:"अगला",nice:"अच्छा",night:"रात",no:"नहीं",none:"कोई नहीं",
+nor:"और न",normal:"सामान्य",north:"उत्तर",not:"नहीं",note:"नोट",
+nothing:"कुछ नहीं",notice:"ध्यान",now:"अभी",number:"संख्या",object:"वस्तु",
+observe:"देखना",obvious:"स्पष्ट",odd:"विषम",of:"का",off:"बंद",
+offer:"प्रस्ताव",often:"अक्सर",old:"पुराना",on:"पर",once:"एक बार",
+one:"एक",only:"केवल",open:"खुला",opposite:"विपरीत",or:"या",
+order:"क्रम",other:"अन्य",our:"हमारा",out:"बाहर",outside:"बाहर",
+over:"ऊपर",own:"अपना",page:"पृष्ठ",pair:"जोड़ा",part:"भाग",
+particular:"विशेष",pattern:"पैटर्न",people:"लोग",per:"प्रति",perfect:"पूर्ण",
+perhaps:"शायद",person:"व्यक्ति",phase:"चरण",picture:"चित्र",piece:"टुकड़ा",
+place:"स्थान",plain:"सादा",plan:"योजना",play:"खेलना",please:"कृपया",
+point:"बिंदु",polygon:"बहुभुज",position:"स्थिति",possible:"संभव",power:"शक्ति",
+practice:"अभ्यास",prepare:"तैयारी",present:"वर्तमान",press:"दबाना",pretty:"सुंदर",
+previous:"पिछला",price:"मूल्य",principle:"सिद्धांत",problem:"समस्या",process:"प्रक्रिया",
+produce:"उत्पादन",product:"गुणनफल",proper:"उचित",property:"गुण",pull:"खींचना",
+push:"धक्का देना",put:"रखना",question:"प्रश्न",quick:"तेज़",quite:"काफी",
+race:"दौड़",radius:"त्रिज्या",raise:"उठाना",range:"श्रेणी",rapid:"तेज़",
+reach:"पहुँचना",read:"पढ़ना",ready:"तैयार",real:"वास्तविक",really:"वास्तव में",
+reason:"कारण",recognize:"पहचानना",record:"रिकॉर्ड",red:"लाल",reduce:"कम करना",
+regular:"नियमित",relation:"संबंध",remember:"याद रखना",remove:"हटाना",repeat:"दोहराना",
+replace:"बदलना",represent:"प्रतिनिधित्व",require:"आवश्यक",research:"शोध",result:"परिणाम",
+return:"लौटना",right:"सही",ring:"अंगूठी",rise:"उठना",road:"सड़क",
+rock:"चट्टान",role:"भूमिका",round:"गोल",row:"पंक्ति",rule:"नियम",
+run:"चलाना",same:"समान",say:"कहना",school:"विद्यालय",science:"विज्ञान",
+search:"खोज",second:"दूसरा",section:"अनुभाग",see:"देखना",seem:"लगना",
+self:"स्वयं",sell:"बेचना",send:"भेजना",sequence:"अनुक्रम",series:"श्रृंखला",
+set:"समूह",several:"कई",shape:"आकार",share:"साझा",she:"वह",
+short:"छोटा",should:"चाहिए",show:"दिखाना",side:"भुजा",simple:"सरल",
+since:"क्योंकि",single:"एकल",size:"आकार",sky:"आकाश",small:"छोटा",
+smooth:"चिकना",so:"इसलिए",social:"सामाजिक",soft:"नरम",solution:"हल",
+solve:"हल करना",some:"कुछ",someone:"कोई",something:"कुछ",sometimes:"कभी-कभी",
+son:"बेटा",soon:"जल्दी",sort:"प्रकार",sound:"ध्वनि",source:"स्रोत",
+space:"अंतरिक्ष",speak:"बोलना",special:"विशेष",speed:"गति",spend:"बिताना",
+square:"वर्ग",stand:"खड़ा",star:"तारा",start:"शुरू",state:"अवस्था",
+station:"स्टेशन",stay:"रुकना",step:"कदम",still:"अभी भी",stop:"रुकना",
+store:"भंडार",story:"कहानी",straight:"सीधा",strange:"अजीब",street:"गली",
+strong:"मज़बूत",student:"छात्र",study:"अध्ययन",subject:"विषय",success:"सफलता",
+such:"ऐसा",sudden:"अचानक",sufficient:"पर्याप्त",sum:"योग",sun:"सूरज",
+super:"उत्कृष्ट",supply:"आपूर्ति",sure:"निश्चित",surface:"सतह",surprise:"आश्चर्य",
+system:"प्रणाली",table:"तालिका",take:"लेना",talk:"बात",target:"लक्ष्य",
+teach:"पढ़ाना",teacher:"शिक्षक",team:"टीम",technology:"प्रौद्योगिकी",tell:"बताना",
+ten:"दस",term:"शब्द",test:"परीक्षण",than:"से",thank:"धन्यवाद",
+that:"वह",their:"उनका",them:"उन्हें",then:"तब",theory:"सिद्धांत",
+there:"वहाँ",these:"ये",they:"वे",thing:"चीज़",think:"सोचना",
+third:"तीसरा",this:"यह",those:"वे",though:"हालांकि",three:"तीन",
+through:"के माध्यम",throw:"फेंकना",time:"समय",to:"को",together:"एक साथ",
+tomorrow:"कल",too:"भी",top:"ऊपर",total:"कुल",touch:"स्पर्श",
+toward:"की ओर",town:"कस्बा",tree:"पेड़",triangle:"त्रिभुज",trick:"तरकीब",
+true:"सत्य",try:"कोशिश",turn:"मोड़",twelve:"बारह",two:"दो",
+type:"प्रकार",under:"नीचे",understand:"समझना",unit:"इकाई",unlike:"असमान",
+until:"तक",up:"ऊपर",upon:"पर",us:"हमें",use:"उपयोग",
+used:"उपयोग किया",useful:"उपयोगी",using:"उपयोग करके",usually:"आमतौर पर",value:"मान",
+various:"विभिन्न",very:"बहुत",view:"दृश्य",village:"गाँव",visualise:"कल्पना",
+volume:"आयतन",wait:"रुकना",walk:"चलना",want:"चाहना",warm:"गर्म",
+was:"था",watch:"देखना",water:"पानी",way:"रास्ता",we:"हम",
+weak:"कमज़ोर",weather:"मौसम",well:"अच्छी तरह",what:"क्या",when:"जब",
+where:"कहाँ",whether:"क्या",which:"कौन सा",while:"जबकि",white:"सफेद",
+who:"कौन",whole:"पूरा",why:"क्यों",wide:"चौड़ा",will:"होगा",
+win:"जीतना",wind:"हवा",without:"बिना",word:"शब्द",work:"काम",
+world:"दुनिया",would:"होगा",write:"लिखना",wrong:"गलत",year:"वर्ष",
+yet:"अभी तक",you:"तुम",young:"युवा",your:"तुम्हारा",zero:"शून्य",
+counting:"गिनती",triangular:"त्रिकोणीय",Virahanka:"विरहांका",even:"सम",
+hexagonal:"षट्भुजीय",fractal:"भग्न",iteration:"पुनरावृत्ति",segment:"खंड",
+snowflake:"हिमपुष्प",stacked:"स्टैक्ड",grid:"गृह",vertex:"शीर्ष",
+pictorial:"चित्रात्मक",genome:"जीनोम",rocket:"रॉकेट",satellite:"उपग्रह",
+disease:"रोग",diagnose:"निदान",creative:"रचनात्मक",endeavour:"प्रयास",artistry:"कलात्मकता",
+propel:"आगे बढ़ाना",forward:"आगे",fascinating:"आकर्षक",basic:"मूल",surprising:"आश्चर्यजनक",
+forever:"हमेशा के लिए",partition:"विभाजन",evident:"स्पष्ट",beautifully:"सुंदर ढंग से",
+remarkable:"उल्लेखनीय",discovery:"खोज",explanation:"व्याख्या",further:"आगे",
+depth:"गहराई",discuss:"चर्चा",particular:"विशेष",context:"संदर्भ",beyond:"परे",
+shape_sequence:"आकार अनुक्रम",number_theory:"संख्या सिद्धांत",dot:"बिंदु",row:"पंक्ति",
+column:"स्तंभ",layer:"परत",multiply:"गुणा",triple:"तिगुना",double:"दोगुना",
+previous:"पिछला",formula:"सूत्र",balance:"संतुलन",float:"तैरना",sink:"डूबना",
+density:"घनत्व",buoyant:"उत्प्लावक",archimedes:"आर्किमिडीज़",displace:"विस्थापित",
+immersed:"निमग्न",weight:"भार",mass:"द्रव्यमान",gravity:"गुरुत्व",newton:"न्यूटन",
+spring_balance:"स्प्रिंग तुला",stretch:"खिंचना",hook:"हुक",measure:"मापना",
+planet:"ग्रह",moon:"चंद्रमा",jupiter:"बृहस्पति",mars:"मंगल",venus:"शुक्र",
+upward:"ऊपर की ओर",downward:"नीचे की ओर",upthrust:"उत्प्लावन बल",contact_force:"संपर्क बल",
+muscular:"पेशीय",friction:"घर्षण",magnetic:"चुंबकीय",electrostatic:"स्थैतिक विद्युत",
+gravitational:"गुरुत्वीय",repel:"प्रतिकर्षण",attract:"आकर्षण",charge:"आवेश",
+static:"स्थैतिक",positive:"धनात्मक",negative:"ऋणात्मक",magnet:"चुंबक",
+pole:"ध्रुव",interaction:"अंतःक्रिया",surface:"सतह",rough:"खुरदरा",
+smooth:"चिकना",irregularities:"अनियमितताएँ",opposite:"विपरीत",direction:"दिशा",
+motion:"गति",speed:"गति",decrease:"कमी",increase:"वृद्धि",rest:"विश्राम",
+apply:"लागू",result:"परिणाम",cease:"बंद",whenever:"जब भी",essential:"आवश्यक",
+balance:"संतुलन",balance:"तराजू",equal:"बराबर",vary:"बदलना",slightly:"थोड़ा",
+comparison:"तुलना",practical:"व्यावहारिक",acceptable:"स्वीकार्य",correct:"सही",
+scientific:"वैज्ञानिक",term:"शब्द",casual:"अनौपचारिक",everyday:"रोज़मर्रा",
+instance:"उदाहरण",wheat:"गेहूं",bag:"थैला",upward:"ऊपर",downward:"नीचे",
+explore:"अन्वेषण",discover:"खोज",visual:"दृश्य",interactive:"संवादात्मक",
+gamified:"गेमिफाइड",module:"मॉड्यूल",chapter:"अध्याय",class:"कक्षा",
+grade:"श्रेणी",learn:"सीख",play:"खेल",fun:"मज़ा",reward:"पुरस्कार",
+xp:"अनुभव",coin:"सिक्का",level:"स्तर",streak:"श्रृंखला",confetti:"कनफेट्टी",
+achievement:"उपलब्धि",progress:"प्रगति",badge:"बैज",unlock:"अनलॉक",
+shop:"दुकान",theme:"थीम",purchase:"खरीद",avatar:"अवतार",profile:"प्रोफ़ाइल"
+};
+
+var CONN={
+"can":"सकता है","could":"सकता था","will":"करेगा","would":"करेगा","shall":"करेगा",
+"should":"करना चाहिए","must":"ज़रूरी है","may":"सकता है","might":"शायद कर सके",
+"need":"ज़रूरत है","need to":"ज़रूरत है करना","have to":"करना पड़ता है","had to":"करना पड़ा",
+"ought to":"करना चाहिए","be able to":"सक्षम है","used to":"पहले करता था","dare":"हिम्मत करना",
+"had better":"बेहतर होगा","be going to":"करने वाला है","be supposed to":"करना अपेक्षित है",
+"and":"और","but":"लेकिन","or":"या","so":"इसलिए","because":"क्योंकि",
+"although":"हालांकि","though":"हालांकि","while":"जबकि","if":"अगर","unless":"जब तक",
+"since":"क्योंकि","as":"जैसे","than":"से","then":"तब","yet":"फिर भी",
+"however":"हालांकि","therefore":"इसलिए","thus":"इस प्रकार","hence":"अतः",
+"also":"भी","too":"भी","either":"या तो","neither":"न तो","nor":"और न",
+"not only":"न केवल","but also":"बल्कि","both":"दोनों","whether":"क्या",
+"in addition":"इसके अतिरिक्त","furthermore":"इसके अलावा","moreover":"इसके अलावा",
+"for example":"उदाहरण के लिए","for instance":"उदाहरण के लिए","such as":"जैसे",
+"namely":"अर्थात","specifically":"विशेष रूप से","particularly":"विशेष रूप से",
+"indeed":"वास्तव में","in fact":"वास्तव में","actually":"वास्तव में",
+"firstly":"पहले","secondly":"दूसरा","thirdly":"तीसरा","finally":"अंत में",
+"lastly":"अंत में","above all":"सबसे ऊपर","most importantly":"सबसे महत्वपूर्ण",
+"on the other hand":"दूसरी ओर","in contrast":"इसके विपरीत","conversely":"इसके विपरीत",
+"similarly":"इसी प्रकार","likewise":"इसी तरह","equally":"समान रूप से",
+"instead":"इसके बजाय","alternatively":"वैकल्पिक रूप से","rather":"बल्कि",
+"meanwhile":"इस बीच","in the meantime":"इस बीच","at the same time":"उसी समय",
+"afterwards":"बाद में","subsequently":"बाद में","previously":"पहले",
+"eventually":"अंततः","ultimately":"अंततः","at last":"अंत में",
+"at first":"शुरू में","in the beginning":"शुरुआत में","to begin with":"शुरू करने के लिए",
+"previously":"पहले","formerly":"पहले","before that":"उससे पहले",
+"suddenly":"अचानक","all of a sudden":"अचानक","without warning":"बिना चेतावनी",
+"gradually":"धीरे-धीरे","slowly":"धीरे","little by little":"थोड़ा-थोड़ा",
+"step by step":"कदम दर कदम","one by one":"एक-एक करके",
+"obviously":"स्पष्ट रूप से","clearly":"स्पष्ट रूप से","evidently":"स्पष्ट रूप से",
+"apparently":"प्रतीत होता है","it seems":"लगता है","it appears":"प्रतीत होता है",
+"of course":"बेशक","certainly":"निश्चित रूप से","undoubtedly":"निस्संदेह",
+"undoubtedly":"निस्संदेह","without doubt":"संदेह के बिना","no doubt":"कोई संदेह नहीं",
+"perhaps":"शायद","maybe":"शायद","possibly":"संभवतः","probably":"संभवतः",
+"fortunately":"भाग्यवश","unfortunately":"दुर्भाग्य से","luckily":"भाग्य से",
+"surprisingly":"आश्चर्यजनक रूप से","interestingly":"दिलचस्प ढंग से","naturally":"स्वाभाविक रूप से",
+"in short":"संक्षेप में","in brief":"संक्षेप में","to sum up":"सारांश में",
+"in conclusion":"निष्कर्ष में","overall":"कुल मिलाकर","all in all":"सब मिलाकर",
+"in general":"सामान्य तौर पर","generally":"आमतौर पर","usually":"आमतौर पर",
+"typically":"आमतौर पर","commonly":"आमतौर पर","normally":"सामान्य रूप से",
+"rarely":"शायद ही कभी","seldom":"शायद ही कभी","hardly ever":"लगभग कभी नहीं",
+"always":"हमेशा","often":"अक्सर","frequently":"बार-बार",
+"sometimes":"कभी-कभी","occasionally":"कभी-कभी","now and then":"कभी-कभी",
+"once in a while":"कभी-कभी","from time to time":"समय-समय पर",
+"again and again":"बार-बार","repeatedly":"बार-बार","over and over":"बार-बार",
+"in particular":"विशेष रूप से","especially":"विशेष रूप से","specifically":"विशेष रूप से",
+"notably":"उल्लेखनीय रूप से","significantly":"महत्वपूर्ण रूप से",
+"at least":"कम से कम","at most":"अधिकतम","at best":"सर्वश्रेष्ठ पर",
+"in total":"कुल मिलाकर","altogether":"कुल मिलाकर","entirely":"पूरी तरह से",
+"completely":"पूरी तरह से","fully":"पूरी तरह से","wholly":"पूरी तरह से",
+"partially":"आंशिक रूप से","partly":"आंशिक रूप से","somewhat":"कुछ हद तक",
+"hardly":"मुश्किल से","barely":"मुश्किल से","scarcely":"मुश्किल से",
+"nearly":"लगभग","almost":"लगभग","approximately":"लगभग","roughly":"लगभग",
+"about":"लगभग","around":"लगभग","close to":"के करीब",
+"exactly":"बिल्कुल","precisely":"ठीक","just":"बस","simply":"बस",
+"only":"केवल","merely":"केवल","solely":"केवल","purely":"केवल",
+"even":"भी","still":"अभी भी","yet":"अभी तक","already":"पहले से",
+"anyway":"वैसे भी","anyhow":"वैसे भी","regardless":"फिर भी",
+"anywhere":"कहीं भी","somewhere":"कहीं","nowhere":"कहीं नहीं","everywhere":"हर जगह",
+"is":"है","are":"हैं","was":"था","were":"थे","been":"था",
+"being":"होते हुए","have":"है","has":"है","had":"था",
+"do":"करते हैं","does":"करता है","did":"किया","done":"किया हुआ",
+"doing":"कर रहे हैं","making":"बना रहे हैं","going":"जा रहे हैं","coming":"आ रहे हैं",
+"looking":"देख रहे हैं","taking":"ले रहे हैं","giving":"दे रहे हैं","getting":"पा रहे हैं",
+"this is":"यह है","that is":"वह है","these are":"ये हैं","those are":"वे हैं",
+"there is":"वहाँ है","there are":"वहाँ हैं","here is":"यहाँ है","here are":"यहाँ हैं",
+"it is":"यह है","it was":"यह था","it has":"इसके पास है","it had":"इसके पास था",
+"that means":"इसका मतलब है","this means":"इसका मतलब है","which means":"जिसका मतलब है",
+"that is to say":"यानी","in other words":"दूसरे शब्दों में","to put it simply":"सरल शब्दों में",
+"that is":"यानी","i.e.":"यानी","e.g.":"उदाहरण के लिए",
+"namely":"अर्थात","viz":"अर्थात","say":"मान लीजिए",
+"let us":"आइए","let me":"मुझे दीजिए","let's":"आइए",
+"what is":"क्या है","what are":"क्या हैं","what does":"क्या करता है","what do":"क्या करते हैं",
+"how many":"कितने","how much":"कितना","how does":"कैसे करता है","how do":"कैसे करते हैं",
+"why does":"क्यों करता है","why do":"क्यों करते हैं","why is":"क्यों है","why are":"क्यों हैं",
+"when does":"कब करता है","when do":"कब करते हैं","where does":"कहाँ करता है",
+"not":"नहीं","no":"नहीं","none":"कोई नहीं","nothing":"कुछ नहीं","nobody":"कोई नहीं",
+"nowhere":"कहीं नहीं","never":"कभी नहीं","neither":"न तो","nor":"और न",
+"without":"बिना","cannot":"नहीं सकता","can't":"नहीं सकता","won't":"नहीं करेगा",
+"don't":"नहीं करते","doesn't":"नहीं करता","didn't":"नहीं किया","isn't":"नहीं है",
+"aren't":"नहीं हैं","wasn't":"नहीं था","weren't":"नहीं थे","hasn't":"नहीं है",
+"haven't":"नहीं है","hadn't":"नहीं था","shouldn't":"नहीं चाहिए","wouldn't":"नहीं करेगा",
+"couldn't":"नहीं सकता था","mightn't":"शायद न","mustn't":"ज़रूरी नहीं","needn't":"ज़रूरत नहीं",
+"very":"बहुत","really":"वास्तव में","truly":"वास्तव में","quite":"काफी","rather":"बल्कि",
+"fairly":"काफी","pretty":"काफी","somewhat":"कुछ हद तक","slightly":"थोड़ा",
+"extremely":"अत्यधिक","incredibly":"अविश्वसनीय रूप से","remarkably":"उल्लेखनीय रूप से",
+"particularly":"विशेष रूप से","especially":"विशेष रूप से","specifically":"विशेष रूप से",
+"that's":"वह है","it's":"यह है","there's":"वहाँ है","here's":"यहाँ है","what's":"क्या है",
+"they're":"वे हैं","we're":"हम हैं","you're":"तुम हो","who's":"कौन है","where's":"कहाँ है"
+};
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});for(var i=0;i<keys.length;i++){var k=keys[i];var re=new RegExp("\\b"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\b","gi");html=html.replace(re,'<span class="cn" onclick="showWord(\''+k+'\',\''+CONN[k].replace(/'/g,"\\'")+'\')">'+k+' <span class="ch">('+CONN[k]+')</span></span>');}
+  if(!sm){var words=html.split(/(\s+)/);for(var i=0;i<words.length;i++){var w=words[i].replace(/[^a-zA-Z']/g,"");if(w.length>=3&&WM[w]){var re=new RegExp("\\b"+w+"\\b");words[i]=words[i].replace(re,'<span class="wd" onclick="showWord(\''+w+'\',\''+WM[w].replace(/'/g,"\\'")+'\')">'+w+'</span>');}}html=words.join("");}
+  return html;
+}
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h);}catch(e){}
+  }
+  var introB=document.querySelector(".intro-body");if(introB&&!introB.querySelector(".wd")&&!introB.querySelector(".cn")){try{introB.innerHTML=rt(introB.innerHTML);}catch(e){}}
+  var bt=document.querySelector(".bt");if(bt&&!bt.querySelector(".wd")&&!bt.querySelector(".cn")){try{bt.innerHTML=rt(bt.innerHTML);}catch(e){}}
+}
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+var STEPS=[{"t": "intro", "icon": "123", "title": "Patterns in Mathematics", "sub": "Class 5 Math - Chapter 1", "intro": "Mathematics is the search for patterns! Patterns are everywhere - in nature, in the stars, in flowers, and even in the games we play. In this chapter, we will explore number sequences, see how numbers can make beautiful shapes, and discover amazing connections between different patterns. We will also look at shape patterns like polygons and the Koch snowflake. Let us start our journey into the wonderful world of patterns!"}, {"t": "tutor", "icon": "bulb", "title": "What is Mathematics?", "body": "Mathematics is, in large part, the search for patterns, and for the explanations as to why those patterns exist. Such patterns exist all around us - in nature, in our homes and schools, and in the motion of the sun, moon, and stars. They occur in everything that we do and see, from shopping and cooking, to throwing a ball and playing games. Mathematicians think of mathematics both as an art and as a science. The search for patterns can be a fun and creative adventure!"}, {"t": "real_example", "icon": "rocket", "body": "Patterns help us in real life too! Understanding patterns in the motion of stars and planets helped humans develop the theory of gravitation. This allowed us to launch satellites and send rockets to the Moon and Mars. Understanding patterns in genomes has helped in diagnosing and curing diseases. Mathematics is not just about numbers - it helps propel humanity forward!"}, {"t": "quiz", "q": "Figure it Out 1.1: Mathematics is largely the search for what?", "diff": "easy", "opts": [{"t": "Patterns and their explanations", "c": true}, {"t": "Numbers only", "c": false, "m": "Numbers are part of it, but mathematics is about patterns of all kinds.", "correctMethod": "Mathematics is the search for patterns and the explanations for why those patterns exist."}, {"t": "Shapes only", "c": false, "m": "Shapes are one type of pattern, but not the whole picture.", "correctMethod": "Mathematics searches for all kinds of patterns - numbers, shapes, and more."}, {"t": "Equations only", "c": false, "m": "Equations are tools we use, but the goal is finding patterns.", "correctMethod": "Mathematics is fundamentally about finding and explaining patterns."}]}, {"t": "milestone", "icon": "bulb", "title": "What is Mathematics?", "xp": 30, "next": "Now: Patterns in Numbers - Number Sequences!"}, {"t": "tutor", "icon": "list", "title": "Patterns in Numbers - Number Sequences", "body": "Among the most basic patterns in mathematics are patterns of numbers. The branch of Mathematics that studies patterns in whole numbers is called number theory. Number sequences are the most basic and fascinating types of patterns. Here are some key number sequences: All 1s (1, 1, 1, 1...), Counting numbers (1, 2, 3, 4, 5...), Odd numbers (1, 3, 5, 7, 9...), Even numbers (2, 4, 6, 8, 10...), Triangular numbers (1, 3, 6, 10, 15...), Squares (1, 4, 9, 16, 25...), Cubes (1, 8, 27, 64, 125...), Virahanka numbers (1, 2, 3, 5, 8, 13...), Powers of 2 (1, 2, 4, 8, 16...), and Powers of 3 (1, 3, 9, 27, 81...)."}, {"t": "formula", "title": "Key Number Sequences", "formulas": [{"label": "Counting Numbers", "expr": "1, 2, 3, 4, 5, 6, 7, ...", "note": "Each number goes up by 1"}, {"label": "Odd Numbers", "expr": "1, 3, 5, 7, 9, 11, 13, ...", "note": "Each number goes up by 2, starting from 1"}, {"label": "Even Numbers", "expr": "2, 4, 6, 8, 10, 12, 14, ...", "note": "Each number goes up by 2, starting from 2"}, {"label": "Triangular Numbers", "expr": "1, 3, 6, 10, 15, 21, 28, ...", "note": "Add counting numbers: 1, 1+2, 1+2+3, ..."}, {"label": "Squares", "expr": "1, 4, 9, 16, 25, 36, 49, ...", "note": "Each number is n x n (1x1, 2x2, 3x3, ...)"}, {"label": "Cubes", "expr": "1, 8, 27, 64, 125, 216, ...", "note": "Each number is n x n x n (1x1x1, 2x2x2, ...)"}, {"label": "Virahanka Numbers", "expr": "1, 2, 3, 5, 8, 13, 21, ...", "note": "Each number is the sum of the two before it"}, {"label": "Powers of 2", "expr": "1, 2, 4, 8, 16, 32, 64, ...", "note": "Each number is double the previous one"}, {"label": "Powers of 3", "expr": "1, 3, 9, 27, 81, 243, 729, ...", "note": "Each number is triple the previous one"}]}, {"t": "ix_sequences", "instruction": "Tap each number sequence to see its pattern! Explore all 9 sequences. Can you see how each one grows?"}, {"t": "quiz", "q": "Figure it Out 1.2: What are the next three numbers in the Triangular number sequence: 1, 3, 6, 10, 15, ___, ___, ___?", "diff": "medium", "opts": [{"t": "21, 28, 36", "c": true}, {"t": "20, 25, 30", "c": false, "m": "Look at the pattern: each step adds the next counting number (2, 3, 4, 5, 6, 7, 8).", "correctMethod": "Triangular numbers add counting numbers: 15+6=21, 21+7=28, 28+8=36."}, {"t": "22, 30, 40", "c": false, "m": "Check the pattern - each step adds a number that is 1 more than the previous step.", "correctMethod": "The pattern adds 6, 7, 8: 15+6=21, 21+7=28, 28+8=36."}, {"t": "25, 35, 45", "c": false, "m": "The differences grow by 1 each time, not by 5 or 10.", "correctMethod": "Triangular numbers: 1, 3, 6, 10, 15, 21, 28, 36 - adding 2, 3, 4, 5, 6, 7, 8."}]}, {"t": "quiz", "q": "Figure it Out 1.2: What are the next three numbers in Powers of 2: 1, 2, 4, 8, 16, ___, ___, ___?", "diff": "easy", "opts": [{"t": "32, 64, 128", "c": true}, {"t": "24, 32, 40", "c": false, "m": "Powers of 2 double each time, not add 8.", "correctMethod": "Powers of 2: each number is double the previous - 16x2=32, 32x2=64, 64x2=128."}, {"t": "18, 20, 22", "c": false, "m": "Look again - the numbers are doubling, not adding.", "correctMethod": "Each number doubles: 16, 32, 64, 128."}, {"t": "30, 44, 60", "c": false, "m": "Powers of 2 means multiplying by 2 each time.", "correctMethod": "16 doubled is 32, 32 doubled is 64, 64 doubled is 128."}]}, {"t": "quiz", "q": "Figure it Out 1.2: What are the next three numbers in Virahanka numbers: 1, 2, 3, 5, 8, 13, ___, ___, ___?", "diff": "hard", "opts": [{"t": "21, 34, 55", "c": true}, {"t": "20, 27, 34", "c": false, "m": "Virahanka numbers add the two previous numbers, not add 7 each time.", "correctMethod": "8+13=21, 13+21=34, 21+34=55. Each number is the sum of the two before it."}, {"t": "18, 23, 28", "c": false, "m": "The rule is: add the two previous numbers.", "correctMethod": "8+13=21, 13+21=34, 21+34=55."}, {"t": "26, 39, 52", "c": false, "m": "Look at the pattern: 1, 2, 3=1+2, 5=2+3, 8=3+5, 13=5+8. What is 8+13?", "correctMethod": "The Virahanka sequence adds the two previous: 8+13=21, 13+21=34, 21+34=55."}]}, {"t": "milestone", "icon": "list", "title": "Number Sequences Mastered!", "xp": 50, "next": "Now: Visualising Number Sequences with Pictures!"}, {"t": "tutor", "icon": "picture", "title": "Visualising Number Sequences", "body": "Many number sequences can be visualised using pictures. This helps us understand patterns better. Triangular numbers (1, 3, 6, 10, 15...) get their name because they can be arranged as triangles of dots. Square numbers (1, 4, 9, 16, 25...) form squares of dots. Cube numbers (1, 8, 27, 64, 125...) can be shown as cubes. Here is something amazing: 36 is both a triangular number AND a square number! 36 dots can be arranged perfectly both in a triangle and in a square. The same number can play different roles depending on how you look at it!"}, {"t": "truefalse", "q": "Figure it Out 1.3: The number 36 is both a triangular number and a square number.", "ans": true, "explain": "True! 36 dots can be arranged perfectly both in a triangle (1+2+3+4+5+6+7+8 = 36) and in a square (6x6 = 36). The same number can be represented differently!", "m": "Remember: 36 = 6x6 (square) and also 1+2+3+4+5+6+7+8 = 36 (triangular)."}, {"t": "ix_odd_squares", "instruction": "Discover the beautiful pattern: adding odd numbers gives square numbers! Tap each level to see: 1=1, 1+3=4, 1+3+5=9, 1+3+5+7=16... Watch the square grow!"}, {"t": "formula", "title": "Beautiful Relations Between Sequences", "formulas": [{"label": "Odd Numbers give Squares", "expr": "1 = 1, 1+3 = 4, 1+3+5 = 9, 1+3+5+7 = 16", "note": "Adding odd numbers starting from 1 gives square numbers!"}, {"label": "Up and Down gives Squares", "expr": "1 = 1, 1+2+1 = 4, 1+2+3+2+1 = 9, 1+2+3+4+3+2+1 = 16", "note": "Adding counting numbers up and down also gives squares!"}, {"label": "Adding Counting Numbers gives Triangular", "expr": "1 = 1, 1+2 = 3, 1+2+3 = 6, 1+2+3+4 = 10", "note": "Adding counting numbers gives triangular numbers!"}, {"label": "Consecutive Triangular Pairs give Squares", "expr": "1+3 = 4, 3+6 = 9, 6+10 = 16, 10+15 = 25", "note": "Adding consecutive triangular numbers gives square numbers!"}, {"label": "Powers of 2 plus 1", "expr": "1, 1+2=3, 1+2+4=7, 1+2+4+8=15. Add 1: 2, 4, 8, 16, 32", "note": "Adding powers of 2 and then adding 1 gives the next power of 2!"}]}, {"t": "quiz", "q": "By drawing a picture, what is the sum of the first 10 odd numbers (1+3+5+7+9+11+13+15+17+19)?", "diff": "medium", "opts": [{"t": "100", "c": true}, {"t": "55", "c": false, "m": "That is the sum of 1 to 10, not the first 10 odd numbers.", "correctMethod": "The sum of the first n odd numbers equals n squared. 10 squared = 10 x 10 = 100."}, {"t": "121", "c": false, "m": "121 is 11 squared - that would be the sum of the first 11 odd numbers.", "correctMethod": "Sum of first n odd numbers = n squared. For 10 odd numbers: 10 x 10 = 100."}, {"t": "190", "c": false, "m": "Think about the pattern: 1=1, 1+3=4, 1+3+5=9. Each sum is a perfect square.", "correctMethod": "The sum of the first 10 odd numbers equals 10 squared = 100."}]}, {"t": "quiz", "q": "What is the sum of the first 100 odd numbers?", "diff": "hard", "opts": [{"t": "10000", "c": true}, {"t": "1000", "c": false, "m": "Think: the sum of the first n odd numbers equals n squared. What is 100 squared?", "correctMethod": "Sum of first n odd numbers = n squared. 100 squared = 100 x 100 = 10000."}, {"t": "9999", "c": false, "m": "Close, but it is exactly 100 squared.", "correctMethod": "100 squared = 10000. The sum of the first 100 odd numbers is 10000."}, {"t": "5000", "c": false, "m": "The pattern gives n squared, not n times 50.", "correctMethod": "Sum of first 100 odd numbers = 100 squared = 10000."}]}, {"t": "quiz", "q": "Figure it Out 1.4 Q2: What is the value of 1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1?", "diff": "hard", "opts": [{"t": "10000", "c": true}, {"t": "5050", "c": false, "m": "5050 is the sum of 1 to 100, but this goes up AND down.", "correctMethod": "Adding counting numbers up and down gives square numbers. This goes up to 100 and back: 100 x 100 = 10000."}, {"t": "100000", "c": false, "m": "That would be 100 cubed, not 100 squared.", "correctMethod": "The up-and-down sum up to n gives n squared. Here n=100, so 100 x 100 = 10000."}, {"t": "9999", "c": false, "m": "It is exactly 10000, which is 100 squared.", "correctMethod": "1+2+...+100+...+2+1 = 100 squared = 10000."}]}, {"t": "quiz", "q": "Figure it Out 1.4 Q5: What happens when you add pairs of consecutive triangular numbers: 1+3, 3+6, 6+10, 10+15, ...?", "diff": "medium", "opts": [{"t": "You get square numbers (4, 9, 16, 25, ...)", "c": true}, {"t": "You get cube numbers", "c": false, "m": "Check: 1+3=4, 3+6=9, 6+10=16. Are 4, 9, 16 cubes?", "correctMethod": "1+3=4, 3+6=9, 6+10=16, 10+15=25 - these are square numbers!"}, {"t": "You get odd numbers", "c": false, "m": "4, 9, 16, 25 are not odd numbers.", "correctMethod": "Adding consecutive triangular numbers gives squares: 4, 9, 16, 25, ..."}, {"t": "You get powers of 2", "c": false, "m": "4, 9, 16, 25 are not powers of 2 (which would be 4, 8, 16, 32).", "correctMethod": "The sums are 4, 9, 16, 25 - perfect squares!"}]}, {"t": "quiz", "q": "Figure it Out 1.4 Q6: When you add powers of 2 starting with 1 (1, 1+2, 1+2+4, 1+2+4+8, ...) and add 1 to each, what do you get?", "diff": "hard", "opts": [{"t": "Powers of 2 (2, 4, 8, 16, 32, ...)", "c": true}, {"t": "Odd numbers", "c": false, "m": "The sums are 1, 3, 7, 15, 31. Adding 1 gives 2, 4, 8, 16, 32. Are these odd?", "correctMethod": "Sums are 1, 3, 7, 15, 31. Adding 1: 2, 4, 8, 16, 32 - powers of 2!"}, {"t": "Triangular numbers", "c": false, "m": "2, 4, 8, 16, 32 are not triangular numbers (1, 3, 6, 10, 15).", "correctMethod": "Adding 1 gives 2, 4, 8, 16, 32 - the next powers of 2!"}, {"t": "Square numbers", "c": false, "m": "2, 4, 8, 16, 32 are not all squares (only 4 and 16 are).", "correctMethod": "The result is 2, 4, 8, 16, 32 - powers of 2."}]}, {"t": "quiz", "q": "Figure it Out 1.4 Q7: What happens when you multiply triangular numbers by 6 and add 1?", "diff": "hard", "opts": [{"t": "You get hexagonal numbers (7, 19, 37, 61, 91, ...)", "c": true}, {"t": "You get square numbers", "c": false, "m": "Check: 1x6+1=7, 3x6+1=19, 6x6+1=37. Are 7, 19, 37 squares?", "correctMethod": "1x6+1=7, 3x6+1=19, 6x6+1=37, 10x6+1=61 - these are hexagonal numbers!"}, {"t": "You get cube numbers", "c": false, "m": "7, 19, 37, 61 are not cubes (1, 8, 27, 64).", "correctMethod": "Multiplying triangular numbers by 6 and adding 1 gives hexagonal numbers: 7, 19, 37, 61, ..."}, {"t": "You get powers of 3", "c": false, "m": "7, 19, 37, 61 are not powers of 3 (1, 3, 9, 27, 81).", "correctMethod": "The result is 7, 19, 37, 61 - hexagonal numbers!"}]}, {"t": "quiz", "q": "Figure it Out 1.4 Q8: What happens when you add up hexagonal numbers: 1, 1+7, 1+7+19, 1+7+19+37, ...?", "diff": "hard", "opts": [{"t": "You get cube numbers (1, 8, 27, 64, ...)", "c": true}, {"t": "You get square numbers", "c": false, "m": "Check: 1, 1+7=8, 1+7+19=27. Are 1, 8, 27 squares?", "correctMethod": "1, 8, 27, 64 - these are perfect cubes! Adding hexagonal numbers gives cubes."}, {"t": "You get triangular numbers", "c": false, "m": "1, 8, 27, 64 are not triangular numbers (1, 3, 6, 10, 15).", "correctMethod": "The sums are 1, 8, 27, 64 - cube numbers!"}, {"t": "You get powers of 2", "c": false, "m": "1, 8, 27, 64 are not powers of 2 (1, 2, 4, 8, 16).", "correctMethod": "Adding hexagonal numbers gives 1, 8, 27, 64 - cubes!"}]}, {"t": "milestone", "icon": "picture", "title": "Number Relations Mastered!", "xp": 60, "next": "Now: Patterns in Shapes!"}, {"t": "tutor", "icon": "shapes", "title": "Patterns in Shapes", "body": "Other important patterns in mathematics are patterns of shapes. These shapes may be in one, two, or three dimensions (1D, 2D, or 3D). The branch of Mathematics that studies patterns in shapes is called geometry. Shape sequences include: Regular Polygons (triangle, quadrilateral, pentagon, hexagon, heptagon, octagon, nonagon, decagon - each shape has one more side than the previous), Complete Graphs (K2, K3, K4, K5, K6 - points connected to each other with lines), Stacked Squares (growing squares made of smaller squares), Stacked Triangles (growing triangles made of smaller triangles), and Koch Snowflake (a fractal where each line segment is replaced by a speed bump shape)."}, {"t": "ix_shapes", "instruction": "Tap each shape sequence to explore it! See: Regular Polygons, Complete Graphs, Stacked Squares, and Stacked Triangles. Count sides, lines, and small shapes!"}, {"t": "formula", "title": "Shape Sequences and Their Number Patterns", "formulas": [{"label": "Regular Polygons - Sides", "expr": "3, 4, 5, 6, 7, 8, 9, 10, ...", "note": "Counting numbers starting at 3 - same as number of corners!"}, {"label": "Complete Graphs - Lines", "expr": "1, 3, 6, 10, 15, ...", "note": "Triangular numbers! K2 has 1 line, K3 has 3, K4 has 6, ..."}, {"label": "Stacked Squares - Small Squares", "expr": "1, 4, 9, 16, 25, ...", "note": "Square numbers! Each shape is an n by n grid."}, {"label": "Stacked Triangles - Small Triangles", "expr": "1, 4, 9, 16, 25, ...", "note": "Also square numbers! Row 1 has 1, row 2 has 3, row 3 has 5, ..."}, {"label": "Koch Snowflake - Line Segments", "expr": "3, 12, 48, 192, 768, ...", "note": "3 times powers of 4: 3, 3x4, 3x4x4, 3x4x4x4, ..."}]}, {"t": "quiz", "q": "Figure it Out 1.6 Q1: Count the number of sides in Regular Polygons. Which number sequence do you get?", "diff": "easy", "opts": [{"t": "Counting numbers starting at 3: 3, 4, 5, 6, 7, 8, 9, 10", "c": true}, {"t": "Odd numbers: 1, 3, 5, 7, 9", "c": false, "m": "A triangle has 3 sides, a square has 4, a pentagon has 5. Is 4 odd?", "correctMethod": "Triangle (3), square (4), pentagon (5), hexagon (6) - counting numbers starting at 3."}, {"t": "Even numbers: 2, 4, 6, 8", "c": false, "m": "A triangle has 3 sides, which is odd.", "correctMethod": "Regular polygons have 3, 4, 5, 6, ... sides - counting numbers from 3."}, {"t": "Powers of 2", "c": false, "m": "3, 4, 5, 6 are not powers of 2 (1, 2, 4, 8).", "correctMethod": "The sides are 3, 4, 5, 6, 7, 8 - counting numbers starting at 3."}]}, {"t": "quiz", "q": "Figure it Out 1.6 Q2: Count the lines in Complete Graphs (K2, K3, K4, K5, K6). Which sequence do you get?", "diff": "medium", "opts": [{"t": "Triangular numbers: 1, 3, 6, 10, 15", "c": true}, {"t": "Square numbers: 1, 4, 9, 16, 25", "c": false, "m": "K2 has 1 line, K3 has 3 lines. Is 3 a square number?", "correctMethod": "K2=1, K3=3, K4=6, K5=10, K6=15 - triangular numbers!"}, {"t": "Counting numbers: 1, 2, 3, 4, 5", "c": false, "m": "K4 has 6 lines, not 4.", "correctMethod": "Complete graphs have 1, 3, 6, 10, 15 lines - triangular numbers."}, {"t": "Powers of 2: 1, 2, 4, 8, 16", "c": false, "m": "K3 has 3 lines, not 2.", "correctMethod": "The number of lines is 1, 3, 6, 10, 15 - triangular numbers."}]}, {"t": "quiz", "q": "Figure it Out 1.6 Q3: How many small squares are in each shape of the Stacked Squares sequence?", "diff": "medium", "opts": [{"t": "Square numbers: 1, 4, 9, 16, 25", "c": true}, {"t": "Triangular numbers: 1, 3, 6, 10, 15", "c": false, "m": "The first stacked square is 1x1=1, the second is 2x2=4. Is 4 triangular?", "correctMethod": "Stacked squares: 1x1=1, 2x2=4, 3x3=9, 4x4=16 - square numbers!"}, {"t": "Counting numbers: 1, 2, 3, 4, 5", "c": false, "m": "A 2x2 grid has 4 small squares, not 2.", "correctMethod": "Each shape is an n by n grid: 1, 4, 9, 16, 25 - square numbers."}, {"t": "Cubes: 1, 8, 27, 64, 125", "c": false, "m": "A 2x2 grid has 4 squares, not 8.", "correctMethod": "Stacked squares give 1, 4, 9, 16, 25 - square numbers."}]}, {"t": "ix_koch", "instruction": "Watch the Koch Snowflake grow! Tap each iteration to see the fractal. Start with a triangle, then each line segment becomes a speed bump. See how the shape gets more complex!"}, {"t": "quiz", "q": "Figure it Out 1.6 Q5: How many line segments are in each shape of the Koch Snowflake sequence?", "diff": "hard", "opts": [{"t": "3, 12, 48, 192, 768 (3 times powers of 4)", "c": true}, {"t": "3, 6, 12, 24, 48 (3 times powers of 2)", "c": false, "m": "Each segment is replaced by 4 segments (a speed bump has 4 segments), so multiply by 4, not 2.", "correctMethod": "Koch Snowflake: start with 3 segments, each is replaced by 4: 3, 3x4=12, 12x4=48, 48x4=192."}, {"t": "3, 9, 27, 81, 243 (powers of 3)", "c": false, "m": "The multiplier is 4 (speed bump = 4 segments), not 3.", "correctMethod": "Each line segment becomes 4, so: 3, 12, 48, 192 - 3 times powers of 4."}, {"t": "3, 4, 5, 6, 7", "c": false, "m": "The number grows much faster - each segment splits into 4.", "correctMethod": "Koch Snowflake segments: 3, 12, 48, 192, 768 - multiply by 4 each time."}]}, {"t": "milestone", "icon": "shapes", "title": "Shape Patterns Mastered!", "xp": 50, "next": "Now: Relations Between Shapes and Numbers!"}, {"t": "tutor", "icon": "link", "title": "Relations Between Shape and Number Sequences", "body": "Shape sequences are related to number sequences in surprising ways. The number of sides in Regular Polygons follows counting numbers starting at 3 (3, 4, 5, 6...). The number of corners equals the number of sides - in any closed figure, the number of sides always equals the number of corners. The number of lines in Complete Graphs gives triangular numbers (1, 3, 6, 10, 15). Stacked Squares give square numbers (1, 4, 9, 16, 25). Stacked Triangles also give square numbers! The Koch Snowflake has line segments that follow 3 times powers of 4 (3, 12, 48, 192, 768)."}, {"t": "ix_relations", "instruction": "Explore the beautiful connections between number and shape sequences! Tap each relation to see it visualised: Odd to Squares, Counting to Triangular, Triangular Pairs to Squares, Hexagonal to Cubes."}, {"t": "quiz", "q": "Figure it Out 1.6 Q1: In Regular Polygons, is the number of corners the same as the number of sides?", "diff": "easy", "opts": [{"t": "Yes, in any closed figure, number of sides equals number of corners", "c": true}, {"t": "No, corners are always more than sides", "c": false, "m": "Think of a triangle: 3 sides and 3 corners. A square: 4 sides and 4 corners.", "correctMethod": "In any closed figure, the number of sides always equals the number of corners (vertices)."}, {"t": "No, sides are always more than corners", "c": false, "m": "A pentagon has 5 sides and 5 corners - they are equal.", "correctMethod": "Yes! In any closed figure, sides = corners. A hexagon has 6 of each."}, {"t": "It depends on the shape size", "c": false, "m": "The number of sides and corners depends on the type of shape, not its size.", "correctMethod": "For any closed figure, number of sides = number of corners."}]}, {"t": "truefalse", "q": "The branch of Mathematics that studies patterns in whole numbers is called number theory.", "ans": true, "explain": "True! Number theory is the branch of mathematics that studies patterns in whole numbers. It looks at sequences, prime numbers, divisibility, and many other fascinating patterns.", "m": "Number theory studies patterns in whole numbers like 0, 1, 2, 3, 4, ..."}, {"t": "truefalse", "q": "The branch of Mathematics that studies patterns in shapes is called geometry.", "ans": true, "explain": "True! Geometry is the branch of mathematics that studies patterns in shapes. It deals with 1D, 2D, and 3D shapes, angles, lines, and their relationships.", "m": "Geometry comes from Greek words meaning earth-measurement."}, {"t": "we", "tag": "Worked Example", "question": "Find the next three numbers in each sequence:\n(a) 1, 3, 5, 7, ___, ___, ___\n(b) 1, 4, 9, 16, ___, ___, ___\n(c) 1, 2, 3, 5, 8, ___, ___, ___", "steps": ["Sequence (a): 1, 3, 5, 7 - these are ODD numbers. Each increases by 2.", "So next three: 7+2=9, 9+2=11, 11+2=13. Answer: 9, 11, 13", "Sequence (b): 1, 4, 9, 16 - these are SQUARE numbers (1x1, 2x2, 3x3, 4x4).", "So next three: 5x5=25, 6x6=36, 7x7=49. Answer: 25, 36, 49", "Sequence (c): 1, 2, 3, 5, 8 - these are VIRAHANKA numbers. Each is the sum of the two before it.", "So: 3+5=8 (check!), 5+8=13, 8+13=21. Answer: 13, 21, 34"], "answer": "(a) 9, 11, 13  (b) 25, 36, 49  (c) 13, 21, 34"}, {"t": "solve", "tag": "Solve", "question": "What is the sum of the first 10 odd numbers?", "hint": "The sum of the first n odd numbers equals n squared.", "answer": "100", "steps": ["The sum of the first n odd numbers equals n squared (n x n).", "Here n = 10 (we want the first 10 odd numbers).", "So the sum = 10 x 10 = 100.", "Check: 1+3+5+7+9+11+13+15+17+19 = 100. Yes!"]}, {"t": "rapid_fire", "qs": [{"q": "What is the next number: 1, 3, 5, 7, 9, ___?", "opts": ["11", "10", "12", "8"], "ans": 0}, {"q": "What is the next number: 2, 4, 8, 16, ___?", "opts": ["32", "24", "20", "18"], "ans": 0}, {"q": "What is the next number: 1, 4, 9, 16, ___?", "opts": ["25", "20", "24", "36"], "ans": 0}, {"q": "What is the next number: 1, 8, 27, 64, ___?", "opts": ["125", "100", "81", "216"], "ans": 0}, {"q": "What is the next number: 1, 3, 6, 10, 15, ___?", "opts": ["21", "20", "22", "18"], "ans": 0}, {"q": "What is the next number: 1, 2, 3, 5, 8, 13, ___?", "opts": ["21", "15", "20", "18"], "ans": 0}, {"q": "Sum of first 5 odd numbers?", "opts": ["25", "15", "20", "10"], "ans": 0}, {"q": "What shape has 6 sides?", "opts": ["Hexagon", "Pentagon", "Octagon", "Decagon"], "ans": 0}]}, {"t": "memory_match", "pairs": [{"en": "Pattern", "hi": "Pattern"}, {"en": "Sequence", "hi": "Sequence"}, {"en": "Triangle", "hi": "Triangle"}, {"en": "Square", "hi": "Square"}, {"en": "Cube", "hi": "Cube"}, {"en": "Odd Number", "hi": "Odd Number"}, {"en": "Even Number", "hi": "Even Number"}, {"en": "Geometry", "hi": "Geometry"}]}, {"t": "complete", "icon": "123", "title": "Chapter 1 Complete!", "sub": "Patterns in Mathematics - Mastered!"}];
+
+var App={
+  sIdx:0,weStepIdx:undefined,xp:0,coins:0,level:1,streak:0,answered:false,selTf:null,solveAnswered:false,
+  ownedThemes:["default"],selTheme:"default",
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      if(step.t==="we"&&self.weStepIdx!==undefined&&self.weStepIdx<step.steps.length){
+        self.weStepIdx++;if(self.weStepIdx>=step.steps.length){self.weStepIdx=0;self.next();return;}self.render();return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    this.answered=false;this.selTf=null;this.solveAnswered=false;this.weStepIdx=undefined;
+    var cb=document.getElementById("continueBtn");var bb=document.getElementById("backBtn");
+    if(bb)bb.disabled=this.sIdx<=0;
+    var prog=Math.round((this.sIdx/(STEPS.length-1))*100);
+    var pf=document.querySelector(".progress-fill");if(pf)pf.style.width=prog+"%";
+    var sc=document.getElementById("screen");
+    if(sc)sc.innerHTML="";
+    switch(step.t){
+      case"intro":this.renderIntro(step,cb);break;
+      case"text":this.renderText(step,cb);break;
+      case"tutor":this.renderTutor(step,cb);break;
+      case"real_example":this.renderRealExample(step,cb);break;
+      case"formula":this.renderFormula(step,cb);break;
+      case"discovery":this.renderDiscovery(step,cb);break;
+      case"quiz":this.renderQuiz(step,cb);break;
+      case"truefalse":this.renderTrueFalse(step,cb);break;
+      case"we":this.renderWE(step,cb);break;
+      case"solve":this.renderSolve(step,cb);break;
+      case"rapid_fire":this.renderRapidFire(step,cb);break;
+      case"memory_match":this.renderMemoryMatch(step,cb);break;
+      case"milestone":this.renderMilestone(step,cb);break;
+      case"complete":this.renderComplete(step,cb);break;
+      case"ix_sequences":this.renderIxSequences(step,cb);break;
+      case"ix_odd_squares":this.renderIxOddSquares(step,cb);break;
+      case"ix_shapes":this.renderIxShapes(step,cb);break;
+      case"ix_koch":this.renderIxKoch(step,cb);break;
+      case"ix_relations":this.renderIxRelations(step,cb);break;
+      default:sc.innerHTML='<div class="card">Unknown step</div>';
+    }
+    if(cb){cb.style.display=(step.t==="complete"||step.t==="rapid_fire"||step.t==="memory_match")?"none":"";}
+    applyLLE();
+  },
+  updateStats:function(){
+    var xe=document.getElementById("statXp");if(xe)xe.textContent=this.xp;
+    var ce=document.getElementById("statCoins");if(ce)ce.textContent=this.coins;
+    var le=document.getElementById("statLvl");if(le)le.textContent=this.level;
+    var se=document.getElementById("statStreak");if(se)se.textContent=this.streak;
+  },
+  checkLevelUp:function(){
+    var thresholds=[0,50,120,200,300,420,560,720,900,1100,1350];
+    var nl=1;
+    for(var i=0;i<thresholds.length;i++){if(this.xp>=thresholds[i])nl=i+1;}
+    if(nl>this.level){this.level=nl;this.showLevelUp(nl);}
+  },
+  showLevelUp:function(lvl){
+    this.coins+=10;this.updateStats();
+    var d=document.getElementById("levelUpDialog");
+    if(d){document.getElementById("luLevel").textContent=lvl;document.getElementById("luReward").textContent="+10 Coins!";
+    if(!d.open)d.showModal();}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;
+    c.style.display="block";c.innerHTML="";
+    var colors=["#4f46e5","#6366f1","#10b981","#f59e0b","#ec4899","#a855f7"];
+    for(var i=0;i<50;i++){
+      var p=document.createElement("div");
+      p.style.cssText="position:absolute;width:8px;height:8px;background:"+colors[i%colors.length]+";border-radius:50%;left:"+(Math.random()*100)+"%;top:-10px;animation:confettiFall "+(1+Math.random()*2)+"s linear forwards";
+      c.appendChild(p);
+    }
+    setTimeout(function(){c.style.display="none";c.innerHTML="";},3000);
+  },
+  next:function(){
+    if(this.sIdx<STEPS.length-1){this.sIdx++;this.render();window.scrollTo(0,0);}
+  },
+  back:function(){
+    if(this.sIdx>0){this.sIdx--;this.render();window.scrollTo(0,0);}
+  },
+  renderIntro:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="intro-icon">'+step.icon+'</div>'+
+      '<div class="intro-title">'+rt(step.title)+'</div>'+
+      '<div class="intro-sub">'+rt(step.sub)+'</div>'+
+      '<div class="intro-body">'+rt(step.intro)+'</div>';
+    cb.textContent="Let's Start!";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="card"><div class="bt">'+rt(step.body)+'</div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    var icon=step.icon||"";
+    document.getElementById("screen").innerHTML='<div class="tutor-box"><span class="tutor-icon">'+icon+'</span><div>'+rt(step.body)+'</div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML='<div class="real-example"><span class="re-icon">'+(step.icon||"")+'</span><div>'+rt(step.body)+'</div></div>';
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title||"Key Formulas")+'</div>';
+    if(step.formulas){for(var i=0;i<step.formulas.length;i++){
+      var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div><div class="f-note">'+rt(f.note)+'</div></div>';
+    }}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderDiscovery:function(step,cb){
+    var html='<div class="instruction">'+rt(step.instruction||"Explore!")+'</div>';
+    html+='<div class="discovery-box"><div class="d-title">'+rt(step.title||"Discovery")+'</div><div class="d-text">'+rt(step.text||"")+'</div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    if(this.weStepIdx===undefined)this.weStepIdx=0;
+    var html='<div class="we-card"><div class="we-tag">'+rt(step.tag||"Worked Example")+'</div><div class="we-question">'+rt(step.question)+'</div>';
+    if(step.steps){
+      for(var i=0;i<=this.weStepIdx&&i<step.steps.length;i++){
+        var isLast=i===step.steps.length-1;
+        html+='<div class="we-step'+(isLast?' green':'')+'"><span class="we-num">'+(i+1)+'</span>'+rt(step.steps[i])+'</div>';
+      }
+      if(this.weStepIdx>=step.steps.length-1){
+        html+='<div class="we-step final">'+rt("Answer: "+step.answer)+'</div>';
+      }
+    }
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    if(this.weStepIdx>=step.steps.length-1){
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      cb.textContent="Next Step";cb.className="btn btn-primary";cb.disabled=false;
+    }
+  },
+  renderMilestone:function(step,cb){
+    this.xp+=(step.xp||50);this.coins+=5;this.updateStats();this.checkLevelUp();
+    document.getElementById("screen").innerHTML=
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+(step.xp||50)+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next||"")+'</div>';
+    cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    this.fireConfetti();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div class="complete-sub">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">Coins: '+this.coins+'</div>'+
+      '<div class="star-row"><span>star</span><span>star</span><span>star</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  renderQuiz:function(step,cb){
+    var self=this;
+    var opts=step.opts.slice();
+    for(var i=opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=opts[i];opts[i]=opts[j];opts[j]=tmp;}
+    var html='<div class="instruction">'+rt("Quiz Time!")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q);
+    if(step.diff)html+=' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>';
+    html+='</div>';
+    for(var i=0;i<opts.length;i++){
+      html+='<div class="quiz-opt" data-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(opts[i].t)+'</div></div>';
+    }
+    html+='<div id="quizFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    self._quizOpts=opts;
+    var els=document.querySelectorAll(".quiz-opt");
+    for(var i=0;i<els.length;i++){
+      els[i].addEventListener("click",function(){
+        if(self.answered)return;
+        for(var j=0;j<els.length;j++)els[j].classList.remove("selected");
+        this.classList.add("selected");this.setAttribute("data-sel","1");
+        cb.textContent="Check";cb.disabled=false;
+      });
+    }
+  },
+  checkQuiz:function(step,cb){
+    this.answered=true;
+    var opts=this._quizOpts;var sel=-1;
+    var els=document.querySelectorAll(".quiz-opt");
+    for(var i=0;i<els.length;i++){if(els[i].getAttribute("data-sel"))sel=i;}
+    if(sel<0)return;
+    var chosen=opts[sel];var correct=chosen.c===true;
+    var fb=document.getElementById("quizFb");
+    if(correct){
+      els[sel].classList.add("correct");
+      if(fb)fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      els[sel].classList.add("wrong");
+      for(var i=0;i<els.length;i++){if(opts[i].c===true)els[i].classList.add("correct");}
+      var mh='<div class="feedback no">Not quite!</div>';
+      if(chosen.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(chosen.m)+'</div>';
+      if(chosen.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(chosen.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;
+      this.streak=0;this.updateStats();
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    }
+    applyLLE();
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True or False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">True</div><div class="tf-opt" id="tfFalse">False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">Not quite.</div>';if(step.m)mh+='<div class="misconception"><strong>Why wrong:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>Correct approach:</strong> '+rt(step.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("Solve it!")+'</div>';
+    html+='<div class="we-card"><div class="we-tag">'+rt(step.tag||"Solve")+'</div><div class="we-question">'+rt(step.question)+'</div>';
+    if(step.hint)html+='<div class="hint">'+rt("Hint: "+step.hint)+'</div>';
+    html+='<input type="text" id="solveInput" placeholder="Type your answer...">';
+    html+='<div id="solveFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=false;
+    var inp=document.getElementById("solveInput");
+    if(inp)inp.addEventListener("input",function(){cb.textContent="Check";cb.className="btn btn-primary";});
+  },
+  checkSolve:function(step,cb){
+    this.solveAnswered=true;
+    var inp=document.getElementById("solveInput");if(!inp)return;
+    var val=inp.value.trim().toLowerCase();
+    var ans=String(step.answer).toLowerCase().trim();
+    var correct=val===ans;
+    var fb=document.getElementById("solveFb");
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">Correct! +10 XP</div>';
+      this.xp+=10;this.coins+=5;this.streak++;this.updateStats();this.checkLevelUp();
+    }else{
+      if(fb)fb.innerHTML='<div class="feedback no">Not quite. Answer: '+step.answer+'</div>';
+      this.streak=0;this.updateStats();
+    }
+    if(step.steps){
+      var sh='<div class="we-card" style="margin-top:8px"><div class="we-tag">Solution</div>';
+      for(var i=0;i<step.steps.length;i++){sh+='<div class="we-step"><span class="we-num">'+(i+1)+'</span>'+rt(step.steps[i])+'</div>';}
+      sh+='<div class="we-step final">Answer: '+rt(step.answer)+'</div></div>';
+      if(fb)fb.innerHTML+=sh;
+    }
+    applyLLE();cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;
+    self._rfIdx=0;self._rfScore=0;self._rfTimer=null;
+    var qs=step.qs.slice();
+    for(var i=qs.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=qs[i];qs[i]=qs[j];qs[j]=tmp;}
+    self._rfQs=qs;
+    var html='<div class="instruction">'+rt("Rapid Fire!")+'</div>';
+    html+='<div id="rfArea"></div>';
+    document.getElementById("screen").innerHTML=html;
+    self._renderRFQ=function(){
+      var q=self._rfQs[self._rfIdx];
+      var ah='<div class="rf-header"><span class="rf-q-num">Q'+(self._rfIdx+1)+'/'+self._rfQs.length+'</span></div>';
+      ah+='<div class="rf-timer" id="rfTimer">10s</div>';
+      ah+='<div class="timer-bar-container"><div class="timer-bar" id="rfBar" style="width:100%"></div></div>';
+      ah+='<div class="rf-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){
+        ah+='<div class="rf-opt" data-i="'+i+'"><span class="rf-opt-text">'+rt(q.opts[i])+'</span></div>';
+      }
+      ah+='<div id="rfFb"></div>';
+      document.getElementById("rfArea").innerHTML=ah;
+      var timeLeft=10;
+      if(self._rfTimer)clearInterval(self._rfTimer);
+      self._rfTimer=setInterval(function(){
+        timeLeft--;
+        var te=document.getElementById("rfTimer");var be=document.getElementById("rfBar");
+        if(te)te.textContent=timeLeft+"s";
+        if(be){be.style.width=(timeLeft*10)+"%";if(timeLeft<=3)be.classList.add("danger");}
+        if(timeLeft<=0){clearInterval(self._rfTimer);self._rfAnswer(-1);}
+      },1000);
+      var opts=document.querySelectorAll(".rf-opt");
+      for(var i=0;i<opts.length;i++){
+        opts[i].addEventListener("click",function(){
+          if(self._rfTimer)clearInterval(self._rfTimer);
+          self._rfAnswer(parseInt(this.getAttribute("data-i")));
+        });
+      }
+    };
+    self._rfAnswer=function(idx){
+      var q=self._rfQs[self._rfIdx];
+      var opts=document.querySelectorAll(".rf-opt");
+      for(var i=0;i<opts.length;i++){
+        opts[i].style.pointerEvents="none";
+        if(i===q.ans)opts[i].classList.add("correct");
+        if(i===idx&&idx!==q.ans)opts[i].classList.add("wrong");
+      }
+      var fb=document.getElementById("rfFb");
+      if(idx===q.ans){if(fb)fb.innerHTML='<div class="feedback ok">Correct!</div>';self._rfScore++;self.coins+=1;}
+      else{if(fb)fb.innerHTML='<div class="feedback no">Answer: '+q.opts[q.ans]+'</div>';}
+      self.updateStats();
+      setTimeout(function(){
+        self._rfIdx++;
+        if(self._rfIdx>=self._rfQs.length){
+          self._rfEnd();
+        }else{
+          self._renderRFQ();
+        }
+      },1200);
+    };
+    self._rfEnd=function(){
+      var html='<div style="text-align:center;padding:20px"><div style="font-size:3rem">fire</div>';
+      html+='<div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div>';
+      html+='<div style="font-size:.9rem;margin:8px">Score: '+self._rfScore+'/'+self._rfQs.length+'</div>';
+      html+='<div style="font-size:.8rem;color:var(--green);font-weight:700">+'+(self._rfScore*5)+' XP</div></div>';
+      document.getElementById("rfArea").innerHTML=html;
+      self.xp+=self._rfScore*5;self.updateStats();self.checkLevelUp();
+      cb.style.display="";cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+    };
+    self._renderRFQ();
+  },
+  endRF:function(){if(this._rfTimer)clearInterval(this._rfTimer);},
+  renderMemoryMatch:function(step,cb){
+    var self=this;
+    var cards=[];var pairs=step.pairs;
+    for(var i=0;i<pairs.length;i++){cards.push({txt:pairs[i].en,pid:i});cards.push({txt:pairs[i].hi,pid:i});}
+    for(var i=cards.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=cards[i];cards[i]=cards[j];cards[j]=tmp;}
+    self._mmFlipped=-1;self._mmMatched=0;self._mmTotal=pairs.length;
+    var html='<div class="instruction">'+rt("Memory Match! Find the pairs!")+'</div>';
+    html+='<div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){
+      html+='<div class="mm-card" data-i="'+i+'" data-pid="'+cards[i].pid+'"><div class="mm-card-inner"><div class="mm-card-front">?</div><div class="mm-card-back">'+cards[i].txt+'</div></div></div>';
+    }
+    html+='</div><div class="mm-info" id="mmInfo">Matched: 0/'+pairs.length+'</div>';
+    document.getElementById("screen").innerHTML=html;
+    self._mmCards=cards;
+    var els=document.querySelectorAll(".mm-card");
+    for(var i=0;i<els.length;i++){
+      els[i].addEventListener("click",function(){
+        if(this.classList.contains("flipped")||this.classList.contains("matched"))return;
+        this.classList.add("flipped");
+        var idx=parseInt(this.getAttribute("data-i"));
+        var pid=this.getAttribute("data-pid");
+        if(self._mmFlipped<0){
+          self._mmFlipped=idx;
+        }else{
+          var prev=document.querySelector('.mm-card[data-i="'+self._mmFlipped+'"]');
+          if(prev.getAttribute("data-pid")===pid){
+            this.classList.add("matched");prev.classList.add("matched");
+            self._mmMatched++;self.coins+=2;self.updateStats();
+            var mi=document.getElementById("mmInfo");if(mi)mi.textContent="Matched: "+self._mmMatched+"/"+self._mmTotal;
+            self._mmFlipped=-1;
+            if(self._mmMatched>=self._mmTotal){
+              self.xp+=30;self.updateStats();self.checkLevelUp();
+              cb.style.display="";cb.textContent="Continue";cb.className="btn btn-green";cb.disabled=false;
+              self.fireConfetti();
+            }
+          }else{
+            var self2=this;
+            setTimeout(function(){self2.classList.remove("flipped");if(prev)prev.classList.remove("flipped");},800);
+            self._mmFlipped=-1;
+          }
+        }
+      });
+    }
+  },
+  restart:function(){
+    this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;
+    this.updateStats();this.render();
+  },
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"P",cost:0},{id:"ocean",name:"Ocean",icon:"O",cost:50},{id:"forest",name:"Forest",icon:"F",cost:80},{id:"sunset",name:"Sunset",icon:"S",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">Shop</div><div class="shop-coins">Coins: '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">Coins: '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;self.renderShop();});}
+  },
+  /* ===== INTERACTIVE SIMULATIONS ===== */
+  renderIxSequences:function(step,cb){
+    var self=this;
+    var seqs={
+      counting:{name:"Counting",nums:[1,2,3,4,5,6,7],rule:"Each number goes up by 1",color:"#4f46e5"},
+      odd:{name:"Odd Numbers",nums:[1,3,5,7,9,11,13],rule:"Each number goes up by 2, starting from 1",color:"#10b981"},
+      even:{name:"Even Numbers",nums:[2,4,6,8,10,12,14],rule:"Each number goes up by 2, starting from 2",color:"#f59e0b"},
+      triangular:{name:"Triangular",nums:[1,3,6,10,15,21,28],rule:"Add counting numbers: 1, 1+2, 1+2+3, ...",color:"#ec4899"},
+      squares:{name:"Squares",nums:[1,4,9,16,25,36,49],rule:"Each number is n x n (1x1, 2x2, 3x3, ...)",color:"#a855f7"},
+      cubes:{name:"Cubes",nums:[1,8,27,64,125,216,343],rule:"Each number is n x n x n (1x1x1, 2x2x2, ...)",color:"#6366f1"},
+      virahanka:{name:"Virahanka",nums:[1,2,3,5,8,13,21],rule:"Each number is the sum of the two before it",color:"#ef4444"},
+      powers2:{name:"Powers of 2",nums:[1,2,4,8,16,32,64],rule:"Each number is double the previous one",color:"#06b6d4"},
+      powers3:{name:"Powers of 3",nums:[1,3,9,27,81,243,729],rule:"Each number is triple the previous one",color:"#8b5cf6"}
+    };
+    var html='<div class="instruction">'+rt(step.instruction)+'</div>';
+    html+='<div class="visual-card"><div class="visual-title">Number Sequence Explorer</div>';
+    html+='<div style="text-align:center;margin:8px 0"><canvas id="seqCanvas" width="340" height="160" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>';
+    html+='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">';
+    var keys=Object.keys(seqs);
+    for(var i=0;i<keys.length;i++){
+      html+='<button class="shape-btn" data-seq="'+keys[i]+'">'+seqs[keys[i]].name+'</button>';
+    }
+    html+='</div><div class="discovery-box" id="seqDisc"><div class="d-title">Tap a button!</div><div class="d-text">Pick any sequence to see its pattern.</div></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("seqCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function drawSeq(key){
+      var s=seqs[key];ctx.clearRect(0,0,340,160);
+      var nums=s.nums;var n=Math.min(nums.length,7);
+      var startX=20;var gap=Math.min(44,(300-20)/n);
+      for(var i=0;i<n;i++){
+        var x=startX+i*gap;var y=60;
+        ctx.beginPath();ctx.arc(x,y,18,0,2*Math.PI);
+        ctx.fillStyle=s.color;ctx.globalAlpha=0.15;ctx.fill();
+        ctx.globalAlpha=1;ctx.strokeStyle=s.color;ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle=s.color;ctx.font="bold 12px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
+        ctx.fillText(String(nums[i]),x,y);
+        if(i<n-1){
+          ctx.strokeStyle="#cbd5e1";ctx.lineWidth=1;ctx.setLineDash([3,3]);
+          ctx.beginPath();ctx.moveTo(x+18,y);ctx.lineTo(x+gap-18,y);ctx.stroke();ctx.setLineDash([]);
+          var diff=nums[i+1]-nums[i];
+          ctx.fillStyle="#94a3b8";ctx.font="9px sans-serif";
+          ctx.fillText("+"+diff,x+gap/2,y-12);
+        }
+      }
+      ctx.fillStyle="#1e293b";ctx.font="bold 11px sans-serif";ctx.textAlign="center";
+      ctx.fillText(s.name+" Sequence",170,15);
+      ctx.fillStyle="#64748b";ctx.font="10px sans-serif";
+      ctx.fillText("Next: "+(nums[n-1]+(nums[n-1]-nums[n-2])),170,140);
+      var disc=document.getElementById("seqDisc");
+      if(disc)disc.innerHTML='<div class="d-title">'+s.name+'</div><div class="d-text">'+s.rule+'</div>';
+      applyLLE();
+    }
+    var btns=document.querySelectorAll("[data-seq]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        drawSeq(this.getAttribute("data-seq"));
+      });
+    }
+    drawSeq("counting");
+    document.querySelector('[data-seq="counting"]').classList.add("active");
+  },
+  renderIxOddSquares:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt(step.instruction)+'</div>';
+    html+='<div class="visual-card"><div class="visual-title">Odd Numbers Make Squares!</div>';
+    html+='<div style="text-align:center;margin:8px 0"><canvas id="osCanvas" width="280" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>';
+    html+='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">';
+    var labels=["1","1+3","1+3+5","1+3+5+7","1+3+5+7+9","1+3+5+7+9+11"];
+    for(var i=0;i<labels.length;i++){
+      html+='<button class="shape-btn" data-lvl="'+i+'">Lvl '+(i+1)+': '+labels[i]+'</button>';
+    }
+    html+='</div><div class="discovery-box" id="osDisc"><div class="d-title">Tap a level!</div><div class="d-text">See how odd numbers build a square.</div></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("osCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var colors=["#4f46e5","#10b981","#f59e0b","#ec4899","#a855f7","#06b6d4"];
+    function drawLvl(lvl){
+      var n=lvl+1;ctx.clearRect(0,0,280,280);
+      var size=Math.min(240,200);var cellSize=size/n;
+      var offsetX=(280-size)/2;var offsetY=(280-size)/2+10;
+      ctx.fillStyle="#1e293b";ctx.font="bold 12px sans-serif";ctx.textAlign="center";
+      var sumStr="";var odds=[];
+      for(var i=0;i<n;i++)odds.push(2*i+1);
+      sumStr=odds.join(" + ");
+      var sqNum=n*n;
+      ctx.fillStyle="#64748b";ctx.font="10px sans-serif";
+      ctx.fillText(sumStr+" = "+sqNum,140,14);
+      for(var layer=0;layer<n;layer++){
+        var odd=2*layer+1;
+        var col=colors[layer%colors.length];
+        for(var k=0;k<odd;k++){
+          var row,col2;
+          if(k<layer){row=layer-k;col2=n-layer-1;}
+          else{row=k-layer;col2=layer;}
+          if(row<0||col2<0||row>=n||col2>=n)continue;
+          var x=offsetX+col2*cellSize;var y=offsetY+row*cellSize;
+          ctx.fillStyle=col;ctx.globalAlpha=0.3;ctx.fillRect(x+1,y+1,cellSize-2,cellSize-2);
+          ctx.globalAlpha=1;ctx.strokeStyle=col;ctx.lineWidth=1.5;ctx.strokeRect(x+1,y+1,cellSize-2,cellSize-2);
+        }
+      }
+      var disc=document.getElementById("osDisc");
+      if(disc)disc.innerHTML='<div class="d-title">'+sumStr+' = '+sqNum+'</div><div class="d-text">Adding '+n+' odd number'+(n>1?'s':'')+' gives '+n+' x '+n+' = '+sqNum+'. That is a square number!</div>';
+      applyLLE();
+    }
+    var btns=document.querySelectorAll("[data-lvl]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        drawLvl(parseInt(this.getAttribute("data-lvl")));
+      });
+    }
+    drawLvl(0);
+    document.querySelector('[data-lvl="0"]').classList.add("active");
+  },
+  renderIxShapes:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt(step.instruction)+'</div>';
+    html+='<div class="visual-card"><div class="visual-title">Shape Sequence Gallery</div>';
+    html+='<div style="text-align:center;margin:8px 0"><canvas id="shCanvas" width="340" height="200" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>';
+    html+='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">';
+    html+='<button class="shape-btn active" data-shape="polygons">Regular Polygons</button>';
+    html+='<button class="shape-btn" data-shape="graphs">Complete Graphs</button>';
+    html+='<button class="shape-btn" data-shape="stacked_sq">Stacked Squares</button>';
+    html+='<button class="shape-btn" data-shape="stacked_tr">Stacked Triangles</button>';
+    html+='</div><div class="discovery-box" id="shDisc"><div class="d-title">Regular Polygons</div><div class="d-text">Each shape has one more side than the previous. The number of sides follows counting numbers starting at 3.</div></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("shCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function drawPolygons(){
+      ctx.clearRect(0,0,340,200);
+      var sides=[3,4,5,6,7,8];var colors=["#4f46e5","#10b981","#f59e0b","#ec4899","#a855f7","#06b6d4"];
+      var cw=50;var startX=15;var y=90;
+      for(var s=0;s<sides.length;s++){
+        var n=sides[s];var cx=startX+s*cw+cw/2;var r=18;
+        ctx.beginPath();
+        for(var i=0;i<n;i++){var ang=-Math.PI/2+i*2*Math.PI/n;var px=cx+r*Math.cos(ang);var py=y+r*Math.sin(ang);if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);}
+        ctx.closePath();ctx.strokeStyle=colors[s];ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle=colors[s];ctx.globalAlpha=0.1;ctx.fill();ctx.globalAlpha=1;
+        ctx.fillStyle="#64748b";ctx.font="8px sans-serif";ctx.textAlign="center";
+        ctx.fillText(n+" sides",cx,y+32);
+      }
+    }
+    function drawGraphs(){
+      ctx.clearRect(0,0,340,200);
+      var ks=[2,3,4,5,6];var colors=["#4f46e5","#10b981","#f59e0b","#ec4899","#a855f7"];
+      var cw=62;var startX=10;
+      for(var ki=0;ki<ks.length;ki++){
+        var n=ks[ki];var cx=startX+ki*cw+cw/2;var y=80;var r=20;
+        var pts=[];
+        for(var i=0;i<n;i++){var ang=-Math.PI/2+i*2*Math.PI/n;pts.push({x:cx+r*Math.cos(ang),y:y+r*Math.sin(ang)});}
+        ctx.strokeStyle=colors[ki];ctx.lineWidth=1;
+        for(var i=0;i<n;i++){for(var j=i+1;j<n;j++){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}}
+        for(var i=0;i<n;i++){ctx.beginPath();ctx.arc(pts[i].x,pts[i].y,3,0,2*Math.PI);ctx.fillStyle=colors[ki];ctx.fill();}
+        var lines=n*(n-1)/2;
+        ctx.fillStyle="#64748b";ctx.font="8px sans-serif";ctx.textAlign="center";
+        ctx.fillText("K"+n+": "+lines+" lines",cx,y+35);
+      }
+    }
+    function drawStackedSq(){
+      ctx.clearRect(0,0,340,200);
+      var sizes=[1,2,3,4];var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      var startX=15;var cw=70;
+      for(var si=0;si<sizes.length;si++){
+        var n=sizes[si];var cellSize=Math.min(40,140/n);var totalSize=n*cellSize;
+        var ox=startX+si*cw+(cw-totalSize)/2;var oy=70;
+        ctx.strokeStyle=colors[si];ctx.lineWidth=1;
+        for(var r=0;r<n;r++){for(var cc=0;cc<n;cc++){
+          ctx.fillStyle=colors[si];ctx.globalAlpha=0.15;ctx.fillRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+          ctx.globalAlpha=1;ctx.strokeRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+        }}
+        ctx.fillStyle="#64748b";ctx.font="8px sans-serif";ctx.textAlign="center";
+        ctx.fillText(n+"x"+n+"="+(n*n),startX+si*cw+cw/2,oy+totalSize+15);
+      }
+    }
+    function drawStackedTr(){
+      ctx.clearRect(0,0,340,200);
+      var sizes=[1,2,3,4];var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      var startX=10;var cw=72;
+      for(var si=0;si<sizes.length;si++){
+        var n=sizes[si];var cx=startX+si*cw+cw/2;var topY=35;
+        var triH=110/Math.max(n,1);var triW=110/Math.max(n,1);
+        ctx.strokeStyle=colors[si];ctx.lineWidth=0.8;
+        var count=0;
+        for(var row=0;row<n;row++){
+          var rowTris=row+1;
+          for(var t=0;t<rowTris;t++){
+            var cy=topY+row*triH;var cx2=cx-(rowTris*triW)/2+t*triW+triW/2;
+            ctx.beginPath();ctx.moveTo(cx2,cy);ctx.lineTo(cx2-triW/2,cy+triH);ctx.lineTo(cx2+triW/2,cy+triH);ctx.closePath();
+            ctx.fillStyle=colors[si];ctx.globalAlpha=0.1;ctx.fill();ctx.globalAlpha=1;ctx.stroke();count++;
+          }
+        }
+        ctx.fillStyle="#64748b";ctx.font="8px sans-serif";ctx.textAlign="center";
+        ctx.fillText(count+" triangles",cx,topY+n*triH+25);
+      }
+    }
+    var drawFns={polygons:drawPolygons,graphs:drawGraphs,stacked_sq:drawStackedSq,stacked_tr:drawStackedTr};
+    var discTexts={
+      polygons:{t:"Regular Polygons",d:"Each shape has one more side. Sides: 3, 4, 5, 6, 7, 8 - counting numbers starting at 3. Corners = sides!"},
+      graphs:{t:"Complete Graphs",d:"Every point connects to every other point. Lines: 1, 3, 6, 10, 15 - triangular numbers!"},
+      stacked_sq:{t:"Stacked Squares",d:"Small squares: 1, 4, 9, 16, 25 - square numbers! Each shape is n x n."},
+      stacked_tr:{t:"Stacked Triangles",d:"Small triangles: 1, 4, 9, 16, 25 - also square numbers! Adding up and down gives squares."}
+    };
+    var btns=document.querySelectorAll("[data-shape]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        var key=this.getAttribute("data-shape");drawFns[key]();
+        var d=discTexts[key];
+        var disc=document.getElementById("shDisc");
+        if(disc)disc.innerHTML='<div class="d-title">'+d.t+'</div><div class="d-text">'+d.d+'</div>';
+        applyLLE();
+      });
+    }
+    drawPolygons();
+  },
+  renderIxKoch:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt(step.instruction)+'</div>';
+    html+='<div class="visual-card"><div class="visual-title">Koch Snowflake Generator</div>';
+    html+='<div style="text-align:center;margin:8px 0"><canvas id="kochCanvas" width="300" height="280" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>';
+    html+='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">';
+    for(var i=0;i<=4;i++){
+      html+='<button class="shape-btn'+(i===0?' active':'')+'" data-koch="'+i+'">Iteration '+i+'</button>';
+    }
+    html+='</div><div class="discovery-box" id="kochDisc"><div class="d-title">Iteration 0</div><div class="d-text">Start with a triangle: 3 line segments. Each segment gets replaced by a speed bump (4 segments), so the count multiplies by 4.</div></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("kochCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function kochLine(x1,y1,x2,y2,depth){
+      if(depth===0){ctx.lineTo(x2,y2);return;}
+      var dx=(x2-x1)/3,dy=(y2-y1)/3;
+      var ax=x1+dx,ay=y1+dy;
+      var bx=x1+2*dx,by=y1+2*dy;
+      var ang=Math.atan2(dy,dx)-Math.PI/3;
+      var len=Math.sqrt(dx*dx+dy*dy);
+      var px=ax+len*Math.cos(ang),py=ay+len*Math.sin(ang);
+      kochLine(x1,y1,ax,ay,depth-1);
+      kochLine(ax,ay,px,py,depth-1);
+      kochLine(px,py,bx,by,depth-1);
+      kochLine(bx,by,x2,y2,depth-1);
+    }
+    function drawKoch(depth){
+      ctx.clearRect(0,0,300,280);
+      var cx=150,cy=145,r=90;
+      var pts=[];
+      for(var i=0;i<3;i++){var ang=-Math.PI/2+i*2*Math.PI/3;pts.push({x:cx+r*Math.cos(ang),y:cy+r*Math.sin(ang)});}
+      ctx.strokeStyle="#4f46e5";ctx.lineWidth=1.5;ctx.fillStyle="#6366f1";ctx.globalAlpha=0.05;
+      ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);
+      for(var i=0;i<3;i++){kochLine(pts[i].x,pts[i].y,pts[(i+1)%3].x,pts[(i+1)%3].y,depth);}
+      ctx.closePath();ctx.fill();ctx.globalAlpha=1;ctx.stroke();
+      var segs=Math.round(3*Math.pow(4,depth));
+      ctx.fillStyle="#1e293b";ctx.font="bold 12px sans-serif";ctx.textAlign="center";
+      ctx.fillText("Line segments: "+segs,150,260);
+      var disc=document.getElementById("kochDisc");
+      var descs=[
+        "Start with a triangle: 3 line segments. Each segment gets replaced by a speed bump (4 segments), so the count multiplies by 4.",
+        "After iteration 1: 3 x 4 = 12 segments. Each line became a speed bump shape.",
+        "After iteration 2: 12 x 4 = 48 segments. The shape gets more detailed!",
+        "After iteration 3: 48 x 4 = 192 segments. Getting very detailed!",
+        "After iteration 4: 192 x 4 = 768 segments. This is a fractal - a shape that repeats its pattern at every scale!"
+      ];
+      if(disc)disc.innerHTML='<div class="d-title">Iteration '+depth+': '+segs+' segments</div><div class="d-text">'+descs[depth]+'</div>';
+      applyLLE();
+    }
+    var btns=document.querySelectorAll("[data-koch]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        drawKoch(parseInt(this.getAttribute("data-koch")));
+      });
+    }
+    drawKoch(0);
+  },
+  renderIxRelations:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt(step.instruction)+'</div>';
+    html+='<div class="visual-card"><div class="visual-title">Relations Explorer</div>';
+    html+='<div style="text-align:center;margin:8px 0"><canvas id="relCanvas" width="300" height="220" style="display:block;margin:0 auto;border-radius:8px;background:#fafaff"></canvas></div>';
+    html+='<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">';
+    html+='<button class="shape-btn active" data-rel="odd_sq">Odd to Squares</button>';
+    html+='<button class="shape-btn" data-rel="count_tri">Counting to Triangular</button>';
+    html+='<button class="shape-btn" data-rel="tri_pair">Triangular Pairs to Squares</button>';
+    html+='<button class="shape-btn" data-rel="hex_cube">Hexagonal to Cubes</button>';
+    html+='</div><div class="discovery-box" id="relDisc"><div class="d-title">Odd to Squares</div><div class="d-text">Adding odd numbers starting from 1 gives square numbers! 1=1, 1+3=4, 1+3+5=9, 1+3+5+7=16...</div></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("relCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function drawOddSq(){
+      ctx.clearRect(0,0,300,220);
+      var eqs=["1 = 1","1+3 = 4","1+3+5 = 9","1+3+5+7 = 16"];
+      var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      for(var i=0;i<eqs.length;i++){
+        var y=30+i*42;var n=i+1;var cellSize=14;var ox=160;var oy=y-12;
+        ctx.fillStyle="#1e293b";ctx.font="bold 11px sans-serif";ctx.textAlign="left";
+        ctx.fillText(eqs[i],10,y);
+        for(var r=0;r<n;r++){for(var cc=0;cc<n;cc++){
+          ctx.fillStyle=colors[i];ctx.globalAlpha=0.2;ctx.fillRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+          ctx.globalAlpha=1;ctx.strokeStyle=colors[i];ctx.lineWidth=0.8;ctx.strokeRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+        }}
+      }
+    }
+    function drawCountTri(){
+      ctx.clearRect(0,0,300,220);
+      var eqs=["1 = 1","1+2 = 3","1+2+3 = 6","1+2+3+4 = 10"];
+      var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      for(var i=0;i<eqs.length;i++){
+        var y=25+i*42;var n=i+1;
+        ctx.fillStyle="#1e293b";ctx.font="bold 11px sans-serif";ctx.textAlign="left";
+        ctx.fillText(eqs[i],10,y);
+        var dotR=5;var ox=170;var baseY=y+15;
+        for(var r=0;r<n;r++){
+          var dots=r+1;var startX=ox-(dots-1)*dotR*2/2;
+          for(var d=0;d<dots;d++){
+            ctx.beginPath();ctx.arc(startX+d*dotR*2,baseY-r*dotR*2,dotR-1,0,2*Math.PI);
+            ctx.fillStyle=colors[i];ctx.globalAlpha=0.3;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle=colors[i];ctx.lineWidth=1;ctx.stroke();
+          }
+        }
+      }
+    }
+    function drawTriPair(){
+      ctx.clearRect(0,0,300,220);
+      var eqs=["1+3 = 4","3+6 = 9","6+10 = 16","10+15 = 25"];
+      var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      for(var i=0;i<eqs.length;i++){
+        var y=30+i*42;
+        ctx.fillStyle="#1e293b";ctx.font="bold 11px sans-serif";ctx.textAlign="left";
+        ctx.fillText(eqs[i],10,y);
+        ctx.fillStyle="#64748b";ctx.font="9px sans-serif";ctx.textAlign="left";
+        ctx.fillText("= "+(i+2)+" x "+(i+2),140,y);
+        var sq=i+2;var cellSize=10;var ox=200;var oy=y-8;
+        for(var r=0;r<sq;r++){for(var cc=0;cc<sq;cc++){
+          ctx.fillStyle=colors[i];ctx.globalAlpha=0.2;ctx.fillRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+          ctx.globalAlpha=1;ctx.strokeStyle=colors[i];ctx.lineWidth=0.5;ctx.strokeRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+        }}
+      }
+    }
+    function drawHexCube(){
+      ctx.clearRect(0,0,300,220);
+      var eqs=["1 = 1","1+7 = 8","1+7+19 = 27","1+7+19+37 = 64"];
+      var colors=["#4f46e5","#10b981","#f59e0b","#ec4899"];
+      for(var i=0;i<eqs.length;i++){
+        var y=30+i*42;
+        ctx.fillStyle="#1e293b";ctx.font="bold 10px sans-serif";ctx.textAlign="left";
+        ctx.fillText(eqs[i],10,y);
+        var n=i+1;var cellSize=10;var ox=200;var oy=y-10;
+        for(var r=0;r<n;r++){for(var cc=0;cc<n;cc++){
+          ctx.fillStyle=colors[i];ctx.globalAlpha=0.15;ctx.fillRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+          ctx.globalAlpha=1;ctx.strokeStyle=colors[i];ctx.lineWidth=0.5;ctx.strokeRect(ox+cc*cellSize,oy+r*cellSize,cellSize-1,cellSize-1);
+        }}
+      }
+    }
+    var drawFns={odd_sq:drawOddSq,count_tri:drawCountTri,tri_pair:drawTriPair,hex_cube:drawHexCube};
+    var discTexts={
+      odd_sq:{t:"Odd to Squares",d:"Adding odd numbers starting from 1 gives square numbers! 1=1, 1+3=4, 1+3+5=9, 1+3+5+7=16... The sum of the first n odd numbers is n squared."},
+      count_tri:{t:"Counting to Triangular",d:"Adding counting numbers gives triangular numbers! 1=1, 1+2=3, 1+2+3=6, 1+2+3+4=10... Each number forms a triangle of dots."},
+      tri_pair:{t:"Triangular Pairs to Squares",d:"Adding consecutive triangular numbers gives square numbers! 1+3=4, 3+6=9, 6+10=16, 10+15=25... Two triangles make a square!"},
+      hex_cube:{t:"Hexagonal to Cubes",d:"Adding hexagonal numbers gives cube numbers! 1=1, 1+7=8, 1+7+19=27, 1+7+19+37=64... The sums are perfect cubes!"}
+    };
+    var btns=document.querySelectorAll("[data-rel]");
+    for(var i=0;i<btns.length;i++){
+      btns[i].addEventListener("click",function(){
+        for(var j=0;j<btns.length;j++)btns[j].classList.remove("active");
+        this.classList.add("active");
+        var key=this.getAttribute("data-rel");drawFns[key]();
+        var d=discTexts[key];
+        var disc=document.getElementById("relDisc");
+        if(disc)disc.innerHTML='<div class="d-title">'+d.t+'</div><div class="d-text">'+d.d+'</div>';
+        applyLLE();
+      });
+    }
+    drawOddSq();
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>
