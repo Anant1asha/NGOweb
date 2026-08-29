@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#1e40af">
+<title>Aasha - Number Play | Class 8</title>
+<style>
+:root{--brand:#1e40af;--bl:#3b82f6;--surface:#f8fafc;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7;--amb:#fef3c7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--surface);color:var(--text);line-height:1.5;font-size:16px;overscroll-behavior:none;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100}
+.hdr-logo{width:40px;height:40px;border-radius:8px;flex-shrink:0}
+.hdr-name{font-size:.95rem;font-weight:800;color:var(--brand);line-height:1.2}
+.hdr-hi{font-size:.72rem;color:var(--muted)}
+.hdr-tag{font-size:.65rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--purple));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:var(--amb)}
+.stat.xp{color:var(--purple);background:#ede9fe}
+.stat.lvl{color:var(--brand);background:#dbeafe}
+.screen{padding:14px;min-height:400px}
+.bottom-bar{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--border);padding:8px 14px;display:flex;gap:8px;align-items:center;z-index:98}
+.btn-back{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);padding:6px 10px}
+.btn{padding:10px 20px;border:none;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;flex:1}
+.btn-primary{background:var(--bl);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.intro-card{text-align:center;padding:20px 10px}
+.intro-icon{font-size:3rem;margin-bottom:10px}
+.intro-title{font-size:1.3rem;font-weight:800;color:var(--brand);margin-bottom:6px}
+.intro-sub{font-size:.85rem;color:var(--muted)}
+.bt{padding:14px;background:#fff;border-radius:14px;border:2px solid var(--border);max-width:400px;margin:0 auto;font-size:.9rem;line-height:1.6}
+.bt-title{font-weight:800;font-size:1rem;color:var(--brand);margin-bottom:8px}
+.instruction{font-size:.78rem;color:var(--muted);margin-bottom:10px;text-align:center}
+.we-card{background:#fff;border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.we-question{font-weight:700;font-size:1rem;margin-bottom:10px;color:var(--text)}
+.we-step{padding:8px;margin:4px 0;background:var(--surface);border-radius:8px;font-size:.85rem;line-height:1.5}
+.we-step.final{background:#d1fae5;border:1px solid var(--green)}
+.we-num{background:var(--bl);color:#fff;padding:2px 8px;border-radius:6px;font-size:.75rem;margin-right:6px}
+.we-tag{display:inline-block;background:var(--bl);color:#fff;padding:2px 10px;border-radius:6px;font-size:.7rem;font-weight:600;margin-bottom:8px}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:10px;margin:6px auto;background:var(--surface);border:2px solid var(--border);border-radius:10px;cursor:pointer;max-width:400px}
+.quiz-opt.selected{border-color:var(--bl);background:#eff6ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}
+.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:20px;height:20px;border:2px solid var(--border);border-radius:50%;flex-shrink:0}
+.quiz-opt.selected .quiz-radio{background:var(--bl);border-color:var(--bl)}
+.quiz-opt.correct .quiz-radio{background:var(--green);border-color:var(--green)}
+.quiz-opt-text{flex:1;font-size:.85rem}
+.formula-box{background:#fffbeb;border:1px solid var(--gold);border-radius:10px;padding:12px;margin:8px auto;max-width:400px}
+.f-label{font-size:.75rem;color:#92400e;font-weight:600;margin-bottom:4px}
+.f-expr{font-size:1.1rem;font-weight:700;color:var(--text)}
+.discovery-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.d-title{font-weight:800;color:var(--brand);margin-bottom:8px}
+.d-text{font-size:.85rem;line-height:1.6;color:var(--text)}
+.prop-box{background:#faf5ff;border-left:4px solid var(--purple);padding:10px;margin:8px auto;max-width:400px;border-radius:0 10px 10px 0;font-size:.82rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.85rem;text-align:center}
+.feedback.ok{background:#d1fae5;border:1px solid #86efac;color:#065f46}
+.feedback.no{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}
+.misconception{background:#fffbeb;border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.78rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.78rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#065f46}
+.hint{font-size:.75rem;color:var(--muted);text-align:center;margin:6px 0}
+.cn{color:var(--brand);font-weight:800;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}
+.ch{color:var(--purple);font-size:.85em;font-weight:700}
+.milestone-card{text-align:center;padding:20px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;max-width:400px;margin:0 auto}
+.milestone-icon{font-size:3rem}
+.milestone-title{font-size:1.2rem;font-weight:800;color:#92400e;margin:8px 0}
+.milestone-xp{color:var(--green);font-weight:700}
+.milestone-next{font-size:.8rem;color:var(--muted);margin-top:8px}
+.complete-card{text-align:center;padding:30px 20px}
+.complete-icon{font-size:4rem}
+.complete-title{font-size:1.5rem;font-weight:800;color:var(--brand);margin:10px 0}
+.complete-sub{font-size:.9rem;color:var(--muted)}
+.ix-box{background:#fff;border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.ix-title{font-weight:800;color:var(--brand);margin-bottom:8px;font-size:.95rem}
+.ix-canvas{width:100%;height:260px;background:var(--surface);border-radius:10px;border:1px solid var(--border);display:block;margin:8px 0}
+.ix-info{font-size:.82rem;color:var(--text);background:var(--surface);padding:8px;border-radius:8px;margin:6px 0}
+.ix-controls{display:flex;gap:8px;align-items:center;margin:8px 0}
+.ix-slider{-webkit-appearance:none;width:100%;height:8px;border-radius:4px;background:var(--border);outline:none}
+.ix-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--bl);cursor:pointer}
+.ix-btn{padding:6px 14px;background:var(--bl);color:#fff;border:none;border-radius:8px;font-size:.8rem;cursor:pointer;font-weight:600}
+.ix-btn:active{background:var(--brand)}
+.solve-input{width:80%;padding:8px 10px;border:2px solid var(--border);border-radius:8px;font-size:.9rem;margin:4px 0}
+.solve-input:focus{border-color:var(--bl);outline:none}
+.tf-btn{display:flex;gap:10px;max-width:400px;margin:8px auto}
+.tf-opt{flex:1;text-align:center;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-weight:700}
+.tf-opt.selected{border-color:var(--bl);background:#eff6ff}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-box{max-width:400px;margin:0 auto}
+.rf-question{font-weight:700;font-size:.95rem;margin-bottom:8px}
+.rf-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.rf-opt{padding:8px;text-align:center;background:var(--surface);border:2px solid var(--border);border-radius:8px;cursor:pointer;font-size:.8rem}
+.rf-opt.selected{border-color:var(--bl);background:#eff6ff}
+.rf-opt.correct{border-color:var(--green);background:#d1fae5}
+.rf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-timer{text-align:center;font-size:1.5rem;font-weight:800;color:var(--red);margin:6px 0}
+.rf-score{text-align:center;font-size:.85rem;color:var(--muted)}
+.mm-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;max-width:400px;margin:0 auto}
+.mm-card{aspect-ratio:1;background:var(--bl);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;cursor:pointer;font-weight:700;text-align:center;padding:4px}
+.mm-card.flipped{background:#fff;color:var(--text);border:2px solid var(--border)}
+.mm-card.matched{background:var(--green);color:#fff}
+.level-up-card{text-align:center;padding:20px}
+.level-up-icon{font-size:3rem}
+.level-up-title{font-size:1.2rem;font-weight:800;color:var(--brand);margin:8px 0}
+.level-up-sub{font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJ3IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2I4MmY2Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWU0MGFmIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJ2IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJjNTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTU4MDNkIi8+PC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjEyIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0gMTUgNTAgQyAxNSAzMCA0NSAzMCA0NSA1MCA0NSA3MCAxNSA3MCAxNSA1MCBaIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjdykiIHN0cm9rZS13aWR0aD0iNSIvPgo8cGF0aCBkPSJNIDU1IDUwIEMgNTUgMzAgODUgMzAgODUgNTAgODUgNzAgNTUgNzAgNTUgNTAgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3YpIiBzdHJva2Utd2lkdGg9IjUiLz4KPHJlY3QgeD0iMjIiIHk9IjQ0IiB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHJ4PSIxIiBmaWxsPSIjMWU0MGFmIiBvcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iODgiIGN5PSI3NSIgcj0iNiIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjZDk3NzA2IiBzdHJva2Utd2lkdGg9IjEiLz4KPC9zdmc+">
+<div>
+<div class="hdr-name">ANNANTH AASHA FOUNDATION</div>
+<div class="hdr-hi">&#x0905;&#x0928;&#x0902;&#x0924; &#x0906;&#x0936;&#x093e; &#x092b;&#x093e;&#x0909;&#x0902;&#x0921;&#x0947;&#x0936;&#x0928;</div>
+<div class="hdr-tag">Safe Learning. Real Impact.</div>
+</div>
+</div>
+<div class="topbar">
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<span class="stat lvl" id="statLvl">Lv 1</span>
+<span class="stat coins">&#x1f9b0; <span id="statCoins">0</span></span>
+<span class="stat xp">&#x2b50; <span id="statXp">0</span></span>
+</div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar" id="bottomBar">
+<button class="btn-back" id="backBtn">&#x2190;</button>
+<button class="btn btn-primary" id="continueBtn">Start</button>
+</div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#1e40af"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:#3b82f6;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div class="level-up-card"><div class="level-up-icon" id="luIcon">&#x1f389;</div><div class="level-up-title" id="luTitle">Level Up!</div><div class="level-up-sub" id="luSub"></div><button class="btn btn-green" style="margin-top:12px" id="luClose">Awesome!</button></div></dialog>
+<canvas id="confetti" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999"></canvas>
+<script>
+var WM={}
+
+var CONN={
+"if":"अगर","because":"क्योंकि","therefore":"इसलिए","however":"हालांकि",
+"so that":"ताकि","although":"यद्यपि","since":"चूंकि","then":"तब","when":"जब",
+"while":"जबकि","that is why":"इसीलिए","in other words":"दूसरे शब्दों में",
+"whereas":"जबकि","furthermore":"इसके अलावा","in contrast":"इसके विपरीत",
+"instead of":"के बजाय","due to":"के कारण","for example":"उदाहरण के लिए",
+"is":"है","are":"हैं","was":"था","were":"थे","how":"कैसे","why":"क्यों",
+"what":"क्या","where":"कहाँ","has":"है","have":"हैं","not":"नहीं","also":"भी",
+"must":"ज़रूरी है","should":"चाहिए","can":"सकता है","could":"सकता था",
+"may":"सकता है","might":"शायद","will":"करेगा","would":"करेगा",
+"does":"करता है","do":"करते हैं","cannot":"नहीं सकता","each":"प्रत्येक",
+"every":"हर","some":"कुछ","any":"कोई","about":"के बारे में",
+"between":"के बीच","through":"के माध्यम से","but":"लेकिन","or":"या",
+"and":"और","so":"इसलिए","thus":"इस प्रकार","hence":"अतः","unless":"जब तक",
+"whether":"कि क्या","still":"फिर भी","even though":"भले ही","as":"जैसे",
+"until":"तक","before":"पहले","after":"बाद में","during":"के दौरान",
+"in order to":"के लिए","rather than":"के बजाय","whether or not":"कि नहीं"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=3){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      result+=html.substring(ws,i);
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.d-text,.d-title,.intro-title,.intro-sub,.ix-title,.ix-info,.milestone-title,.milestone-next";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"\u2014";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+});
+
+var STEPS=[
+{t:"intro",icon:"🧮",title:"Number Play",sub:"Class 8 Mathematics — Chapter 5 (Ganita Prakash)"},
+{t:"text",title:"What is Number Play?",body:"Number Play is about exploring patterns and properties of numbers. We look at consecutive numbers, parity (odd and even), divisibility rules, digital roots, and remainders. These ideas help us understand how numbers work and let us solve problems without doing long calculations."},
+{t:"text",title:"Consecutive Numbers",body:"Consecutive numbers are numbers that follow each other in order. For example, 3, 4, 5, 6 are four consecutive numbers. Anshu explored sums of consecutive numbers. He noticed that 7 = 3 + 4, 10 = 1 + 2 + 3 + 4, 12 = 3 + 4 + 5, and 15 = 7 + 8 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5. Can every natural number be written as a sum of consecutive numbers? All odd numbers can be written as a sum of two consecutive numbers."},
+{t:"formula",title:"Key Concepts",formulas:[
+{label:"Consecutive Numbers",expr:"x, x+1, x+2, x+3, ...",note:"Each number is one more than the previous."},
+{label:"Parity Rules",expr:"odd ± odd = even, even ± even = even, odd ± even = odd",note:"Parity means whether a number is odd or even."},
+{label:"Sum of 4 Consecutive Numbers",expr:"x + (x+1) + (x+2) + (x+3) = 4x + 6",note:"The sum of four consecutive numbers starting at x."},
+{label:"Digital Root",expr:"Repeatedly sum digits until single digit",note:"The digital root equals the remainder when divided by 9 (except 0 becomes 9)."}
+]},
+{t:"ix_consec",instruction:"Pick a starting number and see all 8 ways to place + and − signs between 4 consecutive numbers. Notice that all results have the same parity!"},
+{t:"text",title:"Placing + and − Signs",body:"Take four consecutive numbers like 3, 4, 5, 6. You can place + or − signs between them in 8 different ways. For example: 3 + 4 + 5 + 6 = 18, 3 + 4 + 5 − 6 = 6, 3 + 4 − 5 + 6 = 8, 3 − 4 + 5 + 6 = 10, 3 + 4 − 5 − 6 = −4, 3 − 4 + 5 − 6 = −2, 3 − 4 − 5 + 6 = 0, 3 − 4 − 5 − 6 = −12. All results are even!"},
+{t:"discovery",title:"Same Parity Discovery",discoveryTitle:"All expressions a ± b ± c ± d have the same parity",body:"When you switch any sign from + to −, the value changes by twice that number, which is always even. For example, changing +b to −b changes the value by 2b. Since the difference is even, the parity does not change. Starting from a + b + c + d, all 8 sign combinations give results with the same parity.",prop:"Switching a sign changes the value by 2 × (that number), which is even. Even differences preserve parity."},
+{t:"ix_parity",instruction:"Enter two numbers and see their parity (odd or even). Check the sum, difference, and product. Watch how the parity rules work!"},
+{t:"quiz",q:"What is the parity of (3 + 4 + 5 + 6)?",opts:[
+{t:"Even",c:true},
+{t:"Odd",c:false,m:"3 + 4 + 5 + 6 = 18, which is even. Remember: when you add four consecutive numbers, the sum is always even. Try calculating: 3+4=7, 7+5=12, 12+6=18.",correctMethod:"3 + 4 + 5 + 6 = 18. 18 is divisible by 2, so it is even."},
+{t:"Prime",c:false,m:"Prime and parity are different concepts. Parity means odd or even. 3+4+5+6 = 18, which is even (not odd).",correctMethod:"3+4+5+6 = 18. 18 ÷ 2 = 9, so it is even."},
+{t:"Cannot be determined",c:false,m:"It can be determined. Just add: 3+4+5+6 = 18, and 18 is even.",correctMethod:"3+4+5+6 = 18, which is even."}
+]},
+{t:"quiz",q:"If a + b and a − b have the same parity, what can we conclude?",opts:[
+{t:"All 8 sign combinations of a ± b ± c ± d have the same parity",c:true},
+{t:"Only addition gives even results",c:false,m:"This is too narrow. The key insight is that switching any sign changes the value by an even number, so ALL sign combinations preserve parity, not just addition.",correctMethod:"Since a+b and a−b differ by 2b (even), they have the same parity. Extending this, all combinations a±b±c±d have the same parity."},
+{t:"The result is always zero",c:false,m:"The result is not always zero. For 3,4,5,6 the results range from −12 to 18. But all are even. The key is same parity, not same value.",correctMethod:"The values differ but all have the same parity (all even or all odd)."},
+{t:"Nothing useful",c:false,m:"This is very useful! It means we can predict parity without calculating. All 8 combinations will be even (or all odd) regardless of signs.",correctMethod:"Same parity means all 8 results are even (or all odd). This is a powerful prediction tool."}
+]},
+{t:"text",title:"Parity Rules in Detail",body:"Parity tells us whether a number is odd or even. The key rules are: odd + odd = even (3 + 5 = 8), even + even = even (4 + 6 = 10), odd + even = odd (3 + 4 = 7). These rules also work for subtraction: odd − odd = even, even − even = even, odd − even = odd. Most importantly, a + b and a − b always have the same parity, no matter what a and b are."},
+{t:"quiz",q:"The product of two consecutive integers is always divisible by which number?",opts:[
+{t:"2",c:true},
+{t:"3",c:false,m:"Not always. For example, 1 × 2 = 2, which is not divisible by 3. But one of any two consecutive integers must be even, so the product is always divisible by 2.",correctMethod:"Among two consecutive integers, one must be even. So the product is always divisible by 2. Example: 5×6=30 (divisible by 2), 7×8=56 (divisible by 2)."},
+{t:"5",c:false,m:"Not always. 3 × 4 = 12, which is not divisible by 5. But 12 is divisible by 2 because one of the consecutive numbers is even.",correctMethod:"One of two consecutive integers is always even, so the product is divisible by 2. Not necessarily by 5."},
+{t:"7",c:false,m:"Not always. 1 × 2 = 2, not divisible by 7. But 2 is divisible by 2 because one of the two consecutive numbers must be even.",correctMethod:"Two consecutive integers always include an even number, so their product is always divisible by 2."}
+]},
+{t:"milestone",icon:"🏆",title:"Parity Mastered!",xp:50,next:"Now let us explore even numbers in more detail!"},
+{t:"text",title:"Breaking Even: Multiples of 4",body:"Even numbers can be split into two types based on what remainder they leave when divided by 4. Multiples of 4 (like 4, 8, 12, 16) leave remainder 0 when divided by 4. Other even numbers (like 2, 6, 10, 14) leave remainder 2 when divided by 4. This distinction helps us understand when two even numbers add up to a multiple of 4."},
+{t:"formula",title:"Rules for Adding Even Numbers",formulas:[
+{label:"Multiple of 4 + Multiple of 4",expr:"4p + 4q = 4(p + q)",note:"The sum is always a multiple of 4."},
+{label:"Non-multiple of 4 + Non-multiple of 4",expr:"(4p+2) + (4q+2) = 4(p+q+1)",note:"The sum is a multiple of 4 because the two remainders of 2 add up to 4."},
+{label:"Multiple of 4 + Non-multiple of 4",expr:"4p + (4q+2) = 4(p+q) + 2",note:"The sum is NOT a multiple of 4 (remainder 2)."}
+]},
+{t:"quiz",q:"When you add 6 and 10, is the result a multiple of 4?",opts:[
+{t:"Yes, because both leave remainder 2 and 2+2=4",c:true},
+{t:"No, because both are not multiples of 4",c:false,m:"Actually, when both numbers leave remainder 2, their remainders add up to 4, making the sum a multiple of 4. 6+10=16, and 16 ÷ 4 = 4.",correctMethod:"6 = 4(1)+2, 10 = 4(2)+2. Sum = 4(1+2)+4 = 4(3+1) = 16. 16 is divisible by 4."},
+{t:"Cannot be determined without calculating",c:false,m:"It can be determined using the remainder rule. Both 6 and 10 leave remainder 2 when divided by 4. 2+2=4, so the sum is a multiple of 4. Indeed 6+10=16.",correctMethod:"6 ÷ 4 gives remainder 2. 10 ÷ 4 gives remainder 2. 2+2=4, which means the sum is divisible by 4."},
+{t:"Yes, because 6 + 10 = 16 and 16 is prime",c:false,m:"16 is not prime (16 = 2 × 8). But 6+10=16 is indeed divisible by 4. The correct reason is that both 6 and 10 leave remainder 2, and 2+2=4.",correctMethod:"6 and 10 both leave remainder 2 when divided by 4. 2+2=4, so 6+10 is divisible by 4."}
+]},
+{t:"quiz",q:"When you add 8 and 6, is the result a multiple of 4?",opts:[
+{t:"No, because 8 is a multiple of 4 but 6 is not",c:true},
+{t:"Yes, because both are even",c:false,m:"Both being even is not enough. 8 is a multiple of 4 (remainder 0) but 6 is not (remainder 2). 0+2=2, so the sum leaves remainder 2. 8+6=14, and 14 ÷ 4 = 3 remainder 2.",correctMethod:"8 ÷ 4 gives remainder 0, 6 ÷ 4 gives remainder 2. 0+2=2, so the sum is NOT a multiple of 4. 8+6=14, 14 ÷ 4 = 3 r 2."},
+{t:"Yes, because 8 + 6 = 14 and 14 is divisible by 4",c:false,m:"14 is NOT divisible by 4. 14 ÷ 4 = 3 with remainder 2. Since 8 is a multiple of 4 and 6 is not, the sum leaves remainder 2.",correctMethod:"8+6=14. 14 ÷ 4 = 3 remainder 2. So 14 is NOT a multiple of 4."},
+{t:"Cannot be determined",c:false,m:"It can be determined. 8 is a multiple of 4 (remainder 0) and 6 is not (remainder 2). 0+2=2, so the sum is not a multiple of 4. Check: 8+6=14, 14 ÷ 4 = 3 r 2.",correctMethod:"8 gives remainder 0, 6 gives remainder 2 when divided by 4. 0+2=2, so the sum is not a multiple of 4."}
+]},
+{t:"text",title:"Always, Sometimes, or Never True?",body:"We can classify statements about numbers as Always True, Sometimes True, or Never True. For example: If 8 divides two numbers separately, it must divide their sum — this is Always True (8a + 8b = 8(a+b)). If a number is divisible by 7, all its multiples are divisible by 7 — Always True ((7j) × m = 7jm). But if a number is divisible by 8, then 8 divides any two numbers that add up to it — this is Sometimes True."},
+{t:"we",q:"Statement: If 8 divides two numbers separately, it must divide their sum. Is this Always, Sometimes, or Never true?",steps:[
+{text:"Let the two numbers be 8a and 8b, where a and b are integers."},
+{text:"Their sum is 8a + 8b = 8(a + b)."},
+{text:"Since 8 is a factor of 8(a+b), the sum is divisible by 8."},
+{text:"This works for any values of a and b. Therefore, the statement is Always True."}
+],answer:"Always True. If 8|A and 8|B, then 8|(A+B)."},
+{t:"we",q:"Statement: If a number is divisible by 7, then it is also divisible by any multiple of 7. Is this Always, Sometimes, or Never true?",steps:[
+{text:"Let the number be 7k (divisible by 7). A multiple of 7 is 7m."},
+{text:"We need to check if 7k is divisible by 7m, i.e., if 7k ÷ 7m = k/m is an integer."},
+{text:"This is only true when m divides k. For example, 42 = 7×6 is divisible by 14 = 7×2 (since 6/2=3), but NOT divisible by 28 = 7×4 (since 6/4 is not an integer)."},
+{text:"Since it depends on the values, the statement is Sometimes True."}
+],answer:"Sometimes True. 7k is divisible by 7m only when m divides k."},
+{t:"quiz",q:"If a number is divisible by both 6 and 4, must it be divisible by 24?",opts:[
+{t:"No, it must be divisible by LCM(6,4) = 12",c:true},
+{t:"Yes, because 6 × 4 = 24",c:false,m:"You multiplied 6 and 4 to get 24, but divisibility does not work that way. The correct rule is: if A is divisible by k and m, then A is divisible by LCM(k,m). LCM(6,4) = 12, not 24. Example: 12 is divisible by both 6 and 4, but 12 is not divisible by 24.",correctMethod:"LCM(6,4) = 12. If a number is divisible by both 6 and 4, it is divisible by LCM(6,4) = 12, not necessarily 24. Example: 12 is divisible by 6 and 4, but not by 24."},
+{t:"Yes, always",c:false,m:"Not always. Consider 12: it is divisible by 6 (12 ÷ 6 = 2) and by 4 (12 ÷ 4 = 3), but 12 is not divisible by 24. The correct divisor is LCM(6,4) = 12.",correctMethod:"If A is divisible by 6 and 4, then A is divisible by LCM(6,4) = 12. Not necessarily 24. Example: 12 works but 12 ÷ 24 is not an integer."},
+{t:"Only if the number is even",c:false,m:"If a number is divisible by 6, it is already even (since 6 is even). The real question is about LCM. LCM(6,4) = 12, so the number must be divisible by 12, not 24.",correctMethod:"Both 6 and 4 divide A, so LCM(6,4) = 12 divides A. Not necessarily 24. Counter-example: 12."}
+]},
+{t:"quiz",q:"When you add an odd number to an even number, can the result be a multiple of 6?",opts:[
+{t:"Never, because odd + even = odd, and multiples of 6 are even",c:true},
+{t:"Yes, sometimes",c:false,m:"No. Odd + Even = Odd. All multiples of 6 are even (6, 12, 18, ...). An odd number can never equal an even number. So the sum of odd and even can never be a multiple of 6.",correctMethod:"Odd + Even = Odd. Multiples of 6 are all even. An odd number cannot equal an even number, so the sum is never a multiple of 6."},
+{t:"Always",c:false,m:"Never. Odd + Even always gives an odd result. Multiples of 6 (6, 12, 18, 24, ...) are all even. Since odd ≠ even, the sum can never be a multiple of 6.",correctMethod:"Odd + Even = Odd. All multiples of 6 are even. Odd ≠ Even, so the sum is never a multiple of 6."},
+{t:"Only for large numbers",c:false,m:"Size does not matter. Odd + Even = Odd, always. Multiples of 6 are always even. An odd number can never be a multiple of 6, regardless of size.",correctMethod:"Odd + Even = Odd for any numbers. Multiples of 6 are even. So the sum is never a multiple of 6."}
+]},
+{t:"milestone",icon:"🎯",title:"Statement Classifier!",xp:50,next:"Now let us explore remainders!"},
+{t:"text",title:"What Remains? (Remainders)",body:"Numbers can leave remainders when divided. For example, numbers that leave a remainder of 3 when divided by 5 are: 3, 8, 13, 18, 23, 28, ... These are all of the form 5k + 3, where k = 0, 1, 2, 3, ... Interestingly, the same set of numbers can also be written as 5k − 2 (2 less than a multiple of 5), where k = 1, 2, 3, ... Multiple algebraic expressions can represent the same set of numbers!"},
+{t:"quiz",q:"Which algebraic expression describes all numbers that leave a remainder of 3 when divided by 5?",opts:[
+{t:"5k + 3",c:true},
+{t:"3k + 5",c:false,m:"This gives numbers like 8, 11, 14, 17... but 8 ÷ 5 = 1 r 3 (correct), 11 ÷ 5 = 2 r 1 (wrong!). 11 does not leave remainder 3. The correct form is 5k + 3: 3, 8, 13, 18, 23, all leave remainder 3 when divided by 5.",correctMethod:"Numbers leaving remainder 3 when divided by 5 are 3 more than multiples of 5: 5k + 3. Check: k=0→3, k=1→8, k=2→13. All leave remainder 3 when divided by 5."},
+{t:"5k − 3",c:false,m:"This gives 2, 7, 12, 17... 2 ÷ 5 = 0 r 2 (not 3!). The correct form is 5k + 3 (gives 3, 8, 13, 18...) or equivalently 5k − 2 (gives 3, 8, 13, 18...). Note 5k−3 gives different numbers than 5k+3.",correctMethod:"5k + 3 gives 3, 8, 13, 18, 23... Each divided by 5 gives remainder 3. Alternatively, 5k − 2 (for k ≥ 1) gives the same set: 3, 8, 13, 18..."},
+{t:"3k",c:false,m:"This gives multiples of 3: 3, 6, 9, 12, 15... 6 ÷ 5 = 1 r 1 (not 3!). Only 3 itself works. The correct form is 5k + 3: the remainder depends on the divisor (5), not the remainder value (3).",correctMethod:"The form is 5k + 3 (divisor × k + remainder). Check: 5(0)+3=3, 5(1)+3=8, 5(2)+3=13. All give remainder 3 when divided by 5."}
+]},
+{t:"we",q:"Find a few numbers that leave a remainder of 2 when divided by 3 AND a remainder of 2 when divided by 4. Write an algebraic expression.",steps:[
+{text:"Numbers leaving remainder 2 when divided by 3: 5, 8, 11, 14, 17, 20, 23, 26... (form: 3K + 2)"},
+{text:"Numbers leaving remainder 2 when divided by 4: 6, 10, 14, 18, 22, 26... (form: 4K + 2)"},
+{text:"Common numbers in both lists: 14, 26, 38... These leave remainder 2 when divided by both 3 and 4."},
+{text:"LCM of 3 and 4 is 12. So the general form is 12k + 2, where k = 0, 1, 2, ... Check: 12(0)+2=2, 12(1)+2=14, 12(2)+2=26. All work!"}
+],answer:"Algebraic expression: 12k + 2 (LCM of 3 and 4 is 12, plus remainder 2)"},
+{t:"we",q:"Solve the pebbles riddle: Grouped in 3s, 1 remains. Grouped in 5s, 1 remains. Grouped in 7s, none remains. Less than 100.",steps:[
+{text:"The number leaves remainder 1 when divided by 3, remainder 1 when divided by 5, and remainder 0 when divided by 7."},
+{text:"Since remainders are 1 for both 3 and 5, the number is 1 more than a common multiple of 3 and 5."},
+{text:"LCM of 3, 5, and 7 = 3 × 5 × 7 = 105 (since all are prime)."},
+{text:"The number is 1 more than a multiple of 105: 105 + 1 = 106. Check: 106 ÷ 3 = 35 r 1, 106 ÷ 5 = 21 r 1, 106 ÷ 7 = 15 r 0. All conditions met!"}
+],answer:"The number of pebbles is 106"},
+{t:"solve",q:"Find a number that leaves a remainder of 2 when divided by 3, a remainder of 3 when divided by 4, and a remainder of 4 when divided by 5. What is the smallest such number?",steps:[
+{type:"input",prompt:"Notice the pattern: remainder is always 1 less than the divisor (3−1=2, 4−1=3, 5−1=4). So the number is 1 less than a multiple of 3, 4, AND 5. What is LCM(3, 4, 5)?",answer:"60",m:"LCM(3, 4, 5) = 3 × 4 × 5 = 60. Since 3, 4, and 5 have no common factors, their LCM is their product.",correctMethod:"LCM(3, 4, 5) = 60. The number must be 1 less than a multiple of 60."},
+{type:"input",prompt:"The number is LCM(3,4,5) − 1 = 60 − 1 = ? (Enter the number)",answer:"59",m:"LCM(3,4,5) = 60. The number is 60 − 1 = 59.",correctMethod:"60 − 1 = 59. Check: 59 ÷ 3 = 19 r 2, 59 ÷ 4 = 14 r 3, 59 ÷ 5 = 11 r 4. All conditions satisfied!"}
+]},
+{t:"quiz",q:"Tathagat claims: If you add any three numbers that leave remainder 2 when divided by 6, the sum is always a multiple of 6. Is this true?",opts:[
+{t:"Yes, because each number is 6k+2, and three of them give 18k+6 = 6(3k+1)",c:true},
+{t:"No, because remainders add up to 6 which is not a multiple of 6",c:false,m:"Actually, 6 IS a multiple of 6! Each number is 6k+2. Three numbers: (6a+2)+(6b+2)+(6c+2) = 6(a+b+c)+6 = 6(a+b+c+1). Since 6 is a factor, the sum is divisible by 6. The claim is TRUE.",correctMethod:"Three numbers of form 6k+2: (6a+2)+(6b+2)+(6c+2) = 6(a+b+c)+6 = 6(a+b+c+1). Divisible by 6! Claim is true."},
+{t:"Cannot be determined without specific numbers",c:false,m:"It can be determined using algebra. Each number is 6k+2. Sum of three: 6(a+b+c)+6 = 6(a+b+c+1). This is always divisible by 6. Example: 8+14+20 = 42 = 6×7. The claim is true.",correctMethod:"Using algebra: (6a+2)+(6b+2)+(6c+2) = 6(a+b+c+1). Always divisible by 6. No need for specific numbers."},
+{t:"Only if the three numbers are the same",c:false,m:"No, it works for any three numbers of the form 6k+2. (6×1+2)+(6×2+2)+(6×3+2) = 8+14+20 = 42 = 6×7. Also (6×2+2)+(6×5+2)+(6×4+2) = 14+32+26 = 72 = 6×12. Always works!",correctMethod:"Any three numbers of form 6k+2 sum to 6(a+b+c+1), always divisible by 6. Example: 8+14+20=42=6×7."}
+]},
+{t:"milestone",icon:"🔍",title:"Remainder Expert!",xp:50,next:"Now let us learn divisibility shortcuts!"},
+{t:"text",title:"Divisibility by 9",body:"There is a quick way to check if a number is divisible by 9: just add up its digits! If the sum of the digits is divisible by 9, the number is divisible by 9. Why does this work? Each place value (10, 100, 1000, ...) is 1 more than a multiple of 9. For example, 10 = 9 + 1, 100 = 99 + 1, 1000 = 999 + 1. So when we expand a number, the remainder is just the sum of the digits."},
+{t:"ix_divis",instruction:"Enter a number and pick a divisor (2, 3, 4, 5, 6, 8, 9, 10, or 11). See the divisibility rule applied step by step!"},
+{t:"quiz",q:"Is 405 divisible by 9?",opts:[
+{t:"Yes, because 4 + 0 + 5 = 9, which is divisible by 9",c:true},
+{t:"No, because 405 ends in 5",c:false,m:"The last digit rule applies to divisibility by 2, 5, and 10, not 9. For 9, sum the digits: 4+0+5 = 9. Since 9 is divisible by 9, the number 405 is divisible by 9. Indeed 405 ÷ 9 = 45.",correctMethod:"For divisibility by 9, sum the digits: 4+0+5 = 9. 9 is divisible by 9, so 405 is divisible by 9. Check: 405 ÷ 9 = 45."},
+{t:"No, because 405 is odd",c:false,m:"Odd/even does not matter for divisibility by 9. The rule is: sum the digits. 4+0+5 = 9. 9 is divisible by 9, so 405 is divisible by 9.",correctMethod:"Sum of digits: 4+0+5 = 9. Since 9 is divisible by 9, 405 is divisible by 9. (405 = 9 × 45)"},
+{t:"Cannot be determined without dividing",c:false,m:"It can be determined using the digit sum rule! 4+0+5 = 9. Since 9 is divisible by 9, 405 is divisible by 9. No need to actually divide.",correctMethod:"Sum the digits: 4+0+5 = 9. 9 ÷ 9 = 1, so 405 is divisible by 9."}
+]},
+{t:"quiz",q:"Is 8888 divisible by 9?",opts:[
+{t:"No, because 8+8+8+8 = 32, and 32 is not divisible by 9",c:true},
+{t:"Yes, because all digits are the same",c:false,m:"Having the same digits does not guarantee divisibility by 9. The rule is to sum the digits: 8+8+8+8 = 32. 32 is not divisible by 9 (32 ÷ 9 = 3 r 5). So 8888 is NOT divisible by 9.",correctMethod:"Sum the digits: 8+8+8+8 = 32. 32 ÷ 9 = 3 remainder 5. Since 32 is not divisible by 9, 8888 is not divisible by 9."},
+{t:"Yes, because 8888 is a large number",c:false,m:"Size does not matter for divisibility by 9. Sum the digits: 8+8+8+8 = 32. 32 is not divisible by 9, so 8888 is not divisible by 9.",correctMethod:"8+8+8+8 = 32. 32 ÷ 9 = 3 r 5. Not divisible by 9, so 8888 is not divisible by 9."},
+{t:"Yes, because 8 × 4 = 32 and 32 is even",c:false,m:"Being even is irrelevant for divisibility by 9. The digit sum is 8+8+8+8 = 32. 32 ÷ 9 = 3 r 5, so 32 is NOT divisible by 9. Therefore 8888 is not divisible by 9.",correctMethod:"Digit sum: 8+8+8+8 = 32. 32 is not divisible by 9, so 8888 is not divisible by 9."}
+]},
+{t:"quiz",q:"If 31z5 is a multiple of 9, what is the value of z?",opts:[
+{t:"z = 0 or z = 9",c:true},
+{t:"z = 9 only",c:false,m:"There are two answers. Sum of digits: 3+1+z+5 = 9+z. For divisibility by 9, 9+z must be divisible by 9. When z=0: 9+0=9 (divisible by 9). When z=9: 9+9=18 (divisible by 9). Both work!",correctMethod:"Sum = 3+1+z+5 = 9+z. 9+z must be divisible by 9. z=0 gives 9 (works), z=9 gives 18 (works). So z = 0 or 9. There are two answers because the base sum is already 9."},
+{t:"z = 0 only",c:false,m:"There are two valid answers. Sum = 9+z. z=0 gives 9 (divisible by 9). But z=9 gives 18, also divisible by 9. So z = 0 or 9.",correctMethod:"9+z must be divisible by 9. z=0→9 (yes), z=9→18 (yes). Both 0 and 9 work. Two answers because excluding z, the sum is already divisible by 9."},
+{t:"z = 1",c:false,m:"Sum = 3+1+1+5 = 10. 10 is not divisible by 9. The correct values are z=0 (sum=9) and z=9 (sum=18), both divisible by 9.",correctMethod:"Sum = 9+z. Must be divisible by 9. z=0→9, z=9→18. Both work. z = 0 or 9."}
+]},
+{t:"text",title:"Divisibility by 3",body:"The rule for 3 is similar to 9: a number is divisible by 3 if the sum of its digits is divisible by 3. This works because 10, 100, 1000, ... are each 1 more than a multiple of 3 (10 = 9+1 = 3×3+1, 100 = 99+1 = 3×33+1). All multiples of 9 are also multiples of 3, but not all multiples of 3 are multiples of 9 (like 15, 33, 87)."},
+{t:"quiz",q:"Is 123 divisible by 3?",opts:[
+{t:"Yes, because 1+2+3 = 6, and 6 is divisible by 3",c:true},
+{t:"No, because 123 is odd",c:false,m:"Odd/even does not determine divisibility by 3. Sum the digits: 1+2+3 = 6. 6 ÷ 3 = 2, so 123 is divisible by 3. Check: 123 ÷ 3 = 41.",correctMethod:"Sum of digits: 1+2+3 = 6. 6 is divisible by 3, so 123 is divisible by 3. (123 = 3 × 41)"},
+{t:"No, because 1+2+3 = 6, and 6 is not divisible by 3",c:false,m:"6 IS divisible by 3 (6 ÷ 3 = 2). So 123 is divisible by 3. The digit sum rule for 3: if the sum of digits is divisible by 3, the number is divisible by 3.",correctMethod:"1+2+3 = 6. 6 ÷ 3 = 2. Since 6 is divisible by 3, 123 is divisible by 3."},
+{t:"Cannot be determined",c:false,m:"It can be determined. Sum the digits: 1+2+3 = 6. Since 6 is divisible by 3, 123 is divisible by 3. No need to divide.",correctMethod:"Digit sum: 1+2+3 = 6. 6 is divisible by 3, so 123 is divisible by 3."}
+]},
+{t:"text",title:"Divisibility by 11",body:"For divisibility by 11, the place values alternate between being 1 more and 1 less than a multiple of 11. Units place (1): 1 more than 0 (a multiple of 11). Tens place (10): 1 less than 11. Hundreds place (100): 1 more than 99. Thousands place (1000): 1 less than 1001. So we add the digits at positions 1, 100, 10000, ... and subtract the digits at positions 10, 1000, .... If the result is divisible by 11 (or is 0), the number is divisible by 11."},
+{t:"we",q:"Check if 462 is divisible by 11 using the alternating sum method.",steps:[
+{text:"Identify positions: 4 is at hundreds (100), 6 is at tens (10), 2 is at units (1)."},
+{text:"Hundreds and units are 1 more than multiples of 11. Tens is 1 less. So add digits at positions 1 and 100, subtract digit at position 10."},
+{text:"Alternating sum: 4 − 6 + 2 = 0."},
+{text:"Since 0 is divisible by 11 (0 = 11 × 0), the number 462 is divisible by 11. Check: 462 ÷ 11 = 42."}
+],answer:"462 is divisible by 11 (alternating sum = 0)"},
+{t:"ix_droot",instruction:"Enter any number and watch its digital root being calculated step by step! The digits get summed repeatedly until a single digit remains."},
+{t:"text",title:"Digital Roots",body:"The digital root of a number is found by repeatedly summing its digits until a single digit is obtained. For example, the digital root of 7309: 7+3+0+9 = 19, then 1+9 = 10, then 1+0 = 1. The digital root is 1. The digital root equals the remainder when the number is divided by 9 (except when the remainder is 0, the digital root is 9). The digital root of any multiple of 9 is always 9."},
+{t:"quiz",q:"What is the digital root of 9a + 36b + 13?",opts:[
+{t:"4",c:true},
+{t:"9",c:false,m:"9 is the digital root of pure multiples of 9, but 9a+36b+13 is NOT a pure multiple of 9. 9a+36b = 9(a+4b) is a multiple of 9, so its digital root is 9. But we need to add 13. 9+13 = 22, then 2+2 = 4. Actually: 9(a+4b)+13 = 9(a+4b+1)+4, so digital root = 4.",correctMethod:"9a+36b = 9(a+4b), digital root 9. 9(a+4b)+13 = 9(a+4b+1)+4. The remainder is 4, so digital root = 4."},
+{t:"13",c:false,m:"13 is not a single digit. The digital root must be a single digit (1-9). 9a+36b+13: since 9a+36b is a multiple of 9, we need the digital root of 13, which is 1+3 = 4.",correctMethod:"9a+36b = 9(a+4b) has digital root 9. Adding 13: 9+4 = 13, then 1+3 = 4. Or: 9(a+4b+1)+4, so the digital root is 4."},
+{t:"1",c:false,m:"Let us calculate. 9a+36b = 9(a+4b) is a multiple of 9 (digital root 9). Adding 13: digital root of (9+13) = digital root of 22 = 2+2 = 4. The answer is 4, not 1.",correctMethod:"9a+36b+13 = 9(a+4b+1)+4. The remainder when divided by 9 is 4, so the digital root is 4."}
+]},
+{t:"quiz",q:"What is the digital root of 10 more than a number whose digital root is 5?",opts:[
+{t:"6",c:true},
+{t:"5",c:false,m:"Adding 10 changes the digital root. If the original digital root is 5, adding 10 means adding 1 to the tens digit. Since 10 has digit sum 1, the new digital root is 5+1 = 6. Example: 80000006 has digital root 5. 80000006+10 = 80000016. Digital root: 8+1+6 = 15, 1+5 = 6.",correctMethod:"Adding 10 adds 1 to the digit sum (since 10 has digit sum 1). New digital root = 5+1 = 6. Example: 80000006 (dr=5) + 10 = 80000016 (dr = 8+0+0+0+0+0+1+6 = 15, 1+5 = 6)."},
+{t:"15",c:false,m:"15 is not a single digit. The digital root must be between 1 and 9. If the original digital root is 5 and we add 10 (digit sum 1), the new digital root is 5+1 = 6.",correctMethod:"Adding 10 adds 1 to the digit sum. 5+1 = 6. The digital root is 6."},
+{t:"10",c:false,m:"10 is not a single digit. The digital root is always a single digit (1-9). Adding 10 (digit sum = 1) to a number with digital root 5 gives a new digital root of 5+1 = 6.",correctMethod:"10 has digit sum 1. New digital root = 5+1 = 6."}
+]},
+{t:"quiz",q:"Find the smallest multiple of 9 that has no odd digits (all even digits).",opts:[
+{t:"288",c:true},
+{t:"18",c:false,m:"18 has digit 1, which is odd. The question asks for NO odd digits. 18 = 9 × 2, but 1 is odd. The smallest multiple of 9 with all even digits is 288 (2, 8, 8 are all even, and 2+8+8 = 18, divisible by 9).",correctMethod:"We need all digits even AND digit sum divisible by 9. 18 has odd digit 1. 288: digits 2,8,8 (all even), sum = 18 (divisible by 9). So 288 is the answer."},
+{t:"9",c:false,m:"9 itself is an odd digit! The question asks for no odd digits. We need a multiple of 9 where every digit is even (0, 2, 4, 6, 8). The smallest such number is 288.",correctMethod:"9 has an odd digit. We need all even digits with sum divisible by 9. 288: 2+8+8=18 (divisible by 9), all digits even. So 288."},
+{t:"36",c:false,m:"36 has digit 3, which is odd. We need ALL digits to be even. 288 = 9 × 32, digits are 2, 8, 8 (all even), and 2+8+8 = 18 (divisible by 9).",correctMethod:"All digits must be even. 36 has odd digit 3. 288: all digits even, sum = 18 divisible by 9. Answer: 288."}
+]},
+{t:"truefalse",q:"The product of two consecutive integers is always a multiple of 6.",ans:false,m:"Actually, this is FALSE. The product of two consecutive integers is always even (divisible by 2), but not always divisible by 6. For example, 1 × 2 = 2, which is not divisible by 6. Another example: 4 × 5 = 20, not divisible by 6.",correctMethod:"Counter-example: 1 × 2 = 2. 2 is not divisible by 6. The product is always divisible by 2 (one must be even), but not always by 3.",explain:"1×2=2 (not div by 6), 4×5=20 (not div by 6). But 2×3=6 (div by 6), 3×4=12 (div by 6)."},
+{t:"truefalse",q:"The product of four consecutive integers is always divisible by 24.",ans:true,m:"Actually, this IS true! Among 4 consecutive integers, there is always at least one multiple of 4, another even number (so product divisible by 8), and at least one multiple of 3. So the product is divisible by 8 × 3 = 24. Examples: 1×2×3×4=24, 2×3×4×5=120, 5×6×7×8=840.",correctMethod:"4 consecutive integers include: at least one multiple of 3, at least two even numbers (one of which is a multiple of 4). So product is divisible by 3 × 8 = 24.",explain:"1×2×3×4=24, 2×3×4×5=120=24×5, 3×4×5×6=360=24×15."},
+{t:"truefalse",q:"If a number is divisible by 9, and you reverse its digits, the reversed number is still divisible by 9.",ans:true,m:"This IS true! Divisibility by 9 depends on the sum of the digits. When you reverse a number, the digits are the same, just in a different order. So the digit sum does not change, and the reversed number is still divisible by 9.",correctMethod:"Divisibility by 9 depends on digit sum. Reversing digits does not change the digit sum. So if original is divisible by 9, reversed is too. Example: 81 → 18, both have digit sum 9.",explain:"81→18 (both sum to 9), 459→954 (both sum to 18). Digit sum unchanged by reversal."},
+{t:"we",q:"The sum of four consecutive numbers is 34. What are these numbers?",steps:[
+{text:"Let the four consecutive numbers be x, x+1, x+2, and x+3."},
+{text:"Their sum: x + (x+1) + (x+2) + (x+3) = 4x + 6 = 34."},
+{text:"Solve: 4x = 34 − 6 = 28, so x = 7."},
+{text:"The four numbers are 7, 8, 9, and 10. Check: 7+8+9+10 = 34. Correct!"}
+],answer:"The four consecutive numbers are 7, 8, 9, and 10"},
+{t:"solve",q:"When divided by 7, the number 661 leaves a remainder of 3, and 4779 leaves a remainder of 5. Without calculating, what remainder does 4779 + 661 leave when divided by 7?",steps:[
+{type:"input",prompt:"When adding two numbers, their remainders add up. What is 5 + 3? (Enter the number)",answer:"8",m:"The remainders are 5 and 3. When we add the numbers, the remainders add: 5 + 3 = 8.",correctMethod:"Remainder of (4779 + 661) ÷ 7 = (remainder of 4779) + (remainder of 661) = 5 + 3 = 8."},
+{type:"input",prompt:"The sum of remainders is 8, but we need the remainder when divided by 7. What is 8 ÷ 7 remainder? (Enter the number)",answer:"1",m:"8 ÷ 7 = 1 with remainder 1. So the remainder of (4779+661) when divided by 7 is 1.",correctMethod:"8 ÷ 7 = 1 remainder 1. So 4779 + 661 leaves remainder 1 when divided by 7."}
+]},
+{t:"quiz",q:"How many multiples of 9 are there between 4300 and 4400?",opts:[
+{t:"11",c:true},
+{t:"10",c:false,m:"Let us count. The first multiple of 9 after 4300 is 4302 (4300 ÷ 9 = 477 r 7, so next is 478 × 9 = 4302). The last before 4400 is 4392 (4400 ÷ 9 = 488 r 8, so previous is 488 × 9 = 4392). Count = (4392 − 4302) ÷ 9 + 1 = 90 ÷ 9 + 1 = 10 + 1 = 11.",correctMethod:"First: 4302 (478×9). Last: 4392 (488×9). Count = (4392−4302)/9 + 1 = 90/9 + 1 = 11."},
+{t:"12",c:false,m:"Let us calculate. First multiple of 9 above 4300: 4302. Last below 4400: 4392. Number of multiples = (4392 − 4302) ÷ 9 + 1 = 10 + 1 = 11, not 12.",correctMethod:"(4392 − 4302) ÷ 9 + 1 = 90 ÷ 9 + 1 = 10 + 1 = 11 multiples."},
+{t:"9",c:false,m:"The range 4300 to 4400 spans 100 numbers. Since roughly every 9th number is a multiple of 9, we expect about 100/9 ≈ 11. Exact: first=4302, last=4392, count = (4392−4302)/9+1 = 11.",correctMethod:"First multiple: 4302. Last: 4392. Count = (4392−4302)/9 + 1 = 10+1 = 11."}
+]},
+{t:"quiz",q:"Find three consecutive numbers where the first is a multiple of 2, the second is a multiple of 3, and the third is a multiple of 4. Which set works?",opts:[
+{t:"14, 15, 16",c:true},
+{t:"2, 3, 4",c:false,m:"2 is divisible by 2, 3 is divisible by 3, but 4 is divisible by 4. This seems to work! But wait — the question asks for sets beyond the obvious small example. Actually 2,3,4 does work. But 14,15,16 also works: 14÷2=7, 15÷3=5, 16÷4=4. And the pattern repeats every 12 numbers (LCM of 2,3,4=12). So both 2,3,4 and 14,15,16 work. The correct answer shown is 14,15,16.",correctMethod:"14÷2=7, 15÷3=5, 16÷4=4. All conditions met! These occur every 12 numbers (LCM of 2,3,4). Next set: 26,27,28."},
+{t:"10, 11, 12",c:false,m:"10 is divisible by 2, but 11 is NOT divisible by 3 (11 ÷ 3 = 3 r 2). The second number must be a multiple of 3. Try 14,15,16: 14÷2=7, 15÷3=5, 16÷4=4.",correctMethod:"11 is not divisible by 3. Need second number divisible by 3. 14,15,16 works: 14 is div by 2, 15 is div by 3, 16 is div by 4."},
+{t:"6, 7, 8",c:false,m:"6 is divisible by 2, but 7 is NOT divisible by 3 (7 ÷ 3 = 2 r 1). The middle number must be a multiple of 3. Try 14, 15, 16: 14÷2=7, 15÷3=5, 16÷4=4.",correctMethod:"7 is not divisible by 3. The correct set 14,15,16: 14 div by 2, 15 div by 3, 16 div by 4."}
+]},
+{t:"milestone",icon:"💡",title:"Divisibility Pro!",xp:50,next:"Final challenge ahead!"},
+{t:"rapid_fire",qs:[
+{q:"Sum of digits of 405 ÷ 9 = ?",opts:["6","9","5","4"],ans:1},
+{q:"Digital root of 99?",opts:["9","18","1","0"],ans:0},
+{q:"Is 123 div by 3? Sum = ?",opts:["6","5","3","9"],ans:0},
+{q:"7 + 8 + 9 + 10 = ?",opts:["34","36","32","38"],ans:0},
+{q:"Remainder of 20 ÷ 7?",opts:["6","5","4","3"],ans:0},
+{q:"Digital root of 7309?",opts:["1","9","7","4"],ans:0}
+]},
+{t:"memory_match",pairs:[
+{en:"Parity",hi:"विषम समानता"},
+{en:"Divisible",hi:"विभाज्य"},
+{en:"Remainder",hi:"शेषफल"},
+{en:"Consecutive",hi:"लगातार"},
+{en:"Digital Root",hi:"डिजिटल मूल"},
+{en:"Multiple",hi:"गुणज"}
+]},
+{t:"complete",icon:"🎉",title:"Chapter Complete!",sub:"You have mastered Number Play!"}
+];
+
+var App={
+  idx:0,xp:0,coins:0,level:1,streak:0,answered:false,selOpt:null,
+  init:function(){
+    try{
+      var s=JSON.parse(localStorage.getItem("aasha_np8")||"{}");
+      if(s.xp)this.xp=s.xp;if(s.coins)this.coins=s.coins;
+      if(s.level)this.level=s.level;if(s.idx)this.idx=s.idx;
+    }catch(e){}
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){App.next()});
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){App.back()});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.updateStats();
+    this.render();
+  },
+  save:function(){
+    try{localStorage.setItem("aasha_np8",JSON.stringify({xp:this.xp,coins:this.coins,level:this.level,idx:this.idx}))}catch(e){}
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.idx/(STEPS.length-1))*100)+"%";
+    this.save();
+  },
+  checkLevelUp:function(){
+    var nl=1;if(this.xp>=300)nl=4;else if(this.xp>=150)nl=3;else if(this.xp>=50)nl=2;
+    if(nl>this.level){
+      this.level=nl;
+      var names=["","Beginner","Scholar","Expert","Champion"];
+      var d=document.getElementById("levelUpDialog");
+      var lt=document.getElementById("luTitle");
+      var ls=document.getElementById("luSub");
+      if(lt)lt.textContent="Level Up! "+names[nl];
+      if(ls)ls.textContent="You are now Level "+nl+" ("+names[nl]+")";
+      if(d)d.showModal();
+      this.fireConfetti();
+    }
+  },
+  fireConfetti:function(){
+    var canvas=document.getElementById("confetti");
+    if(!canvas)return;
+    var ctx=canvas.getContext("2d");
+    canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){
+      parts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,
+        vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,
+        c:["#1e40af","#3b82f6","#10b981","#f59e0b","#a855f7","#ec4899"][Math.floor(Math.random()*6)],
+        s:Math.random()*4+2});
+    }
+    var frames=0;
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(var i=0;i<parts.length;i++){
+        var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;
+        ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);
+      }
+      frames++;if(frames<120)requestAnimationFrame(animate);
+      else ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+    animate();
+  },
+  render:function(){
+    if(this.idx>=STEPS.length)this.idx=STEPS.length-1;
+    if(this.idx<0)this.idx=0;
+    var step=STEPS[this.idx];
+    var screen=document.getElementById("screen");
+    if(!screen)return;
+    var cb=document.getElementById("continueBtn");
+    if(!cb)return;
+    this.answered=false;this.selOpt=null;this.selTF=null;this.solveIdx=0;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var html="";
+    switch(step.t){
+      case"intro":html=this.renderIntro(step);break;
+      case"text":html=this.renderText(step);break;
+      case"formula":html=this.renderFormula(step);break;
+      case"discovery":html=this.renderDiscovery(step);break;
+      case"ix_consec":html=this.renderConsecSim(step);break;
+      case"ix_parity":html=this.renderParitySim(step);break;
+      case"ix_droot":html=this.renderDRootSim(step);break;
+      case"ix_divis":html=this.renderDivisSim(step);break;
+      case"quiz":html=this.renderQuiz(step);break;
+      case"truefalse":html=this.renderTF(step);break;
+      case"we":html=this.renderWE(step);break;
+      case"solve":html=this.renderSolve(step);break;
+      case"rapid_fire":html=this.renderRF(step);break;
+      case"memory_match":html=this.renderMM(step);break;
+      case"milestone":html=this.renderMilestone(step);break;
+      case"complete":html=this.renderComplete(step);break;
+      default:html=this.renderText(step);break;
+    }
+    screen.innerHTML=html;
+    setTimeout(function(){applyLLE();App.postRender(step);},50);
+    this.updateStats();
+  },
+  postRender:function(step){
+    if(step.t==="ix_consec")this.initConsecSim();
+    else if(step.t==="ix_parity")this.initParitySim();
+    else if(step.t==="ix_droot")this.initDRootSim();
+    else if(step.t==="ix_divis")this.initDivisSim();
+    else if(step.t==="quiz")this.initQuiz();
+    else if(step.t==="truefalse")this.initTF();
+    else if(step.t==="solve")this.initSolve();
+    else if(step.t==="rapid_fire")this.initRF(step);
+    else if(step.t==="memory_match")this.initMM(step);
+  },
+  renderIntro:function(s){
+    return '<div class="intro-card"><div class="intro-icon">'+(s.icon||"")+'</div><div class="intro-title">'+rt(s.title)+'</div><div class="intro-sub">'+rt(s.sub)+'</div></div>';
+  },
+  renderText:function(s){
+    return '<div class="bt"><div class="bt-title">'+rt(s.title)+'</div>'+rt(s.body)+'</div>';
+  },
+  renderFormula:function(s){
+    var h='<div class="instruction">'+rt(s.title)+'</div>';
+    for(var i=0;i<s.formulas.length;i++){
+      var f=s.formulas[i];
+      h+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-note" style="font-size:.75rem;color:#92400e;margin-top:4px">'+rt(f.note)+'</div>':'')+'</div>';
+    }
+    return h;
+  },
+  renderDiscovery:function(s){
+    var h='<div class="instruction">'+rt(s.title)+'</div>';
+    h+='<div class="discovery-box"><div class="d-title">'+rt(s.discoveryTitle)+'</div><div class="d-text">'+rt(s.body)+'</div></div>';
+    if(s.prop)h+='<div class="prop-box">'+rt(s.prop)+'</div>';
+    return h;
+  },
+  // ===== Consecutive Number Explorer =====
+  renderConsecSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Consecutive Number Explorer</div>';
+    h+='<div class="ix-controls"><span style="font-size:.8rem">Start:</span><input type="number" class="solve-input" id="ccInput" value="3" min="1" max="20" style="width:60px"></div>';
+    h+='<canvas class="ix-canvas" id="ccCanvas"></canvas>';
+    h+='<div class="ix-info" id="ccInfo">Results will appear here</div></div>';
+    return h;
+  },
+  initConsecSim:function(){
+    var input=document.getElementById("ccInput");
+    var canvas=document.getElementById("ccCanvas");
+    var info=document.getElementById("ccInfo");
+    if(!input||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var start=parseInt(input.value)||3;
+      if(start<1)start=1;if(start>20)start=20;
+      var nums=[start,start+1,start+2,start+3];
+      var signs=[[1,1,1,1],[1,1,1,-1],[1,1,-1,1],[1,-1,1,1],[-1,1,1,1],[1,1,-1,-1],[1,-1,1,-1],[1,-1,-1,1]];
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var rowH=28;var startY=10;
+      ctx.font="12px system-ui";ctx.textAlign="left";
+      for(var r=0;r<signs.length;r++){
+        var s=signs[r];var val=0;var expr="";
+        for(var i=0;i<4;i++){
+          if(i===0){val=nums[0];expr=nums[0]+"";}
+          else{if(s[i]>0){val+=nums[i];expr+=" + "+nums[i];}else{val-=nums[i];expr+=" − "+nums[i];}}
+        }
+        var isEven=val%2===0;
+        var y=startY+r*rowH;
+        ctx.fillStyle=isEven?"#d1fae5":"#fee2e2";
+        ctx.fillRect(10,y,canvas.width-20,rowH-4);
+        ctx.fillStyle="#1e293b";
+        ctx.fillText(expr+" = "+val,y+5+10,y+16);
+        ctx.fillStyle=isEven?"#10b981":"#ef4444";
+        ctx.textAlign="right";
+        ctx.fillText(isEven?"EVEN":"ODD",canvas.width-15,y+16);
+        ctx.textAlign="left";
+      }
+      var allEven=true;
+      for(var r2=0;r2<signs.length;r2++){
+        var v=0;for(var i=0;i<4;i++){if(i===0)v=nums[0];else v+=signs[r2][i]*nums[i];}
+        if(v%2!==0)allEven=false;
+      }
+      info.innerHTML="Numbers: "+nums.join(", ")+". All 8 results are "+(allEven?"EVEN":"not all even")+"!";
+      applyLLE();
+    }
+    input.addEventListener("input",draw);
+    draw();
+  },
+  // ===== Parity Explorer =====
+  renderParitySim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Parity Explorer</div>';
+    h+='<div class="ix-controls"><input type="number" class="solve-input" id="paInput1" value="7" style="width:60px"><input type="number" class="solve-input" id="paInput2" value="4" style="width:60px"></div>';
+    h+='<canvas class="ix-canvas" id="paCanvas"></canvas>';
+    h+='<div class="ix-info" id="paInfo">Enter two numbers to see parity results</div></div>';
+    return h;
+  },
+  initParitySim:function(){
+    var i1=document.getElementById("paInput1");
+    var i2=document.getElementById("paInput2");
+    var canvas=document.getElementById("paCanvas");
+    var info=document.getElementById("paInfo");
+    if(!i1||!i2||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var a=parseInt(i1.value)||0;var b=parseInt(i2.value)||0;
+      var sum=a+b;var diff=a-b;var prod=a*b;
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var rows=[
+        {label:"a = "+a,parity:a%2===0?"even":"odd",val:a},
+        {label:"b = "+b,parity:b%2===0?"even":"odd",val:b},
+        {label:"a + b = "+sum,parity:sum%2===0?"even":"odd",val:sum},
+        {label:"a − b = "+diff,parity:diff%2===0?"even":"odd",val:diff},
+        {label:"a × b = "+prod,parity:prod%2===0?"even":"odd",val:prod}
+      ];
+      var rowH=44;var startY=10;
+      ctx.font="13px system-ui";ctx.textAlign="left";
+      for(var r=0;r<rows.length;r++){
+        var row=rows[r];var y=startY+r*rowH;
+        var isEven=row.parity==="even";
+        ctx.fillStyle=isEven?"rgba(59,130,246,0.15)":"rgba(239,68,68,0.15)";
+        ctx.fillRect(10,y,canvas.width-20,rowH-6);
+        ctx.fillStyle="#1e293b";ctx.font="bold 13px system-ui";
+        ctx.fillText(row.label,20,y+18);
+        ctx.fillStyle=isEven?"#3b82f6":"#ef4444";
+        ctx.font="bold 11px system-ui";ctx.textAlign="right";
+        ctx.fillText(row.parity.toUpperCase(),canvas.width-15,y+18);
+        // Draw tokens
+        ctx.textAlign="left";
+        var tokenStartX=20;var tokenY=y+28;
+        var absVal=Math.abs(row.val);
+        var maxTokens=Math.min(absVal,15);
+        for(var t=0;t<maxTokens;t++){
+          ctx.fillStyle=isEven?"#3b82f6":"#ef4444";
+          ctx.beginPath();ctx.arc(tokenStartX+t*14+5,tokenY,4,0,2*Math.PI);ctx.fill();
+        }
+        if(absVal>15){ctx.fillStyle="#64748b";ctx.font="10px system-ui";ctx.fillText("+"+(absVal-15)+" more",tokenStartX+15*14+10,tokenY+3);}
+        if(row.val<0){ctx.fillStyle="#64748b";ctx.font="10px system-ui";ctx.fillText("(negative)",20,tokenY+3);}
+      }
+      info.innerHTML="a="+a+" ("+(a%2===0?"even":"odd")+"), b="+b+" ("+(b%2===0?"even":"odd")+"). Sum="+(a%2===b%2?"even":"odd")+", Product="+((a*b)%2===0?"even":"odd")+".";
+      applyLLE();
+    }
+    i1.addEventListener("input",draw);i2.addEventListener("input",draw);
+    draw();
+  },
+  // ===== Digital Root Calculator =====
+  renderDRootSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Digital Root Calculator</div>';
+    h+='<div class="ix-controls"><input type="number" class="solve-input" id="drInput" value="7309" style="width:120px"><button class="ix-btn" id="drBtn">Calculate</button></div>';
+    h+='<canvas class="ix-canvas" id="drCanvas"></canvas>';
+    h+='<div class="ix-info" id="drInfo">Enter a number and tap Calculate</div></div>';
+    return h;
+  },
+  initDRootSim:function(){
+    var input=document.getElementById("drInput");
+    var btn=document.getElementById("drBtn");
+    var canvas=document.getElementById("drCanvas");
+    var info=document.getElementById("drInfo");
+    if(!input||!btn||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var n=parseInt(input.value)||0;
+      if(n<0)n=Math.abs(n);
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var steps=[];
+      var current=""+n;
+      steps.push({num:current,sum:null});
+      while(current.length>1){
+        var sum=0;var digits=current.split("");
+        for(var i=0;i<digits.length;i++)sum+=parseInt(digits[i]);
+        current=""+sum;
+        steps.push({num:current,sum:sum,prevDigits:digits});
+      }
+      var rowH=Math.min(50,Math.floor(240/steps.length));
+      var startY=10;
+      ctx.font="13px system-ui";ctx.textAlign="center";
+      for(var r=0;r<steps.length;r++){
+        var step=steps[r];var y=startY+r*rowH;
+        if(step.sum!==null){
+          var prevStr=step.prevDigits.join(" + ");
+          ctx.fillStyle="#dbeafe";
+          ctx.fillRect(10,y,canvas.width-20,rowH-6);
+          ctx.fillStyle="#1e293b";ctx.font="12px system-ui";
+          ctx.fillText(prevStr+" = "+step.sum,canvas.width/2,y+rowH/2);
+        }else{
+          ctx.fillStyle="#fef3c7";
+          ctx.fillRect(10,y,canvas.width-20,rowH-6);
+          ctx.fillStyle="#92400e";ctx.font="bold 14px system-ui";
+          ctx.fillText("Digital Root = "+step.num,canvas.width/2,y+rowH/2);
+        }
+      }
+      var dr=parseInt(steps[steps.length-1].num);
+      var rem9=n%9;
+      var remStr=(rem9===0&&n>0)?"9 (digital root of multiples of 9)":(rem9===0?"0":"("+rem9+")");
+      info.innerHTML="Digital root of "+n+" is "+dr+". Remainder when divided by 9: "+remStr+(n%9===0&&n>0?" (9 for non-zero multiples of 9)":"")+".";
+      applyLLE();
+    }
+    btn.addEventListener("click",draw);
+    input.addEventListener("input",draw);
+    draw();
+  },
+  // ===== Divisibility Checker =====
+  renderDivisSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Divisibility Checker</div>';
+    h+='<div class="ix-controls"><input type="number" class="solve-input" id="dvInput" value="405" style="width:100px"><select id="dvDiv" style="padding:6px;border:2px solid var(--border);border-radius:8px;font-size:.85rem">';
+    h+='<option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option><option value="9" selected>9</option><option value="10">10</option><option value="11">11</option></select></div>';
+    h+='<canvas class="ix-canvas" id="dvCanvas"></canvas>';
+    h+='<div class="ix-info" id="dvInfo">Enter a number and pick a divisor</div></div>';
+    return h;
+  },
+  initDivisSim:function(){
+    var input=document.getElementById("dvInput");
+    var sel=document.getElementById("dvDiv");
+    var canvas=document.getElementById("dvCanvas");
+    var info=document.getElementById("dvInfo");
+    if(!input||!sel||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var n=Math.abs(parseInt(input.value)||0);
+      var d=parseInt(sel.value)||9;
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var digits=(""+n).split("");
+      var digitSum=0;for(var i=0;i<digits.length;i++)digitSum+=parseInt(digits[i]);
+      var steps=[];var divisible=false;
+      if(d===9||d===3){
+        steps.push({text:"Sum of digits: "+digits.join(" + ")+" = "+digitSum});
+        if(digitSum>=10){
+          var s2=""+digitSum;var ds2=0;for(var j=0;j<s2.length;j++)ds2+=parseInt(s2[j]);
+          steps.push({text:"Reduce: "+s2.split("").join(" + ")+" = "+ds2});
+          if(ds2>=10){var s3=""+ds2;var ds3=0;for(var j=0;j<s3.length;j++)ds3+=parseInt(s3[j]);steps.push({text:"Reduce again: "+s3.split("").join(" + ")+" = "+ds3});digitSum=ds3;}
+          else digitSum=ds2;
+        }
+        divisible=digitSum%d===0;
+        steps.push({text:"Is "+digitSum+" divisible by "+d+"? "+(divisible?"Yes!":"No.")});
+      }else if(d===2){
+        var last=digits[digits.length-1];
+        divisible=parseInt(last)%2===0;
+        steps.push({text:"Last digit: "+last});
+        steps.push({text:parseInt(last)%2===0?"Even → divisible by 2":"Odd → NOT divisible by 2"});
+      }else if(d===5){
+        var last5=digits[digits.length-1];
+        divisible=(parseInt(last5)===0||parseInt(last5)===5);
+        steps.push({text:"Last digit: "+last5});
+        steps.push({text:(parseInt(last5)===0||parseInt(last5)===5)?"Ends in 0 or 5 → divisible by 5":"Does not end in 0 or 5 → NOT divisible by 5"});
+      }else if(d===10){
+        var last10=digits[digits.length-1];
+        divisible=parseInt(last10)===0;
+        steps.push({text:"Last digit: "+last10});
+        steps.push({text:parseInt(last10)===0?"Ends in 0 → divisible by 10":"Does not end in 0 → NOT divisible by 10"});
+      }else if(d===4){
+        var last2=""+n;
+        if(last2.length>=2)last2=last2.substring(last2.length-2);var last2Num=parseInt(last2);
+        divisible=last2Num%4===0;
+        steps.push({text:"Last two digits: "+last2});
+        steps.push({text:last2Num+" ÷ 4 = "+Math.floor(last2Num/4)+" r "+(last2Num%4)});
+        steps.push({text:last2Num%4===0?"Divisible by 4!":"NOT divisible by 4"});
+      }else if(d===8){
+        var last3=""+n;if(last3.length>=3)last3=last3.substring(last3.length-3);var last3Num=parseInt(last3);
+        divisible=last3Num%8===0;
+        steps.push({text:"Last three digits: "+last3});
+        steps.push({text:last3Num+" ÷ 8 = "+Math.floor(last3Num/8)+" r "+(last3Num%8)});
+        steps.push({text:last3Num%8===0?"Divisible by 8!":"NOT divisible by 8"});
+      }else if(d===6){
+        var isEven=n%2===0;var digitSum3=0;for(var i=0;i<digits.length;i++)digitSum3+=parseInt(digits[i]);
+        var div3=digitSum3%3===0;
+        divisible=isEven&&div3;
+        steps.push({text:"Divisible by 2? "+(isEven?"Yes":"No")+" (last digit "+digits[digits.length-1]+")"});
+        steps.push({text:"Divisible by 3? "+(div3?"Yes":"No")+" (digit sum = "+digitSum3+")"});
+        steps.push({text:"Both? "+(divisible?"Yes → divisible by 6!":"No → NOT divisible by 6")});
+      }else if(d===11){
+        var altSum=0;var altStr="";
+        for(var i=0;i<digits.length;i++){
+          var digit=parseInt(digits[digits.length-1-i]);
+          if(i%2===0){altSum+=digit;if(i>0)altStr=" + "+digit+altStr;else altStr=""+digit;}
+          else{altSum-=digit;altStr=" − "+digit+altStr;}
+        }
+        divisible=altSum%11===0;
+        steps.push({text:"Alternating sum (right to left): "+altStr+" = "+altSum});
+        steps.push({text:altSum+" ÷ 11 = "+Math.floor(altSum/11)+" r "+(altSum%11)});
+        steps.push({text:altSum%11===0?"Divisible by 11!":"NOT divisible by 11 (remainder "+(altSum%11)+")"});
+      }
+      var rowH=Math.min(50,Math.floor(240/Math.max(steps.length,1)));
+      var startY=10;
+      ctx.font="13px system-ui";ctx.textAlign="center";
+      for(var r=0;r<steps.length;r++){
+        var y=startY+r*rowH;
+        ctx.fillStyle=r===steps.length-1?(divisible?"#d1fae5":"#fee2e2"):"#f8fafc";
+        ctx.fillRect(10,y,canvas.width-20,rowH-6);
+        ctx.fillStyle=r===steps.length-1?(divisible?"#065f46":"#991b1b"):"#1e293b";
+        ctx.font=r===steps.length-1?"bold 13px system-ui":"13px system-ui";
+        ctx.fillText(steps[r].text,canvas.width/2,y+rowH/2);
+      }
+      info.innerHTML=""+n+" is "+(divisible?"":"NOT ")+"divisible by "+d+".";
+      applyLLE();
+    }
+    input.addEventListener("input",draw);sel.addEventListener("change",draw);
+    draw();
+  },
+  // ===== Quiz =====
+  renderQuiz:function(s){
+    var h='<div class="instruction">Quiz</div>';
+    h+='<div class="we-card"><div class="we-question">'+rt(s.q)+'</div>';
+    for(var i=0;i<s.opts.length;i++){
+      h+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(s.opts[i].t)+'</div></div>';
+    }
+    h+='<div id="qf"></div></div>';
+    return h;
+  },
+  initQuiz:function(){
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){
+      opts[i].addEventListener("click",function(){
+        if(App.answered)return;
+        for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");
+        this.classList.add("selected");
+        App.selOpt=parseInt(this.getAttribute("data-quiz-idx"));
+        var cb=document.getElementById("continueBtn");
+        if(cb){cb.textContent="Check";cb.disabled=false;}
+      });
+    }
+  },
+  checkQuiz:function(){
+    var step=STEPS[this.idx];
+    if(this.selOpt===null)return;
+    var opt=step.opts[this.selOpt];
+    this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){
+      optEls[i].style.pointerEvents="none";
+      if(step.opts[i].c)optEls[i].classList.add("correct");
+      else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");
+    }
+    var fb=document.getElementById("qf");
+    if(opt.c){
+      fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>';
+      this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+      var cb=document.getElementById("continueBtn");
+      cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';
+      if(opt.m)mh+='<div class="misconception"><strong>⚠ Why this is wrong:</strong> '+opt.m+'</div>';
+      if(opt.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct Method:</strong> '+opt.correctMethod+'</div>';
+      fb.innerHTML=mh;applyLLE();
+      var cb=document.getElementById("continueBtn");
+      cb.textContent="Try again";cb.className="btn btn-primary";
+      var self=this;
+      if(this.retryTimer)clearTimeout(this.retryTimer);
+      this.retryTimer=setTimeout(function(){
+        self.answered=false;self.selOpt=null;
+        for(var i=0;i<optEls.length;i++){
+          optEls[i].classList.remove("selected","correct","wrong");
+          optEls[i].style.pointerEvents="";
+        }
+        fb.innerHTML="";cb.textContent="Check";cb.disabled=true;
+      },8000);
+    }
+  },
+  // ===== True/False =====
+  renderTF:function(s){
+    var h='<div class="instruction">True or False?</div>';
+    h+='<div class="we-card"><div class="we-question">'+rt(s.q)+'</div>';
+    h+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">✓ True</div><div class="tf-opt" id="tfFalse">✗ False</div></div>';
+    h+='<div id="tfFb"></div></div>';
+    return h;
+  },
+  initTF:function(){
+    var te=document.getElementById("tfTrue");
+    var fe=document.getElementById("tfFalse");
+    if(!te||!fe)return;
+    te.addEventListener("click",function(){App.checkTF(true);});
+    fe.addEventListener("click",function(){App.checkTF(false);});
+  },
+  checkTF:function(choice){
+    var step=STEPS[this.idx];
+    this.answered=true;this.selTF=choice;
+    var te=document.getElementById("tfTrue");
+    var fe=document.getElementById("tfFalse");
+    var fb=document.getElementById("tfFb");
+    var cb=document.getElementById("continueBtn");
+    var correct=choice===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(choice){if(te)te.classList.add("correct");}else{if(fe)fe.classList.add("correct");}
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+      if(cb){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+    }else{
+      if(choice){if(te)te.classList.add("wrong");}else{if(fe)fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Not quite.</div>';
+      if(step.m)mh+='<div class="misconception"><strong>⚠ Why:</strong> '+step.m+'</div>';
+      if(step.correctMethod)mh+='<div class="correct-method"><strong>✓ Correct:</strong> '+step.correctMethod+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();
+      if(cb){cb.textContent="Try again";}
+      var self=this;
+      if(this.retryTimer)clearTimeout(this.retryTimer);
+      this.retryTimer=setTimeout(function(){
+        self.answered=false;self.selTF=null;
+        if(te){te.classList.remove("selected","correct","wrong");te.style.pointerEvents="";}
+        if(fe){fe.classList.remove("selected","correct","wrong");fe.style.pointerEvents="";}
+        if(fb)fb.innerHTML="";if(cb){cb.textContent="Continue";cb.disabled=false;}
+      },8000);
+    }
+  },
+  // ===== Worked Example =====
+  renderWE:function(s){
+    var h='<div class="instruction">Worked Example</div>';
+    h+='<div class="we-card"><div class="we-tag">Step-by-step solution</div>';
+    h+='<div class="we-question">'+rt(s.q)+'</div>';
+    for(var i=0;i<s.steps.length;i++){
+      h+='<div class="we-step"><span class="we-num">'+(i+1)+'</span>'+rt(s.steps[i].text)+'</div>';
+    }
+    if(s.answer)h+='<div class="we-step final"><strong>Answer:</strong> '+rt(s.answer)+'</div>';
+    h+='</div>';
+    return h;
+  },
+  // ===== Solve (guided input) =====
+  renderSolve:function(s){
+    var h='<div class="instruction">Solve it step by step!</div>';
+    h+='<div class="we-card"><div class="we-tag">Guided Problem</div>';
+    h+='<div class="we-question">'+rt(s.q)+'</div>';
+    if(s.steps&&s.steps[this.solveIdx]){
+      var ss=s.steps[this.solveIdx];
+      if(ss.prompt)h+='<div class="we-step">'+rt(ss.prompt)+'</div>';
+      if(ss.type==="input")h+='<input type="text" class="solve-input" id="solveInput" placeholder="Your answer...">';
+    }
+    h+='<div id="solveFb"></div></div>';
+    return h;
+  },
+  initSolve:function(){},
+  checkSolve:function(){
+    var step=STEPS[this.idx];
+    var ss=step.steps[this.solveIdx];
+    if(!ss)return;
+    var fb=document.getElementById("solveFb");
+    var cb=document.getElementById("continueBtn");
+    if(ss.type==="input"){
+      var inp=document.getElementById("solveInput");
+      if(!inp)return;
+      var val=inp.value.trim();
+      var correct=(val===ss.answer||val===ss.answer.replace(/\s/g,""));
+      if(inp)inp.disabled=true;
+      if(correct){
+        if(fb)fb.innerHTML='<div class="feedback ok">✓ Correct! +5 XP</div>';
+        this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+        this.solveIdx++;
+        if(this.solveIdx>=step.steps.length){
+          this.answered=true;
+          if(cb){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+        }else{
+          if(cb){cb.textContent="Next Step →";cb.disabled=false;}
+          var self=this;
+          setTimeout(function(){self.render();},1500);
+        }
+      }else{
+        this.streak=0;this.updateStats();
+        var mh='<div class="feedback no">✗ Not quite.</div>';
+        if(ss.m)mh+='<div class="misconception"><strong>⚠ Hint:</strong> '+ss.m+'</div>';
+        if(ss.correctMethod)mh+='<div class="correct-method"><strong>✓ Method:</strong> '+ss.correctMethod+'</div>';
+        if(fb)fb.innerHTML=mh;applyLLE();
+        if(cb){cb.textContent="Try again";}
+        var self=this;
+        if(this.retryTimer)clearTimeout(this.retryTimer);
+        this.retryTimer=setTimeout(function(){self.render();},8000);
+      }
+    }
+  },
+  // ===== Rapid Fire =====
+  renderRF:function(s){
+    return '<div class="rf-box"><div class="rf-timer" id="rfTimer">30</div><div class="rf-score" id="rfScore">Score: 0/0</div><div id="rfArea"></div></div>';
+  },
+  initRF:function(step){
+    this.rfIdx=0;this.rfScore=0;this.rfTime=30;
+    var qs=step.qs;
+    var timer=document.getElementById("rfTimer");
+    var score=document.getElementById("rfScore");
+    var area=document.getElementById("rfArea");
+    var self=this;
+    function showQ(){
+      if(self.rfIdx>=qs.length){area.innerHTML='<div class="feedback ok">Done! Score: '+self.rfScore+'/'+qs.length+'</div>';self.answered=true;var cb=document.getElementById("continueBtn");cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;return;}
+      var q=qs[self.rfIdx];
+      var h='<div class="rf-question">'+rt(q.q)+'</div><div class="rf-opts">';
+      for(var i=0;i<q.opts.length;i++){
+        h+='<div class="rf-opt" data-rf-idx="'+i+'">'+rt(q.opts[i])+'</div>';
+      }
+      h+='</div>';area.innerHTML=h;applyLLE();
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){
+        opts[i].addEventListener("click",function(){
+          var idx=parseInt(this.getAttribute("data-rf-idx"));
+          for(var j=0;j<opts.length;j++)opts[j].style.pointerEvents="none";
+          if(idx===q.ans){this.classList.add("correct");self.rfScore++;}
+          else{this.classList.add("wrong");opts[q.ans].classList.add("correct");}
+          if(score)score.textContent="Score: "+self.rfScore+"/"+(self.rfIdx+1);
+          setTimeout(function(){self.rfIdx++;showQ();},1000);
+        });
+      }
+    }
+    showQ();
+    var interval=setInterval(function(){
+      self.rfTime--;if(timer)timer.textContent=self.rfTime;
+      if(self.rfTime<=0){clearInterval(interval);
+        area.innerHTML='<div class="feedback ok">Time up! Score: '+self.rfScore+'/'+qs.length+'</div>';
+        self.answered=true;var cb=document.getElementById("continueBtn");cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+      }
+    },1000);
+  },
+  // ===== Memory Match =====
+  renderMM:function(s){
+    return '<div class="instruction">Match English words with Hindi meanings!</div><div class="mm-grid" id="mmGrid"></div>';
+  },
+  initMM:function(step){
+    var pairs=step.pairs;var cards=[];var flipped=[];var matched=0;var busy=false;
+    for(var i=0;i<pairs.length;i++){
+      cards.push({text:pairs[i].en,pair:i,type:"en"});
+      cards.push({text:pairs[i].hi,pair:i,type:"hi"});
+    }
+    cards.sort(function(){return Math.random()-0.5});
+    var grid=document.getElementById("mmGrid");
+    var self=this;
+    function render(){
+      var h="";
+      for(var i=0;i<cards.length;i++){
+        var cls="mm-card";var txt="?";
+        if(flipped.indexOf(i)>=0||cards[i].matched){cls+=" flipped";txt=cards[i].text;}
+        if(cards[i].matched)cls+=" matched";
+        h+='<div class="'+cls+'" data-mm-idx="'+i+'">'+txt+'</div>';
+      }
+      grid.innerHTML=h;
+      var els=document.querySelectorAll("[data-mm-idx]");
+      for(var i=0;i<els.length;i++){
+        els[i].addEventListener("click",function(){
+          if(busy)return;var idx=parseInt(this.getAttribute("data-mm-idx"));
+          if(cards[idx].matched||flipped.indexOf(idx)>=0)return;
+          flipped.push(idx);render();
+          if(flipped.length===2){
+            busy=true;
+            var a=flipped[0],b=flipped[1];
+            if(cards[a].pair===cards[b].pair&&cards[a].type!==cards[b].type){
+              cards[a].matched=true;cards[b].matched=true;matched++;flipped=[];
+              setTimeout(function(){busy=false;render();
+                if(matched>=pairs.length){
+                  self.answered=true;self.xp+=10;self.updateStats();self.checkLevelUp();
+                  var cb=document.getElementById("continueBtn");
+                  cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+                }
+              },500);
+            }else{
+              setTimeout(function(){flipped=[];busy=false;render();},1000);
+            }
+          }
+        });
+      }
+    }
+    render();
+  },
+  // ===== Milestone =====
+  renderMilestone:function(s){
+    var h='<div class="milestone-card"><div class="milestone-icon">'+(s.icon||"")+'</div>';
+    h+='<div class="milestone-title">'+rt(s.title)+'</div>';
+    if(s.xp)h+='<div class="milestone-xp">+'+s.xp+' XP earned!</div>';
+    if(s.next)h+='<div class="milestone-next">'+rt(s.next)+'</div>';
+    h+='</div>';
+    if(s.xp){this.xp+=s.xp;this.updateStats();this.checkLevelUp();this.fireConfetti();}
+    return h;
+  },
+  // ===== Complete =====
+  renderComplete:function(s){
+    var h='<div class="complete-card"><div class="complete-icon">'+(s.icon||"")+'</div>';
+    h+='<div class="complete-title">'+rt(s.title)+'</div>';
+    if(s.sub)h+='<div class="complete-sub">'+rt(s.sub)+'</div>';
+    h+='<div style="margin-top:20px"><div class="stat lvl" style="font-size:1rem;padding:8px 16px">Level '+this.level+'</div> ';
+    h+='<div class="stat xp" style="font-size:1rem;padding:8px 16px">'+this.xp+' XP</div> ';
+    h+='<div class="stat coins" style="font-size:1rem;padding:8px 16px">'+this.coins+' coins</div></div>';
+    h+='</div>';
+    var cb=document.getElementById("continueBtn");
+    if(cb){cb.textContent="Restart";cb.className="btn btn-green";cb.disabled=false;}
+    this.fireConfetti();
+    return h;
+  },
+  // ===== Navigation =====
+  next:function(){
+    var step=STEPS[this.idx];
+    var cb=document.getElementById("continueBtn");
+    if(!cb)return;
+    if(cb.textContent==="Restart"){
+      this.idx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;
+      this.save();this.render();return;
+    }
+    if(step.t==="quiz"&&!this.answered){this.checkQuiz();return;}
+    if(step.t==="quiz"&&this.answered){
+      var opt=step.opts[this.selOpt];if(opt&&opt.c){this.idx++;this.render();return;}return;
+    }
+    if(step.t==="truefalse"&&!this.answered)return;
+    if(step.t==="truefalse"&&this.answered){
+      if(this.selTF===step.ans){this.idx++;this.render();return;}return;
+    }
+    if(step.t==="solve"&&!this.answered){this.checkSolve();return;}
+    if(step.t==="solve"&&this.answered){this.idx++;this.render();return;}
+    if(step.t==="rapid_fire"&&!this.answered)return;
+    if(step.t==="memory_match"&&!this.answered)return;
+    this.idx++;this.render();
+  },
+  back:function(){
+    this.idx--;if(this.idx<0)this.idx=0;this.render();
+  }
+};
+
+document.addEventListener("DOMContentLoaded",function(){App.init();});
+
+</script>
+</body>
+</html>

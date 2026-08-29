@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#1e40af">
+<title>Aasha - Squares & Square Roots | Class 8</title>
+<style>
+:root{--brand:#1e40af;--bl:#3b82f6;--surface:#f8fafc;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7;--amb:#fef3c7}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--surface);color:var(--text);line-height:1.5;font-size:16px;overscroll-behavior:none;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100}
+.hdr-logo{width:40px;height:40px;border-radius:8px;flex-shrink:0}
+.hdr-name{font-size:.95rem;font-weight:800;color:var(--brand);line-height:1.2}
+.hdr-hi{font-size:.72rem;color:var(--muted)}
+.hdr-tag{font-size:.65rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--purple));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:var(--amb)}
+.stat.xp{color:var(--purple);background:#ede9fe}
+.stat.lvl{color:var(--brand);background:#dbeafe}
+.screen{padding:14px;min-height:400px}
+.bottom-bar{position:sticky;bottom:0;background:#fff;border-top:2px solid var(--border);padding:8px 14px;display:flex;gap:8px;align-items:center;z-index:98}
+.btn-back{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);padding:6px 10px}
+.btn{padding:10px 20px;border:none;border-radius:10px;font-weight:700;font-size:.9rem;cursor:pointer;flex:1}
+.btn-primary{background:var(--bl);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.intro-card{text-align:center;padding:20px 10px}
+.intro-icon{font-size:3rem;margin-bottom:10px}
+.intro-title{font-size:1.3rem;font-weight:800;color:var(--brand);margin-bottom:6px}
+.intro-sub{font-size:.85rem;color:var(--muted)}
+.bt{padding:14px;background:#fff;border-radius:14px;border:2px solid var(--border);max-width:400px;margin:0 auto;font-size:.9rem;line-height:1.6}
+.bt-title{font-weight:800;font-size:1rem;color:var(--brand);margin-bottom:8px}
+.instruction{font-size:.78rem;color:var(--muted);margin-bottom:10px;text-align:center}
+.we-card{background:#fff;border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.we-question{font-weight:700;font-size:1rem;margin-bottom:10px;color:var(--text)}
+.we-step{padding:8px;margin:4px 0;background:var(--surface);border-radius:8px;font-size:.85rem;line-height:1.5}
+.we-step.final{background:#d1fae5;border:1px solid var(--green)}
+.we-num{background:var(--bl);color:#fff;padding:2px 8px;border-radius:6px;font-size:.75rem;margin-right:6px}
+.we-tag{display:inline-block;background:var(--bl);color:#fff;padding:2px 10px;border-radius:6px;font-size:.7rem;font-weight:600;margin-bottom:8px}
+.quiz-opt{display:flex;align-items:center;gap:10px;padding:10px;margin:6px auto;background:var(--surface);border:2px solid var(--border);border-radius:10px;cursor:pointer;max-width:400px}
+.quiz-opt.selected{border-color:var(--bl);background:#eff6ff}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}
+.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:20px;height:20px;border:2px solid var(--border);border-radius:50%;flex-shrink:0}
+.quiz-opt.selected .quiz-radio{background:var(--bl);border-color:var(--bl)}
+.quiz-opt.correct .quiz-radio{background:var(--green);border-color:var(--green)}
+.quiz-opt-text{flex:1;font-size:.85rem}
+.formula-box{background:#fffbeb;border:1px solid var(--gold);border-radius:10px;padding:12px;margin:8px auto;max-width:400px}
+.f-label{font-size:.75rem;color:#92400e;font-weight:600;margin-bottom:4px}
+.f-expr{font-size:1.1rem;font-weight:700;color:var(--text)}
+.discovery-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.d-title{font-weight:800;color:var(--brand);margin-bottom:8px}
+.d-text{font-size:.85rem;line-height:1.6;color:var(--text)}
+.prop-box{background:#faf5ff;border-left:4px solid var(--purple);padding:10px;margin:8px auto;max-width:400px;border-radius:0 10px 10px 0;font-size:.82rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.85rem;text-align:center}
+.feedback.ok{background:#d1fae5;border:1px solid #86efac;color:#065f46}
+.feedback.no{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}
+.misconception{background:#fffbeb;border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.78rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.78rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#065f46}
+.hint{font-size:.75rem;color:var(--muted);text-align:center;margin:6px 0}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s;font-weight:700}
+.wd:hover{background:#e0e7ff}
+.cn{color:var(--brand);font-weight:800;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}
+.ch{color:var(--purple);font-size:.85em;font-weight:700}
+.milestone-card{text-align:center;padding:20px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:14px;max-width:400px;margin:0 auto}
+.milestone-icon{font-size:3rem}
+.milestone-title{font-size:1.2rem;font-weight:800;color:#92400e;margin:8px 0}
+.milestone-xp{color:var(--green);font-weight:700}
+.milestone-next{font-size:.8rem;color:var(--muted);margin-top:8px}
+.complete-card{text-align:center;padding:30px 20px}
+.complete-icon{font-size:4rem}
+.complete-title{font-size:1.5rem;font-weight:800;color:var(--brand);margin:10px 0}
+.complete-sub{font-size:.9rem;color:var(--muted)}
+.ix-box{background:#fff;border:2px solid var(--bl);border-radius:14px;padding:14px;max-width:400px;margin:0 auto}
+.ix-title{font-weight:800;color:var(--brand);margin-bottom:8px;font-size:.95rem}
+.ix-canvas{width:100%;height:260px;background:var(--surface);border-radius:10px;border:1px solid var(--border);display:block;margin:8px 0}
+.ix-info{font-size:.82rem;color:var(--text);background:var(--surface);padding:8px;border-radius:8px;margin:6px 0}
+.ix-controls{display:flex;gap:8px;align-items:center;margin:8px 0}
+.ix-slider{-webkit-appearance:none;width:100%;height:8px;border-radius:4px;background:var(--border);outline:none}
+.ix-slider::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--bl);cursor:pointer}
+.ix-btn{padding:6px 14px;background:var(--bl);color:#fff;border:none;border-radius:8px;font-size:.8rem;cursor:pointer;font-weight:600}
+.ix-btn:active{background:var(--brand)}
+.solve-input{width:80%;padding:8px 10px;border:2px solid var(--border);border-radius:8px;font-size:.9rem;margin:4px 0}
+.solve-input:focus{border-color:var(--bl);outline:none}
+.tf-btn{display:flex;gap:10px;max-width:400px;margin:8px auto}
+.tf-opt{flex:1;text-align:center;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer;font-weight:700}
+.tf-opt.selected{border-color:var(--bl);background:#eff6ff}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-box{max-width:400px;margin:0 auto}
+.rf-question{font-weight:700;font-size:.95rem;margin-bottom:8px}
+.rf-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.rf-opt{padding:8px;text-align:center;background:var(--surface);border:2px solid var(--border);border-radius:8px;cursor:pointer;font-size:.8rem}
+.rf-opt.selected{border-color:var(--bl);background:#eff6ff}
+.rf-opt.correct{border-color:var(--green);background:#d1fae5}
+.rf-opt.wrong{border-color:var(--red);background:#fee2e2}
+.rf-timer{text-align:center;font-size:1.5rem;font-weight:800;color:var(--red);margin:6px 0}
+.rf-score{text-align:center;font-size:.85rem;color:var(--muted)}
+.mm-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;max-width:400px;margin:0 auto}
+.mm-card{aspect-ratio:1;background:var(--bl);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;cursor:pointer;font-weight:700;text-align:center;padding:4px}
+.mm-card.flipped{background:#fff;color:var(--text);border:2px solid var(--border)}
+.mm-card.matched{background:var(--green);color:#fff}
+.level-up-card{text-align:center;padding:20px}
+.level-up-icon{font-size:3rem}
+.level-up-title{font-size:1.2rem;font-weight:800;color:var(--brand);margin:8px 0}
+.level-up-sub{font-size:.9rem;color:var(--muted)}
+.diff-badge{display:inline-block;padding:1px 8px;border-radius:6px;font-size:.65rem;font-weight:700;margin-left:4px}
+.diff-easy{background:#d1fae5;color:#065f46}
+.diff-med{background:#fef3c7;color:#92400e}
+.diff-hard{background:#fee2e2;color:#991b1b}
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJ3IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2I4MmY2Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWU0MGFmIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJ2IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJjNTVlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTU4MDNkIi8+PC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjEyIiBmaWxsPSIjZmZmIi8+CjxwYXRoIGQ9Ik0gMTUgNTAgQyAxNSAzMCA0NSAzMCA0NSA1MCA0NSA3MCAxNSA3MCAxNSA1MCBaIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjdykiIHN0cm9rZS13aWR0aD0iNSIvPgo8cGF0aCBkPSJNIDU1IDUwIEMgNTUgMzAgODUgMzAgODUgNTAgODUgNzAgNTUgNzAgNTUgNTAgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3YpIiBzdHJva2Utd2lkdGg9IjUiLz4KPHJlY3QgeD0iMjIiIHk9IjQ0IiB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHJ4PSIxIiBmaWxsPSIjMWU0MGFmIiBvcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iODgiIGN5PSI3NSIgcj0iNiIgZmlsbD0iI2Y1OWUwYiIgc3Ryb2tlPSIjZDk3NzA2IiBzdHJva2Utd2lkdGg9IjEiLz4KPC9zdmc+">
+<div>
+<div class="hdr-name">ANNANTH AASHA FOUNDATION</div>
+<div class="hdr-hi">&#x0905;&#x0928;&#x0902;&#x0924; &#x0906;&#x0936;&#x093e; &#x092b;&#x093e;&#x0909;&#x0902;&#x0921;&#x0947;&#x0936;&#x0928;</div>
+<div class="hdr-tag">Safe Learning. Real Impact.</div>
+</div>
+</div>
+<div class="topbar">
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<span class="stat lvl" id="statLvl">Lv 1</span>
+<span class="stat coins">&#x1f9b0; <span id="statCoins">0</span></span>
+<span class="stat xp">&#x2b50; <span id="statXp">0</span></span>
+</div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar" id="bottomBar">
+<button class="btn-back" id="backBtn">&#x2190;</button>
+<button class="btn btn-primary" id="continueBtn">Start</button>
+</div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#1e40af"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:#3b82f6;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div class="level-up-card"><div class="level-up-icon" id="luIcon">&#x1f389;</div><div class="level-up-title" id="luTitle">Level Up!</div><div class="level-up-sub" id="luSub"></div><button class="btn btn-green" style="margin-top:12px" id="luClose">Awesome!</button></div></dialog>
+<canvas id="confetti" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999"></canvas>
+
+<script>
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",adjacent:"आसन्न",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+identify:"पहचानना",important:"महत्वपूर्ण",increase:"बढ़ना",
+intersect:"प्रतिच्छेद",into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",position:"स्थिति",
+positive:"धनात्मक",possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quadrant:"चतुर्थांश",quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+reciprocal:"व्युत्क्रम",rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",steps:"चरण",quiz:"प्रश्निका",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",xp:"अनुभव",
+progress:"प्रगति",beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता"
+}
+
+var CONN={
+"if":"अगर","because":"क्योंकि","therefore":"इसलिए","however":"हालांकि",
+"so that":"ताकि","although":"यद्यपि","since":"चूंकि","then":"तब","when":"जब",
+"while":"जबकि","that is why":"इसीलिए","in other words":"दूसरे शब्दों में",
+"whereas":"जबकि","furthermore":"इसके अलावा","in contrast":"इसके विपरीत",
+"instead of":"के बजाय","due to":"के कारण","for example":"उदाहरण के लिए",
+"is":"है","are":"हैं","was":"था","were":"थे","how":"कैसे","why":"क्यों",
+"what":"क्या","where":"कहाँ","has":"है","have":"हैं","not":"नहीं","also":"भी",
+"must":"ज़रूरी है","should":"चाहिए","can":"सकता है","could":"सकता था",
+"may":"सकता है","might":"शायद","will":"करेगा","would":"करेगा",
+"does":"करता है","do":"करते हैं","cannot":"नहीं सकता","each":"प्रत्येक",
+"every":"हर","some":"कुछ","any":"कोई","about":"के बारे में",
+"between":"के बीच","through":"के माध्यम से",
+"square":"वर्ग","square root":"वर्गमूल","perfect square":"पूर्ण वर्ग",
+"factor":"गुणनखंड","factors":"गुणनखंड","prime":"अभाज्य","product":"गुणनफल",
+"divisor":"भाजक","dividend":"भाज्य","quotient":"भागफल","remainder":"शेषफल",
+"sum":"योग","difference":"अंतर","odd":"विषम","even":"सम",
+"diagonal":"विकर्ण","side":"भुजा","area":"क्षेत्रफल","perimeter":"परिमाप",
+"pythagorean":"पाइथागोरस","triplet":"त्रिक","identity":"सर्वसमिका",
+"digit":"अंक","unit digit":"इकाई अंक","place value":"स्थान मान",
+"decimal":"दशमलव","fraction":"भिन्न","inverse":"व्युत्क्रम"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=3){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.d-text,.d-title,.intro-title,.intro-sub,.ix-title,.ix-info,.milestone-title,.milestone-next,.rf-question,.rf-score,.solve-input";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"\u2014";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"\u2014",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+
+var STEPS=[
+{t:"intro",icon:"\U0001F522",title:"Squares & Square Roots",sub:"Class 8 Mathematics - Chapter 5"},
+{t:"text",title:"What is a Square Number?",body:"A square number is the product of a number multiplied by itself. For example, 4 \u00d7 4 = 16, so 16 is a square number. In geometry, a square has all four sides equal. Therefore, a square area is found by multiplying side by side: side \u00d7 side = side\u00b2. The numbers 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 are perfect squares because they are the squares of 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10 respectively."},
+{t:"text",title:"Square Root - The Inverse",body:"The square root of a number is a value that, when multiplied by itself, gives the original number. For example, the square root of 9 is 3, because 3 \u00d7 3 = 9. Squaring a number means multiplying it by itself, while finding the square root means determining which number was squared to get the given number. These are inverse operations."},
+{t:"formula",title:"Key Formulas",formulas:[
+{label:"Area of a Square",expr:"Area = side \u00d7 side = side\u00b2",note:"The area of a square equals the side multiplied by itself."},
+{label:"Square Root",expr:"\u221aN = M  (where M\u00b2 = N)",note:"The square root of N is the number M whose square equals N."},
+{label:"Sum of Odd Numbers",expr:"1 + 3 + 5 + ... + (2n-1) = n\u00b2",note:"The sum of the first n odd natural numbers equals n squared."}
+]},
+{t:"ix_square",instruction:"Drag the slider to change the side length. Watch the square grow and see how Area = side\u00b2."},
+{t:"text",title:"Perfect Squares",body:"A perfect square is a number that can be expressed as the square of a natural number. For example: 1 = 1\u00b2, 4 = 2\u00b2, 9 = 3\u00b2, 16 = 4\u00b2, 25 = 5\u00b2. Is the number 8 a perfect square? We know that 2 \u00d7 2 = 4 and 3 \u00d7 3 = 9. Since there is no natural number between 2 and 3 whose square is 8, therefore 8 is not a perfect square."},
+{t:"quiz",q:"Which of the following is NOT a perfect square?",opts:[
+{t:"16",c:false,m:"16 IS a perfect square because 4 \u00d7 4 = 16. A perfect square equals some natural number multiplied by itself.",correctMethod:"16 = 4\u00b2, so it is a perfect square. Look for a number that cannot be expressed as n\u00d7n."},
+{t:"25",c:false,m:"25 IS a perfect square because 5 \u00d7 5 = 25. Always check if the number can be written as n\u00b2.",correctMethod:"25 = 5\u00b2, so it is a perfect square."},
+{t:"24",c:true},
+{t:"36",c:false,m:"36 IS a perfect square because 6 \u00d7 6 = 36. Check by finding the square root.",correctMethod:"36 = 6\u00b2, so it is a perfect square."}
+]},
+{t:"text",title:"Properties of Square Numbers",body:"Square numbers have unique properties. Square numbers can only end with 0, 1, 4, 5, 6, or 9 at the unit place. Square numbers never end with 2, 3, 7, or 8. The number of zeros at the end of a square number is always even. For example, 20\u00b2 = 400 and 30\u00b2 = 900. The square of an odd number is always odd (5\u00b2 = 25, 7\u00b2 = 49). The square of an even number is always even (6\u00b2 = 36, 8\u00b2 = 64)."},
+{t:"quiz",q:"Which digit can NEVER be the unit digit of a perfect square?",opts:[
+{t:"0",c:false,m:"0 CAN be the unit digit. Example: 10\u00b2 = 100, 20\u00b2 = 400. Numbers ending in 0 have squares ending in 00.",correctMethod:"10\u00b2 = 100 ends in 0, so 0 is possible."},
+{t:"1",c:false,m:"1 CAN be the unit digit. Example: 1\u00b2 = 1, 9\u00b2 = 81, 11\u00b2 = 121.",correctMethod:"9\u00b2 = 81 ends in 1, so 1 is possible."},
+{t:"6",c:false,m:"6 CAN be the unit digit. Example: 4\u00b2 = 16, 6\u00b2 = 36, 14\u00b2 = 196.",correctMethod:"4\u00b2 = 16 ends in 6, so 6 is possible."},
+{t:"3",c:true}
+]},
+{t:"quiz",q:"What is the unit digit of 99\u00b2?",opts:[
+{t:"1",c:true},
+{t:"9",c:false,m:"You squared 9 to get 81 and took the first digit. The unit digit of 99\u00b2 is the unit digit of 9\u00b2 = 81, which is 1, not 9.",correctMethod:"9\u00b2 = 81. The unit digit of 81 is 1. So the unit digit of any number ending in 9 will have square ending in 1."},
+{t:"81",c:false,m:"81 is not a single digit. The question asks for the UNIT DIGIT only. The unit digit of 81 is 1.",correctMethod:"99 ends in 9. 9\u00b2 = 81. Unit digit of 81 is 1. So 99\u00b2 ends in 1."},
+{t:"0",c:false,m:"0 is wrong. To find the unit digit of a square, square the unit digit of the original number. 99 ends in 9, so 9\u00b2 = 81, unit digit is 1.",correctMethod:"9\u00b2 = 81, unit digit is 1."}
+]},
+{t:"discovery",title:"Sum of Odd Numbers Pattern",discoveryTitle:"1 + 3 + 5 + ... = n\u00b2",body:"Look at this amazing pattern! The sum of the first n odd numbers always equals n\u00b2. 1 = 1\u00b2 = 1. 1 + 3 = 4 = 2\u00b2. 1 + 3 + 5 = 9 = 3\u00b2. 1 + 3 + 5 + 7 = 16 = 4\u00b2. 1 + 3 + 5 + 7 + 9 = 25 = 5\u00b2. This means if you add consecutive odd numbers starting from 1, the sum is always a perfect square!",prop:"The sum of first n odd natural numbers = n\u00b2. This is a beautiful connection between odd numbers and perfect squares."},
+{t:"ix_odd",instruction:"Tap the button to add the next odd number. Watch how the sum always equals a perfect square!"},
+{t:"quiz",q:"The sum 1 + 3 + 5 + 7 + 9 + 11 equals which perfect square?",opts:[
+{t:"25",c:false,m:"25 = 5\u00b2 but we are adding 6 odd numbers, so the answer should be 6\u00b2 = 36. You counted only 5 numbers instead of 6.",correctMethod:"Count the terms: 1, 3, 5, 7, 9, 11 = 6 terms. Sum = 6\u00b2 = 36."},
+{t:"36",c:true},
+{t:"49",c:false,m:"49 = 7\u00b2 but we are adding only 6 odd numbers. 7\u00b2 would need 7 terms: 1+3+5+7+9+11+13 = 49.",correctMethod:"6 terms means sum = 6\u00b2 = 36. For 49 you need 7 terms."},
+{t:"11",c:false,m:"11 is just the last number added. The SUM of all six numbers is 1+3+5+7+9+11 = 36, not 11.",correctMethod:"1+3+5+7+9+11 = 36 = 6\u00b2."}
+]},
+{t:"we",q:"Find 23\u00b2 using the identity (a+b)\u00b2 = a\u00b2 + 2ab + b\u00b2",steps:[
+{text:"Break 23 into 20 + 3, so a = 20 and b = 3."},
+{text:"Apply the identity: (20+3)\u00b2 = 20\u00b2 + 2(20)(3) + 3\u00b2"},
+{text:"Calculate each part: 20\u00b2 = 400, 2 \u00d7 20 \u00d7 3 = 120, 3\u00b2 = 9"},
+{text:"Add them: 400 + 120 + 9 = 529"}
+],answer:"23\u00b2 = 529"},
+{t:"we",q:"Find 39\u00b2 using the identity (a+b)\u00b2 = a\u00b2 + 2ab + b\u00b2",steps:[
+{text:"Break 39 into 30 + 9, so a = 30 and b = 9."},
+{text:"Apply: (30+9)\u00b2 = 30\u00b2 + 2(30)(9) + 9\u00b2"},
+{text:"Calculate: 30\u00b2 = 900, 2 \u00d7 30 \u00d7 9 = 540, 9\u00b2 = 81"},
+{text:"Add: 900 + 540 + 81 = 1521"}
+],answer:"39\u00b2 = 1521"},
+{t:"we",q:"Find 99\u00b2 using the identity (a-b)\u00b2 = a\u00b2 - 2ab + b\u00b2",steps:[
+{text:"Break 99 as 100 - 1, so a = 100 and b = 1."},
+{text:"Apply: (100-1)\u00b2 = 100\u00b2 - 2(100)(1) + 1\u00b2"},
+{text:"Calculate: 100\u00b2 = 10000, 2 \u00d7 100 \u00d7 1 = 200, 1\u00b2 = 1"},
+{text:"Compute: 10000 - 200 + 1 = 9801"}
+],answer:"99\u00b2 = 9801"},
+{t:"quiz",q:"Using the identity, what is 42\u00b2?",opts:[
+{t:"1764",c:true},
+{t:"1684",c:false,m:"You likely made an error in the 2ab term. Break 42 as 40+2: 40\u00b2=1600, 2\u00d740\u00d72=160, 2\u00b2=4. Total = 1600+160+4 = 1764.",correctMethod:"(40+2)\u00b2 = 1600 + 160 + 4 = 1764"},
+{t:"1844",c:false,m:"Check your addition. 40\u00b2=1600, 2\u00d740\u00d72=160, 2\u00b2=4. 1600+160+4 = 1764, not 1844.",correctMethod:"(40+2)\u00b2 = 1600 + 160 + 4 = 1764"},
+{t:"1644",c:false,m:"You forgot the 2ab term. The formula is a\u00b2+2ab+b\u00b2, not just a\u00b2+b\u00b2. 2\u00d740\u00d72 = 160 must be included.",correctMethod:"(40+2)\u00b2 = 1600 + 160 + 4 = 1764"}
+]},
+{t:"milestone",icon:"\U0001F3C6",title:"Properties Mastered!",xp:50,next:"Now let us explore Pythagorean triplets!"},
+{t:"text",title:"Pythagorean Triplets",body:"A Pythagorean triplet consists of three natural numbers a, b, and c such that a\u00b2 + b\u00b2 = c\u00b2. For example, 3, 4, and 5 form a Pythagorean triplet because 3\u00b2 + 4\u00b2 = 9 + 16 = 25 = 5\u00b2. Other common triplets include 6, 8, 10 and 5, 12, 13 and 8, 15, 17. For any natural number m greater than 1, the three numbers (2m, m\u00b2-1, m\u00b2+1) form a Pythagorean triplet."},
+{t:"ix_pythag",instruction:"Enter a value for m (greater than 1). See the Pythagorean triplet (2m, m\u00b2-1, m\u00b2+1) and the right triangle!"},
+{t:"quiz",q:"Write a Pythagorean triplet whose smallest member is 8.",opts:[
+{t:"8, 15, 17",c:true},
+{t:"8, 6, 10",c:false,m:"8 is not the smallest member here; 6 is smaller. For smallest = 8, set 2m = 8 so m = 4. Then m\u00b2-1 = 15 and m\u00b2+1 = 17.",correctMethod:"2m = 8, so m = 4. The triplet is (2\u00d74, 4\u00b2-1, 4\u00b2+1) = (8, 15, 17)."},
+{t:"8, 10, 12",c:false,m:"Check: 8\u00b2 + 10\u00b2 = 64 + 100 = 164. 12\u00b2 = 144. Since 164 \u2260 144, this is NOT a triplet. Use the formula: 2m=8, m=4, triplet = (8, 15, 17).",correctMethod:"2m=8, m=4. Triplet = (8, 4\u00b2-1, 4\u00b2+1) = (8, 15, 17). Verify: 64+225=289=17\u00b2."},
+{t:"8, 14, 16",c:false,m:"Check: 8\u00b2 + 14\u00b2 = 64 + 196 = 260. 16\u00b2 = 256. Since 260 \u2260 256, this is NOT a triplet.",correctMethod:"Use 2m=8, m=4. Triplet = (8, 15, 17). Verify: 8\u00b2+15\u00b2=64+225=289=17\u00b2."}
+]},
+{t:"we",q:"Write a Pythagorean triplet whose one member is 18.",steps:[
+{text:"Let 2m = 18, so m = 9."},
+{text:"Calculate the other two members using the formula."},
+{text:"m\u00b2 - 1 = 9\u00b2 - 1 = 81 - 1 = 80"},
+{text:"m\u00b2 + 1 = 9\u00b2 + 1 = 81 + 1 = 82"}
+],answer:"The triplet is 18, 80, 82. Verify: 18\u00b2 + 80\u00b2 = 324 + 6400 = 6724 = 82\u00b2"},
+{t:"quiz",q:"Find the Pythagorean triplet with smallest member 12.",opts:[
+{t:"12, 35, 37",c:true},
+{t:"12, 16, 20",c:false,m:"12 is correct but this is just (3,4,5) multiplied by 4. While valid, the formula 2m=12 gives m=6, so the triplet is (12, 35, 37).",correctMethod:"2m=12, m=6. Triplet = (12, 6\u00b2-1, 6\u00b2+1) = (12, 35, 37)."},
+{t:"12, 13, 14",c:false,m:"Check: 12\u00b2 + 13\u00b2 = 144+169=313. 14\u00b2=196. 313 \u2260 196. Not a triplet. Use 2m=12, m=6, triplet=(12,35,37).",correctMethod:"2m=12, m=6. Triplet=(12, 35, 37)."},
+{t:"12, 20, 24",c:false,m:"This is (3,4,5)\u00d74. Valid but not from the formula. The formula gives (12, 35, 37).",correctMethod:"2m=12, m=6. Triplet=(12, 35, 37)."}
+]},
+{t:"milestone",icon:"\U0001F3AF",title:"Squaring Champion!",xp:50,next:"Now let us learn to find square roots!"},
+{t:"text",title:"Square Root by Prime Factorization",body:"To find the square root by prime factorization, first express the number as a product of prime factors. Then pair up identical factors. The square root is the product of one factor from each pair. For example: 1764 = 2 \u00d7 2 \u00d7 3 \u00d7 3 \u00d7 7 \u00d7 7. Taking one from each pair: \u221a1764 = 2 \u00d7 3 \u00d7 7 = 42. If all prime factors occur in pairs, the number is a perfect square."},
+{t:"ix_factor",instruction:"Enter a number to see its prime factorization and check if it is a perfect square!"},
+{t:"we",q:"Find the square root of 1764 by prime factorization.",steps:[
+{text:"Prime factorize 1764: 1764 = 2 \u00d7 882 = 2 \u00d7 2 \u00d7 441"},
+{text:"441 = 3 \u00d7 147 = 3 \u00d7 3 \u00d7 49"},
+{text:"49 = 7 \u00d7 7"},
+{text:"So 1764 = 2 \u00d7 2 \u00d7 3 \u00d7 3 \u00d7 7 \u00d7 7. Taking one from each pair: \u221a1764 = 2 \u00d7 3 \u00d7 7 = 42"}
+],answer:"\u221a1764 = 42"},
+{t:"we",q:"Is 154 a perfect square?",steps:[
+{text:"Prime factorize 154: 154 = 2 \u00d7 77"},
+{text:"77 = 7 \u00d7 11"},
+{text:"So 154 = 2 \u00d7 7 \u00d7 11"},
+{text:"The prime factors 2, 7, and 11 each appear only once - they do not occur in pairs. Therefore 154 is NOT a perfect square."}
+],answer:"154 is not a perfect square"},
+{t:"quiz",q:"Is 2025 a perfect square? If yes, what is its square root?",opts:[
+{t:"Yes, \u221a2025 = 45",c:true},
+{t:"Yes, \u221a2025 = 35",c:false,m:"Check: 35\u00b2 = 1225, not 2025. Factorize 2025 = 5\u00d7405 = 5\u00d75\u00d781 = 5\u00d75\u00d79\u00d79 = 3\u00b2\u00d75\u00b2\u00d79\u00b2... wait, 81=9\u00d79=9\u00b2. So 2025 = 3\u2074\u00d75\u00b2. \u221a2025 = 3\u00b2\u00d75 = 45.",correctMethod:"2025 = 3\u00d73\u00d73\u00d73\u00d75\u00d75 = (3\u00d73)\u00b2\u00d75\u00b2... actually 2025=45\u00b2. 45\u00b2=2025. So \u221a2025=45."},
+{t:"No, it is not a perfect square",c:false,m:"2025 IS a perfect square. 2025 = 45 \u00d7 45 = 45\u00b2. Factorize: 2025 = 3\u2074 \u00d7 5\u00b2 = (3\u00b2 \u00d7 5)\u00b2 = 45\u00b2.",correctMethod:"2025 = 3\u00d73\u00d73\u00d73\u00d75\u00d75. Pairs: (3,3),(3,3),(5,5). \u221a2025 = 3\u00d73\u00d75 = 45."},
+{t:"Yes, \u221a2025 = 55",c:false,m:"Check: 55\u00b2 = 3025, not 2025. The correct answer is 45\u00b2 = 2025.",correctMethod:"45\u00b2 = 2025, so \u221a2025 = 45."}
+]},
+{t:"we",q:"Find the square root of 12.25.",steps:[
+{text:"Write 12.25 as a fraction: 12.25 = 1225/100"},
+{text:"Find \u221a1225 and \u221a100 separately."},
+{text:"1225 = 5 \u00d7 245 = 5 \u00d7 5 \u00d7 49 = 5 \u00d7 5 \u00d7 7 \u00d7 7. So \u221a1225 = 5 \u00d7 7 = 35"},
+{text:"\u221a100 = 10. Therefore \u221a12.25 = 35/10 = 3.5"}
+],answer:"\u221a12.25 = 3.5"},
+{t:"solve",q:"Find the smallest number by which 1500 must be multiplied so that the product is a perfect square.",steps:[
+{type:"input",prompt:"Prime factorize 1500. What is 1500 as a product of primes? (Use format like 2x2x3x5)",answer:"2x2x3x5x5x5",m:"1500 = 2 \u00d7 750 = 2 \u00d7 2 \u00d7 375 = 2 \u00d7 2 \u00d7 3 \u00d7 125 = 2 \u00d7 2 \u00d7 3 \u00d7 5 \u00d7 5 \u00d7 5. Write as 2x2x3x5x5x5.",correctMethod:"1500 = 2 \u00d7 2 \u00d7 3 \u00d7 5 \u00d7 5 \u00d7 5"},
+{type:"input",prompt:"Which prime factor does NOT occur in a pair? (Enter the number)",answer:"3",m:"Looking at 2x2x3x5x5x5: the factor 2 appears twice (pair), 5 appears three times (not a pair), and 3 appears once (not a pair). The factor 3 appears only once.",correctMethod:"3 appears only once. 5 appears 3 times (one pair + one extra). To make pairs, we need one more 3 and one more 5."},
+{type:"input",prompt:"So 1500 must be multiplied by what number to make all factors pair up? (Hint: 3 \u00d7 5 = ?)",answer:"15",m:"3 appears once (need one more) and 5 appears 3 times (need one more to make 2 pairs). So multiply by 3 \u00d7 5 = 15.",correctMethod:"Multiply by 15: 1500 \u00d7 15 = 22500 = 2\u00b2\u00d73\u00b2\u00d75\u2074 = (2\u00d73\u00d75\u00b2)\u00b2 = 150\u00b2. \u221a22500 = 150."}
+]},
+{t:"solve",q:"Find the smallest number by which 25200 must be divided so that the quotient is a perfect square.",steps:[
+{type:"input",prompt:"Prime factorize 25200. Which prime factor appears an odd number of times? (Enter the number)",answer:"7",m:"25200 = 2\u2074 \u00d7 3\u00b2 \u00d7 5\u00b2 \u00d7 7. The factor 7 appears only once (odd), so it breaks the pairing. Divide by 7 to remove it.",correctMethod:"25200 = 2 \u00d7 2 \u00d7 2 \u00d7 2 \u00d7 3 \u00d7 3 \u00d7 5 \u00d7 5 \u00d7 7. Factor 7 appears once. Divide by 7."},
+{type:"input",prompt:"After dividing by 7, what is the quotient? (Enter the number)",answer:"3600",m:"25200 \u00f7 7 = 3600. Check: 3600 = 60\u00b2, which is a perfect square.",correctMethod:"25200 \u00f7 7 = 3600 = 2\u2074 \u00d7 3\u00b2 \u00d7 5\u00b2 = (2\u00b2\u00d73\u00d75)\u00b2 = 60\u00b2. \u221a3600 = 60."}
+]},
+{t:"truefalse",q:"The square of an odd number is always odd.",ans:true,m:"Actually, the square of an odd number IS always odd. For example, 3\u00b2 = 9 (odd), 5\u00b2 = 25 (odd), 7\u00b2 = 49 (odd). Odd \u00d7 Odd = Odd.",correctMethod:"Odd \u00d7 Odd = Odd. So squaring an odd number (multiplying it by itself) always gives an odd result.",explain:"Odd \u00d7 Odd = Odd. Example: 7\u00b2 = 49 (odd)."},
+{t:"truefalse",q:"A number ending in 2 can be a perfect square.",ans:false,m:"Correct! A perfect square can NEVER end in 2. The unit digit of a perfect square can only be 0, 1, 4, 5, 6, or 9.",correctMethod:"Check all possible unit digits: 0\u00b2=0, 1\u00b2=1, 2\u00b2=4, 3\u00b2=9, 4\u00b2=16(ends 6), 5\u00b2=25(ends 5), 6\u00b2=36(ends 6), 7\u00b2=49(ends 9), 8\u00b2=64(ends 4), 9\u00b2=81(ends 1). No square ends in 2.",explain:"Square numbers end only with 0, 1, 4, 5, 6, or 9."},
+{t:"truefalse",q:"If a number has n zeros at the end, its square has 2n zeros at the end.",ans:true,m:"Actually this IS true! For example, 10 has 1 zero, 10\u00b2 = 100 has 2 zeros. 100 has 2 zeros, 100\u00b2 = 10000 has 4 zeros. Squaring doubles the trailing zeros.",correctMethod:"If N ends with n zeros, then N = M \u00d7 10\u207f. So N\u00b2 = M\u00b2 \u00d7 10\u00b2\u207f, which has 2n trailing zeros.",explain:"10\u00b2=100 (1\u21922), 100\u00b2=10000 (2\u21924), 1000\u00b2=1000000 (3\u21926)."},
+{t:"quiz",q:"What is the side of a square whose area is 144 sq cm?",opts:[
+{t:"12 cm",c:true},
+{t:"14 cm",c:false,m:"Check: 14\u00b2 = 196, not 144. The side is \u221a144 = 12. Remember: side = \u221aarea.",correctMethod:"Side = \u221a144 = 12 cm. Verify: 12 \u00d7 12 = 144."},
+{t:"16 cm",c:false,m:"Check: 16\u00b2 = 256, not 144. The side is \u221a144 = 12.",correctMethod:"Side = \u221a144 = 12 cm."},
+{t:"72 cm",c:false,m:"You divided 144 by 2 instead of taking the square root. Side = \u221aarea = \u221a144 = 12, not 144\u00f72.",correctMethod:"Side = \u221a144 = 12 cm. The square root gives the side, not division by 2."}
+]},
+{t:"quiz",q:"Find the square root of 625.",opts:[
+{t:"25",c:true},
+{t:"15",c:false,m:"15\u00b2 = 225, not 625. Factorize: 625 = 5\u00d75\u00d75\u00d75 = 5\u2074. \u221a625 = 5\u00b2 = 25.",correctMethod:"625 = 5 \u00d7 125 = 5 \u00d7 5 \u00d7 25 = 5 \u00d7 5 \u00d7 5 \u00d7 5. \u221a625 = 5 \u00d7 5 = 25."},
+{t:"35",c:false,m:"35\u00b2 = 1225, not 625. The correct answer is 25\u00b2 = 625.",correctMethod:"625 = 5\u2074. \u221a625 = 5\u00b2 = 25."},
+{t:"125",c:false,m:"125\u00b2 = 15625, way too large. \u221a625 = 25 because 25 \u00d7 25 = 625.",correctMethod:"\u221a625 = 25. Verify: 25\u00b2 = 625."}
+]},
+{t:"quiz",q:"Find the square root of 1296.",opts:[
+{t:"36",c:true},
+{t:"26",c:false,m:"26\u00b2 = 676, not 1296. Factorize: 1296 = 2\u2074 \u00d7 3\u2074. \u221a1296 = 2\u00b2 \u00d7 3\u00b2 = 4 \u00d7 9 = 36.",correctMethod:"1296 = 2\u00d72\u00d72\u00d72\u00d73\u00d73\u00d73\u00d73. Pairs: (2,2),(2,2),(3,3),(3,3). \u221a1296 = 2\u00d72\u00d73\u00d73 = 36."},
+{t:"46",c:false,m:"46\u00b2 = 2116, not 1296. \u221a1296 = 36 because 36\u00b2 = 1296.",correctMethod:"1296 = 36\u00b2. \u221a1296 = 36."},
+{t:"34",c:false,m:"34\u00b2 = 1156, not 1296. Check: 36\u00b2 = 1296.",correctMethod:"\u221a1296 = 36. Verify: 36 \u00d7 36 = 1296."}
+]},
+{t:"we",q:"Find the square root of 1444 by long division method.",steps:[
+{text:"Group digits in pairs from right: \u030414\u0304 \u030444\u0304"},
+{text:"Find largest number whose square \u2264 14: that is 3 (3\u00b2=9). Write 3 as divisor and quotient. Subtract: 14-9=5"},
+{text:"Bring down 44, making 544. Double the quotient (3\u00d72=6). Find digit x so that 6x \u00d7 x \u2264 544."},
+{text:"Try x=8: 68 \u00d7 8 = 544. Perfect! Write 8 in quotient. Remainder = 0."},
+{text:"Quotient = 38. So \u221a1444 = 38."}
+],answer:"\u221a1444 = 38"},
+{t:"we",q:"Find the square root of 1024 by long division method.",steps:[
+{text:"Group digits: \u030410\u0304 \u030424\u0304"},
+{text:"Largest square \u2264 10: 3\u00b2=9. Write 3. Subtract: 10-9=1"},
+{text:"Bring down 24, making 124. Double quotient: 3\u00d72=6. Find x so 6x \u00d7 x \u2264 124."},
+{text:"Try x=2: 62 \u00d7 2 = 124. Perfect! Remainder = 0."},
+{text:"Quotient = 32. So \u221a1024 = 32."}
+],answer:"\u221a1024 = 32"},
+{t:"quiz",q:"Find the square root of 64.",opts:[
+{t:"8",c:true},
+{t:"6",c:false,m:"6\u00b2 = 36, not 64. \u221a64 = 8 because 8 \u00d7 8 = 64.",correctMethod:"\u221a64 = 8. Verify: 8\u00b2 = 64."},
+{t:"4",c:false,m:"4\u00b2 = 16, not 64. Think: what number times itself gives 64? 8 \u00d7 8 = 64.",correctMethod:"\u221a64 = 8. Verify: 8\u00b2 = 64."},
+{t:"32",c:false,m:"32 \u00d7 32 = 1024, not 64. You divided by 2 instead of taking the square root. \u221a64 = 8.",correctMethod:"\u221a64 = 8. The square root is the number that multiplied by itself gives 64: 8 \u00d7 8 = 64."}
+]},
+{t:"quiz",q:"Find the square root of 169.",opts:[
+{t:"13",c:true},
+{t:"11",c:false,m:"11\u00b2 = 121, not 169. 13\u00b2 = 169. Check by multiplying: 13 \u00d7 13 = 169.",correctMethod:"\u221a169 = 13. Verify: 13\u00b2 = 169."},
+{t:"14",c:false,m:"14\u00b2 = 196, not 169. The correct answer is 13\u00b2 = 169.",correctMethod:"\u221a169 = 13. Verify: 13 \u00d7 13 = 169."},
+{t:"17",c:false,m:"17\u00b2 = 289, not 169. Think between 12 and 14: 13\u00b2 = 169.",correctMethod:"\u221a169 = 13."}
+]},
+{t:"quiz",q:"Is 1000 a perfect square?",opts:[
+{t:"No",c:true},
+{t:"Yes, \u221a1000 = 100",c:false,m:"100\u00b2 = 10000, not 1000. Also, 1000 has 3 trailing zeros (odd), and perfect squares must have an even number of trailing zeros.",correctMethod:"1000 = 10\u00b3 = 2\u00b3 \u00d7 5\u00b3. Since 2 and 5 each appear 3 times (odd), 1000 is NOT a perfect square. Perfect squares need all prime factors in pairs."},
+{t:"Yes, \u221a1000 = 10",c:false,m:"10\u00b2 = 100, not 1000. Factorize: 1000 = 2\u00b3\u00d75\u00b3. Factors appear 3 times each (odd), so not a perfect square.",correctMethod:"1000 = 2\u00b3 \u00d7 5\u00b3. Since exponents are odd, NOT a perfect square."},
+{t:"Yes, \u221a1000 = 50",c:false,m:"50\u00b2 = 2500, not 1000. 1000 has 3 trailing zeros (odd number), which means it cannot be a perfect square.",correctMethod:"1000 = 2\u00b3 \u00d7 5\u00b3. Not a perfect square because exponents are odd."}
+]},
+{t:"quiz",q:"Find the smallest square number divisible by 8, 15, and 20.",opts:[
+{t:"3600",c:true},
+{t:"120",c:false,m:"120 is the LCM of 8, 15, 20 but 120 is NOT a perfect square. 120 = 2\u00b3\u00d73\u00d75. To make a perfect square, each factor must appear an even number of times. Multiply by 2\u00d73\u00d75 = 30: 120\u00d730 = 3600.",correctMethod:"LCM(8,15,20) = 120 = 2\u00b3\u00d73\u00d75. For perfect square: multiply by 2\u00d73\u00d75 = 30. 120\u00d730 = 3600 = 60\u00b2."},
+{t:"240",c:false,m:"240 is divisible by 8 but not by 15 and 20 simultaneously. Also 240 is not a perfect square.",correctMethod:"Find LCM(8,15,20)=120, then make it a perfect square: 120 \u00d7 30 = 3600 = 60\u00b2."},
+{t:"60",c:false,m:"60 is not divisible by 8. The LCM of 8, 15, 20 is 120. Making it a perfect square: 120 \u00d7 30 = 3600.",correctMethod:"LCM=120. 120=2\u00b3\u00d73\u00d75. Multiply by 30: 3600=60\u00b2."}
+]},
+{t:"text",title:"Applications: Diagonal of a Square",body:"The diagonal of a square can be found using the Pythagoras theorem. A diagonal divides the square into two right triangles. If the side is s, then: diagonal\u00b2 = s\u00b2 + s\u00b2 = 2s\u00b2. So diagonal = \u221a(2s\u00b2) = s\u221a2. For example, if side = 8 cm, diagonal = 8\u221a2 \u2248 11.31 cm. If area = 128 sq cm, then side = \u221a128, and diagonal\u00b2 = 128 + 128 = 256, so diagonal = \u221a256 = 16 cm."},
+{t:"solve",q:"A square carpet has an area of 144 m\u00b2. Find the length of its diagonal.",steps:[
+{type:"input",prompt:"First find the side. If area = 144, what is side = \u221aarea? (Enter the number)",answer:"12",m:"Side = \u221a144 = 12 m. Remember: area = side\u00b2, so side = \u221aarea.",correctMethod:"Side = \u221a144 = 12 m."},
+{type:"input",prompt:"Now find diagonal. diagonal\u00b2 = side\u00b2 + side\u00b2 = 2 \u00d7 side\u00b2. What is diagonal\u00b2? (Enter the number)",answer:"288",m:"diagonal\u00b2 = 2 \u00d7 12\u00b2 = 2 \u00d7 144 = 288. The diagonal = \u221a288.",correctMethod:"diagonal\u00b2 = 2 \u00d7 144 = 288. diagonal = \u221a288 = 12\u221a2 \u2248 16.97 m."},
+{type:"input",prompt:"The diagonal = \u221a288. Simplify: 288 = 144 \u00d7 2 = 12\u00b2 \u00d7 2. What is \u221a288 in simplified form? (Enter like 12\u221a2)",answer:"12\u221a2",m:"288 = 144 \u00d7 2 = 12\u00b2 \u00d7 2. So \u221a288 = \u221a(12\u00b2\u00d72) = 12\u221a2.",correctMethod:"\u221a288 = \u221a(144\u00d72) = 12\u221a2 \u2248 16.97 m."}
+]},
+{t:"milestone",icon:"\U0001F50D",title:"Factorization Expert!",xp:50,next:"Almost there! Let us test everything!"},
+{t:"rapid_fire",qs:[
+{q:"\u221a81 = ?",opts:["7","9","8","6"],ans:1},
+{q:"\u221a100 = ?",opts:["5","15","10","20"],ans:2},
+{q:"\u221a49 = ?",opts:["9","7","6","8"],ans:1},
+{q:"11\u00b2 = ?",opts:["111","121","131","141"],ans:1},
+{q:"\u221a225 = ?",opts:["25","15","35","45"],ans:1},
+{q:"14\u00b2 = ?",opts:["186","196","176","216"],ans:1}
+]},
+{t:"memory_match",pairs:[
+{en:"Square",hi:"\u0935\u0930\u094d\u0917"},
+{en:"Square Root",hi:"\u0935\u0930\u094d\u0917\u092e\u0942\u0932"},
+{en:"Perfect Square",hi:"\u092a\u0942\u0930\u094d\u0923 \u0935\u0930\u094d\u0917"},
+{en:"Prime Factor",hi:"\u0905\u092d\u093e\u091c\u094d\u092f \u0917\u0941\u0923\u0928\u0916\u0902\u0921"},
+{en:"Pythagorean Triplet",hi:"\u092a\u093e\u0907\u0925\u093e\u0917\u094b\u0930\u0938 \u0924\u094d\u0930\u093f\u0915"},
+{en:"Diagonal",hi:"\u0935\u093f\u0915\u0930\u094d\u0923"}
+]},
+{t:"complete",icon:"\U0001F389",title:"Chapter Complete!",sub:"You have mastered Squares and Square Roots!"}
+];
+
+
+var App={
+  idx:0,xp:0,coins:0,level:1,streak:0,answered:false,selOpt:null,
+  init:function(){
+    try{
+      var s=JSON.parse(localStorage.getItem("aasha_sq8")||"{}");
+      if(s.xp)this.xp=s.xp;if(s.coins)this.coins=s.coins;
+      if(s.level)this.level=s.level;if(s.idx)this.idx=s.idx;
+    }catch(e){}
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){App.next()});
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){App.back()});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.updateStats();
+    this.render();
+  },
+  save:function(){
+    try{localStorage.setItem("aasha_sq8",JSON.stringify({xp:this.xp,coins:this.coins,level:this.level,idx:this.idx}))}catch(e){}
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.idx/(STEPS.length-1))*100)+"%";
+    this.save();
+  },
+  checkLevelUp:function(){
+    var nl=1;if(this.xp>=300)nl=4;else if(this.xp>=150)nl=3;else if(this.xp>=50)nl=2;
+    if(nl>this.level){
+      this.level=nl;
+      var names=["","Beginner","Scholar","Expert","Champion"];
+      var d=document.getElementById("levelUpDialog");
+      var lt=document.getElementById("luTitle");
+      var ls=document.getElementById("luSub");
+      if(lt)lt.textContent="Level Up! "+names[nl];
+      if(ls)ls.textContent="You are now Level "+nl+" ("+names[nl]+")";
+      if(d)d.showModal();
+      this.fireConfetti();
+    }
+  },
+  fireConfetti:function(){
+    var canvas=document.getElementById("confetti");
+    if(!canvas)return;
+    var ctx=canvas.getContext("2d");
+    canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){
+      parts.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,
+        vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,
+        c:["#1e40af","#3b82f6","#10b981","#f59e0b","#a855f7","#ec4899"][Math.floor(Math.random()*6)],
+        s:Math.random()*4+2});
+    }
+    var frames=0;
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(var i=0;i<parts.length;i++){
+        var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;
+        ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);
+      }
+      frames++;if(frames<120)requestAnimationFrame(animate);
+      else ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+    animate();
+  },
+  render:function(){
+    if(this.idx>=STEPS.length)this.idx=STEPS.length-1;
+    if(this.idx<0)this.idx=0;
+    var step=STEPS[this.idx];
+    var screen=document.getElementById("screen");
+    if(!screen)return;
+    var cb=document.getElementById("continueBtn");
+    if(!cb)return;
+    this.answered=false;this.selOpt=null;this.selTF=null;this.solveIdx=0;
+    cb.textContent="Continue";cb.className="btn btn-primary";cb.disabled=false;
+    var html="";
+    switch(step.t){
+      case"intro":html=this.renderIntro(step);break;
+      case"text":html=this.renderText(step);break;
+      case"formula":html=this.renderFormula(step);break;
+      case"discovery":html=this.renderDiscovery(step);break;
+      case"ix_square":html=this.renderSquareSim(step);break;
+      case"ix_odd":html=this.renderOddSim(step);break;
+      case"ix_pythag":html=this.renderPythagSim(step);break;
+      case"ix_factor":html=this.renderFactorSim(step);break;
+      case"quiz":html=this.renderQuiz(step);break;
+      case"truefalse":html=this.renderTF(step);break;
+      case"we":html=this.renderWE(step);break;
+      case"solve":html=this.renderSolve(step);break;
+      case"rapid_fire":html=this.renderRF(step);break;
+      case"memory_match":html=this.renderMM(step);break;
+      case"milestone":html=this.renderMilestone(step);break;
+      case"complete":html=this.renderComplete(step);break;
+    }
+    screen.innerHTML=html;
+    setTimeout(function(){applyLLE();App.postRender(step);},50);
+    this.updateStats();
+  },
+  postRender:function(step){
+    if(step.t==="ix_square")this.initSquareSim();
+    else if(step.t==="ix_odd")this.initOddSim();
+    else if(step.t==="ix_pythag")this.initPythagSim();
+    else if(step.t==="ix_factor")this.initFactorSim();
+    else if(step.t==="quiz")this.initQuiz();
+    else if(step.t==="truefalse")this.initTF();
+    else if(step.t==="solve")this.initSolve();
+    else if(step.t==="rapid_fire")this.initRF(step);
+    else if(step.t==="memory_match")this.initMM(step);
+  },
+  renderIntro:function(s){
+    return '<div class="intro-card"><div class="intro-icon">'+(s.icon||"")+'</div><div class="intro-title">'+rt(s.title)+'</div><div class="intro-sub">'+rt(s.sub)+'</div></div>';
+  },
+  renderText:function(s){
+    var h='<div class="bt"><div class="bt-title">'+rt(s.title)+'</div>'+rt(s.body)+'</div>';
+    return h;
+  },
+  renderFormula:function(s){
+    var h='<div class="instruction">'+rt(s.title)+'</div>';
+    for(var i=0;i<s.formulas.length;i++){
+      var f=s.formulas[i];
+      h+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-note" style="font-size:.75rem;color:#92400e;margin-top:4px">'+rt(f.note)+'</div>':'')+'</div>';
+    }
+    return h;
+  },
+  renderDiscovery:function(s){
+    var h='<div class="instruction">'+rt(s.title)+'</div>';
+    h+='<div class="discovery-box"><div class="d-title">'+rt(s.discoveryTitle)+'</div><div class="d-text">'+rt(s.body)+'</div></div>';
+    if(s.prop)h+='<div class="prop-box">'+rt(s.prop)+'</div>';
+    return h;
+  },
+  renderSquareSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Square Builder</div>';
+    h+='<canvas class="ix-canvas" id="sqCanvas"></canvas>';
+    h+='<div class="ix-controls"><input type="range" class="ix-slider" id="sqSlider" min="1" max="12" value="4"></div>';
+    h+='<div class="ix-info" id="sqInfo">Side = 4, Area = 4 \u00d7 4 = 16</div></div>';
+    return h;
+  },
+  initSquareSim:function(){
+    var slider=document.getElementById("sqSlider");
+    var canvas=document.getElementById("sqCanvas");
+    var info=document.getElementById("sqInfo");
+    if(!slider||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var side=parseInt(slider.value);
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var sz=side*18;var x=(canvas.width-sz)/2;var y=(canvas.height-sz)/2;
+      // Draw grid
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=0;i<=side;i++){
+        ctx.beginPath();ctx.moveTo(x+i*18,y);ctx.lineTo(x+i*18,y+sz);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(x,y+i*18);ctx.lineTo(x+sz,y+i*18);ctx.stroke();
+      }
+      // Draw filled squares
+      ctx.fillStyle="rgba(59,130,246,0.3)";
+      ctx.fillRect(x,y,sz,sz);
+      // Draw border
+      ctx.strokeStyle="#1e40af";ctx.lineWidth=3;
+      ctx.strokeRect(x,y,sz,sz);
+      // Labels
+      ctx.fillStyle="#1e40af";ctx.font="bold 14px system-ui";ctx.textAlign="center";
+      ctx.fillText("Side = "+side,canvas.width/2,y+sz+25);
+      ctx.fillText("Area = "+side+" \u00d7 "+side+" = "+(side*side),canvas.width/2,25);
+      info.innerHTML="Side = "+side+", Area = "+side+" \u00d7 "+side+" = "+(side*side);
+    }
+    slider.addEventListener("input",draw);
+    draw();
+  },
+  renderOddSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Odd Number Pattern</div>';
+    h+='<canvas class="ix-canvas" id="oddCanvas"></canvas>';
+    h+='<div class="ix-controls"><button class="ix-btn" id="oddAdd">Add Next Odd Number</button><button class="ix-btn" id="oddReset" style="background:#64748b">Reset</button></div>';
+    h+='<div class="ix-info" id="oddInfo">Tap Add to start! Current sum = 0</div></div>';
+    return h;
+  },
+  initOddSim:function(){
+    var canvas=document.getElementById("oddCanvas");
+    var addBtn=document.getElementById("oddAdd");
+    var resetBtn=document.getElementById("oddReset");
+    var info=document.getElementById("oddInfo");
+    if(!canvas||!addBtn)return;
+    var ctx=canvas.getContext("2d");
+    var odds=[];var currentOdd=1;var colors=["#3b82f6","#10b981","#f59e0b","#a855f7","#ec4899","#ef4444","#06b6d4","#8b5cf6"];
+    function draw(){
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var total=odds.reduce(function(a,b){return a+b},0);
+      var n=odds.length;
+      if(n===0){ctx.fillStyle="#64748b";ctx.font="14px system-ui";ctx.textAlign="center";ctx.fillText("Tap Add to see the pattern!",canvas.width/2,130);return;}
+      // Draw the L-shaped layers
+      var cellSize=Math.min(18,Math.floor((canvas.width-40)/Math.max(n,3)));
+      var gridSize=n*cellSize;var startX=(canvas.width-gridSize)/2;var startY=40;
+      // Draw the full square grid
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=0;i<=n;i++){
+        ctx.beginPath();ctx.moveTo(startX+i*cellSize,startY);ctx.lineTo(startX+i*cellSize,startY+gridSize);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(startX,startY+i*cellSize);ctx.lineTo(startX+gridSize,startY+i*cellSize);ctx.stroke();
+      }
+      // Fill previous cells
+      var filled=0;
+      for(var layer=0;layer<n&&filled<total;layer++){
+        ctx.fillStyle=colors[layer%colors.length]+"60";
+        // Top row
+        for(var i=0;i<layer+1&&filled<total;i++){
+          ctx.fillRect(startX+i*cellSize+1,startY+layer*cellSize+1,cellSize-2,cellSize-2);
+          filled++;
+        }
+        // Right column (excluding corner already filled)
+        for(var i=0;i<layer&&filled<total;i++){
+          ctx.fillRect(startX+layer*cellSize+1,startY+i*cellSize+1,cellSize-2,cellSize-2);
+          filled++;
+        }
+      }
+      // Draw numbers
+      ctx.fillStyle="#1e293b";ctx.font="bold 10px system-ui";ctx.textAlign="center";
+      filled=0;
+      for(var layer=0;layer<n&&filled<total;layer++){
+        for(var i=0;i<layer+1&&filled<total;i++){
+          ctx.fillText(odds[filled],startX+i*cellSize+cellSize/2,startY+layer*cellSize+cellSize/2+3);
+          filled++;
+        }
+        for(var i=0;i<layer&&filled<total;i++){
+          ctx.fillText(odds[filled],startX+layer*cellSize+cellSize/2,startY+i*cellSize+cellSize/2+3);
+          filled++;
+        }
+      }
+      // Summary
+      var sumStr=odds.join(" + ")+" = "+total;
+      ctx.fillStyle="#1e40af";ctx.font="bold 13px system-ui";
+      ctx.fillText(sumStr,canvas.width/2,startY+gridSize+25);
+      ctx.fillStyle="#10b981";ctx.font="bold 16px system-ui";
+      ctx.fillText("= "+n+"\u00b2 = "+n+"\u00d7"+n+" = "+total,canvas.width/2,startY+gridSize+48);
+      info.innerHTML=odds.join(" + ")+" = "+total+" = "+n+"\u00b2";
+    }
+    addBtn.addEventListener("click",function(){
+      if(odds.length<10){odds.push(currentOdd);currentOdd+=2;draw();}
+    });
+    if(resetBtn)resetBtn.addEventListener("click",function(){odds=[];currentOdd=1;draw();});
+    draw();
+  },
+  renderPythagSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Pythagorean Triplet Visualizer</div>';
+    h+='<canvas class="ix-canvas" id="pyCanvas"></canvas>';
+    h+='<div class="ix-controls"><span style="font-size:.8rem">m =</span><input type="number" class="solve-input" id="pyInput" value="2" min="2" max="10" style="width:60px"></div>';
+    h+='<div class="ix-info" id="pyInfo">Enter m to see the triplet</div></div>';
+    return h;
+  },
+  initPythagSim:function(){
+    var input=document.getElementById("pyInput");
+    var canvas=document.getElementById("pyCanvas");
+    var info=document.getElementById("pyInfo");
+    if(!input||!canvas||!info)return;
+    var ctx=canvas.getContext("2d");
+    function draw(){
+      var m=parseInt(input.value)||2;if(m<2)m=2;if(m>10)m=10;
+      var a=2*m;var b=m*m-1;var c=m*m+1;
+      canvas.width=canvas.offsetWidth;canvas.height=260;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      var maxSide=Math.max(a,b,c);
+      var scale=Math.min(160/maxSide,18);
+      var w=a*scale;var hgt=b*scale;
+      var ox=(canvas.width-w)/2;var oy=200-hgt;
+      // Draw triangle
+      ctx.strokeStyle="#1e40af";ctx.lineWidth=3;
+      ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(ox+w,oy);ctx.lineTo(ox,oy+hgt);ctx.closePath();ctx.stroke();
+      // Fill
+      ctx.fillStyle="rgba(59,130,246,0.1)";ctx.fill();
+      // Draw squares on each side
+      ctx.fillStyle="rgba(59,130,246,0.2)";ctx.strokeStyle="#3b82f6";ctx.lineWidth=2;
+      // Square on side a (bottom)
+      ctx.fillRect(ox,oy,w,w);ctx.strokeRect(ox,oy,w,w);
+      // Square on side b (left)
+      ctx.fillStyle="rgba(16,185,129,0.2)";
+      ctx.fillRect(ox-w,oy,w,w);ctx.strokeRect(ox-w,oy,w,w);
+      // Wait, let's draw squares outside the triangle properly
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Redraw triangle with squares
+      var pad=20;var ts=Math.min(15,Math.floor(180/maxSide));
+      var sa=2*m*ts;var sb=(m*m-1)*ts;var sc=(m*m+1)*ts;
+      ox=(canvas.width-sa)/2;oy=200-sb;
+      // Triangle
+      ctx.fillStyle="rgba(168,85,247,0.15)";ctx.strokeStyle="#a855f7";ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(ox,oy);ctx.lineTo(ox+sa,oy);ctx.lineTo(ox,oy+sb);ctx.closePath();ctx.fill();ctx.stroke();
+      // Square on side a (bottom, going down)
+      ctx.fillStyle="rgba(59,130,246,0.2)";ctx.strokeStyle="#3b82f6";
+      ctx.fillRect(ox,oy,sa,sa);ctx.strokeRect(ox,oy,sa,sa);
+      // Square on side b (left, going left)
+      ctx.fillStyle="rgba(16,185,129,0.2)";ctx.strokeStyle="#10b981";
+      ctx.fillRect(ox-sb,oy,sb,sb);ctx.strokeRect(ox-sb,oy,sb,sb);
+      // Right angle mark
+      ctx.strokeStyle="#ef4444";ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(ox,oy+10);ctx.lineTo(ox+10,oy+10);ctx.lineTo(ox+10,oy);ctx.stroke();
+      // Labels
+      ctx.fillStyle="#1e40af";ctx.font="bold 12px system-ui";ctx.textAlign="center";
+      ctx.fillText("a="+a,ox+sa/2,oy+sa+18);
+      ctx.fillStyle="#10b981";
+      ctx.save();ctx.translate(ox-sb-15,oy+sb/2);ctx.rotate(-Math.PI/2);
+      ctx.fillText("b="+b,0,0);ctx.restore();
+      // Formula
+      ctx.fillStyle="#1e293b";ctx.font="bold 11px system-ui";ctx.textAlign="center";
+      ctx.fillText("a\u00b2+b\u00b2=c\u00b2: "+(a*a)+"+"+(b*b)+"="+(c*c),canvas.width/2,250);
+      info.innerHTML="m="+m+": Triplet = (2m, m\u00b2-1, m\u00b2+1) = ("+a+", "+b+", "+c+"). Check: "+a+"\u00b2+"+b+"\u00b2="+(a*a)+"+"+(b*b)+"="+(a*a+b*b)+"="+(c*c)+"="+(c)+"\u00b2";
+    }
+    input.addEventListener("input",draw);
+    draw();
+  },
+  renderFactorSim:function(s){
+    var h='<div class="instruction">'+rt(s.instruction)+'</div>';
+    h+='<div class="ix-box"><div class="ix-title">Prime Factorization Checker</div>';
+    h+='<div class="ix-controls"><input type="number" class="solve-input" id="faInput" value="1764" style="width:100px"><button class="ix-btn" id="faBtn">Factorize</button></div>';
+    h+='<div class="ix-info" id="faInfo">Enter a number and tap Factorize</div></div>';
+    return h;
+  },
+  initFactorSim:function(){
+    var input=document.getElementById("faInput");
+    var btn=document.getElementById("faBtn");
+    var info=document.getElementById("faInfo");
+    if(!input||!btn||!info)return;
+    function factorize(){
+      var n=parseInt(input.value);
+      if(!n||n<2){info.innerHTML="Enter a number greater than 1";return;}
+      var factors=[];var num=n;
+      for(var d=2;d*d<=num;d++){
+        while(num%d===0){factors.push(d);num/=d;}
+      }
+      if(num>1)factors.push(num);
+      // Check pairs
+      var counts={};
+      for(var i=0;i<factors.length;i++){counts[factors[i]]=(counts[factors[i]]||0)+1;}
+      var isPerfect=true;
+      var pairs=[];var singles=[];
+      for(var key in counts){
+        var c=counts[key];
+        while(c>=2){pairs.push(key+"\u00d7"+key);c-=2;}
+        while(c>0){singles.push(key);c--;}
+      }
+      for(var key in counts){if(counts[key]%2!==0)isPerfect=false;}
+      var html="<div style='font-size:.85rem'>";
+      html+="<strong>"+n+"</strong> = "+factors.join(" \u00d7 ")+"<br>";
+      if(pairs.length>0)html+="Pairs: "+pairs.join(", ")+"<br>";
+      if(singles.length>0)html+="Unpaired: "+singles.join(", ")+"<br>";
+      if(isPerfect){
+        var root=factors.filter(function(f,i){return factors.indexOf(f)===i||factors.indexOf(f,i)!==-1;});
+        // Calculate actual sqrt
+        var prod=1;var seen={};
+        for(var i=0;i<factors.length;i++){
+          if(!seen[factors[i]]){seen[factors[i]]=true;prod*=factors[i];}
+        }
+        html+="<span style='color:#10b981;font-weight:bold'>\u2713 Perfect square! \u221a"+n+" = "+prod+"</span>";
+      }else{
+        html+="<span style='color:#ef4444;font-weight:bold'>\u2717 NOT a perfect square (some factors are unpaired)</span>";
+      }
+      html+="</div>";
+      info.innerHTML=html;
+      applyLLE();
+    }
+    btn.addEventListener("click",factorize);
+    factorize();
+  },
+  renderQuiz:function(s){
+    var h='<div class="instruction">Quiz</div>';
+    h+='<div class="we-card"><div class="we-question">'+rt(s.q)+'</div>';
+    for(var i=0;i<s.opts.length;i++){
+      h+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(s.opts[i].t)+'</div></div>';
+    }
+    h+='<div id="qf"></div></div>';
+    return h;
+  },
+  initQuiz:function(){
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){
+      opts[i].addEventListener("click",function(){
+        if(App.answered)return;
+        for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");
+        this.classList.add("selected");
+        App.selOpt=parseInt(this.getAttribute("data-quiz-idx"));
+        var cb=document.getElementById("continueBtn");
+        if(cb){cb.textContent="Check";cb.disabled=false;}
+      });
+    }
+  },
+  checkQuiz:function(){
+    var step=STEPS[this.idx];
+    if(this.selOpt===null)return;
+    var opt=step.opts[this.selOpt];
+    this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){
+      optEls[i].style.pointerEvents="none";
+      if(step.opts[i].c)optEls[i].classList.add("correct");
+      else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");
+    }
+    var fb=document.getElementById("qf");
+    if(opt.c){
+      fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>';
+      this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+      var cb=document.getElementById("continueBtn");
+      cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';
+      if(opt.m)mh+='<div class="misconception"><strong>\u26a0 Why this is wrong:</strong> '+opt.m+'</div>';
+      if(opt.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct Method:</strong> '+opt.correctMethod+'</div>';
+      fb.innerHTML=mh;applyLLE();
+      var cb=document.getElementById("continueBtn");
+      cb.textContent="Try again";cb.className="btn btn-primary";
+      var self=this;
+      if(this.retryTimer)clearTimeout(this.retryTimer);
+      this.retryTimer=setTimeout(function(){
+        self.answered=false;self.selOpt=null;
+        for(var i=0;i<optEls.length;i++){
+          optEls[i].classList.remove("selected","correct","wrong");
+          optEls[i].style.pointerEvents="";
+        }
+        fb.innerHTML="";cb.textContent="Check";cb.disabled=true;
+      },8000);
+    }
+  },
+  renderTF:function(s){
+    var h='<div class="instruction">True or False?</div>';
+    h+='<div class="we-card"><div class="we-question">'+rt(s.q)+'</div>';
+    h+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">\u2713 True</div><div class="tf-opt" id="tfFalse">\u2717 False</div></div>';
+    h+='<div id="tfFb"></div></div>';
+    return h;
+  },
+  initTF:function(){
+    var te=document.getElementById("tfTrue");
+    var fe=document.getElementById("tfFalse");
+    if(!te||!fe)return;
+    te.addEventListener("click",function(){App.checkTF(true);});
+    fe.addEventListener("click",function(){App.checkTF(false);});
+  },
+  checkTF:function(choice){
+    var step=STEPS[this.idx];
+    this.answered=true;this.selTF=choice;
+    var te=document.getElementById("tfTrue");
+    var fe=document.getElementById("tfFalse");
+    var fb=document.getElementById("tfFb");
+    var cb=document.getElementById("continueBtn");
+    var correct=choice===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(choice){if(te)te.classList.add("correct");}else{if(fe)fe.classList.add("correct");}
+      if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+      if(cb){cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;}
+    }else{
+      if(choice){if(te)te.classList.add("wrong");}else{if(fe)fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">\u2717 Not quite.</div>';
+      if(step.m)mh+='<div class="misconception"><strong>\u26a0 Why:</strong> '+step.m+'</div>';
+      if(step.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Correct:</strong> '+step.correctMethod+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();
+      if(cb){cb.textContent="Try again";}
+      var self=this;
+      if(this.retryTimer)clearTimeout(this.retryTimer);
+      this.retryTimer=setTimeout(function(){
+        self.answered=false;self.selTF=null;
+        if(te){te.classList.remove("selected","correct","wrong");te.style.pointerEvents="";}
+        if(fe){fe.classList.remove("selected","correct","wrong");fe.style.pointerEvents="";}
+        if(fb)fb.innerHTML="";if(cb){cb.textContent="Continue";cb.disabled=false;}
+      },8000);
+    }
+  },
+  renderWE:function(s){
+    var h='<div class="instruction">Worked Example</div>';
+    h+='<div class="we-card"><div class="we-tag">Step-by-step solution</div>';
+    h+='<div class="we-question">'+rt(s.q)+'</div>';
+    for(var i=0;i<s.steps.length;i++){
+      h+='<div class="we-step"><span class="we-num">'+(i+1)+'</span>'+rt(s.steps[i].text)+'</div>';
+    }
+    if(s.answer)h+='<div class="we-step final"><strong>Answer:</strong> '+rt(s.answer)+'</div>';
+    h+='</div>';
+    return h;
+  },
+  renderSolve:function(s){
+    var h='<div class="instruction">Solve it step by step!</div>';
+    h+='<div class="we-card"><div class="we-tag">Guided Problem</div>';
+    h+='<div class="we-question">'+rt(s.q)+'</div>';
+    if(s.steps&&s.steps[this.solveIdx]){
+      var ss=s.steps[this.solveIdx];
+      if(ss.prompt)h+='<div class="we-step">'+rt(ss.prompt)+'</div>';
+      if(ss.type==="input")h+='<input type="text" class="solve-input" id="solveInput" placeholder="Your answer...">';
+    }
+    h+='<div id="solveFb"></div></div>';
+    return h;
+  },
+  initSolve:function(){
+    // Answer checking is done in next()
+  },
+  checkSolve:function(){
+    var step=STEPS[this.idx];
+    var ss=step.steps[this.solveIdx];
+    if(!ss)return;
+    var fb=document.getElementById("solveFb");
+    var cb=document.getElementById("continueBtn");
+    if(ss.type==="input"){
+      var inp=document.getElementById("solveInput");
+      if(!inp)return;
+      var val=inp.value.trim();
+      var correct=(val===ss.answer||val===ss.answer.replace(/\s/g,""));
+      if(inp)inp.disabled=true;
+      if(correct){
+        if(fb)fb.innerHTML='<div class="feedback ok">\u2713 Correct! +5 XP</div>';
+        this.xp+=5;this.streak++;this.updateStats();this.checkLevelUp();
+        this.solveIdx++;
+        if(this.solveIdx>=step.steps.length){
+          this.answered=true;
+          if(cb){cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;}
+        }else{
+          if(cb){cb.textContent="Next Step \u2192";cb.disabled=false;}
+          var self=this;
+          setTimeout(function(){self.render();},1500);
+        }
+      }else{
+        this.streak=0;this.updateStats();
+        var mh='<div class="feedback no">\u2717 Not quite.</div>';
+        if(ss.m)mh+='<div class="misconception"><strong>\u26a0 Hint:</strong> '+ss.m+'</div>';
+        if(ss.correctMethod)mh+='<div class="correct-method"><strong>\u2713 Method:</strong> '+ss.correctMethod+'</div>';
+        if(fb)fb.innerHTML=mh;applyLLE();
+        if(cb){cb.textContent="Try again";}
+        var self=this;
+        if(this.retryTimer)clearTimeout(this.retryTimer);
+        this.retryTimer=setTimeout(function(){
+          self.render();
+        },8000);
+      }
+    }
+  },
+  renderRF:function(s){
+    return '<div class="rf-box"><div class="rf-timer" id="rfTimer">30</div><div class="rf-score" id="rfScore">Score: 0/0</div><div id="rfArea"></div></div>';
+  },
+  initRF:function(step){
+    this.rfIdx=0;this.rfScore=0;this.rfTime=30;
+    var qs=step.qs;
+    var timer=document.getElementById("rfTimer");
+    var score=document.getElementById("rfScore");
+    var area=document.getElementById("rfArea");
+    var self=this;
+    function showQ(){
+      if(self.rfIdx>=qs.length){area.innerHTML='<div class="feedback ok">Done! Score: '+self.rfScore+'/'+qs.length+'</div>';self.answered=true;var cb=document.getElementById("continueBtn");cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;return;}
+      var q=qs[self.rfIdx];
+      var h='<div class="rf-question">'+rt(q.q)+'</div><div class="rf-opts">';
+      for(var i=0;i<q.opts.length;i++){
+        h+='<div class="rf-opt" data-rf-idx="'+i+'">'+rt(q.opts[i])+'</div>';
+      }
+      h+='</div>';area.innerHTML=h;applyLLE();
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){
+        opts[i].addEventListener("click",function(){
+          var idx=parseInt(this.getAttribute("data-rf-idx"));
+          for(var j=0;j<opts.length;j++)opts[j].style.pointerEvents="none";
+          if(idx===q.ans){this.classList.add("correct");self.rfScore++;}
+          else{this.classList.add("wrong");opts[q.ans].classList.add("correct");}
+          if(score)score.textContent="Score: "+self.rfScore+"/"+(self.rfIdx+1);
+          setTimeout(function(){self.rfIdx++;showQ();},1000);
+        });
+      }
+    }
+    showQ();
+    var interval=setInterval(function(){
+      self.rfTime--;if(timer)timer.textContent=self.rfTime;
+      if(self.rfTime<=0){clearInterval(interval);
+        area.innerHTML='<div class="feedback ok">Time up! Score: '+self.rfScore+'/'+qs.length+'</div>';
+        self.answered=true;var cb=document.getElementById("continueBtn");cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+      }
+    },1000);
+  },
+  renderMM:function(s){
+    var h='<div class="instruction">Match English words with Hindi meanings!</div>';
+    h+='<div class="mm-grid" id="mmGrid"></div>';
+    return h;
+  },
+  initMM:function(step){
+    var pairs=step.pairs;var cards=[];var flipped=[];var matched=0;var busy=false;
+    for(var i=0;i<pairs.length;i++){
+      cards.push({text:pairs[i].en,pair:i,type:"en"});
+      cards.push({text:pairs[i].hi,pair:i,type:"hi"});
+    }
+    cards.sort(function(){return Math.random()-0.5});
+    var grid=document.getElementById("mmGrid");
+    var self=this;
+    function render(){
+      var h="";
+      for(var i=0;i<cards.length;i++){
+        var cls="mm-card";var txt="?";
+        if(flipped.indexOf(i)>=0||cards[i].matched){cls+=" flipped";txt=cards[i].text;}
+        if(cards[i].matched)cls+=" matched";
+        h+='<div class="'+cls+'" data-mm-idx="'+i+'">'+txt+'</div>';
+      }
+      grid.innerHTML=h;
+      var els=document.querySelectorAll("[data-mm-idx]");
+      for(var i=0;i<els.length;i++){
+        els[i].addEventListener("click",function(){
+          if(busy)return;var idx=parseInt(this.getAttribute("data-mm-idx"));
+          if(cards[idx].matched||flipped.indexOf(idx)>=0)return;
+          flipped.push(idx);render();
+          if(flipped.length===2){
+            busy=true;
+            var a=fllipped[0],b=flipped[1];
+            if(cards[a].pair===cards[b].pair&&cards[a].type!==cards[b].type){
+              cards[a].matched=true;cards[b].matched=true;matched++;flipped=[];
+              setTimeout(function(){busy=false;render();
+                if(matched>=pairs.length){
+                  self.answered=true;self.xp+=10;self.updateStats();self.checkLevelUp();
+                  var cb=document.getElementById("continueBtn");
+                  cb.textContent="Continue \u2192";cb.className="btn btn-green";cb.disabled=false;
+                }
+              },500);
+            }else{
+              setTimeout(function(){flipped=[];busy=false;render();},1000);
+            }
+          }
+        });
+      }
+    }
+    render();
+  },
+  renderMilestone:function(s){
+    var h='<div class="milestone-card"><div class="milestone-icon">'+(s.icon||"")+'</div>';
+    h+='<div class="milestone-title">'+rt(s.title)+'</div>';
+    if(s.xp)h+='<div class="milestone-xp">+'+s.xp+' XP earned!</div>';
+    if(s.next)h+='<div class="milestone-next">'+rt(s.next)+'</div>';
+    h+='</div>';
+    if(s.xp){this.xp+=s.xp;this.updateStats();this.checkLevelUp();this.fireConfetti();}
+    return h;
+  },
+  renderComplete:function(s){
+    var h='<div class="complete-card"><div class="complete-icon">'+(s.icon||"")+'</div>';
+    h+='<div class="complete-title">'+rt(s.title)+'</div>';
+    if(s.sub)h+='<div class="complete-sub">'+rt(s.sub)+'</div>';
+    h+='<div style="margin-top:20px"><div class="stat lvl" style="font-size:1rem;padding:8px 16px">Level '+this.level+'</div> ';
+    h+='<div class="stat xp" style="font-size:1rem;padding:8px 16px">'+this.xp+' XP</div> ';
+    h+='<div class="stat coins" style="font-size:1rem;padding:8px 16px">'+this.coins+' coins</div></div>';
+    h+='</div>';
+    var cb=document.getElementById("continueBtn");
+    if(cb){cb.textContent="Restart";cb.className="btn btn-green";cb.disabled=false;}
+    this.fireConfetti();
+    return h;
+  },
+  next:function(){
+    var step=STEPS[this.idx];
+    var cb=document.getElementById("continueBtn");
+    if(!cb)return;
+    if(cb.textContent==="Restart"){
+      this.idx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;
+      this.save();this.render();return;
+    }
+    if(step.t==="quiz"&&!this.answered){this.checkQuiz();return;}
+    if(step.t==="quiz"&&this.answered){
+      var opt=step.opts[this.selOpt];if(opt&&opt.c){this.idx++;this.render();return;}return;
+    }
+    if(step.t==="truefalse"&&!this.answered)return;
+    if(step.t==="truefalse"&&this.answered){
+      if(this.selTF===step.ans){this.idx++;this.render();return;}return;
+    }
+    if(step.t==="solve"&&!this.answered){this.checkSolve();return;}
+    if(step.t==="solve"&&this.answered){this.idx++;this.render();return;}
+    if(step.t==="rapid_fire"&&!this.answered)return;
+    if(step.t==="memory_match"&&!this.answered)return;
+    this.idx++;this.render();
+  },
+  back:function(){
+    this.idx--;if(this.idx<0)this.idx=0;this.render();
+  }
+};
+
+document.addEventListener("DOMContentLoaded",function(){App.init();});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#7c3aed">
+<title>Aasha — Rational Numbers | Class 8</title>
+<style>
+:root{--brand:#7c3aed;--bl:#8b5cf6;--surface:#f5f3ff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--green:#10b981;--red:#ef4444;--gold:#f59e0b;--pi:#ec4899;--purple:#a855f7;--amb:#fef3c7;--cyan:#06b6d4;--teal:#14b8a6;--ink:#1e1b4b}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,#f5f3ff 0%,#ede9fe 300px);color:var(--text);line-height:1.6;font-size:16px;overscroll-behavior:none;max-width:600px;margin:0 auto;min-height:100vh}
+.hdr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(124,58,237,.1)}
+.hdr-logo{width:40px;height:40px;border-radius:10px;flex-shrink:0}
+.hdr-name{font-size:.92rem;font-weight:800;color:var(--brand);line-height:1.2}
+.hdr-hi{font-size:.7rem;color:var(--muted)}
+.hdr-tag{font-size:.62rem;color:var(--gold);font-weight:600}
+.topbar{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:62px;z-index:99}
+.progress-track{flex:1;height:10px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--pi),var(--gold));border-radius:10px;transition:width .4s;width:0}
+.stat{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;padding:3px 7px;border-radius:16px;white-space:nowrap}
+.stat.coins{color:var(--gold);background:var(--amb)}
+.stat.xp{color:var(--purple);background:#ede9fe}
+.stat.lvl{color:var(--brand);background:#ede9fe}
+.profile-bar{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.profile-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--pi));color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.profile-name{font-size:.76rem;font-weight:600}
+.profile-swap{margin-left:auto;padding:3px 8px;background:#ede9fe;border:none;border-radius:6px;font-size:.66rem;cursor:pointer;color:var(--brand);font-weight:600}
+.screen{padding:14px;min-height:400px;animation:slideIn .3s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.intro-icon{font-size:3.5rem;margin-bottom:8px;text-align:center;animation:pop .5s ease}
+.intro-title{font-size:1.3rem;font-weight:800;text-align:center;margin-bottom:4px}
+.intro-sub{color:var(--muted);font-size:.8rem;font-weight:600;text-align:center;margin-bottom:12px}
+.instruction{text-align:center;font-size:.85rem;font-weight:700;color:var(--brand);margin:8px auto;padding:8px 14px;background:linear-gradient(135deg,#ede9fe,#fce7f3);border-radius:10px;max-width:400px}
+.hint{font-size:.7rem;color:var(--muted);text-align:center;margin:6px 0}
+.bt{font-size:.92rem;line-height:1.7;color:var(--text);max-width:400px;margin:0 auto;text-align:left;font-weight:500}
+.wd{cursor:pointer;border-radius:3px;padding:0 1px;transition:background .15s}
+.wd:hover{background:#ede9fe}
+.cn{color:var(--brand);font-weight:700;cursor:pointer;border-bottom:2px dotted var(--bl);padding:0 1px}
+.ch{color:var(--purple);font-size:.8em;font-weight:600}
+.card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:16px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.game-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.game-card canvas{display:block;margin:0 auto;border-radius:8px;touch-action:none}
+.we-card{background:linear-gradient(180deg,#fff,#faf5ff);border:2px solid var(--border);border-radius:14px;padding:14px;max-width:400px;width:100%;margin:0 auto 8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.we-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:6px;display:inline-block;background:#ede9fe;padding:2px 10px;border-radius:6px}
+.we-question{font-size:.9rem;font-weight:600;margin-bottom:10px;line-height:1.5}
+.we-step{padding:10px 12px;background:linear-gradient(90deg,#ede9fe,#f5f3ff);border-left:4px solid var(--brand);border-radius:0 8px 8px 0;margin-bottom:6px;animation:stepReveal .3s ease;font-size:.8rem;line-height:1.5}
+.we-step.green{background:linear-gradient(90deg,#d1fae5,#ecfdf5);border-left-color:var(--green)}
+.we-step.amber{background:linear-gradient(90deg,#fef3c7,#fffbeb);border-left-color:var(--gold)}
+.we-step.final{padding:12px;background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:2px solid var(--green);border-radius:10px;margin-top:6px;text-align:center;font-weight:800;color:#065f46;font-size:.88rem}
+.we-num{display:inline-block;width:22px;height:22px;background:var(--brand);color:#fff;border-radius:50%;text-align:center;font-size:.62rem;font-weight:700;line-height:22px;margin-right:6px}
+.we-step.green .we-num{background:var(--green)}.we-step.amber .we-num{background:var(--gold)}
+@keyframes stepReveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:12px;margin-bottom:7px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;background:#fff}
+.quiz-opt:hover{border-color:var(--bl);box-shadow:0 2px 8px rgba(139,92,246,.15)}
+.quiz-opt.selected{border-color:var(--brand);background:#ede9fe}
+.quiz-opt.correct{border-color:var(--green);background:#d1fae5}
+.quiz-opt.wrong{border-color:var(--red);background:#fee2e2}
+.quiz-radio{width:22px;height:22px;border:2px solid var(--border);border-radius:50%;flex-shrink:0;margin-top:1px;transition:all .2s}
+.quiz-opt.selected .quiz-radio{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 3px rgba(124,58,237,.2)}
+.quiz-opt.correct .quiz-radio{border-color:var(--green);background:var(--green)}
+.quiz-opt.wrong .quiz-radio{border-color:var(--red);background:var(--red)}
+.quiz-opt-text{flex:1;font-size:.8rem}
+.feedback{padding:12px;border-radius:12px;margin:8px auto;max-width:400px;font-size:.82rem;text-align:center;line-height:1.4}
+.feedback.ok{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border:1px solid #6ee7b7;color:#065f46;font-weight:700}
+.feedback.no{background:linear-gradient(135deg,#fee2e2,#fecaca);border:1px solid #fca5a5;color:#991b1b;font-weight:700}
+.misconception{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#92400e;line-height:1.5}
+.misconception strong{color:#991b1b}
+.correct-method{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:10px;padding:12px;margin:8px auto;max-width:400px;font-size:.76rem;color:#065f46;line-height:1.5}
+.correct-method strong{color:#047857}
+input[type=text]{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;margin-bottom:8px}
+input[type=text]:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+input[type=range]{width:100%;max-width:300px;accent-color:var(--brand);height:6px;border-radius:3px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 2px 6px rgba(124,58,237,.3)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.milestone-icon{font-size:4rem;margin-bottom:6px;animation:pop .5s ease}
+.milestone-text{font-size:1.1rem;font-weight:800;text-align:center}
+.milestone-reward{font-size:1.8rem;font-weight:800;color:var(--gold);margin:6px 0;animation:pulse 1.5s infinite}
+.milestone-next{font-size:.76rem;color:var(--muted);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.complete-icon{font-size:4rem;margin-bottom:8px}
+.complete-title{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+.complete-coins{font-size:2.2rem;font-weight:800;color:var(--gold);margin:10px 0}
+.star-row{display:flex;gap:4px;justify-content:center;margin:8px 0}
+.star-row span{font-size:1.8rem}
+.bottom-bar{position:sticky;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);padding:10px 16px;box-shadow:0 -2px 8px rgba(0,0,0,.06);z-index:50;display:flex;gap:8px;align-items:center;justify-content:center}
+.btn{width:100%;padding:14px;border:none;border-radius:13px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;box-shadow:0 3px 10px rgba(124,58,237,.3)}
+.btn-primary:hover{box-shadow:0 5px 15px rgba(124,58,237,.4);transform:translateY(-1px)}
+.btn-primary:disabled{background:#cbd5e1;cursor:not-allowed;color:#fff;box-shadow:none;transform:none}
+.btn-green{background:linear-gradient(135deg,var(--green),#34d399);color:#fff;box-shadow:0 3px 10px rgba(16,185,129,.3)}
+.btn-green:hover{box-shadow:0 5px 15px rgba(16,185,129,.4);transform:translateY(-1px)}
+.btn-back{background:#f1f5f9;color:#475569;border:2px solid #cbd5e1;padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .15s;flex-shrink:0}
+.btn-back:active{transform:scale(.95)}
+.btn-back:disabled{opacity:.3;cursor:not-allowed}
+.btn-restart{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;border:none;padding:12px 24px;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;margin-top:12px;box-shadow:0 3px 10px rgba(245,158,11,.3)}
+.bottom-bar .btn-primary,.bottom-bar .btn-green{flex:1;max-width:300px}
+dialog{border:none;border-radius:18px;padding:24px;max-width:300px;width:100%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.15);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.4);backdrop-filter:blur(2px)}
+.prop-box{background:linear-gradient(90deg,#f0fdf4,#ecfdf5);border-left:4px solid var(--green);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.76rem;margin:6px 0;line-height:1.5}
+.formula-box{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border:2px solid var(--bl);border-radius:12px;padding:12px;margin:8px 0;text-align:center}
+.formula-box .f-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.05em}
+.formula-box .f-expr{font-size:1.05rem;font-weight:800;color:var(--brand);margin:4px 0}
+.discovery-box{background:linear-gradient(135deg,#ede9fe,#fce7f3);border:2px solid var(--bl);border-radius:14px;padding:14px;margin:8px 0;text-align:center}
+.discovery-box .d-title{font-size:.82rem;font-weight:800;color:var(--brand);margin-bottom:4px}
+.discovery-box .d-text{font-size:.76rem;color:var(--text);line-height:1.5}
+.interactive-hint{font-size:.7rem;color:var(--purple);text-align:center;font-weight:600;margin:4px 0;animation:pulse 1.5s infinite}
+.tf-btn{display:flex;gap:10px;max-width:380px;margin:0 auto 8px}
+.tf-opt{flex:1;padding:14px;border:2px solid var(--border);border-radius:12px;cursor:pointer;text-align:center;font-weight:700;font-size:1rem;transition:all .2s;background:#fff}
+.tf-opt:hover{border-color:var(--bl)}
+.tf-opt.sel-true{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.sel-false{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.tf-opt.correct{border-color:var(--green);background:#d1fae5;color:#065f46}
+.tf-opt.wrong{border-color:var(--red);background:#fee2e2;color:#991b1b}
+.fb-input{width:100%;max-width:380px;margin:0 auto 8px;display:block;padding:12px 16px;border:2px solid var(--border);border-radius:10px;font-size:1rem}
+.fb-input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+.diff-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-left:6px}
+.diff-easy{background:#d1fae5;color:#065f46}.diff-medium{background:#fef3c7;color:#92400e}.diff-hard{background:#fee2e2;color:#991b1b}
+.mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:340px;margin:0 auto;padding:8px 0}
+.mm-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+.mm-card-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.mm-card.flipped .mm-card-inner{transform:rotateY(180deg)}
+.mm-card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.58rem;font-weight:700;text-align:center;padding:3px;line-height:1.2}
+.mm-card-front{background:linear-gradient(135deg,var(--bl),var(--pi));border:2px solid var(--bl);color:#fff;font-size:1.4rem;box-shadow:0 3px 8px rgba(139,92,246,.3)}
+.mm-card-back{background:#fff;border:2px solid var(--border);transform:rotateY(180deg);color:var(--text)}
+.mm-card.matched .mm-card-back{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--green);color:#065f46}
+.mm-card.matched{pointer-events:none}
+.mm-info{text-align:center;font-size:.78rem;color:var(--muted);margin:4px 0}
+.timer-bar-container{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:6px auto 2px;max-width:380px}
+.timer-bar{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:3px;transition:width 1s linear}
+.timer-bar.danger{background:linear-gradient(90deg,var(--red),#f87171);animation:tpulse .5s infinite}
+@keyframes tpulse{50%{opacity:.5}}
+.rf-header{text-align:center;margin:4px 0}
+.rf-q-num{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none}
+.visual-card{background:linear-gradient(135deg,#fff,#f5f3ff);border:2px solid var(--bl);border-radius:14px;padding:16px;max-width:400px;margin:0 auto;box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.visual-title{font-size:.92rem;font-weight:800;color:var(--brand);text-align:center;margin-bottom:8px}
+.ns-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.68rem;font-weight:700;margin:2px;cursor:pointer;transition:all .2s}
+.ns-natural{background:#d1fae5;color:#065f46}.ns-whole{background:#dbeafe;color:#1e40af}.ns-integer{background:#fef3c7;color:#92400e}.ns-rational{background:#ede9fe;color:#6b21a8}
+.ns-badge.active{transform:scale(1.1);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.prop-table{width:100%;max-width:400px;margin:0 auto;border-collapse:collapse;font-size:.72rem;border-radius:8px;overflow:hidden}
+.prop-table th,.prop-table td{border:1px solid var(--border);padding:6px 8px;text-align:center}
+.prop-table th{background:linear-gradient(135deg,var(--brand),var(--bl));color:#fff;font-weight:700;font-size:.66rem}
+.prop-table td.yes{color:var(--green);font-weight:700}.prop-table td.no{color:var(--red);font-weight:700}
+.prop-table tr:nth-child(even){background:#f8fafc}
+.prop-table tr{cursor:pointer;transition:background .15s}
+.prop-table tr.hl{background:#ede9fe!important}
+.tutor-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--gold);border-radius:14px;padding:14px;max-width:400px;margin:8px auto;font-size:.82rem;line-height:1.6;color:#78350f}
+.tutor-box .tutor-icon{font-size:1.5rem;float:left;margin-right:8px}
+.real-example{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid var(--bl);border-radius:12px;padding:12px;max-width:400px;margin:8px auto;font-size:.8rem;line-height:1.6;color:#1e3a8a}
+.real-example .re-icon{font-size:1.2rem;margin-right:4px}
+.shop-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px}
+.shop-modal{background:#fff;border-radius:16px;max-width:420px;width:100%;max-height:85vh;overflow-y:auto;padding:16px}
+.shop-title{font-size:1.1rem;font-weight:900;color:var(--brand);text-align:center;margin-bottom:4px}
+.shop-coins{font-size:.85rem;color:var(--gold);font-weight:800;text-align:center;margin-bottom:12px}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.shop-item{padding:12px 8px;border:2px solid var(--border);border-radius:10px;text-align:center;background:var(--surface)}
+.shop-item.owned{opacity:.5}
+.shop-item-icon{font-size:1.8rem}.shop-item-name{font-size:.72rem;font-weight:700;margin:4px 0}
+.shop-item-cost{font-size:.85rem;color:var(--gold);font-weight:800}
+.shop-buy-btn{margin-top:6px;padding:5px 10px;font-size:.72rem;border:none;border-radius:6px;color:#fff;background:var(--brand);font-weight:700;cursor:pointer}
+body.theme-ocean{--brand:#0ea5e9;--bl:#06b6d4;--green:#14b8a6;--gold:#f59e0b}
+body.theme-forest{--brand:#16a34a;--bl:#15803d;--green:#22c55e;--gold:#ca8a04}
+body.theme-sunset{--brand:#f97316;--bl:#ec4899;--green:#f59e0b;--gold:#f97316}
+.ex-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.62rem;font-weight:700;margin-bottom:6px}
+.ex-11{background:#dbeafe;color:#1e40af}.ex-12{background:#fce7f3;color:#9d174d}
+</style>
+</head>
+<body>
+<div class="hdr">
+<img class="hdr-logo" alt="Aasha" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN2MzYWVkIiBzdHJva2Utd2lkdGg9IjUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZWM0ODk5IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjE1IiByPSI2IiBmaWxsPSIjZjU5ZTBiIi8+PC9zdmc+">
+<div><div class="hdr-name">ANNANTH AASHA FOUNDATION</div><div class="hdr-hi">अनंत आशा फाउंडेशन</div><div class="hdr-tag">Safe Learning. Real Impact.</div></div>
+</div>
+<div class="topbar"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="stat lvl" id="statLvl">Lv 1</span><span class="stat coins">🪙 <span id="statCoins">0</span></span><span class="stat xp">⭐ <span id="statXp">0</span></span></div>
+<div class="profile-bar"><div class="profile-avatar">A</div><div class="profile-name">Arjun</div><button class="profile-swap" onclick="App.renderShop()">🛒 Shop</button></div>
+<div class="screen" id="screen"></div>
+<div class="bottom-bar" id="bottomBar"><button class="btn-back" id="backBtn" onclick="App.back()">← Back</button><button class="btn btn-primary" id="continueBtn">Continue</button></div>
+<dialog id="wordDialog"><div id="dlgWord" style="font-size:1.4rem;font-weight:800;color:#7c3aed"></div><div id="dlgHindi" style="font-size:1.1rem;color:#a855f7;font-weight:600;margin-top:4px"></div><div id="dlgDesc" style="font-size:.78rem;color:#64748b;margin-top:8px;line-height:1.4"></div><button id="dlgClose" style="margin-top:12px;padding:8px 20px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem">OK</button></dialog>
+<dialog id="levelUpDialog"><div style="font-size:3rem">🎉</div><div style="font-size:1.2rem;font-weight:800">Level Up!</div><div style="font-size:.85rem;color:#64748b;margin-top:6px" id="luSub"></div><button style="margin-top:14px;padding:8px 24px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:.85rem" id="luClose">Awesome!</button></dialog>
+<canvas id="confetti"></canvas>
+<script>
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना"
+}
+
+/* CONN: ONLY connecting words — NO math domain terms */
+var CONN={
+"if":"अगर","because":"क्योंकि","therefore":"इसलिए","however":"हालांकि",
+"so that":"ताकि","although":"यद्यपि","since":"चूंकि","then":"तब","when":"जब",
+"while":"जबकि","that is why":"इसीलिए","in other words":"दूसरे शब्दों में",
+"whereas":"जबकि","furthermore":"इसके अलावा","in contrast":"इसके विपरीत",
+"instead of":"के बजाय","due to":"के कारण","for example":"उदाहरण के लिए",
+"is":"है","are":"हैं","was":"था","were":"थे","how":"कैसे","why":"क्यों",
+"what":"क्या","where":"कहाँ","has":"है","have":"हैं","not":"नहीं","also":"भी",
+"must":"ज़रूरी है","should":"चाहिए","can":"सकता है","could":"सकता था",
+"may":"सकता है","might":"शायद","will":"होगा","would":"होगा",
+"does":"करता है","do":"करते हैं","cannot":"नहीं सकता",
+"between":"के बीच","through":"के माध्यम से"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=2){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var WM={
+abandon:"त्यागना",about:"के बारे में",above:"ऊपर",accept:"स्वीकार",across:"के पार",
+action:"क्रिया",add:"जोड़ना",addition:"जोड़",after:"बाद में",again:"फिर से",
+against:"के खिलाफ",all:"सभी",allow:"अनुमति",almost:"लगभग",alone:"अकेला",
+along:"के साथ",already:"पहले से",also:"भी",although:"यद्यपि",always:"हमेशा",
+among:"के बीच",amount:"राशि",ancient:"प्राचीन",and:"और",angle:"कोण",
+another:"दूसरा",answer:"उत्तर",any:"कोई",anyone:"कोई भी",appear:"दिखाई",
+apply:"लागू",approach:"दृष्टिकोण",are:"हैं",area:"क्षेत्रफल",argument:"तर्क",
+around:"चारों ओर",arrange:"व्यवस्थित",arrive:"पहुँचना",ask:"पूछना",at:"पर",
+available:"उपलब्ध",average:"औसत",away:"दूर",back:"पीछे",base:"आधार",
+basic:"मूल",be:"होना",because:"क्योंकि",become:"बनना",before:"पहले",
+begin:"शुरू",below:"नीचे",between:"के बीच",book:"किताब",both:"दोनों",
+bottom:"निचला",break:"टूटना",bridge:"पुल",bring:"लाना",build:"बनाना",
+calculate:"गणना",call:"कहना",can:"सकते",cannot:"नहीं सकते",case:"मामला",
+cause:"कारण",center:"केंद्र",certain:"निश्चित",change:"बदलना",check:"जाँच",
+circle:"वृत्त",circumference:"परिधि",classify:"वर्गीकृत",clear:"स्पष्ट",
+close:"बंद",closed:"संवृत",common:"सामान्य",compare:"तुलना",
+complete:"पूर्ण",condition:"शर्त",connect:"जोड़ना",constant:"स्थिर",correct:"सही",
+cost:"लागत",could:"सकता था",count:"गिनना",cross:"पार",curve:"वक्र",
+data:"आँकड़ा",describe:"वर्णन",design:"डिज़ाइन",determine:"निर्धारित",
+diagram:"आरेख",different:"अलग",digit:"अंक",divide:"भाग",division:"विभाजन",
+draw:"खींचना",each:"प्रत्येक",edge:"किनारा",either:"या तो",equal:"बराबर",
+equation:"समीकरण",example:"उदाहरण",exercise:"अभ्यास",expand:"विस्तार",
+explain:"समझाना",expression:"व्यंजक",find:"खोजना",first:"पहला",follow:"अनुसरण",
+form:"रूप",formula:"सूत्र",fraction:"भिन्न",frequency:"आवृत्ति",from:"से",
+function:"फलन",general:"सामान्य",geometry:"ज्यामिति",give:"देना",given:"दिया",
+go:"जाना",good:"अच्छा",graph:"आलेख",greater:"बड़ा",have:"है",height:"ऊँचाई",
+help:"मदद",here:"यहाँ",highest:"उच्चतर",horizontal:"क्षैतिज",how:"कैसे",
+important:"महत्वपूर्ण",in:"में",increase:"बढ़ना",
+into:"में",introduce:"परिचय",
+is:"है",it:"यह",join:"जोड़ना",just:"बस",keep:"रखना",know:"जानना",known:"ज्ञात",
+large:"बड़ा",last:"अंतिम",lateral:"पार्श्व",learn:"सीखना",least:"कम से कम",
+left:"बायाँ",length:"लंबाई",less:"कम",letter:"अक्षर",line:"रेखा",
+list:"सूची",look:"देखना",lower:"निचला",make:"बनाना",many:"कई",mark:"चिह्न",
+math:"गणित",matter:"मामला",may:"सकता",mean:"मतलब",meaning:"अर्थ",measure:"माप",
+method:"विधि",middle:"मध्य",might:"हो सकता",model:"मॉडल",more:"अधिक",
+most:"अधिकांश",move:"चलना",multiply:"गुणा",must:"अनिवार्य",natural:"प्राकृतिक",nature:"प्रकृति",necessary:"आवश्यक",
+need:"आवश्यकता",negative:"ऋणात्मक",next:"अगला",no:"नहीं",none:"कोई नहीं",
+not:"नहीं",note:"नोट",number:"संख्या",obtain:"प्राप्त",odd:"विषम",
+one:"एक",only:"केवल",open:"खुला",operation:"संक्रिया",opposite:"विपरीत",option:"विकल्प",order:"क्रम",
+origin:"मूल",other:"दूसरा",out:"बाहर",outside:"बाहर",over:"ऊपर",
+pair:"जोड़ा",parallel:"समानांतर",part:"भाग",pattern:"प्रतिरूप",
+per:"प्रति",perfect:"पूर्ण",perimeter:"परिमाप",perpendicular:"लंबवत",piece:"टुकड़ा",place:"स्थान",
+plot:"आलेखित",point:"बिंदु",positive:"धनात्मक",position:"स्थिति",
+possible:"संभव",power:"घात",practice:"अभ्यास",present:"उपस्थित",
+prime:"अभाज्य",problem:"समस्या",product:"गुणनफल",property:"गुण",prove:"सिद्ध",
+quantity:"राशि",question:"प्रश्न",
+quick:"त्वरित",range:"परिसर",ratio:"अनुपात",real:"वास्तविक",reason:"कारण",
+rectangle:"आयत",related:"संबंधित",relationship:"संबंध",
+repeat:"दोहराना",represent:"प्रतिनिधित्व",result:"परिणाम",
+right:"सही/दायाँ",root:"मूल",round:"गोल",same:"समान",say:"कहना",
+scale:"पैमाना",section:"अनुभाग",see:"देखना",shape:"आकार",show:"दिखाना",
+side:"भुजा",sign:"चिह्न",similar:"समरूप",simple:"सरल",since:"क्योंकि",
+single:"एक",size:"आकार",sketch:"रेखाचित्र",small:"छोटा",solve:"हल",
+solution:"हल",space:"स्थान",special:"विशेष",square:"वर्ग",statement:"कथन",
+step:"चरण",straight:"सीधा",study:"अध्ययन",substitute:"प्रतिस्थापन",
+subtract:"घटाना",sum:"योग",surface:"पृष्ठ",symbol:"प्रतीक",system:"प्रणाली",
+take:"लेना",term:"पद",test:"परीक्षण",their:"उनके",them:"उन्हें",
+then:"तब",theory:"सिद्धांत",there:"वहाँ",these:"ये",they:"वे",thing:"वस्तु",
+think:"सोचना",this:"यह",those:"वे",three:"तीन",through:"के माध्यम से",
+time:"समय",to:"को",together:"साथ",top:"शीर्ष",total:"कुल",touch:"स्पर्श",
+towards:"की ओर",triangle:"त्रिभुज",true:"सत्य",turn:"मोड़",two:"दो",
+type:"प्रकार",under:"के अंतर्गत",understand:"समझना",unit:"इकाई",until:"तक",
+up:"ऊपर",upon:"पर",use:"उपयोग",used:"उपयोग किया",using:"उपयोग करते हुए",
+value:"मान",variable:"चर",verify:"सत्यापित",vertical:"ऊर्ध्वाधर",very:"बहुत",
+visual:"दृश्य",volume:"आयतन",way:"रास्ता",we:"हम",well:"अच्छी तरह",
+what:"क्या",when:"जब",where:"जहाँ",which:"जो",while:"जबकि",why:"क्यों",
+wide:"चौड़ा",will:"होगा",with:"के साथ",without:"के बिना",word:"शब्द",
+work:"कार्य",write:"लिखना",wrong:"गलत",
+reward:"पुरस्कार",badge:"बैज",coin:"सिक्का",coins:"सिक्के",
+beginner:"शुरुआती",scholar:"विद्वान",expert:"विशेषज्ञ",champion:"विजेता",
+explore:"खोजना",drag:"खींचें",watch:"देखें",observe:"निरीक्षण करें",
+zero:"शून्य",whole:"पूर्ण",collection:"संग्रह",sufficient:"पर्याप्त",lead:"ले जाना"
+}
+
+/* CONN: ONLY connecting words — NO math domain terms */
+var CONN={
+"if":"अगर","because":"क्योंकि","therefore":"इसलिए","however":"हालांकि",
+"so that":"ताकि","although":"यद्यपि","since":"चूंकि","then":"तब","when":"जब",
+"while":"जबकि","that is why":"इसीलिए","in other words":"दूसरे शब्दों में",
+"whereas":"जबकि","furthermore":"इसके अलावा","in contrast":"इसके विपरीत",
+"instead of":"के बजाय","due to":"के कारण","for example":"उदाहरण के लिए",
+"is":"है","are":"हैं","was":"था","were":"थे","how":"कैसे","why":"क्यों",
+"what":"क्या","where":"कहाँ","has":"है","have":"हैं","not":"नहीं","also":"भी",
+"must":"ज़रूरी है","should":"चाहिए","can":"सकता है","could":"सकता था",
+"may":"सकता है","might":"शायद","will":"होगा","would":"होगा",
+"does":"करता है","do":"करते हैं","cannot":"नहीं सकता",
+"between":"के बीच","through":"के माध्यम से"
+}
+
+function rt(text,sm){
+  if(!text)return "";
+  var html=text;var keys=Object.keys(CONN).sort(function(a,b){return b.length-a.length});
+  var connCount=0,result="",i=0;
+  while(i<html.length){
+    var ch=html[i];
+    if(ch==="."||ch==="!"||ch==="?"||ch===","){connCount=0;result+=ch;i++;continue;}
+    if(ch===" "){result+=" ";i++;continue;}
+    if(ch==="<"){var ci=html.indexOf(">",i);if(ci>=0){result+=html.substring(i,ci+1);i=ci+1;continue;}}
+    var matched=false;
+    if(i===0||!/[a-zA-Z]/.test(html[i-1])){
+      for(var k=0;k<keys.length;k++){
+        var c=keys[k];var sub=html.substring(i,i+c.length);
+        if(sub.toLowerCase()===c.toLowerCase()){
+          var ai=i+c.length;if(ai<html.length&&/[a-zA-Z]/.test(html[ai]))continue;
+          var hi=CONN[c];connCount++;
+          if(connCount<=2){result+='<span class="cn" data-w="'+sub+'" data-h="'+hi+'">'+sub+' <span class="ch">('+hi+')</span></span>';}
+          else{result+='<span class="wd" data-w="'+sub.toLowerCase()+'" data-h="'+hi+'">'+sub+'</span>';}
+          i+=c.length;matched=true;break;
+        }
+      }
+    }
+    if(matched)continue;
+    if(/[a-zA-Z]/.test(ch)){
+      var ws=i;while(i<html.length&&/[a-zA-Z]/.test(html[i]))i++;
+      var word=html.substring(ws,i);var cw=word.toLowerCase();
+      if(!cw){result+=word;continue;}
+      var hi2=WM[cw];
+      if(hi2)result+='<span class="wd" data-w="'+cw+'" data-h="'+hi2+'">'+word+'</span>';
+      else result+='<span class="wd" data-w="'+cw+'" data-h="">'+word+'</span>';
+    }else{result+=ch;i++;}
+  }
+  return result;
+}
+
+function applyLLE(){
+  var sels=".bt,.we-question,.we-step,.quiz-opt-text,.instruction,.hint,.prop-box,.formula-box,.f-label,.f-expr,.f-note,.misconception,.correct-method,.feedback,.milestone-text,.milestone-next,.discovery-box .d-text,.discovery-box .d-title,.intro-title,.intro-sub,.complete-title,.complete-sub,.rf-question,.rf-opt-text,.prop-table th,.prop-table td,.we-tag,.visual-title,.tutor-box,.real-example";
+  var els=document.querySelectorAll(sels);
+  for(var i=0;i<els.length;i++){
+    var el=els[i];if(el.querySelector(".wd")||el.querySelector(".cn"))continue;
+    if(el.tagName==="BUTTON"||el.tagName==="INPUT")continue;
+    var h=el.innerHTML;if(!h||h.trim().length<3)continue;
+    var textOnly=h.replace(/<[^>]+>/g,"");if(textOnly.trim().length<3)continue;
+    try{el.innerHTML=rt(h)}catch(e){}
+  }
+}
+
+function showWord(w,h,d){
+  var dlg=document.getElementById("wordDialog");if(!dlg)return;
+  document.getElementById("dlgWord").textContent=w;
+  document.getElementById("dlgHindi").textContent=h||"—";
+  document.getElementById("dlgDesc").textContent=d||"";
+  if(!dlg.open)dlg.showModal();
+}
+
+document.addEventListener("click",function(e){
+  var el=e.target.closest(".cn");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h"),"Connecting word");return}
+  el=e.target.closest(".wd");if(el){showWord(el.getAttribute("data-w"),el.getAttribute("data-h")||"—",el.getAttribute("data-h")?"":"Hindi meaning not available");return}
+});
+
+var STEPS=[
+{t:"intro",icon:"🔢",title:"Rational Numbers",sub:"Class 8 Math — Chapter 1"},
+
+/* ===== LEARNING: PW TUTOR STYLE ===== */
+{t:"text",title:"Socho yaar — pizza aur numbers!",body:"Dekho, tum 2 pizza le rahe ho 3 doston mein baantne ke liye. Har dost ko kitna mila? 2/3 pizza! Yeh hai rational number — ek fraction jise hum p/q likhte hain. Bas condition yeh hai ki q zero na ho (zero se divide karna impossible hai). Simple! Koi bhi number jise aise fraction mein likh sako, woh rational number hai. Jaise 1/2, -3/4, 5/1 — sab rational hain."},
+{t:"real_example",icon:"🍕",title:"Real Life Example",body:"Tumhare paas 100 rupee hain aur 4 dost hain. Har dost ko 100/4 = 25 rupee milenge. Yeh 25 ek rational number hai (25/1). Ab socho agar 50 rupee 7 doston mein baantna ho — har dost ko 50/7 = 7.14... rupee milenge. Yeh bhi rational hai! Kyunki 50 aur 7 dono integers hain aur 7 zero nahi hai."},
+{t:"ix_numbersets",instruction:"Tap each badge to see which numbers belong to it. Watch how rational numbers contain ALL other sets!"},
+{t:"text",title:"Numbers ka family tree",body:"Pehle sirf counting numbers the — 1, 2, 3 (natural numbers). Phir zero add hua (whole numbers). Phir negative numbers aaye (integers). Aur jab fractions ki zaroorat padi toh rational numbers bane. Sab kuch ek dusre ke andar hai! Natural ⊂ Whole ⊂ Integer ⊂ Rational. Yani har natural number rational hai, har integer rational hai. Kyunki 5 ko 5/1 likh sakte ho, -3 ko -3/1 likh sakte ho."},
+{t:"text",title:"Equation se rational number tak",body:"Socho x + 2 = 13 hai. Solution x = 11, jo natural number hai. Ab x + 5 = 5 lo. Solution x = 0, jo whole number hai. x + 18 = 5 lo. Solution x = -13, integer hai. Par 2x = 3 ka solution kya hai? x = 3/2! Yeh integer nahi hai. Isliye humein rational numbers chahiye. Bina inke kuch equations solve hi nahi ho sakte."},
+{t:"ix_numberline",instruction:"Drag sliders for numerator (p) and denominator (q). Watch the dot move on the number line!"},
+{t:"formula",title:"Zaroori Formulas",formulas:[
+{label:"Rational Number",expr:"p/q  (p, q integers, q ≠ 0)",note:"Koi bhi fraction jisme denominator zero na ho"},
+{label:"Additive Identity (Zero)",expr:"a + 0 = 0 + a = a",note:"Zero mein kuch bhi add karo, wohi number milta hai"},
+{label:"Multiplicative Identity (One)",expr:"a × 1 = 1 × a = a",note:"One se multiply karo, wohi number milta hai"},
+{label:"Additive Inverse",expr:"a/b + (-a/b) = 0",note:"Sign ulta kar do — woh additive inverse hai"},
+{label:"Reciprocal",expr:"a/b × b/a = 1",note:"Numerator aur denominator swap kar do — woh reciprocal hai"}
+]},
+{t:"discovery",title:"Closure Property",discoveryTitle:"Add, Subtract, Multiply — Answer Always Rational!",body:"Dekho magic! Do rational numbers ko add, subtract ya multiply karo — answer hamesha rational aata hai. Jaise: 1/2 + 1/3 = 5/6 (rational). 1/2 - 1/3 = 1/6 (rational). 2/3 × 4/5 = 8/15 (rational). Par division mein ek problem hai — zero se divide nahi kar sakte! Isliye division pe closure nahi milta (jab tak zero exclude nahi karte).",prop:"Closure: a + b, a - b, a × b — sab rational. Par a ÷ b tab tak nahi jab b = 0 ho."},
+{t:"ix_properties",instruction:"Tap each row to see examples! Green = Yes, Red = No"},
+{t:"quiz",q:"Kaun sa operation rational numbers ke liye closed nahi hai?",diff:"easy",opts:[
+{t:"Addition (+)",c:false,m:"Addition closed hai! 1/2 + 1/3 = 5/6, jo rational hai.",correctMethod:"a + b hamesha rational hai."},
+{t:"Subtraction (−)",c:false,m:"Subtraction bhi closed hai! 1/2 - 1/3 = 1/6, jo rational hai.",correctMethod:"a - b hamesha rational hai."},
+{t:"Division (÷)",c:true},
+{t:"Multiplication (×)",c:false,m:"Multiplication closed hai! 2/3 × 4/5 = 8/15, jo rational hai.",correctMethod:"a × b hamesha rational hai."}
+]},
+{t:"quiz",q:"-7/19 ka additive inverse kya hai?",diff:"easy",opts:[
+{t:"7/19",c:true},
+{t:"-7/19",c:false,m:"Nahi yaar! -7/19 ka additive inverse uska ulta sign wala hai. -7/19 + 7/19 = 0 hota hai. Toh answer 7/19 hai.",correctMethod:"Additive inverse of -7/19 = 7/19. Check: -7/19 + 7/19 = 0."},
+{t:"19/7",c:false,m:"19/7 toh reciprocal hai, additive inverse nahi! Additive inverse sirf sign badalta hai.",correctMethod:"Additive inverse of -7/19 = 7/19 (sirf sign ulta)."},
+{t:"-19/7",c:false,m:"Yeh toh bilkul galat hai. Additive inverse of -7/19 = 7/19.",correctMethod:"Additive inverse of -7/19 = 7/19."}
+]},
+{t:"quiz",q:"-5/7 ka reciprocal (multiplicative inverse) kya hai?",diff:"easy",opts:[
+{t:"-7/5",c:true},
+{t:"7/5",c:false,m:"7/5 toh 5/7 ka reciprocal hai, -5/7 ka nahi! Check: (-5/7) × (-7/5) = 35/35 = 1. Toh answer -7/5 hai.",correctMethod:"Reciprocal of -5/7 = -7/5. Check: (-5/7) × (-7/5) = 1."},
+{t:"5/7",c:false,m:"5/7 toh same number hai! Reciprocal mein numerator aur denominator swap hote hain.",correctMethod:"Reciprocal of -5/7 = -7/5."},
+{t:"7/-5",c:false,m:"7/-5 = -7/5, jo sahi hai! Par standard form mein hum -7/5 likhte hain.",correctMethod:"-7/5 and 7/-5 same hai. Standard: -7/5."}
+]},
+{t:"truefalse",q:"Zero ka reciprocal hota hai.",ans:false,m:"Nahi! Zero ka koi reciprocal nahi hai. Kyunki 0 × koi bhi number = 0, kabhi 1 nahi hota. Zero se divide hi nahi kar sakte!",correctMethod:"0 × anything = 0, never 1. Isliye zero ka reciprocal nahi hai.",explain:"Zero ka koi reciprocal nahi hai — division by zero undefined hai."},
+{t:"milestone",icon:"🏆",title:"Properties Master!",xp:50,next:"Ab commutativity aur associativity dekhte hain!"},
+{t:"tutor",icon:"💡",title:"Commutativity — Order matter nahi karta!",body:"Commutative ka matlab: order badlo, answer same rahega. Jaise doston mein pizza baantna — pehle tum 1/2 lo phir 1/3, ya pehle 1/3 lo phir 1/2 — total same hoga! Addition: a + b = b + a. Multiplication: a × b = b × a. Par subtraction aur division mein order matter karta hai! 5 - 3 ≠ 3 - 5 (kyunki 2 ≠ -2)."},
+{t:"tutor",icon:"💡",title:"Associativity — Grouping matter nahi karti!",body:"Associative ka matlab: grouping badlo, answer same. Jaise cricket mein — pehle 2 runs phir 4, ya pehle 4 phir 2 — total 6 hi rahega. Addition: (a + b) + c = a + (b + c). Multiplication: (a × b) × c = a × (b × c). Par subtraction: (5 - 3) - 1 = 1, jabki 5 - (3 - 1) = 3. Different! Isliye subtraction associative nahi hai."},
+{t:"quiz",q:"Kya subtraction commutative hai? Check: 2/3 − 5/4 = 5/4 − 2/3?",diff:"medium",opts:[
+{t:"Haan, barabar hain",c:false,m:"Nahi! 2/3 − 5/4 = (8-15)/12 = -7/12, par 5/4 − 2/3 = (15-8)/12 = 7/12. Sign alag hai! Isliye subtraction commutative nahi.",correctMethod:"2/3 − 5/4 = -7/12, 5/4 − 2/3 = 7/12. Alag! Subtraction not commutative."},
+{t:"Nahi, barabar nahi hain",c:true},
+{t:"Sirf positive numbers ke liye",c:false,m:"Nahi, positive ke liye bhi nahi. 1/2 − 1/3 = 1/6, par 1/3 − 1/2 = -1/6. Alag!",correctMethod:"1/2 − 1/3 ≠ 1/3 − 1/2. Subtraction not commutative even for positive."},
+{t:"Pata nahi kar sakte",c:false,m:"Kar sakte hain! Bas dono side calculate karo. -7/12 ≠ 7/12.",correctMethod:"Calculate both sides. Different, so not commutative."}
+]},
+{t:"quiz",q:"Kaun sa associative hai rational numbers ke liye?",diff:"medium",opts:[
+{t:"Sirf Addition",c:false,m:"Addition toh hai, par multiplication bhi associative hai!",correctMethod:"Addition AND multiplication dono associative hain."},
+{t:"Sirf Multiplication",c:false,m:"Multiplication toh hai, par addition bhi associative hai!",correctMethod:"Addition AND multiplication dono associative hain."},
+{t:"Addition aur Multiplication dono",c:true},
+{t:"Koi nahi",c:false,m:"Dono hain! (1/2 + 1/3) + 1/4 = 1/2 + (1/3 + 1/4) = 13/12.",correctMethod:"Addition: a+(b+c)=(a+b)+c. Multiplication: a×(b×c)=(a×b)×c. Dono associative."}
+]},
+{t:"we",q:"Solve karo: (-3/8) + (5/7) + (-6/11) + (8/21)",steps:[
+{text:"Pehle LCM nikalo: 8, 7, 11, 21 ka LCM = 1848"},
+{text:"Sab ko 1848 denominator par laao: -3/8 = -693/1848, 5/7 = 1320/1848, -6/11 = -1008/1848, 8/21 = 704/1848"},
+{text:"Numerators add karo: -693 + 1320 + (-1008) + 704 = 323"},
+{text:"Answer: 323/1848. GCD(323,1848) = 1, so yahi simplified form hai."}
+],answer:"(-3/8) + (5/7) + (-6/11) + (8/21) = 323/1848"},
+{t:"we",q:"Solve karo: (-4/5) × (3/7) × (15/16) × (-14/9)",steps:[
+{text:"Commutativity use karke arrange karo: (-4/5)×(15/16) × (3/7)×(-14/9)"},
+{text:"Pehla pair: (-4/5) × (15/16) = -60/80 = -3/4"},
+{text:"Dusra pair: (3/7) × (-14/9) = -42/63 = -2/3"},
+{text:"Multiply: (-3/4) × (-2/3) = 6/12 = 1/2. Negative × negative = positive!"}
+],answer:"(-4/5) × (3/7) × (15/16) × (-14/9) = 1/2"},
+{t:"milestone",icon:"🎯",title:"Commutativity Champion!",xp:50,next:"Ab distributivity aur identities dekhte hain!"},
+{t:"tutor",icon:"💡",title:"Distributivity — One operation do ka kaam!",body:"Distributivity ka matlab: multiply karo ya pehle add karke multiply karo — same baat. Jaise: 2 × (3 + 4) = 2×3 + 2×4 = 6 + 8 = 14. Ya seedha 2 × 7 = 14. Dono same! Formula: a × (b + c) = a × b + a × c. Aur subtraction ke liye: a × (b − c) = a × b − a × c. Yeh calculation ko easy bana deta hai."},
+{t:"we",q:"Distributivity use karke solve karo: (5/7) × (3/12 + 5/12)",steps:[
+{text:"Distribute karo: (5/7) × (3/12) + (5/7) × (5/12)"},
+{text:"Multiply: 15/84 + 25/84"},
+{text:"Add: (15 + 25)/84 = 40/84"},
+{text:"Simplify: 40/84 = 10/21 (4 se divide kiya)"}
+],answer:"(5/7) × (3/12 + 5/12) = 10/21"},
+{t:"tutor",icon:"💡",title:"Zero aur One ka role",body:"Zero add karne se number same rehta hai — jaise kisi ke bank account mein 0 rupee daalo, balance same. a + 0 = a. Yeh additive identity hai. One se multiply karne se bhi number same rehta hai — 1 packet mein 5 biscuits, 1 se multiply = 5 biscuits. a × 1 = a. Yeh multiplicative identity hai."},
+{t:"tutor",icon:"💡",title:"Negative aur Reciprocal",body:"Additive inverse: sign ulta kar do. 2/3 ka additive inverse -2/3 hai (kyunki 2/3 + (-2/3) = 0). Reciprocal: numerator aur denominator swap kar do. 3/5 ka reciprocal 5/3 hai (kyunki 3/5 × 5/3 = 1). Important: -(-x) = x. Jaise -(-13/17) = 13/17. Do minus, plus ban jaate hain!"},
+{t:"ix_reciprocal",instruction:"p aur q daalo, 'Find Reciprocal' dabao. Dekho kaise do fractions multiply karke 1 dete hain!"},
+{t:"quiz",q:"Verify: -(-x) = x for x = 13/17. -(-13/17) kya hai?",diff:"easy",opts:[
+{t:"13/17",c:true},
+{t:"-13/17",c:false,m:"Nahi! Do minus milke plus bante hain. -(-13/17) = 13/17. Socho: negative of negative = positive.",correctMethod:"-(-13/17) = 13/17. Do minus = plus."},
+{t:"17/13",c:false,m:"17/13 toh reciprocal hai, double negative nahi! -(-13/17) = 13/17.",correctMethod:"-(-13/17) = 13/17."},
+{t:"-17/13",c:false,m:"Galat! -(-13/17) = 13/17. Bas do minus hata do.",correctMethod:"-(-13/17) = 13/17."}
+]},
+{t:"quiz",q:"Kya 8/9, -1/8 ka multiplicative inverse hai?",diff:"hard",opts:[
+{t:"Haan, kyunki 8/9 × (-1/8) = 1",c:false,m:"Check karo: 8/9 × (-1/8) = -8/72 = -1/9. Yeh 1 nahi hai! Multiplicative inverse ka product 1 hona chahiye.",correctMethod:"8/9 × (-1/8) = -1/9 ≠ 1. Nahi, inverse nahi hai."},
+{t:"Nahi, kyunki product -1/9 hai, 1 nahi",c:true},
+{t:"Haan, opposite signs hain",c:false,m:"Opposite sign se kya hota hai? Product 1 hona chahiye! -1/9 ≠ 1.",correctMethod:"Product = -1/9 ≠ 1. Not inverses."},
+{t:"Pata nahi",c:false,m:"Pata kar sakte ho — bas multiply karo! -1/9 ≠ 1.",correctMethod:"Multiply: -1/9 ≠ 1. Not inverses."}
+]},
+{t:"milestone",icon:"🔍",title:"Identities Expert!",xp:50,next:"Ab number line aur between wala concept!"},
+{t:"text",title:"Number Line par Rational Numbers",body:"Number line par rational number dikhana simple hai. Denominator batata hai kitne equal parts mein divide karna hai. Numerator batata hai kitne parts chalna hai. Jaise 3/4 dikhana hai — 0 se 1 ke beech 4 equal parts banao, 3rd mark kar do. -7/4 ke liye, zero ke left mein 7 marks of 1/4 distance."},
+{t:"ix_between",instruction:"Do fractions daalo. Unke beech ka rational number dhundo — mean method se! Number line par bhi dikhega!"},
+{t:"tutor",icon:"💡",title:"Do rational numbers ke beech — countless!",body:"Socho 1/4 aur 1/2 ke beech kitne rational numbers hain? Pehle sochoge — shayad 2-3? Nahi yaar — countless! Ek method: mean nikalo (1/4 + 1/2)/2 = 3/8. Phir 1/4 aur 3/8 ke beech mean nikalo = 5/16. Phir 3/8 aur 1/2 ke beech = 7/16. Aur aise hi infinite banate jao! Iska matlab — do rational numbers ke beech hamesha ek aur rational number mil jayega."},
+{t:"we",q:"1/4 aur 1/2 ke beech ek rational number dhundo.",steps:[
+{text:"Mean method: (1/4 + 1/2) ÷ 2"},
+{text:"Add karo: 1/4 + 1/2 = 1/4 + 2/4 = 3/4"},
+{text:"Divide by 2: (3/4) ÷ 2 = 3/4 × 1/2 = 3/8"},
+{text:"Check: 1/4 = 2/8 < 3/8 < 4/8 = 1/2. Sahi hai! 3/8 beech mein hai."}
+],answer:"1/4 aur 1/2 ke beech: 3/8"},
+{t:"we",q:"1/4 aur 1/2 ke beech teen rational numbers dhundo.",steps:[
+{text:"Pehle 3/8 mila (upar wala example)."},
+{text:"1/4 aur 3/8 ke beech mean: (1/4 + 3/8)/2 = (2/8 + 3/8)/2 = (5/8)/2 = 5/16"},
+{text:"3/8 aur 1/2 ke beech mean: (3/8 + 1/2)/2 = (3/8 + 4/8)/2 = (7/8)/2 = 7/16"},
+{text:"Teen numbers: 5/16, 3/8 (=6/16), 7/16. Check: 4/16 < 5/16 < 6/16 < 7/16 < 8/16. Sahi!"}
+],answer:"1/4 aur 1/2 ke beech: 5/16, 3/8, 7/16"},
+{t:"quiz",q:"Do rational numbers ke beech kitne rational numbers hote hain?",diff:"easy",opts:[
+{t:"Koi nahi",c:false,m:"Bahut saare hain! 1/2 aur 3/4 ke beech 5/8, 11/16, etc. Infinite hain!",correctMethod:"Do rational numbers ke beech countless (infinite) rational numbers hain."},
+{t:"Sirf ek",c:false,m:"Ek nahi, bahut saare! Mean method se hamesha ek aur nikal sakte ho.",correctMethod:"Countless rational numbers between any two."},
+{t:"Finite (limited)",c:false,m:"Limited nahi hain. Hamesha aur nikal sakte ho.",correctMethod:"Infinite rational numbers between any two."},
+{t:"Countless (infinite)",c:true}
+]},
+{t:"quiz",q:"-2 aur 0 ke beech ek rational number mean method se dhundo.",diff:"medium",opts:[
+{t:"-1",c:true},
+{t:"1",c:false,m:"1 toh positive hai! -2 aur 0 ke beech nahi. Mean = (-2 + 0)/2 = -1.",correctMethod:"Mean = (-2 + 0)/2 = -1. -2 < -1 < 0."},
+{t:"-2",c:false,m:"-2 toh endpoint hai, beech mein nahi! Mean = (-2 + 0)/2 = -1.",correctMethod:"(-2 + 0)/2 = -1. -1 is between -2 and 0."},
+{t:"0",c:false,m:"0 bhi endpoint hai! Mean = (-2 + 0)/2 = -1.",correctMethod:"(-2 + 0)/2 = -1."}
+]},
+
+{t:"milestone",icon:"📊",title:"Number Line Master!",xp:50,next:"Ab NCERT Exercise 1.1 ka gamified assessment! Sab solve karo!"},
+
+/* ===== EXERCISE 1.1 — ALL 11 QUESTIONS GAMIFIED ===== */
+{t:"text",title:"📚 NCERT Exercise 1.1 — Gamified!",body:"Ab asli test! NCERT ke Exercise 1.1 ke saare 11 questions gamified hain. Har question mein hints milenge, galat hone par explanation milega. Let's go!"},
+{t:"solve",q:"Ex 1.1 Q1(i): Find using properties: (-2/3) × (3/5) + (5/2) × (-3/5)",steps:[
+{type:"input",prompt:"(-3/5) ko common factor nikalo. Dono terms mein kya common hai? (Hint: -3/5)",answer:"-3/5",m:"Dono terms mein -3/5 hai. Distributivity use karo: (-3/5) × [2/3 + 5/2].",correctMethod:"Common factor -3/5. Expression = (-3/5) × (2/3 + 5/2)."},
+{type:"input",prompt:"Ab (2/3 + 5/2) ka LCM nikalkar add karo. LCM of 3 and 2?",answer:"6",m:"LCM(3,2) = 6. 2/3 = 4/6, 5/2 = 15/6. Sum = 19/6.",correctMethod:"LCM(3,2)=6. 2/3+5/2 = 4/6+15/6 = 19/6."},
+{type:"input",prompt:"Ab multiply karo: (-3/5) × (19/6) = ? (Enter as fraction like a/b)",answer:"-19/10",m:"(-3/5) × (19/6) = -57/30 = -19/10 (3 se simplify).",correctMethod:"(-3/5) × (19/6) = -57/30 = -19/10."}
+]},
+{t:"solve",q:"Ex 1.1 Q1(ii): Find using properties: (2/5) × (-3/7) − (1/6) × (3/2) + (1/14) × (2/5)",steps:[
+{type:"input",prompt:"(2/5) common hai do terms mein. Rearrange: (2/5)×(-3/7) + (2/5)×(1/14). Pehle (2/5)×(-3/7) kya hai? (Enter as a/b)",answer:"-6/35",m:"(2/5)×(-3/7) = -6/35.",correctMethod:"(2/5)×(-3/7) = -6/35."},
+{type:"input",prompt:"Ab (2/5)×(1/14) = ? (Enter as a/b)",answer:"1/35",m:"(2/5)×(1/14) = 2/70 = 1/35.",correctMethod:"(2/5)×(1/14) = 2/70 = 1/35."},
+{type:"input",prompt:"Ab sab add karo: -6/35 + 1/35 − (1/6)×(3/2). Pehle -6/35 + 1/35 = ?",answer:"-5/35",m:"-6/35 + 1/35 = -5/35 = -1/7.",correctMethod:"-6/35 + 1/35 = -5/35 = -1/7."},
+{type:"input",prompt:"Ab -1/7 - (1/6)×(3/2) = -1/7 - 3/12 = -1/7 - 1/4. LCM of 7 and 4?",answer:"28",m:"LCM(7,4) = 28. -1/7 = -4/28, -1/4 = -7/28.",correctMethod:"LCM(7,4)=28. -4/28 - 7/28 = -11/28."}
+]},
+{t:"quiz",q:"Ex 1.1 Q2(i): Additive inverse of 2/8?",diff:"easy",opts:[{t:"-2/8",c:true},{t:"2/8",c:false,m:"Same number nahi hai! Additive inverse ka sign ulta hota hai.",correctMethod:"Additive inverse of 2/8 = -2/8. Check: 2/8 + (-2/8) = 0."},{t:"8/2",c:false,m:"8/2 toh reciprocal hai!",correctMethod:"Additive inverse = -2/8 (sign ulta)."},{t:"-8/2",c:false,m:"Galat! Additive inverse of 2/8 = -2/8.",correctMethod:"-2/8."}]},
+{t:"quiz",q:"Ex 1.1 Q2(ii): Additive inverse of -5/9?",diff:"easy",opts:[{t:"5/9",c:true},{t:"-5/9",c:false,m:"Same nahi! Sign ulta karo.",correctMethod:"Additive inverse of -5/9 = 5/9."},{t:"9/5",c:false,m:"Reciprocal hai, additive inverse nahi!",correctMethod:"5/9."},{t:"-9/5",c:false,m:"Galat! Answer 5/9.",correctMethod:"5/9."}]},
+{t:"quiz",q:"Ex 1.1 Q2(iii): Additive inverse of -(-6/5)?",diff:"medium",opts:[{t:"-6/5",c:true},{t:"6/5",c:false,m:"-(-6/5) = 6/5. Ab 6/5 ka additive inverse = -6/5. Sign ulta!",correctMethod:"-(-6/5) = 6/5. Additive inverse of 6/5 = -6/5."},{t:"-5/6",c:false,m:"Reciproal ki baat nahi kar rahe!",correctMethod:"-6/5."},{t:"5/6",c:false,m:"Galat! Answer -6/5.",correctMethod:"-6/5."}]},
+{t:"quiz",q:"Ex 1.1 Q2(iv): Additive inverse of 2/-9?",diff:"medium",opts:[{t:"2/9",c:true},{t:"-2/9",c:false,m:"2/-9 = -2/9. Ab -2/9 ka additive inverse = 2/9.",correctMethod:"2/-9 = -2/9. Additive inverse = 2/9."},{t:"-9/2",c:false,m:"Reciprocal nahi, additive inverse!",correctMethod:"2/9."},{t:"9/2",c:false,m:"Galat! Answer 2/9.",correctMethod:"2/9."}]},
+{t:"quiz",q:"Ex 1.1 Q2(v): Additive inverse of -19/6?",diff:"easy",opts:[{t:"19/6",c:true},{t:"-19/6",c:false,m:"Same nahi! Sign ulta.",correctMethod:"19/6."},{t:"6/19",c:false,m:"Reciprocal hai!",correctMethod:"19/6."},{t:"-6/19",c:false,m:"Galat!",correctMethod:"19/6."}]},
+{t:"quiz",q:"Ex 1.1 Q3(i): Verify -(-x) = x for x = 11/15. Answer?",diff:"easy",opts:[{t:"11/15",c:true},{t:"-11/15",c:false,m:"Do minus = plus! -(-11/15) = 11/15.",correctMethod:"-(-11/15) = 11/15."},{t:"15/11",c:false,m:"Reciprocal nahi!",correctMethod:"11/15."},{t:"-15/11",c:false,m:"Galat!",correctMethod:"11/15."}]},
+{t:"quiz",q:"Ex 1.1 Q3(ii): Verify -(-x) = x for x = -13/17. Answer?",diff:"easy",opts:[{t:"-13/17",c:true},{t:"13/17",c:false,m:"-(-13/17) = 13/17. Par x = -13/17 hai, toh -(-x) = -(-(-13/17)) = -13/17 = x. Sahi!",correctMethod:"x = -13/17. -(-x) = -(-(-13/17)) = -13/17 = x. ✓"},{t:"17/13",c:false,m:"Reciprocal nahi!",correctMethod:"-13/17."},{t:"-17/13",c:false,m:"Galat!",correctMethod:"-13/17."}]},
+{t:"quiz",q:"Ex 1.1 Q4(i): Multiplicative inverse of -13?",diff:"easy",opts:[{t:"-1/13",c:true},{t:"1/13",c:false,m:"-13 × -1/13 = 1. Par 1/13 × (-13) = -1. Sign same rakhna!",correctMethod:"-13 ka reciprocal = -1/13. Check: (-13)×(-1/13) = 1."},{t:"13",c:false,m:"Same number nahi! Reciprocal = -1/13.",correctMethod:"-1/13."},{t:"-13",c:false,m:"Same! Reciprocal = -1/13.",correctMethod:"-1/13."}]},
+{t:"quiz",q:"Ex 1.1 Q4(ii): Multiplicative inverse of -13/19?",diff:"easy",opts:[{t:"-19/13",c:true},{t:"19/13",c:false,m:"(-13/19)×(19/13) = -1. Sign! Reciprocal = -19/13.",correctMethod:"Reciprocal of -13/19 = -19/13."},{t:"13/19",c:false,m:"Same nahi! Swap karo.",correctMethod:"-19/13."},{t:"-13/19",c:false,m:"Same! Reciprocal = -19/13.",correctMethod:"-19/13."}]},
+{t:"quiz",q:"Ex 1.1 Q4(iii): Multiplicative inverse of 1/5?",diff:"easy",opts:[{t:"5",c:true},{t:"1/5",c:false,m:"Same! (1/5)×(1/5) ≠ 1. Reciprocal = 5.",correctMethod:"Reciprocal of 1/5 = 5. Check: (1/5)×5 = 1."},{t:"-5",c:false,m:"Sign! (1/5)×(-5) = -1. Reciprocal = 5.",correctMethod:"5."},{t:"-1/5",c:false,m:"Galat! Answer 5.",correctMethod:"5."}]},
+{t:"quiz",q:"Ex 1.1 Q4(iv): Multiplicative inverse of (-5/8) × (-3/7)?",diff:"hard",opts:[{t:"56/15",c:true},{t:"-56/15",c:false,m:"Pehle multiply: (-5/8)×(-3/7) = 15/56. Ab reciprocal = 56/15 (positive!).",correctMethod:"(-5/8)×(-3/7) = 15/56. Reciprocal = 56/15."},{t:"15/56",c:false,m:"Yeh toh product hai, reciprocal nahi! Reciprocal = 56/15.",correctMethod:"56/15."},{t:"-15/56",c:false,m:"Product positive hai. Reciprocal bhi positive.",correctMethod:"56/15."}]},
+{t:"quiz",q:"Ex 1.1 Q4(v): Multiplicative inverse of -1 × (-2/5)?",diff:"hard",opts:[{t:"5/2",c:true},{t:"-5/2",c:false,m:"-1×(-2/5) = 2/5. Reciprocal = 5/2 (positive).",correctMethod:"-1×(-2/5) = 2/5. Reciprocal = 5/2."},{t:"2/5",c:false,m:"Product hai, reciprocal nahi!",correctMethod:"5/2."},{t:"-2/5",c:false,m:"Galat! Answer 5/2.",correctMethod:"5/2."}]},
+{t:"quiz",q:"Ex 1.1 Q4(vi): Multiplicative inverse of -1?",diff:"easy",opts:[{t:"-1",c:true},{t:"1",c:false,m:"-1 × 1 = -1 ≠ 1. Reciprocal = -1.",correctMethod:"-1 × (-1) = 1. Reciprocal = -1."},{t:"0",c:false,m:"Zero ka reciprocal nahi hota!",correctMethod:"-1."},{t:"1/-1",c:false,m:"1/-1 = -1. Sahi but standard form = -1.",correctMethod:"-1."}]},
+{t:"quiz",q:"Ex 1.1 Q5(i): Name the property: (-4/5)×1 = 1×(-4/5) = -4/5",diff:"medium",opts:[{t:"Multiplicative identity",c:true},{t:"Commutative",c:false,m:"1 se multiply karne se same number milta hai. Yeh multiplicative identity hai (a×1=a).",correctMethod:"a × 1 = a. Yeh multiplicative identity property hai."},{t:"Associative",c:false,m:"Grouping nahi badal rahi. Yeh multiplicative identity hai.",correctMethod:"Multiplicative identity."},{t:"Closure",c:false,m:"Closure alag hai. Yeh multiplicative identity hai.",correctMethod:"Multiplicative identity."}]},
+{t:"quiz",q:"Ex 1.1 Q5(ii): Name the property: (-13/17)×(-2/7) = (-2/7)×(-13/17)",diff:"medium",opts:[{t:"Commutativity of multiplication",c:true},{t:"Multiplicative identity",c:false,m:"Order badal raha hai, 1 se multiply nahi. Yeh commutativity hai.",correctMethod:"a×b = b×a. Commutativity of multiplication."},{t:"Associativity",c:false,m:"Grouping nahi, order badal raha hai.",correctMethod:"Commutativity."},{t:"Closure",c:false,m:"Closure alag hai. Yeh commutativity hai.",correctMethod:"Commutativity of multiplication."}]},
+{t:"quiz",q:"Ex 1.1 Q5(iii): Name the property: (-19/29)×(29/-19) = 1",diff:"medium",opts:[{t:"Multiplicative inverse",c:true},{t:"Multiplicative identity",c:false,m:"Do numbers multiply karke 1 de rahe hain. Yeh multiplicative inverse hai (reciprocal).",correctMethod:"a × (1/a) = 1. Multiplicative inverse property."},{t:"Commutative",c:false,m:"Order nahi, product 1 ho raha hai. Multiplicative inverse.",correctMethod:"Multiplicative inverse."},{t:"Closure",c:false,m:"Galat! Multiplicative inverse property hai.",correctMethod:"Multiplicative inverse."}]},
+{t:"solve",q:"Ex 1.1 Q6: Multiply 6/13 by the reciprocal of -7/16.",steps:[
+{type:"input",prompt:"Pehle -7/16 ka reciprocal nikalo. (Enter as a/b)",answer:"-16/7",m:"Reciprocal of -7/16 = -16/7 (numerator aur denominator swap, sign same).",correctMethod:"Reciprocal of -7/16 = -16/7."},
+{type:"input",prompt:"Ab multiply karo: (6/13) × (-16/7) = ? (Enter as a/b)",answer:"-96/91",m:"(6/13) × (-16/7) = -96/91. GCD(96,91)=1, so simplified.",correctMethod:"(6/13) × (-16/7) = -96/91."}
+]},
+{t:"quiz",q:"Ex 1.1 Q7: Which property allows: (1/3)×(6/4)×(3/1) = (1/3)×(3/1)×(6/4)?",diff:"medium",opts:[{t:"Commutativity of multiplication",c:true},{t:"Associativity",c:false,m:"Order badla hai (6/4 aur 3/1 swap). Yeh commutativity hai.",correctMethod:"Order changed = commutativity."},{t:"Distributivity",c:false,m:"Distribute nahi, swap kiya. Commutativity.",correctMethod:"Commutativity of multiplication."},{t:"Closure",c:false,m:"Galat! Commutativity hai.",correctMethod:"Commutativity."}]},
+{t:"quiz",q:"Ex 1.1 Q8: Is 8/9 the multiplicative inverse of -1×(1/8)?",diff:"hard",opts:[{t:"No, product is -1/9 not 1",c:true},{t:"Yes, because signs are opposite",c:false,m:"-1×(1/8) = -1/8. (8/9)×(-1/8) = -1/9 ≠ 1.",correctMethod:"-1/8. Check: (8/9)×(-1/8) = -1/9 ≠ 1. Not inverses."},{t:"Yes",c:false,m:"Check: -1×(1/8) = -1/8. (8/9)×(-1/8) = -1/9 ≠ 1.",correctMethod:"Product = -1/9 ≠ 1. No."},{t:"Cannot determine",c:false,m:"Calculate: -1/9 ≠ 1. No.",correctMethod:"No."}]},
+{t:"quiz",q:"Ex 1.1 Q9: Is 0.3 the multiplicative inverse of 1/3 (i.e., 3⅓)?",diff:"hard",opts:[{t:"Yes, 0.3 × (10/3) = 1",c:true},{t:"No, 0.3 × 3 = 0.9",c:false,m:"1/(3⅓) = 1/(10/3) = 3/10 = 0.3. Check: 0.3 × (10/3) = 3/10 × 10/3 = 1. Yes!",correctMethod:"3⅓ = 10/3. Reciprocal = 3/10 = 0.3. Check: 0.3 × 10/3 = 1. Yes!"},{t:"No",c:false,m:"3⅓ = 10/3. Its reciprocal = 3/10 = 0.3. Product = 1. Yes!",correctMethod:"Yes, 0.3 × 10/3 = 1."},{t:"Cannot determine",c:false,m:"3⅓ = 10/3. Reciprocal = 3/10 = 0.3. Yes!",correctMethod:"Yes."}]},
+{t:"solve",q:"Ex 1.1 Q10(i): Rational number with no reciprocal?",steps:[{type:"input",prompt:"Kaun sa rational number ka reciprocal nahi hota? (Hint: zero se divide nahi kar sakte)",answer:"0",m:"0 ka koi reciprocal nahi — 0 × anything = 0, never 1.",correctMethod:"Zero ka reciprocal nahi hai."}]},
+{t:"solve",q:"Ex 1.1 Q10(ii): Which rational numbers equal their own reciprocals?",steps:[{type:"input",prompt:"a/b = b/a kab hota hai? a/b = b/a means a² = b², so a = ±b. Kaun se do numbers hain?",answer:"1 and -1",m:"1 = 1/1, reciprocal = 1. -1 = -1/1, reciprocal = -1. Dono apne reciprocal ke barabar!",correctMethod:"1 (1×1=1) and -1 ((-1)×(-1)=1) equal their reciprocals."}]},
+{t:"solve",q:"Ex 1.1 Q10(iii): Which rational number equals its negative?",steps:[{type:"input",prompt:"x = -x kab? 2x = 0, so x = ?",answer:"0",m:"0 = -0. Zero hi ek number hai jo apne negative ke barabar hai.",correctMethod:"0 = -0. Zero equals its negative."}]},
+{t:"quiz",q:"Ex 1.1 Q11(i): Zero has ______ reciprocal.",diff:"easy",opts:[{t:"No",c:true},{t:"One",c:false,m:"0 × koi bhi number = 0, never 1. Zero ka reciprocal nahi hai.",correctMethod:"Zero ka koi reciprocal nahi."},{t:"Two",c:false,m:"Nahi! Zero ka koi reciprocal nahi.",correctMethod:"No reciprocal."},{t:"Infinite",c:false,m:"Nahi! Zero ka koi reciprocal nahi.",correctMethod:"No reciprocal."}]},
+{t:"quiz",q:"Ex 1.1 Q11(ii): Which numbers are their own reciprocals?",diff:"easy",opts:[{t:"1 and -1",c:true},{t:"0 and 1",c:false,m:"0 ka reciprocal nahi hai! 1 aur -1 apne reciprocal ke barabar hain.",correctMethod:"1 (1/1=1) and -1 (-1/1=-1). Both equal their reciprocals."},{t:"1 only",c:false,m:"-1 bhi! (-1)×(-1)=1.",correctMethod:"1 and -1."},{t:"0 only",c:false,m:"0 ka koi reciprocal hi nahi!",correctMethod:"1 and -1."}]},
+{t:"quiz",q:"Ex 1.1 Q11(iii): Reciprocal of -5 is?",diff:"easy",opts:[{t:"-1/5",c:true},{t:"1/5",c:false,m:"(-5)×(1/5) = -1 ≠ 1. Reciprocal = -1/5.",correctMethod:"-5 × (-1/5) = 1. Reciprocal = -1/5."},{t:"5",c:false,m:"(-5)×5 = -25 ≠ 1.",correctMethod:"-1/5."},{t:"-5",c:false,m:"(-5)×(-5) = 25 ≠ 1.",correctMethod:"-1/5."}]},
+{t:"quiz",q:"Ex 1.1 Q11(iv): Reciprocal of 1/x (x≠0) is?",diff:"easy",opts:[{t:"x",c:true},{t:"1/x",c:false,m:"(1/x)×(1/x) = 1/x² ≠ 1. Reciprocal of 1/x = x.",correctMethod:"(1/x) × x = 1. Reciprocal = x."},{t:"-x",c:false,m:"(1/x)×(-x) = -1 ≠ 1. Reciprocal = x.",correctMethod:"x."},{t:"-1/x",c:false,m:"(1/x)×(-1/x) = -1/x² ≠ 1. Reciprocal = x.",correctMethod:"x."}]},
+{t:"quiz",q:"Ex 1.1 Q11(v): Product of two rational numbers is always a?",diff:"easy",opts:[{t:"Rational number",c:true},{t:"Integer",c:false,m:"1/2 × 1/3 = 1/6 — yeh integer nahi! Product hamesha rational hai.",correctMethod:"a/b × c/d = ac/bd — hamesha rational."},{t:"Natural number",c:false,m:"1/2 × 1/2 = 1/4 — natural nahi! Rational hai.",correctMethod:"Rational number."},{t:"Whole number",c:false,m:"-1/2 × 1/3 = -1/6 — whole nahi! Rational hai.",correctMethod:"Rational number."}]},
+{t:"quiz",q:"Ex 1.1 Q11(vi): Reciprocal of a positive rational number is?",diff:"easy",opts:[{t:"Positive",c:true},{t:"Negative",c:false,m:"3/5 ka reciprocal = 5/3 (positive!). Positive × positive = positive.",correctMethod:"Positive rational → positive reciprocal."},{t:"Zero",c:false,m:"3/5 × 5/3 = 1, zero nahi!",correctMethod:"Positive."},{t:"Cannot say",c:false,m:"Hamesha positive!",correctMethod:"Positive."}]},
+
+{t:"milestone",icon:"📚",title:"Exercise 1.1 Complete!",xp:80,next:"Ab Exercise 1.2 ka gamified test! Last push!"},
+
+/* ===== EXERCISE 1.2 — ALL 7 QUESTIONS GAMIFIED ===== */
+{t:"text",title:"📚 NCERT Exercise 1.2 — Gamified!",body:"Last stretch! Exercise 1.2 ke 7 questions — number line, between numbers, aur counting. Dekho kitne solve kar paate ho!"},
+{t:"solve",q:"Ex 1.2 Q1(i): Represent 7/4 on number line. 7/4 = mixed number?",steps:[
+{type:"input",prompt:"7/4 ko mixed number mein likho. 7÷4 = 1 remainder 3. So 7/4 = ? (format: a b/c)",answer:"1 3/4",m:"7/4 = 1 whole + 3/4. So 1 ke baad 3/4 distance par mark karo.",correctMethod:"7/4 = 1¾. 1 se ¾ aage mark karo."}
+]},
+{t:"solve",q:"Ex 1.2 Q1(ii): Represent -5/6 on number line. -5/6 kahan hoga?",steps:[
+{type:"input",prompt:"-5/6 0 ke kis side par hoga? (left/right)",answer:"left",m:"Negative hai, toh 0 ke left par hoga.",correctMethod:"-5/6 negative hai, 0 ke left par."},
+{type:"input",prompt:"0 se -1 ke beech 6 parts banao. Kitne parts left chalna hai?",answer:"5",m:"-5/6 = 0 se 5 parts left (6 mein se).",correctMethod:"5 parts left of 0."}
+]},
+{t:"quiz",q:"Ex 1.2 Q2: -2/5, -9/5, -11/5 ko number line par represent karo. Kaun sa sabse left?",diff:"medium",opts:[{t:"-11/5",c:true},{t:"-2/5",c:false,m:"-11/5 = -2.2 sabse chhota hai. -2/5 = -0.4 sabse bada.",correctMethod:"-11/5 < -9/5 < -2/5. Sabse left = -11/5."},{t:"-9/5",c:false,m:"-11/5 sabse chhota. -9/5 = -1.8 beech mein.",correctMethod:"-11/5 sabse left."},{t:"All same position",c:false,m:"Alag positions! -11/5 < -9/5 < -2/5.",correctMethod:"-11/5 sabse left."}]},
+{t:"quiz",q:"Ex 1.2 Q3: 2 se chhote 5 rational numbers likho. Kaun sa valid hai?",diff:"easy",opts:[{t:"1, 0, -1, -2, 1/2",c:true},{t:"3, 4, 5, 6, 7",c:false,m:"Yeh toh 2 se bade hain! 2 se chhote chahiye.",correctMethod:"1, 0, -1, -2, 1/2 — sab 2 se chhote hain."},{t:"2, 2, 2, 2, 2",c:false,m:"2 ke barabar nahi, 2 se chhote!",correctMethod:"1, 0, -1, -2, 1/2."},{t:"10, 20, 30, 40, 50",c:false,m:"Bahut bade! 2 se chhote chahiye.",correctMethod:"1, 0, -1, -2, 1/2."}]},
+{t:"solve",q:"Ex 1.2 Q4: -1/2 aur 2/3 ke beech 10 rational numbers dhundo.",steps:[
+{type:"input",prompt:"Pehle LCM of 2 and 3?",answer:"6",m:"LCM(2,3) = 6.",correctMethod:"LCM(2,3) = 6."},
+{type:"input",prompt:"-1/2 = ?/6 aur 2/3 = ?/6. -1/2 ka numerator (denom 6)?",answer:"-3",m:"-1/2 = -3/6, 2/3 = 4/6.",correctMethod:"-1/2 = -3/6, 2/3 = 4/6."},
+{type:"input",prompt:"-3 aur 4 ke beech kitne integers hain (excluding both)?",answer:"6",m:"-2, -1, 0, 1, 2, 3 = 6 integers. Par 10 chahiye! Denominator 60 badao.",correctMethod:"6 integers in -3/6 to 4/6. For 10, increase denominator."}
+]},
+{t:"quiz",q:"Ex 1.2 Q5(i): 2/3 aur 4/5 ke beech 5 rational numbers?",diff:"medium",opts:[{t:"11/15, 7/10, 3/4, 8/11, ... (many exist)",c:true},{t:"Only one exists",c:false,m:"Countless hain! LCM se denominator badao.",correctMethod:"LCM(3,5)=15. 2/3=10/15, 4/5=12/15. 11/15 beech mein. Aur bhi!",},{t:"None exist",c:false,m:"Bahut saare hain! Mean method se nikalo.",correctMethod:"Countless exist."},{t:"Exactly 5",c:false,m:"5 se zyada hain! Infinite.",correctMethod:"More than 5 — infinite."}]},
+{t:"quiz",q:"Ex 1.2 Q5(ii): -3/2 aur 5/3 ke beech 5 rational numbers?",diff:"medium",opts:[{t:"-1, 0, 1, 1/3, 2/3 (all exist between them)",c:true},{t:"-3/2 itself",c:false,m:"Endpoint nahi, beech mein chahiye!",correctMethod:"-3/2=-1.5, 5/3≈1.67. Between: -1, 0, 1, etc."},{t:"5/3 itself",c:false,m:"Endpoint! Between chahiye.",correctMethod:"-1, 0, 1, etc. lie between."},{t:"No numbers between them",c:false,m:"Bahut saare hain!",correctMethod:"Many exist: -1, 0, 1, 1/3, 2/3."}]},
+{t:"quiz",q:"Ex 1.2 Q6: -2 se bade 5 rational numbers?",diff:"easy",opts:[{t:"-1, 0, 1, 1/2, 3/2",c:true},{t:"-3, -4, -5, -6, -7",c:false,m:"Yeh toh -2 se chhote hain! Bade chahiye.",correctMethod:"-1, 0, 1, 1/2, 3/2 — sab -2 se bade."},{t:"-2, -2, -2, -2, -2",c:false,m:"-2 ke barabar nahi, bade!",correctMethod:"-1, 0, 1, 1/2, 3/2."},{t:"5, 10, 15, 20, 25",c:false,m:"Sahi par itne bade nahi chahiye. Koi bhi bada chalega.",correctMethod:"-1, 0, 1, 1/2, 3/2."}]},
+{t:"solve",q:"Ex 1.2 Q7: 3/5 aur 3/4 ke beech 10 rational numbers dhundo.",steps:[
+{type:"input",prompt:"Pehle LCM of 5 and 4?",answer:"20",m:"LCM(5,4) = 20.",correctMethod:"LCM(5,4) = 20."},
+{type:"input",prompt:"3/5 = ?/20 aur 3/4 = ?/20. 3/5 ka numerator?",answer:"12",m:"3/5 = 12/20, 3/4 = 15/20.",correctMethod:"3/5 = 12/20, 3/4 = 15/20."},
+{type:"input",prompt:"12 aur 15 ke beech sirf 2 integers (13, 14). 10 ke liye denominator kya badhana chahiye? 20 × ? = 200?",answer:"10",m:"20×10=200. 3/5=120/200, 3/4=150/200. Ab 121 se 149 tak 29 integers!",correctMethod:"Denominator 200: 121/200 se 149/200 tak — 29 numbers!"}
+]},
+
+{t:"milestone",icon:"🎓",title:"Exercise 1.2 Complete!",xp:80,next:"Ab final challenge — Rapid Fire aur Memory Match!"},
+
+/* ===== FINAL GAMIFIED ASSESSMENT ===== */
+{t:"rapid_fire",qs:[
+{q:"Additive identity kaun hai?",opts:["0","1","-1","None"],ans:0},
+{q:"Multiplicative identity kaun hai?",opts:["0","1","-1","None"],ans:1},
+{q:"Addition commutative hai?",opts:["Yes","No","Sometimes","Pata nahi"],ans:0},
+{q:"Division associative hai?",opts:["Yes","No","Sometimes","Pata nahi"],ans:1},
+{q:"3/5 ka reciprocal?",opts:["5/3","-3/5","3/5","-5/3"],ans:0},
+{q:"-7/3 ka additive inverse?",opts:["7/3","-7/3","3/7","-3/7"],ans:0},
+{q:"Zero ke kitne reciprocal?",opts:["1","2","0","Infinite"],ans:2}
+]},
+{t:"memory_match",pairs:[
+{en:"Closure",hi:"संवृतता"},
+{en:"Commutative",hi:"क्रमविनिमेय"},
+{en:"Associative",hi:"साहचर्य"},
+{en:"Distributive",hi:"वितरण"},
+{en:"Reciprocal",hi:"व्युत्क्रम"},
+{en:"Additive Inverse",hi:"योज्य प्रतिलोम"},
+{en:"Identity",hi:"तत्समक"},
+{en:"Rational Number",hi:"परिमेय संख्या"}
+]},
+{t:"complete",icon:"🎓",title:"Chapter Complete!",sub:"Rational Numbers mastered! Class 8 — Chapter 1"}
+];
+
+var App={
+  nIdx:0,sIdx:0,xp:0,coins:0,streak:0,level:1,
+  answered:false,selOpt:null,solveStepIdx:0,solveAnswered:false,selTf:null,
+  rfIdx:0,rfScore:0,rfTimer:null,rfTime:30,
+  mmFlipped:[],mmMatched:0,mmBusy:false,
+  selTheme:'default',ownedThemes:[],badges:[],retryTimer:null,
+  init:function(){
+    var self=this;
+    var cb=document.getElementById("continueBtn");
+    if(cb)cb.addEventListener("click",function(){
+      var step=STEPS[self.sIdx];if(!step)return;
+      if(step.t==="quiz"&&!self.answered){self.checkQuiz(step,cb);return;}
+      if(step.t==="truefalse"&&!self.answered){self.checkTrueFalse(step,cb);return;}
+      if(step.t==="solve"&&!self.solveAnswered){self.checkSolve(step,cb);return;}
+      self.next();
+    });
+    var bb=document.getElementById("backBtn");
+    if(bb)bb.addEventListener("click",function(){self.back();});
+    var lc=document.getElementById("luClose");
+    if(lc)lc.addEventListener("click",function(){var d=document.getElementById("levelUpDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    var dc=document.getElementById("dlgClose");
+    if(dc)dc.addEventListener("click",function(){var d=document.getElementById("wordDialog");if(d){if(d.open)d.close();else d.removeAttribute("open");}});
+    this.render();
+  },
+  render:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    var cb=document.getElementById("continueBtn");if(!cb)return;
+    /* CRITICAL FIX: Always reset button */
+    cb.style.display="";cb.disabled=false;cb.className="btn btn-primary";
+    var bb=document.getElementById("backBtn");if(bb)bb.disabled=this.sIdx===0;
+    var pf=document.getElementById("progressFill");
+    if(pf)pf.style.width=Math.round((this.sIdx/(STEPS.length-1))*100)+"%";
+    this.answered=false;this.selOpt=null;this.selTf=null;
+    this.solveStepIdx=0;this.solveAnswered=false;
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    try{
+      switch(step.t){
+        case"intro":this.renderIntro(step,cb);break;
+        case"text":this.renderText(step,cb);break;
+        case"tutor":this.renderTutor(step,cb);break;
+        case"real_example":this.renderRealExample(step,cb);break;
+        case"formula":this.renderFormula(step,cb);break;
+        case"ix_numbersets":this.renderIxNumberSets(step,cb);break;
+        case"ix_numberline":this.renderIxNumberLine(step,cb);break;
+        case"ix_properties":this.renderIxProperties(step,cb);break;
+        case"ix_reciprocal":this.renderIxReciprocal(step,cb);break;
+        case"ix_between":this.renderIxBetween(step,cb);break;
+        case"discovery":this.renderDiscovery(step,cb);break;
+        case"quiz":this.renderQuiz(step,cb);break;
+        case"truefalse":this.renderTrueFalse(step,cb);break;
+        case"we":this.renderWE(step,cb);break;
+        case"solve":this.renderSolve(step,cb);break;
+        case"rapid_fire":this.renderRapidFire(step,cb);break;
+        case"memory_match":this.renderMemoryMatch(step,cb);break;
+        case"milestone":this.renderMilestone(step,cb);break;
+        case"complete":this.renderComplete(step,cb);break;
+        default:
+          document.getElementById("screen").innerHTML='<div class="instruction">Loading...</div>';
+          cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+          break;
+      }
+    }catch(e){
+      console.log("Render error at step "+this.sIdx+" ("+step.t+"):",e.message);
+      document.getElementById("screen").innerHTML='<div class="instruction">⚠ Small glitch — tap Continue to proceed!</div>';
+      cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    }
+    setTimeout(function(){applyLLE();},50);
+    this.updateStats();
+  },
+  updateStats:function(){
+    var sl=document.getElementById("statLvl");if(sl)sl.textContent="Lv "+this.level;
+    var sc=document.getElementById("statCoins");if(sc)sc.textContent=this.coins;
+    var sx=document.getElementById("statXp");if(sx)sx.textContent=this.xp;
+  },
+  checkLevelUp:function(){
+    var th=[0,50,120,200,300,450];var nm=["Beginner","Learner","Scholar","Expert","Master","Champion"];
+    for(var i=th.length-1;i>=0;i--){if(this.xp>=th[i]){if(this.level<i+1){this.level=i+1;this.showLevelUp(nm[i]);}break;}}
+  },
+  showLevelUp:function(name){
+    var dlg=document.getElementById("levelUpDialog");if(!dlg)return;
+    var ti=dlg.querySelector("div:nth-child(2)");if(ti)ti.textContent="Level Up! You are now a "+name+"!";
+    if(dlg&&!dlg.open){try{dlg.showModal();}catch(e){}}
+    this.fireConfetti();
+  },
+  fireConfetti:function(){
+    var c=document.getElementById("confetti");if(!c)return;c.style.display="block";
+    var ctx=c.getContext("2d");if(!ctx)return;
+    c.width=window.innerWidth;c.height=window.innerHeight;
+    var parts=[];
+    for(var i=0;i<80;i++){parts.push({x:Math.random()*c.width,y:-20,vx:(Math.random()-0.5)*4,vy:Math.random()*3+2,c:["#7c3aed","#a855f7","#10b981","#f59e0b","#ec4899"][Math.floor(Math.random()*5)],s:Math.random()*6+3});}
+    var t=0;
+    function anim(){ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<parts.length;i++){var p=parts[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.s,p.s);}t++;if(t<120)requestAnimationFrame(anim);else c.style.display="none";}
+    anim();
+  },
+  next:function(){
+    var step=STEPS[this.sIdx];if(!step)return;
+    if((step.t==="quiz"||step.t==="truefalse")&&!this.answered)return;
+    if(step.t==="solve"&&!this.solveAnswered)return;
+    if(step.t==="rapid_fire"&&this.rfIdx<step.qs.length)return;
+    if(step.t==="memory_match"&&this.mmMatched<step.pairs.length)return;
+    this.sIdx++;if(this.sIdx>=STEPS.length)this.sIdx=STEPS.length-1;this.render();
+  },
+  back:function(){if(this.sIdx>0){this.sIdx--;if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}this.render();}},
+  /* ===== SIMPLE STEPS (Continue always enabled) ===== */
+  renderIntro:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center">'+
+      '<div class="intro-icon">'+step.icon+'</div>'+
+      '<div class="intro-title">'+rt(step.title)+'</div>'+
+      '<div class="intro-sub">'+rt(step.sub)+'</div></div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--bl);max-width:400px;box-shadow:0 4px 12px rgba(124,58,237,.08)">'+rt("Dekho yaar, rational numbers ke bina math adhura reh jata! Pizza baantna, paise hisaab karna, temperature measure karna — sab mein rational numbers chhupte hain. Is chapter mein hum inki properties explore karenge, number line par dikhayenge, aur exercises solve karenge. Chalo shuru karte hain!")+'</div>'+
+      '<div class="hint">👆 Tap any word for Hindi meaning. Connecting words show Hindi automatically.</div>';
+    cb.textContent="Start Learning →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderText:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:linear-gradient(135deg,#fff,#f5f3ff);border-radius:14px;border:2px solid var(--border);max-width:400px;box-shadow:0 4px 12px rgba(0,0,0,.05)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderTutor:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Tutor Tip")+'</div>'+
+      '<div class="tutor-box"><span class="tutor-icon">'+step.icon+'</span>'+rt(step.title)+'</div>'+
+      '<div class="bt" style="padding:14px;background:#fff;border-radius:14px;border:2px solid var(--gold);max-width:400px;font-size:.85rem;line-height:1.7;margin:0 auto;box-shadow:0 4px 12px rgba(245,158,11,.08)">'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderRealExample:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt("Real Life Example")+'</div>'+
+      '<div class="real-example"><span class="re-icon">'+step.icon+'</span>'+rt(step.body)+'</div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderFormula:function(step,cb){
+    var html='<div class="instruction">'+rt(step.title)+'</div>';
+    for(var i=0;i<step.formulas.length;i++){var f=step.formulas[i];
+      html+='<div class="formula-box"><div class="f-label">'+rt(f.label)+'</div><div class="f-expr">'+rt(f.expr)+'</div>'+(f.note?'<div class="f-label" style="color:#78350f">'+rt(f.note)+'</div>':'')+'</div>';}
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderDiscovery:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.title)+'</div>'+
+      '<div class="discovery-box"><div class="d-title">'+rt(step.discoveryTitle)+'</div><div class="d-text">'+rt(step.body)+'</div></div>'+
+      (step.prop?'<div class="prop-box" style="max-width:400px;margin:0 auto">'+rt(step.prop)+'</div>':'');
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderWE:function(step,cb){
+    var html='<div class="instruction">'+rt("Worked Example")+'</div>';
+    html+='<div class="we-card"><div class="we-tag">Step-by-step solution</div><div class="we-question">'+rt(step.q)+'</div>';
+    for(var i=0;i<step.steps.length;i++){var s=step.steps[i];var cls=s.color?" "+s.color:"";
+      html+='<div class="we-step'+cls+'"><span class="we-num">'+(i+1)+'</span>'+rt(s.text)+'</div>';}
+    if(step.answer)html+='<div class="we-step final">Answer: '+rt(step.answer)+'</div>';
+    html+='</div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  renderMilestone:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="milestone-icon">'+step.icon+'</div>'+
+      '<div class="milestone-text">'+rt(step.title)+'</div>'+
+      '<div class="milestone-reward">+'+step.xp+' XP</div>'+
+      '<div class="milestone-next">'+rt(step.next)+'</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    this.xp+=step.xp||0;this.coins+=10;this.updateStats();this.checkLevelUp();
+  },
+  renderComplete:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div style="text-align:center;padding:20px">'+
+      '<div class="complete-icon">'+step.icon+'</div>'+
+      '<div class="complete-title">'+rt(step.title)+'</div>'+
+      '<div style="font-size:.9rem;color:var(--muted);margin-bottom:8px">'+rt(step.sub)+'</div>'+
+      '<div class="complete-coins">🪙 '+this.coins+' coins</div>'+
+      '<div class="star-row"><span>⭐</span><span>⭐</span><span>⭐</span></div>'+
+      '<button class="btn-restart" onclick="App.restart()">Restart Chapter</button></div>';
+    cb.style.display="none";this.fireConfetti();
+  },
+  /* ===== INTERACTIVE SIMULATIONS ===== */
+  renderIxNumberSets:function(step,cb){
+    var self=this;
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Numbers ka Family</div>'+
+      '<div style="text-align:center;margin:8px 0"><canvas id="nsCanvas" width="300" height="200" style="display:block;margin:0 auto;border-radius:8px"></canvas></div>'+
+      '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:8px 0">'+
+      '<span class="ns-badge ns-natural" id="nsNatural">🌱 Natural: 1,2,3...</span>'+
+      '<span class="ns-badge ns-whole" id="nsWhole">🌿 Whole: 0,1,2...</span>'+
+      '<span class="ns-badge ns-integer" id="nsInteger">🍂 Integer: ...-2,-1,0...</span>'+
+      '<span class="ns-badge ns-rational" id="nsRational">🔢 Rational: p/q</span>'+
+      '</div>'+
+      '<div class="discovery-box" id="nsDisc"><div class="d-title" id="nsTitle">Badge dabao!</div>'+
+      '<div class="d-text" id="nsInfo">Har badge tap karke dekho kaun se numbers kahan aate hain.</div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nsCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    var active="none";
+    function draw(){
+      ctx.clearRect(0,0,300,200);
+      var sets=[
+        {key:"rational",x:150,y:100,rx:130,ry:80,fill:"rgba(168,85,247,0.08)",border:"#a855f7",label:"Rational",lx:10,ly:15,color:"#6b21a8"},
+        {key:"integer",x:150,y:100,rx:95,ry:62,fill:"rgba(245,158,11,0.1)",border:"#f59e0b",label:"Integer",lx:90,ly:50,color:"#92400e"},
+        {key:"whole",x:150,y:100,rx:60,ry:42,fill:"rgba(59,130,246,0.12)",border:"#3b82f6",label:"Whole",lx:120,ly:72,color:"#1e40af"},
+        {key:"natural",x:150,y:100,rx:32,ry:24,fill:"rgba(16,185,129,0.15)",border:"#10b981",label:"Natural",lx:125,ly:103,color:"#065f46"}
+      ];
+      for(var i=0;i<sets.length;i++){
+        var s=sets[i];
+        ctx.fillStyle=active===s.key?s.fill.replace("0.08","0.25").replace("0.1","0.3").replace("0.12","0.35").replace("0.15","0.4"):s.fill;
+        ctx.beginPath();ctx.ellipse(s.x,s.y,s.rx,s.ry,0,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle=s.border;ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle=s.color;ctx.font="bold 10px sans-serif";ctx.fillText(s.label,s.lx,s.ly);
+      }
+    }
+    var info={
+      natural:{title:"Natural Numbers",info:"1, 2, 3, 4, 5... Yeh counting numbers hain. Sabse chhota set. Sab natural numbers bhi whole, integer aur rational hain."},
+      whole:{title:"Whole Numbers",info:"0, 1, 2, 3, 4... Natural numbers + zero. Har whole number integer aur rational bhi hai."},
+      integer:{title:"Integers",info:"...-3, -2, -1, 0, 1, 2, 3... Negative numbers bhi shamil. Har integer rational hai (-3 = -3/1)."},
+      rational:{title:"Rational Numbers",info:"Sab p/q wale numbers. Sabse bada set! Natural, whole, integer sab iske andar. Plus fractions jaise 1/2, -3/4, etc."}
+    };
+    function setBadge(id,key){
+      var badges=["nsNatural","nsWhole","nsInteger","nsRational"];
+      for(var i=0;i<badges.length;i++){var b=document.getElementById(badges[i]);if(b)b.classList.remove("active");}
+      var el=document.getElementById(id);if(el)el.classList.add("active");
+      active=key;draw();
+      document.getElementById("nsTitle").textContent=info[key].title;
+      document.getElementById("nsInfo").textContent=info[key].info;
+    }
+    document.getElementById("nsNatural").addEventListener("click",function(){setBadge("nsNatural","natural");});
+    document.getElementById("nsWhole").addEventListener("click",function(){setBadge("nsWhole","whole");});
+    document.getElementById("nsInteger").addEventListener("click",function(){setBadge("nsInteger","integer");});
+    document.getElementById("nsRational").addEventListener("click",function(){setBadge("nsRational","rational");});
+    draw();
+  },
+  renderIxNumberLine:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Number Line Explorer</div>'+
+      '<canvas id="nlCanvas" width="360" height="200" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:0 auto"></canvas>'+
+      '<div style="margin-top:10px">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Numerator (p): <span id="nlNum" style="color:var(--pi);font-size:1.1rem">1</span></label>'+
+      '<input type="range" id="slNum" min="-12" max="12" step="1" value="1">'+
+      '<label style="font-size:.78rem;font-weight:700;color:var(--brand)">Denominator (q): <span id="nlDen" style="color:var(--pi);font-size:1.1rem">2</span></label>'+
+      '<input type="range" id="slDen" min="1" max="12" step="1" value="2"></div>'+
+      '<div class="discovery-box" style="margin-top:8px"><div class="d-title">Tumhara Rational Number</div><div class="d-text" id="nlInfo">p/q = 1/2 = 0.50</div></div>'+
+      '<div class="interactive-hint">👆 Drag sliders!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var c=document.getElementById("nlCanvas");if(!c)return;var ctx=c.getContext("2d");if(!ctx)return;
+    function draw(){
+      var num=parseInt(document.getElementById("slNum").value);
+      var den=parseInt(document.getElementById("slDen").value);
+      document.getElementById("nlNum").textContent=num;document.getElementById("nlDen").textContent=den;
+      var val=num/den;ctx.clearRect(0,0,360,200);
+      var cy=110;var range=5;var scale=320/(2*range);
+      ctx.strokeStyle="#e2e8f0";ctx.lineWidth=1;
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-25);ctx.lineTo(x,cy+25);ctx.stroke();}
+      ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(20,cy);ctx.lineTo(340,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(340,cy);ctx.lineTo(333,cy-5);ctx.lineTo(333,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+      ctx.fillStyle="#475569";ctx.font="bold 10px sans-serif";ctx.textAlign="center";
+      for(var i=-range;i<=range;i++){var x=180+i*scale;ctx.beginPath();ctx.moveTo(x,cy-6);ctx.lineTo(x,cy+6);ctx.stroke();ctx.fillText(i,x,cy+22);}
+      if(den>0&&den<=12){ctx.strokeStyle="#c4b5fd";ctx.lineWidth=1;for(var i=-range;i<=range;i++){for(var j=1;j<den;j++){var xj=180+(i+j/den)*scale;if(xj>=20&&xj<=340){ctx.beginPath();ctx.moveTo(xj,cy-3);ctx.lineTo(xj,cy+3);ctx.stroke();}}}}
+      var px=180+val*scale;
+      if(px>=10&&px<=350){
+        var g=ctx.createRadialGradient(px,cy,2,px,cy,15);g.addColorStop(0,"rgba(124,58,237,0.4)");g.addColorStop(1,"rgba(124,58,237,0)");
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,cy,15,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle="#7c3aed";ctx.beginPath();ctx.arc(px,cy,8,0,Math.PI*2);ctx.fill();
+        ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle="#7c3aed";ctx.font="bold 12px sans-serif";ctx.fillText(num+"/"+den,px,cy-18);
+      }
+      var info="p/q = "+num+"/"+den;if(den!==0){var dec=(num/den).toFixed(4);info+=" = "+dec;if(num===0)info+=" — Zero!";else if(Math.abs(num)===Math.abs(den))info+=" — Integer: "+(num/den);}
+      document.getElementById("nlInfo").innerHTML=info;
+    }
+    document.getElementById("slNum").addEventListener("input",draw);
+    document.getElementById("slDen").addEventListener("input",draw);
+    draw();
+  },
+  renderIxProperties:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Properties Table</div>'+
+      '<table class="prop-table"><tr><th>Operation</th><th>Closed?</th><th>Commutative?</th><th>Associative?</th></tr>'+
+      '<tr id="opAdd"><td><b>Addition (+)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opSub"><td><b>Subtraction (−)</b></td><td class="yes">✓ Yes</td><td class="no">✗ No</td><td class="no">✗ No</td></tr>'+
+      '<tr id="opMul"><td><b>Multiplication (×)</b></td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td><td class="yes">✓ Yes</td></tr>'+
+      '<tr id="opDiv"><td><b>Division (÷)</b></td><td class="no">✗ No*</td><td class="no">✗ No</td><td class="no">✗ No</td></tr></table>'+
+      '<div class="prop-box" style="max-width:400px;margin:8px auto">* Zero se divide nahi hota. Zero exclude karke division closed hai.</div>'+
+      '<div class="discovery-box" id="propDisc" style="margin-top:8px"><div class="d-title" id="propTitle">Row dabao!</div><div class="d-text" id="propInfo">Har operation ka tap karke examples dekho.</div></div>'+
+      '<div class="interactive-hint">👆 Tap each row!</div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+    var pi={
+      add:{title:"Addition — Sab teen properties ✓",info:"Closure: 1/2+1/3=5/6 ✓. Commutative: 1/2+1/3 = 1/3+1/2 = 5/6 ✓. Associative: (1/2+1/3)+1/4 = 1/2+(1/3+1/4) = 13/12 ✓."},
+      sub:{title:"Subtraction — Sirf Closure ✓",info:"Closure: 1/2-1/3=1/6 ✓. NOT Commutative: 1/2-1/3=1/6, 1/3-1/2=-1/6. NOT Associative: (1/2-1/3)-1/4=-1/12, 1/2-(1/3-1/4)=5/12."},
+      mul:{title:"Multiplication — Sab teen ✓",info:"Closure: 2/3×4/5=8/15 ✓. Commutative: 2/3×4/5=4/5×2/3=8/15 ✓. Associative: (2/3×4/5)×6/7 = 2/3×(4/5×6/7) = 48/105 ✓."},
+      div:{title:"Division — Kuch bhi nahi poora",info:"NOT Closed: 1/2÷0 = undefined. NOT Commutative: 1/2÷1/3=3/2, 1/3÷1/2=2/3. NOT Associative: (1/2÷1/3)÷1/4=6, 1/2÷(1/3÷1/4)=3/8."}
+    };
+    function hl(id,key){
+      var rows=["opAdd","opSub","opMul","opDiv"];
+      for(var i=0;i<rows.length;i++){var r=document.getElementById(rows[i]);if(r)r.classList.remove("hl");}
+      var el=document.getElementById(id);if(el)el.classList.add("hl");
+      document.getElementById("propTitle").textContent=pi[key].title;
+      document.getElementById("propInfo").textContent=pi[key].info;
+    }
+    document.getElementById("opAdd").addEventListener("click",function(){hl("opAdd","add");});
+    document.getElementById("opSub").addEventListener("click",function(){hl("opSub","sub");});
+    document.getElementById("opMul").addEventListener("click",function(){hl("opMul","mul");});
+    document.getElementById("opDiv").addEventListener("click",function(){hl("opDiv","div");});
+  },
+  renderIxReciprocal:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Reciprocal Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0">'+
+      '<input type="text" id="recNum" class="fb-input" style="max-width:60px;text-align:center" placeholder="p" value="3">'+
+      '<span style="font-size:1.5rem;font-weight:800;color:var(--brand)">/</span>'+
+      '<input type="text" id="recDen" class="fb-input" style="max-width:60px;text-align:center" placeholder="q" value="5"></div>'+
+      '<button class="btn btn-primary" style="max-width:200px;margin:0 auto" onclick="App.calcReciprocal()">Find Reciprocal</button>'+
+      '<canvas id="recCanvas" width="340" height="100" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="recDisc" style="margin-top:8px;display:none"><div class="d-title" id="recTitle"></div><div class="d-text" id="recInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcReciprocal:function(){
+    var p=parseInt(document.getElementById("recNum").value);
+    var q=parseInt(document.getElementById("recDen").value);
+    if(isNaN(p)||isNaN(q)||q===0){
+      document.getElementById("recDisc").style.display="block";
+      document.getElementById("recTitle").textContent="Galat Input!";
+      document.getElementById("recInfo").innerHTML="Sahi integers daalo. q zero nahi ho sakta!";
+      return;
+    }
+    var rp=q,rq=p;var canvas=document.getElementById("recCanvas");if(!canvas)return;
+    var ctx=canvas.getContext("2d");if(!ctx)return;ctx.clearRect(0,0,340,100);
+    ctx.font="bold 18px sans-serif";ctx.textAlign="center";
+    ctx.fillStyle="#8b5cf6";ctx.fillText(p,80,35);ctx.fillText("—",80,45);ctx.fillText(q,80,60);
+    ctx.fillStyle="#475569";ctx.font="bold 20px sans-serif";ctx.fillText("×",130,50);
+    ctx.fillStyle="#ec4899";ctx.fillText(rp,180,35);ctx.fillText("—",180,45);ctx.fillText(rq,180,60);
+    ctx.fillStyle="#475569";ctx.fillText("=",230,50);
+    var prod=p*rp,denom=q*rq;
+    ctx.fillStyle="#10b981";ctx.font="bold 22px sans-serif";ctx.fillText(prod+"/"+denom+" = 1",290,50);
+    document.getElementById("recDisc").style.display="block";
+    if(p===0){document.getElementById("recTitle").textContent="Zero ka reciprocal nahi hai!";document.getElementById("recInfo").innerHTML="0 × koi bhi = 0, kabhi 1 nahi.";}
+    else{document.getElementById("recTitle").textContent="Reciprocal of "+p+"/"+q+" = "+rp+"/"+rq;document.getElementById("recInfo").innerHTML="Check: ("+p+"/"+q+") × ("+rp+"/"+rq+") = "+prod+"/"+denom+" = 1 ✓";}
+  },
+  renderIxBetween:function(step,cb){
+    document.getElementById("screen").innerHTML=
+      '<div class="instruction">'+rt(step.instruction)+'</div>'+
+      '<div class="visual-card"><div class="visual-title">Between Finder</div>'+
+      '<div style="display:flex;gap:8px;justify-content:center;margin:8px 0">'+
+      '<div><label style="font-size:.7rem;font-weight:600">First (a)</label><input type="text" id="ixA" class="fb-input" style="max-width:80px;text-align:center" value="1/4"></div>'+
+      '<div><label style="font-size:.7rem;font-weight:600">Second (b)</label><input type="text" id="ixB" class="fb-input" style="max-width:80px;text-align:center" value="1/2"></div></div>'+
+      '<button class="btn btn-primary" style="max-width:220px;margin:0 auto" onclick="App.calcBetween()">Find Middle</button>'+
+      '<canvas id="betCanvas" width="340" height="120" style="background:linear-gradient(180deg,#fff,#f5f3ff);border-radius:8px;display:block;margin:10px auto"></canvas>'+
+      '<div class="discovery-box" id="ixBetDisc" style="margin-top:8px;display:none"><div class="d-title" id="ixBetTitle"></div><div class="d-text" id="ixBetInfo"></div></div></div>';
+    cb.textContent="Continue →";cb.className="btn btn-primary";cb.disabled=false;
+  },
+  calcBetween:function(){
+    function pf(s){s=s.trim();if(s.indexOf("/")>=0){var p=s.split("/");return parseInt(p[0])/parseInt(p[1]);}return parseFloat(s);}
+    function tf(d){for(var i=1;i<=100;i++){var n=Math.round(d*i);if(Math.abs(n/i-d)<0.001)return n+"/"+i;}return d.toFixed(4);}
+    var a=pf(document.getElementById("ixA").value);var b=pf(document.getElementById("ixB").value);
+    if(isNaN(a)||isNaN(b)){document.getElementById("ixBetDisc").style.display="block";document.getElementById("ixBetTitle").textContent="Galat!";document.getElementById("ixBetInfo").innerHTML="Sahi fraction daalo jaise 1/4";return;}
+    var mid=(a+b)/2;var aF=document.getElementById("ixA").value.trim();var bF=document.getElementById("ixB").value.trim();var mF=tf(mid);
+    var lo=Math.min(a,b),hi=Math.max(a,b);
+    var canvas=document.getElementById("betCanvas");if(!canvas)return;var ctx=canvas.getContext("2d");if(!ctx)return;
+    ctx.clearRect(0,0,340,120);var cy=60;var m=30;var pad=(hi-lo)*0.2;var min=lo-pad,max=hi+pad;var sc=(340-2*m)/(max-min);
+    ctx.strokeStyle="#475569";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(m,cy);ctx.lineTo(340-m,cy);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(340-m,cy);ctx.lineTo(333-m,cy-5);ctx.lineTo(333-m,cy+5);ctx.closePath();ctx.fillStyle="#475569";ctx.fill();
+    var xa=m+(a-min)*sc;ctx.fillStyle="#8b5cf6";ctx.beginPath();ctx.arc(xa,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();
+    ctx.fillStyle="#8b5cf6";ctx.font="bold 11px sans-serif";ctx.textAlign="center";ctx.fillText(aF,xa,cy-15);
+    var xb=m+(b-min)*sc;ctx.fillStyle="#ec4899";ctx.beginPath();ctx.arc(xb,cy,7,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#ec4899";ctx.fillText(bF,xb,cy-15);
+    var xm=m+(mid-min)*sc;var gg=ctx.createRadialGradient(xm,cy,2,xm,cy,18);gg.addColorStop(0,"rgba(16,185,129,0.4)");gg.addColorStop(1,"rgba(16,185,129,0)");
+    ctx.fillStyle=gg;ctx.beginPath();ctx.arc(xm,cy,18,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle="#10b981";ctx.beginPath();ctx.arc(xm,cy,9,0,Math.PI*2);ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();
+    ctx.fillStyle="#065f46";ctx.font="bold 12px sans-serif";ctx.fillText(mF,xm,cy+25);
+    document.getElementById("ixBetDisc").style.display="block";
+    document.getElementById("ixBetTitle").textContent="Mean = ("+aF+" + "+bF+") ÷ 2 = "+mF;
+    document.getElementById("ixBetInfo").innerHTML=lo.toFixed(4)+" < "+mid.toFixed(4)+" < "+hi.toFixed(4)+". Toh "+mF+" beech mein hai! Aur aise hi aur nikal sakte ho!";
+  },
+  /* ===== ASSESSMENT RENDERERS ===== */
+  renderQuiz:function(step,cb){
+    var self=this;var q=step.q;
+    var html='<div class="instruction">'+rt("Quiz")+(step.diff?' <span class="diff-badge diff-'+step.diff+'">'+step.diff+'</span>':'')+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(q)+'</div>';
+    for(var i=0;i<step.opts.length;i++){html+='<div class="quiz-opt" data-quiz-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+rt(step.opts[i].t)+'</div></div>';}
+    html+='<div id="qf"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var opts=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;for(var j=0;j<opts.length;j++)opts[j].classList.remove("selected");this.classList.add("selected");self.selOpt=parseInt(this.getAttribute("data-quiz-idx"));cb.textContent="Check";cb.disabled=false;});}
+  },
+  checkQuiz:function(step,cb){
+    var opt=step.opts[this.selOpt];if(!opt)return;this.answered=true;
+    var optEls=document.querySelectorAll("[data-quiz-idx]");
+    for(var i=0;i<optEls.length;i++){optEls[i].style.pointerEvents="none";if(step.opts[i].c)optEls[i].classList.add("correct");else if(i===this.selOpt&&!opt.c)optEls[i].classList.add("wrong");}
+    var fb=document.getElementById("qf");
+    if(opt.c){fb.innerHTML='<div class="feedback ok">✓ Sahi! +5 XP</div>';this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+    else{this.streak=0;this.updateStats();var mh='<div class="feedback no">✗ Galat.</div>';if(opt.m)mh+='<div class="misconception"><strong>⚠ Galat kyon:</strong> '+rt(opt.m)+'</div>';if(opt.correctMethod)mh+='<div class="correct-method"><strong>✓ Sahi tarika:</strong> '+rt(opt.correctMethod)+'</div>';fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.answered=false;self.selOpt=null;for(var i=0;i<optEls.length;i++){optEls[i].classList.remove("selected","correct","wrong");optEls[i].style.pointerEvents="";}fb.innerHTML="";cb.textContent="Check";cb.disabled=true;cb.className="btn btn-primary";},8000);}
+  },
+  renderTrueFalse:function(step,cb){
+    var self=this;
+    var html='<div class="instruction">'+rt("True ya False?")+'</div>';
+    html+='<div class="card"><div class="we-question">'+rt(step.q)+'</div>';
+    html+='<div class="tf-btn"><div class="tf-opt" id="tfTrue">✓ True</div><div class="tf-opt" id="tfFalse">✗ False</div></div>';
+    html+='<div id="tfFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");
+    if(te)te.addEventListener("click",function(){if(self.answered)return;te.classList.add("sel-true");fe.classList.remove("sel-false");self.selTf=true;cb.textContent="Check";cb.disabled=false;});
+    if(fe)fe.addEventListener("click",function(){if(self.answered)return;fe.classList.add("sel-false");te.classList.remove("sel-true");self.selTf=false;cb.textContent="Check";cb.disabled=false;});
+  },
+  checkTrueFalse:function(step,cb){
+    if(this.selTf===null)return;this.answered=true;
+    var te=document.getElementById("tfTrue"),fe=document.getElementById("tfFalse");var fb=document.getElementById("tfFb");
+    var correct=this.selTf===step.ans;
+    if(te)te.style.pointerEvents="none";if(fe)fe.style.pointerEvents="none";
+    if(correct){
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Sahi! +5 XP</div>'+(step.explain?'<div class="correct-method"><strong>Explanation:</strong> '+rt(step.explain)+'</div>':'');
+      applyLLE();this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }else{
+      if(te){if(step.ans)te.classList.add("correct");else te.classList.add("wrong");}
+      if(fe){if(!step.ans)fe.classList.add("correct");else fe.classList.add("wrong");}
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Galat.</div>';if(step.m)mh+='<div class="misconception"><strong>⚠ Galat kyon:</strong> '+rt(step.m)+'</div>';if(step.correctMethod)mh+='<div class="correct-method"><strong>✓ Sahi tarika:</strong> '+rt(step.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;
+    }
+  },
+  renderSolve:function(step,cb){
+    var self=this;var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep){this.solveAnswered=true;return;}
+    var html='<div class="instruction">'+rt("Solve karo!")+' (Step '+(this.solveStepIdx+1)+' of '+sl.length+')</div>';
+    html+='<div class="we-card"><div class="we-question">'+rt(step.q)+'</div>';
+    if(sStep.prompt)html+='<div class="we-step"><span class="we-num">'+(this.solveStepIdx+1)+'</span>'+rt(sStep.prompt)+'</div>';
+    if(sStep.type==="input")html+='<input type="text" id="slInput" class="fb-input" placeholder="Type your answer...">';
+    html+='<div id="slFb"></div></div>';
+    document.getElementById("screen").innerHTML=html;
+    cb.textContent="Check";cb.className="btn btn-primary";cb.disabled=true;
+    if(sStep.type==="input"){var inp=document.getElementById("slInput");if(inp)inp.addEventListener("input",function(){if(this.value.trim().length>0){cb.textContent="Check";cb.disabled=false;}else{cb.disabled=true;}});}
+  },
+  checkSolve:function(step,cb){
+    var sl=step.steps;var sStep=sl[this.solveStepIdx];if(!sStep)return;this.solveAnswered=true;
+    var fb=document.getElementById("slFb");var correct=false,misc="";
+    if(sStep.type==="input"){
+      var val=document.getElementById("slInput").value.trim();var ans=sStep.answer;
+      correct=(val===ans||val===ans.replace(/\s/g,"")||parseInt(val)===parseInt(ans));
+      var inp=document.getElementById("slInput");if(inp)inp.disabled=true;if(!correct)misc=sStep.m;
+    }
+    if(correct){
+      if(fb)fb.innerHTML='<div class="feedback ok">✓ Sahi! +5 XP</div>';
+      this.xp+=5;this.coins+=2;this.streak++;this.updateStats();this.checkLevelUp();
+      this.solveStepIdx++;
+      if(this.solveStepIdx>=sl.length){this.solveAnswered=true;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;}
+      else{cb.textContent="Next Step →";cb.disabled=false;var self=this;setTimeout(function(){self.render();},1500);}
+    }else{
+      this.streak=0;this.updateStats();
+      var mh='<div class="feedback no">✗ Galat.</div>';if(misc)mh+='<div class="misconception"><strong>⚠ Galat kyon:</strong> '+rt(misc)+'</div>';if(sStep.correctMethod)mh+='<div class="correct-method"><strong>✓ Sahi tarika:</strong> '+rt(sStep.correctMethod)+'</div>';
+      if(fb)fb.innerHTML=mh;applyLLE();cb.textContent="Try again";var self=this;if(this.retryTimer)clearTimeout(this.retryTimer);this.retryTimer=setTimeout(function(){self.solveAnswered=false;self.selOpt=null;self.render();},8000);
+    }
+  },
+  renderRapidFire:function(step,cb){
+    var self=this;this.rfIdx=0;this.rfScore=0;this.rfTime=30;var qs=step.qs;
+    function showQ(){
+      if(self.rfIdx>=qs.length){self.endRF(step,cb);return;}
+      var q=qs[self.rfIdx];
+      var html='<div class="rf-header"><div class="rf-q-num">Question '+(self.rfIdx+1)+' of '+qs.length+'</div></div>';
+      html+='<div class="timer-bar-container"><div class="timer-bar" id="rfTimerBar" style="width:100%"></div></div>';
+      html+='<div class="card"><div class="we-question">'+rt(q.q)+'</div>';
+      for(var i=0;i<q.opts.length;i++){html+='<div class="quiz-opt" data-rf-idx="'+i+'"><div class="quiz-radio"></div><div class="quiz-opt-text">'+q.opts[i]+'</div></div>';}
+      html+='</div><div style="text-align:center;font-size:.85rem;font-weight:700">Score: '+self.rfScore+'</div>';
+      document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+      var opts=document.querySelectorAll("[data-rf-idx]");
+      for(var i=0;i<opts.length;i++){opts[i].addEventListener("click",function(){if(self.answered)return;self.answered=true;var idx=parseInt(this.getAttribute("data-rf-idx"));if(idx===q.ans){this.classList.add("correct");self.rfScore++;self.xp+=3;self.coins+=1;self.updateStats();}else{this.classList.add("wrong");for(var j=0;j<q.opts.length;j++){if(j===q.ans){document.querySelector('[data-rf-idx="'+j+'"]').classList.add("correct");break;}}}var ao=document.querySelectorAll("[data-rf-idx]");for(var j=0;j<ao.length;j++)ao[j].style.pointerEvents="none";setTimeout(function(){self.answered=false;self.rfIdx++;showQ();},1200);});}
+    }
+    if(this.rfTimer)clearInterval(this.rfTimer);
+    this.rfTimer=setInterval(function(){self.rfTime--;var bar=document.getElementById("rfTimerBar");if(bar){bar.style.width=Math.max(0,self.rfTime/30*100)+"%";if(self.rfTime<=10)bar.classList.add("danger");}if(self.rfTime<=0){self.endRF(step,cb);}},1000);
+    this.answered=false;showQ();
+  },
+  endRF:function(step,cb){
+    if(this.rfTimer){clearInterval(this.rfTimer);this.rfTimer=null;}
+    var html='<div class="card" style="text-align:center;padding:20px"><div style="font-size:2rem">🏁</div><div style="font-size:1.2rem;font-weight:800">Rapid Fire Done!</div><div style="font-size:2rem;font-weight:900;color:var(--brand)">'+this.rfScore+' / '+step.qs.length+'</div><div style="font-size:.8rem;color:var(--muted)">+'+(this.rfScore*3)+' XP</div></div>';
+    document.getElementById("screen").innerHTML=html;cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;this.checkLevelUp();
+  },
+  renderMemoryMatch:function(step,cb){
+    var self=this;this.mmFlipped=[];this.mmMatched=0;this.mmBusy=false;
+    var pairs=step.pairs;var cards=[];
+    for(var i=0;i<pairs.length;i++){cards.push({text:pairs[i].en,match:i});cards.push({text:pairs[i].hi,match:i});}
+    cards.sort(function(){return Math.random()-0.5;});
+    var html='<div class="instruction">'+rt("Match English with Hindi!")+'</div>';
+    html+='<div class="mm-info">Matched: <b id="mmScore">0</b> / '+pairs.length+'</div><div class="mm-grid">';
+    for(var i=0;i<cards.length;i++){html+='<div class="mm-card" data-mm-idx="'+i+'" data-mm-match="'+cards[i].match+'"><div class="mm-card-inner"><div class="mm-card-face mm-card-front">?</div><div class="mm-card-face mm-card-back">'+cards[i].text+'</div></div></div>';}
+    html+='</div>';document.getElementById("screen").innerHTML=html;cb.textContent="Skip";cb.disabled=false;
+    var els=document.querySelectorAll("[data-mm-idx]");
+    for(var i=0;i<els.length;i++){els[i].addEventListener("click",function(){if(self.mmBusy)return;if(this.classList.contains("flipped")||this.classList.contains("matched"))return;this.classList.add("flipped");self.mmFlipped.push(this);if(self.mmFlipped.length===2){self.mmBusy=true;var c1=self.mmFlipped[0],c2=self.mmFlipped[1];if(c1.getAttribute("data-mm-match")===c2.getAttribute("data-mm-match")){setTimeout(function(){c1.classList.add("matched");c2.classList.add("matched");self.mmMatched++;document.getElementById("mmScore").textContent=self.mmMatched;self.xp+=5;self.coins+=2;self.updateStats();self.mmFlipped=[];self.mmBusy=false;if(self.mmMatched>=pairs.length){cb.textContent="Continue →";cb.className="btn btn-green";cb.disabled=false;self.checkLevelUp();}},500);}else{setTimeout(function(){c1.classList.remove("flipped");c2.classList.remove("flipped");self.mmFlipped=[];self.mmBusy=false;},1000);}}});}
+  },
+  restart:function(){this.nIdx=0;this.sIdx=0;this.xp=0;this.coins=0;this.level=1;this.streak=0;var cb=document.getElementById("continueBtn");if(cb)cb.style.display="";this.render();},
+  renderShop:function(){
+    var self=this;var themes=[{id:"default",name:"Purple",icon:"🟣",cost:0},{id:"ocean",name:"Ocean",icon:"🌊",cost:50},{id:"forest",name:"Forest",icon:"🌲",cost:80},{id:"sunset",name:"Sunset",icon:"🌅",cost:100}];
+    var html='<div class="shop-overlay" id="shopOv" onclick="if(event.target===this)document.getElementById(\'shopOv\').remove()"><div class="shop-modal"><div class="shop-title">🛒 Shop</div><div class="shop-coins">🪙 '+this.coins+'</div><div class="shop-grid">';
+    for(var i=0;i<themes.length;i++){var th=themes[i];var owned=this.ownedThemes.indexOf(th.id)>=0||th.cost===0;var active=this.selTheme===th.id;
+      html+='<div class="shop-item'+(owned?' owned':'')+'"><div class="shop-item-icon">'+th.icon+'</div><div class="shop-item-name">'+th.name+'</div>';
+      if(!owned){html+='<div class="shop-item-cost">🪙 '+th.cost+'</div><button class="shop-buy-btn" data-buy="'+th.id+'" data-cost="'+th.cost+'">Buy</button>';}
+      else if(active){html+='<div style="font-size:.7rem;color:var(--green);font-weight:700">✓ Active</div>';}
+      else{html+='<button class="shop-buy-btn" data-apply="'+th.id+'">Apply</button>';}
+      html+='</div>';}
+    html+='</div><div style="text-align:center;margin-top:12px"><button class="btn btn-primary" style="max-width:200px" onclick="document.getElementById(\'shopOv\').remove()">Close</button></div></div></div>';
+    var ex=document.getElementById("shopOv");if(ex)ex.remove();var div=document.createElement("div");div.innerHTML=html;document.body.appendChild(div.firstChild);
+    var bb=document.querySelectorAll("[data-buy]");for(var i=0;i<bb.length;i++){bb[i].addEventListener("click",function(){var id=this.getAttribute("data-buy");var cost=parseInt(this.getAttribute("data-cost"));if(self.coins>=cost){self.coins-=cost;self.ownedThemes.push(id);self.selTheme=id;document.body.className="theme-"+id;self.updateStats();self.renderShop();}});}
+    var ab=document.querySelectorAll("[data-apply]");for(var i=0;i<ab.length;i++){ab[i].addEventListener("click",function(){var id=this.getAttribute("data-apply");self.selTheme=id;document.body.className="theme-"+id;self.renderShop();});}
+  }
+};
+
+App.init();
+</script>
+</body>
+</html>
